@@ -43,10 +43,19 @@
 		
 		<tr>
 			<td width="150">Lime Light Campaign</td>
-			<td>
-				<select name='limelight_campaign_id' id='limelight_campaign_id' onchange='mmjs.getLimeLightProducts();'>
+			<td><?php 
+						$productId = $limeLightProduct->getLimeLightProductId();
+						if(empty($productId)) { 
+					?>
+				<select name='limelight_campaign_id[]' id='limelight_campaign_id' onchange='mmjs.getLimeLightProducts();' multiple='true' style="height: 200px">
 				<?php echo MM_HtmlUtils::generateSelectionsList($limeLightService->getCampaigns(), $limeLightProduct->getLimeLightCampaignId()); ?>
 				</select>
+				<?php }else{ ?>
+				
+				<select name='limelight_campaign_id[]' id='limelight_campaign_id' onchange='mmjs.getLimeLightProducts();'  >
+				<?php echo MM_HtmlUtils::generateSelectionsList($limeLightService->getCampaigns(), $limeLightProduct->getLimeLightCampaignId()); ?>
+				</select>
+				<?php }?>
 			</td>
 		</tr>
 		
@@ -64,19 +73,30 @@
 					<?php } ?>
 					<a href="javascript:mmjs.getLimeLightProducts();" title="Get Lime Light Products"><?php echo MM_Utils::getIcon("download", "green", "1.4em", "2px;"); ?></a>
 					<a href="javascript:mmjs.getLimeLightProductDescription('');" title="View Lime Light Product Info"><?php echo MM_Utils::getIcon("info-circle", "blue", "1.3em", "1px;"); ?></a>
+					<br />
+					<?php if($limeLightProduct->getLimeLightProductId()>0){ ?>
+						<div style='clear:both; height: 10px;'></div>
+					<input type='checkbox' onchange="mmjs.doToggleCampaignSelection();" id='limelight_map_all_associated_campaigns' name='limelight_map_all_associated_campaigns' value='1' <?php echo (($limeLightProduct->getLimeLightCampaignId()==0)?"checked":"");?> /> Use the product mapping specified above across all Lime Light campaigns. <?php echo MM_Utils::getIcon("info-circle", "blue", "1.3em", "1px;","When this is checked, Lime Light product whatever will be mapped to the MemberMouse product whatever regardless of what Lime Light campaign is specified. This can be overridden for specific campaigns in a separate mapping."); ?>
+					<?php } ?>
+					 
 				</div>
 				
 				<div id="limelight_select_product_section" style="display:none;">
 					<select name='limelight_product_id_selector' id='limelight_product_id_selector' style="display:none;">
 					</select>
 					<a href="javascript:mmjs.getLimeLightProductDescription('');" title="View Lime Light Product Info"><?php echo MM_Utils::getIcon("info-circle", "blue", "1.3em", "1px;"); ?></a>
+					<br />
+						<div style='clear:both; height: 10px;'></div>
+					<input type='checkbox' onchange="mmjs.doToggleCampaignSelection();" id='limelight_map_all_associated_campaigns' name='limelight_map_all_associated_campaigns' value='1' /> Use the product mapping specified above across all Lime Light campaigns. <?php echo MM_Utils::getIcon("info-circle", "blue", "1.3em", "1px;","When this is checked, Lime Light product whatever will be mapped to the MemberMouse product whatever regardless of what Lime Light campaign is specified. This can be overridden for specific campaigns in a separate mapping."); ?>
 				</div>
+				
 			</td>
 		</tr>
 	</table>
 	
 	<input id='id' type='hidden' value='<?php if($limeLightProduct->getId() != 0) { echo $limeLightProduct->getId(); } ?>' />
 	<input id='limelight_campaign_name' name='limelight_campaign_name' type='hidden' />
+	<input id='limelight_campaign_map_all' name='limelight_campaign_map_all' type='hidden' value="0" />
 	<input id='limelight_product_name' name='limelight_product_name' type='hidden' value='<?php echo $limeLightProduct->getLimeLightProductName(); ?>' />
 	<input id='limelight_product_id' name='limelight_product_id' type='hidden' value='<?php echo $limeLightProduct->getLimeLightProductId(); ?>' />
 </div>
@@ -90,5 +110,8 @@
 <script>
 jQuery( document ).ready(function() {
 	mmjs.getMMProductDescription();
+	<?php if($limeLightProduct->getLimeLightProductId()>0){?>
+	mmjs.doToggleCampaignSelection();
+	<?php }?>
 });
 </script>

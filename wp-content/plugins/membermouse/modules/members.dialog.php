@@ -24,7 +24,7 @@ if(MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_USE_CHECKOUT_FORM_TEST_
 <div id="mm-new-member-form-container">
 	<table cellspacing="10">
 		<tr>
-			<td width="120">Membership Level</td>
+			<td width="120"><?php echo _mmt("Membership Level"); ?></td>
 			<td>
 				<select id="mm-new-membership-selector" style="width:300px;">
 					<?php echo MM_HtmlUtils::getMemberships(null, true); ?>
@@ -32,23 +32,23 @@ if(MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_USE_CHECKOUT_FORM_TEST_
 			</td>
 		</tr>
 		<tr>
-			<td>First Name*</td>
+			<td><?php echo _mmt("First Name"); ?>*</td>
 			<td><input id="mm-new-first-name" type="text" size="40" value="<?php echo $memberData["mm_field_first_name"]; ?>" /></td>
 		</tr>
 		<tr>
-			<td>Last Name*</td>
+			<td><?php echo _mmt("Last Name"); ?>*</td>
 			<td><input id="mm-new-last-name" type="text" size="40" value="<?php echo $memberData["mm_field_last_name"]; ?>" /></td>
 		</tr>
 		<tr>
-			<td>Email*</td>
+			<td><?php echo _mmt("Email"); ?>*</td>
 			<td><input id="mm-new-email" type="text" size="40" value="<?php echo $memberData["mm_field_email"]; ?>" /></td>
 		</tr>
 		<tr>
-			<td>Phone</td>
+			<td><?php echo _mmt("Phone"); ?></td>
 			<td><input id="mm-new-phone" type="text" size="40" value="<?php echo $memberData["mm_field_phone"]; ?>" /></td>
 		</tr>
 		<tr>
-			<td>Password*</td>
+			<td><?php echo _mmt("Password"); ?>*</td>
 			<td><input id="mm-new-password" type="password" size="40" value="<?php echo $memberData["mm_field_password"]; ?>" /></td>
 		</tr>
 	</table>
@@ -56,7 +56,7 @@ if(MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_USE_CHECKOUT_FORM_TEST_
 
 <div class="mm-dialog-footer-container">
 <div class="mm-dialog-button-container">
-<a href="javascript:mmjs.createMember();" class="mm-ui-button blue">Create Member</a>
-<a href="javascript:mmjs.closeDialog();" class="mm-ui-button">Cancel</a>
+<a href="javascript:mmjs.createMember();" class="mm-ui-button blue"><?php echo _mmt("Create Member"); ?></a>
+<a href="javascript:mmjs.closeDialog();" class="mm-ui-button"><?php echo _mmt("Cancel"); ?></a>
 </div>
 </div>

@@ -31,11 +31,11 @@ function updatePreviewSettingsBarForm()
 
 <div class="mm-wrap">
 	<a name="preview-settings-bar-options"></a>
-    <p class="mm-header-text">Preview Settings Bar Options <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020295-show-hide-the-preview-settings-bar" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Preview Settings Bar Options"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020295-show-hide-the-preview-settings-bar" target="_blank"><?php echo _mmt("Learn More"); ?></a></span></p>
     
 	<div style="margin-top:10px;">
 		<input id="mm_show_preview_settings_bar_cb" type="checkbox" <?php echo (($showPreviewBar=="1")?"checked":""); ?> onchange="updatePreviewSettingsBarForm();" />
-		Show Preview Settings Bar<?php echo MM_Utils::getInfoIcon($showPreviewBarDesc); ?>
+		<?php echo _mmt("Show Preview Settings Bar"); ?><?php echo MM_Utils::getInfoIcon($showPreviewBarDesc); ?>
 		<input id="mm_show_preview_settings_bar" name="mm_show_preview_settings_bar" type="hidden" value="<?php echo $showPreviewBar; ?>" />
 	</div>
 </div>

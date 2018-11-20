@@ -24,8 +24,8 @@ $rows = array();
 
 $headers = array
 (	    
-   	'version'		=> array('content' => '<a onclick="mmjs.sort(\'version\');" href="#">Version</a>'),
-   	'date_added'	=> array('content' => '<a onclick="mmjs.sort(\'date_added\');" href="#">Date</a>')
+   	'version'		=> array('content' => '<a onclick="mmjs.sort(\'version\');" href="#">'._mmt("Version").'</a>'),
+   	'date_added'	=> array('content' => '<a onclick="mmjs.sort(\'date_added\');" href="#">'._mmt("Date").'</a>')
 );
 
 foreach($data as $key=>$item)

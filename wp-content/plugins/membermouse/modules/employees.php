@@ -54,7 +54,7 @@ if (count($invalid_account_ids) > 0)
 	// if one of more accounts were deleted successfully, display a message
 	if(count($successfully_deleted_accounts) > 0) 
 	{
-		$error = "The following invalid accounts were detected and have been deleted: <strong>".implode(", ",$successfully_deleted_accounts)."</strong>";
+		$error = _mmt("The following invalid accounts were detected and have been deleted")."<strong>".implode(", ",$successfully_deleted_accounts)."</strong>";
 		echo "<div class='updated'>";
 		echo "<p>".$error."</p>";
 		echo "</div>";
@@ -167,11 +167,11 @@ foreach($data as $key => $item)
 
 $headers = array
 (
-   	'display_name'	=> array('content' => '<a onclick="mmjs.sort(\'display_name\');" href="#" style="margin-left:22px;">Display Name</a>'),
-   	'first_name'	=> array('content' => '<a onclick="mmjs.sort(\'first_name\');" href="#">Real Name</a>'),
-   	'email'			=> array('content' => '<a onclick="mmjs.sort(\'email\');" href="#">Email</a>'),
-   	'phone'			=> array('content' => '<a onclick="mmjs.sort(\'phone\');" href="#">Phone</a>'),
-   	'role_id'		=> array('content' => '<a onclick="mmjs.sort(\'role_id\');" href="#">Role</a>'),
+   	'display_name'	=> array('content' => '<a onclick="mmjs.sort(\'display_name\');" href="#" style="margin-left:22px;">'._mmt("Display Name").'</a>'),
+   	'first_name'	=> array('content' => '<a onclick="mmjs.sort(\'first_name\');" href="#">'._mmt("Real Name").'</a>'),
+   	'email'			=> array('content' => '<a onclick="mmjs.sort(\'email\');" href="#">'._mmt("Email").'</a>'),
+   	'phone'			=> array('content' => '<a onclick="mmjs.sort(\'phone\');" href="#">'._mmt("Phone").'</a>'),
+   	'role_id'		=> array('content' => '<a onclick="mmjs.sort(\'role_id\');" href="#">'._mmt("Role").'</a>'),
    	'actions'		=> array('content' => 'Actions')
 );
 
@@ -186,7 +186,7 @@ if($dgHtml == "") {
 ?>
 <div class="mm-wrap">
 	<div class="mm-button-container">
-		<a onclick="mmjs.create('mm-employee-accounts-dialog', 540, 475)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Employee</a>
+		<a onclick="mmjs.create('mm-employee-accounts-dialog', 540, 475)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Employee");?></a>
 	</div>
 
 	<div class="clear"></div>

@@ -7,7 +7,7 @@
 
 global $current_user;
 
-$user = new MM_User($current_user->ID);
+$user = MM_User::getCurrentWPUser();
 
 $fieldInfo = array();
 

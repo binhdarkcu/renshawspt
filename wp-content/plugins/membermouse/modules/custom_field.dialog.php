@@ -4,7 +4,7 @@ function renderFieldOption($optionId, $value)
 ?>
 	<div id="mm-field-option-container-<?php echo $optionId; ?>">
 	<input id="mm-field-option-<?php echo $optionId; ?>" type="text" size="30" class="field-option" value="<?php echo $value; ?>" />
-	<a href="javascript:mmjs.addFieldOption('<?php echo htmlentities(MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'), ENT_QUOTES); ?>', '<?php echo htmlentities(MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'), ENT_QUOTES); ?>');"><?php echo MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'); ?></a>
+	<a href="javascript:mmjs.addFieldOption('<?php echo htmlentities(MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'), ENT_QUOTES, "UTF-8"); ?>', '<?php echo htmlentities(MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'), ENT_QUOTES, "UTF-8"); ?>');"><?php echo MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'); ?></a>
 		
 	<?php if($optionId > 1) { ?>
 	<a href="javascript:mmjs.removeFieldOption('mm-field-option-container-<?php echo $optionId; ?>');"><?php echo MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'); ?></a>
@@ -48,7 +48,7 @@ if($doRenderForm)
 	<table width='95%' cellpadding="6">
 	<tr>
 		<td style="vertical-align:middle;">
-			Name
+			<?php echo _mmt("Name"); ?>
 		</td>
 		<td>
 			<input type='text' id='mm-display-name' value='<?php echo $customField->getDisplayName(); ?>'  style='width: 225px;'  />
@@ -59,14 +59,14 @@ if($doRenderForm)
 		<td>
 			<label>
 				<input type='checkbox' id='mm-show-on-my-account-cb' <?php echo $showOnMyAccountChecked; ?> onchange="mmjs.showOnMyAccountChanged()" />
-				Show on My Account Page
+				<?php echo _mmt("Show on My Account Page"); ?>
 			</label>
 			
 			<input type='hidden' id='mm-show-on-my-account' value='<?php echo ($customField->showOnMyAccount() ? "1":"0"); ?>' />
 		</td>
 	</tr>
 	<tr>
-		<td>Type</td>
+		<td><?php echo _mmt("Type"); ?></td>
 		<td>
 			<select id="mm-field-type" onchange="mmjs.typeChangeHandler()">
 			<?php echo MM_HtmlUtils::getCustomFieldTypeList($customField->getType()); ?>
@@ -77,7 +77,7 @@ if($doRenderForm)
 		<td></td>
 		<td>
 			<div id="field-options-container" style="display:none;">
-				Options
+				<?php echo _mmt("Options"); ?>
 				
 				<div id="mm-field-options" style="margin-top:5px;">
 					<?php 
@@ -108,12 +108,12 @@ if($doRenderForm)
 	<div class="mm-dialog-footer-container">
 	<div class="mm-dialog-button-container">
 	
-	<a href="javascript:mmjs.save();" class="mm-ui-button blue">Save Custom Field</a>
+	<a href="javascript:mmjs.save();" class="mm-ui-button blue"><?php echo _mmt("Save Custom Field"); ?></a>
 	
 	<?php if($initialCreation) { ?>
-	<a href="javascript:mmjs.cancelCreation(<?php echo $customField->getId(); ?>);" class="mm-ui-button">Cancel</a>
+	<a href="javascript:mmjs.cancelCreation(<?php echo $customField->getId(); ?>);" class="mm-ui-button"><?php echo _mmt("Cancel"); ?></a>
 	<?php } else { ?>
-	<a href="javascript:mmjs.closeDialog();" class="mm-ui-button">Cancel</a>
+	<a href="javascript:mmjs.closeDialog();" class="mm-ui-button"><?php echo _mmt("Cancel"); ?></a>
 	<?php } ?>
 	
 	</div>
@@ -122,7 +122,7 @@ if($doRenderForm)
 <?php } else { ?>
 
 	<div id="mm-form-container">
-	Unable to create custom field.
+	<?php echo _mmt("Unable to create custom field"); ?>.
 	</div>
 
 <?php } ?>

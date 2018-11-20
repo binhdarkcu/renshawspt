@@ -83,11 +83,11 @@ foreach($data as $key=>$item)
 
 $headers = array
 (	    
-   	'name'							=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">Name</a>'),
-   	'initial_commission_enabled'	=> array('content' => '<a onclick="mmjs.sort(\'initial_commission_enabled\');" href="#">Initial Commission</a>'),
-   	'rebill_commissions_enabled'	=> array('content' => '<a onclick="mmjs.sort(\'rebill_commissions_enabled\');" href="#">Rebill Commissions</a>'),
-   	'do_reverse_commissions'		=> array('content' => '<a onclick="mmjs.sort(\'do_reverse_commissions\');" href="#">Cancel Commissions</a>'),
-   	'actions'						=> array('content' => 'Actions')
+   	'name'							=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">'._mmt("Name").'</a>'),
+   	'initial_commission_enabled'	=> array('content' => '<a onclick="mmjs.sort(\'initial_commission_enabled\');" href="#">'._mmt("Initial Commission").'</a>'),
+   	'rebill_commissions_enabled'	=> array('content' => '<a onclick="mmjs.sort(\'rebill_commissions_enabled\');" href="#">'._mmt("Rebill Commission").'Rebill Commissions</a>'),
+   	'do_reverse_commissions'		=> array('content' => '<a onclick="mmjs.sort(\'do_reverse_commissions\');" href="#">'._mmt("Cancel Commissions").'</a>'),
+   	'actions'						=> array('content' => _mmt('Actions'))
 );
 
 $dataGrid->setHeaders($headers);
@@ -97,13 +97,13 @@ $dataGrid->width = "85%";
 $dgHtml = $dataGrid->generateHtml();
 
 if($dgHtml == "") {
-	$dgHtml = "<p><i>No commission profiles.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No commission profiles").".</i></p>";
 }
 ?>
 <div class="mm-wrap">
 	
 	<div class="mm-button-container">
-		<a onclick="mmjs.create('mm-commission-profiles-dialog')" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Commission Profile</a>
+		<a onclick="mmjs.create('mm-commission-profiles-dialog')" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Commission Profile"); ?></a>
 	</div>
 	
 	<div class="clear"></div>

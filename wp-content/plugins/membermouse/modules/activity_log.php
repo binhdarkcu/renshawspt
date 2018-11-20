@@ -52,8 +52,12 @@ if(!empty($_REQUEST["to_date"]))
 <script type='text/javascript'>
 jQuery(document).ready(function()
 {
-	jQuery("#from_date").datepicker();
-	jQuery("#to_date").datepicker();
+	jQuery("#from_date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
+	jQuery("#to_date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 
 	mmjs.setIsMemberDetailsArea(<?php echo ($isMemberDetailsArea) ? "true" : "false"; ?>);
 });
@@ -75,14 +79,14 @@ function viewInfo(eventId)
 			<td valign="top">
 			<table cellspacing="5">
 				<tr>
-					<td>Event Type</td>
+					<td><?php echo _mmt("Event Type"); ?></td>
 					<td>
 						<select id='event_type' name='event_type'><?php echo $eventOptions; ?></select>
 					</td>
 				</tr>
 				<?php if(!$isMemberDetailsArea) { ?>
 				<tr>
-					<td>Member ID</td>
+					<td><?php echo _mmt("Member ID"); ?></td>
 					<td><input id="member_id" name="member_id" type="text" value="<?php echo $memberIdValue; ?>" /></td>
 				</tr>
 				<?php } else { ?>
@@ -95,14 +99,14 @@ function viewInfo(eventId)
 			<td valign="top">
 			<table cellspacing="5">
 				<tr>
-					<td>From</td>
+					<td><?php echo _mmt("From"); ?></td>
 					<td>
 						<input id="from_date" name="from_date" type="text" value="<?php echo $fromDateValue; ?>" style="width: 152px" />
 						<a onClick="jQuery('#from_date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a> 
 					</td>
 				</tr>
 				<tr>
-					<td>To</td>
+					<td><?php echo _mmt("To"); ?></td>
 					<td>
 						<input id="to_date" name="to_date" type="text" value="<?php echo $toDateValue; ?>" style="width: 152px"  />
 						<a onClick="jQuery('#to_date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a>
@@ -113,8 +117,8 @@ function viewInfo(eventId)
 		</tr>
 	</table>
 	
-	<input type="button" class="mm-ui-button blue" value="Show Events" onclick="mmjs.resetAndSearch();">
-	<input type="button" class="mm-ui-button" value="Reset Form" onclick="mmjs.resetForm();">
+	<input type="button" class="mm-ui-button blue" value="<?php echo _mmt("Show Events"); ?>" onclick="mmjs.resetAndSearch();">
+	<input type="button" class="mm-ui-button" value="<?php echo _mmt("Reset Form"); ?>" onclick="mmjs.resetForm();">
 </div>
 </form>
 

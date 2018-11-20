@@ -144,7 +144,7 @@ var MM_EmailIntegrationViewJS = MM_Core.extend({
 			jQuery("#reset").show();
 			jQuery("#provider_token").attr("disabled","disabled");
 			jQuery("#mm-email-service-provider-options input").attr("readonly","readonly");
-			jQuery("#mm-email-service-provider-options select").attr("disabled","disabled");
+			jQuery("#mm-email-service-provider-options select").attr("readonly","readonly");
 			jQuery("#email-service-provider-configure").attr("readonly","readonly");
 			jQuery("#mm-membertype-to-list").html(data.message);
 			jQuery("#mm-email-service-provider-list-mappings").show();

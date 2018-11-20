@@ -169,6 +169,33 @@ var MM_MemberDetailsViewJS = MM_Core.extend({
 		}
 	},
 	
+	forgetMember: function(user_id)
+	{
+	    var isOk = confirm("Are you sure you want to forget this member?\n\nAny active subscriptions will be cancelled, and user information will immediately be anonymized if you proceed.");
+	    if(isOk){
+			var values = {};
+		     
+		    values.mm_action = "forgetMember";
+		    values.user_id = user_id;
+		    
+		    var ajax = new MM_Ajax(false, this.module, this.action, this.method);
+		    ajax.send(values, false, 'mmjs', "forgetMemberHandler"); 
+	    }
+	},
+	
+	forgetMemberHandler: function(data)
+	{
+		if(data.type=='error')
+		{
+			alert(data.message);
+		}
+		else
+		{
+			alert("The member was successfully forgotten");
+			location.reload(); 
+		}
+	},
+	
 	validateForm: function()
 	{
 		if(jQuery('#mm-email').val() == "") 

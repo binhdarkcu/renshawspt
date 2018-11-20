@@ -5,7 +5,124 @@
  * (c) MemberMouse, LLC. All rights reserved.
  */
  class MM_Utils
- {	
+ {	  
+ 	/*
+ 	 * Modified and taken from http://php.net/manual/en/function.get-browser.php#101125 
+ 	 */
+ 	public static function getClientBrowsingInfo()
+ 	{
+ 		$u_agent = $_SERVER['HTTP_USER_AGENT'];
+ 		$bname = 'Unknown';
+ 		$platform = 'Unknown';
+ 		$version= "";
+		$ip = $_SERVER['REMOTE_ADDR'];
+ 	
+ 		//First get the platform?
+ 		if (preg_match('/linux/i', $u_agent)) {
+ 			$platform = 'linux';
+ 		}
+ 		elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+ 			$platform = 'mac';
+ 		}
+ 		elseif (preg_match('/windows|win32/i', $u_agent)) {
+ 			$platform = 'windows';
+ 		}
+ 	
+ 		// Next get the name of the useragent yes seperately and for good reason
+ 		if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent))
+ 		{
+ 			$bname = 'Internet Explorer';
+ 			$ub = "MSIE";
+ 		}
+ 		elseif(preg_match('/Firefox/i',$u_agent))
+ 		{
+ 			$bname = 'Mozilla Firefox';
+ 			$ub = "Firefox";
+ 		}
+ 		elseif(preg_match('/Chrome/i',$u_agent))
+ 		{
+ 			$bname = 'Google Chrome';
+ 			$ub = "Chrome";
+ 		}
+ 		elseif(preg_match('/Safari/i',$u_agent))
+ 		{
+ 			$bname = 'Apple Safari';
+ 			$ub = "Safari";
+ 		}
+ 		elseif(preg_match('/Opera/i',$u_agent))
+ 		{
+ 			$bname = 'Opera';
+ 			$ub = "Opera";
+ 		}
+ 		elseif(preg_match('/Netscape/i',$u_agent))
+ 		{
+ 			$bname = 'Netscape';
+ 			$ub = "Netscape";
+ 		}
+ 	
+ 		// finally get the correct version number
+ 		$known = array('Version', $ub, 'other');
+ 		$pattern = '#(?<browser>' . join('|', $known) .
+ 		')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+ 		if (!preg_match_all($pattern, $u_agent, $matches)) {
+ 			// we have no matching number just continue
+ 		}
+ 	
+ 		// see how many we have
+ 		$i = count($matches['browser']);
+ 		if ($i != 1) {
+ 			//we will have two since we are not using 'other' argument yet
+ 			//see if version is before or after the name
+ 			if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
+ 				$version= $matches['version'][0];
+ 			}
+ 			else {
+ 				$version= $matches['version'][1];
+ 			}
+ 		}
+ 		else {
+ 			$version= $matches['version'][0];
+ 		}
+ 	
+ 		// check if we have a number
+ 		if ($version==null || $version=="") {$version="?";}
+ 	
+ 		return array(
+ 				'userAgent' => $u_agent,
+ 				'name'      => $bname,
+ 				'version'   => $version,
+ 				'platform'  => $platform,
+ 				'pattern'   => $pattern,
+ 				'ip'		=> $ip
+ 		);
+ 	}
+ 	
+ 	
+ 	public static function releaseDBLock($id)
+ 	{
+ 		global $wpdb;
+
+ 		if(!empty($id) && !is_null($id) && strlen($id)>0)
+ 		{
+ 			$key = "order_submission_{$id}";
+ 			return $wpdb->query("SELECT RELEASE_LOCK('{$key}')");
+ 		}
+ 		return false;
+ 	}
+ 	
+ 	public static function acquireDBLock($id, $timeout=60)
+ 	{
+ 		global $wpdb;
+ 		$id = trim($id);
+
+ 		if(!empty($id) && !is_null($id) && strlen($id)>0)
+ 		{
+ 			$key = "order_submission_{$id}";
+ 			return $wpdb->get_var($wpdb->prepare("SELECT COALESCE(GET_LOCK(%s,{$timeout}),0)",$key));
+ 		}
+ 		return false;
+ 	}
+ 	
  	public static function isMemberMouseActive()
  	{
 	 	$plugins = get_option('active_plugins');
@@ -232,6 +349,19 @@
 		}
 	}
 	
+	public static function translateText($str, $domain)
+	{
+ 		if (function_exists("__"))
+ 		{
+ 			return __($str, $domain);
+ 		}
+ 		else 
+ 		{
+ 			return false;
+ 		}
+		
+	}
+	
  	public static function isLoggedIn()
  	{
  		if (function_exists("is_user_logged_in"))
@@ -270,6 +400,44 @@
 	 	return true;
  	}
  	
+ 	/**
+ 	 * Pass in a comma delimited list (or whatever is specified by $delim) and get back whether all emails in list are valid.
+ 	 * This ONLY handles the case for multiple delimited emails for backward compatibility.  I do not know of a valid entry 
+ 	 * where we actually should accept multiple emails in a text box.
+ 	 * 
+ 	 * @param string $delim (optional) specify how to parse the string for multiple emails
+ 	 * @param string $emailStr the string with concatenated email addresses.
+ 	 * @return true if all (non-empty) emails (at least one) parsed are valid, otherwise false.
+ 	 */
+ 	public static function hasValidEmail($emailStr, $delim=",")
+ 	{
+ 		$foundValidEmail = false;
+ 		if($emailStr!=null)
+ 		{ 
+ 			$emailArr = explode($delim,$emailStr);
+ 			foreach($emailArr as $email)
+ 			{ 
+ 				$email = trim($email);
+ 				if(strlen($email)>0)
+ 				{ 
+	 				if(!is_email($email))
+	 				{
+	 					// hard stop, invalid email in list
+	 					return false;
+	 				}
+	 				
+	 				// Found at least one good email in list.
+	 				$foundValidEmail = true;
+ 				}
+ 			}
+ 		}
+ 		return $foundValidEmail;
+ 	}
+ 	
+ 	
+ 	/*
+ 	 * Legacy function
+ 	 */
  	public static function validateEmail($email)
  	{
  		$isValid = true;
@@ -461,7 +629,7 @@
 	        $regex = "^". $protocol . // must include the protocol
 	                         '(' . $allowed . '{1,63}\.)+'. // 1 or several sub domains with a max of 63 chars
 	                         '[a-z]' . '{2,6}'; // followed by a TLD
-	        if(eregi($regex, $url)===true)
+	        if(preg_match("/".$regex."/", $url)===true)
 	        {
 	        	return true;
 	        }
@@ -598,7 +766,7 @@
 	    }
 	    else
 	    {
-	      $ip = $_SERVER['REMOTE_ADDR'];
+	        $ip = isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:"127.0.0.1";
 	    }
 	    
 	    //don't use ipv6 for local installs
@@ -611,6 +779,7 @@
 	
 	public static function getIcon($iconName, $color="", $fontSize="", $offset="", $title="", $addlStyles="")
 	{
+		$title = _mmt($title);
 		$iconStr = "<i class=\"fa fa-{$iconName} mm-icon {$color}\" style=\"";
 		
 		if(!empty($fontSize))
@@ -646,6 +815,7 @@
 		}
 		else
 		{
+			$description = _mmt($description);
 			return "<a onclick='{$onClickHandler}' style='cursor:pointer;' title='{$description}'>".MM_Utils::getIcon('info-circle', 'blue', '1.3em', '2px', '', $addlStyles)."</a>";
 		}
 	}
@@ -660,6 +830,7 @@
 		}
 		else
 		{
+			$description = _mmt($description);
 			return "<a {$actionString} style='cursor:pointer; {$addlStyles}' title='{$description}'>".MM_Utils::getIcon('pencil', $color, '1.3em', '2px', '', '')."</a>";
 		}
 	}
@@ -674,12 +845,14 @@
 		}
 		else
 		{
+			$description = _mmt($description);
 			return "<a {$actionString} style='cursor:pointer; {$addlStyles}' title='{$description}'>".MM_Utils::getIcon('trash-o', $color, '1.3em', '2px', '', '')."</a>";
 		}
 	}
 	
 	public static function getArchiveIcon($description="", $addlStyles='', $actionString="", $isArchived=false)
 	{
+		$description = _mmt($description);
 		$color = "light-blue";
 		$icon = ($isArchived) ? "toggle-on" : "toggle-off";
 		
@@ -710,6 +883,7 @@
 		}
 		else
 		{
+			$description = _mmt($description);
 			return "<a {$actionString} style='cursor:pointer; {$addlStyles}' title='{$description}'>".MM_Utils::getIcon('flag-o', 'grey', '1.3em', '2px', '', '')."</a>";
 		}
 	}
@@ -721,16 +895,19 @@
 	
 	public static function getCheckIcon($description="")
 	{
+		$description = _mmt($description);
 		return MM_Utils::getIcon('check', 'green', '1.3em', '1px', $description);
 	}
 	
 	public static function getCrossIcon($description="")
 	{
+		$description = _mmt($description);
 		return MM_Utils::getIcon('times', 'red', '1.3em', '1px', $description);
 	}
 	
 	public static function getAffiliateIcon($description="", $addlStyles="")
 	{
+		$description = _mmt($description);
 		return MM_Utils::getIcon('bullhorn', 'orange', '1.4em', '2px', $description, $addlStyles);
 	}
 	
@@ -807,6 +984,7 @@
  	public static function constructPageUrl() 
  	{
  		$pageURL = "http://";
+ 		$siteUrl = MM_OptionUtils::getOption("siteurl");
  		
  		if((MM_Utils::isSSL() == true) 
  			|| (isset($_SERVER["HTTPS"]) && ($_SERVER["HTTPS"] == "on"))
@@ -816,10 +994,17 @@
  			$pageURL = "https://";
  		}
 		
-		if ($_SERVER["SERVER_PORT"] != "80" && $_SERVER["SERVER_PORT"] != "443") {
+		if (isset($_SERVER["SERVER_PORT"]) && ($_SERVER["SERVER_PORT"] != "80") && ($_SERVER["SERVER_PORT"] != "443")) 
+		{
 			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-		} else {
+		} 
+		else if (isset($_SERVER["SERVER_NAME"]) && isset($_SERVER["REQUEST_URI"])) 
+		{
 			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		else 
+		{
+		    $pageURL = $siteUrl;
 		}
 		
 		return $pageURL;
@@ -880,7 +1065,7 @@
 		$cacheDir = self::getCacheDir();
 		if (!is_writeable($cacheDir))
 		{
-			@chmod($cacheDir,0777);	//first see if we can make it writeable
+			@chmod($cacheDir,0744);	//first see if we can make it writeable
 		}
 		return is_writable($cacheDir);
 	}

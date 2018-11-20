@@ -26,14 +26,14 @@ $showLinkDesc = "When this is checked MemberMouse will automatically add a login
     
 	<div style="margin-top:10px;">
 		<input id="mm_hide_menu_items_cb" type="checkbox" <?php echo (($hideMenuItems=="1")?"checked":""); ?> onchange="mmjs.updateWPMenuSettingsForm();" />
-		Hide Protected Menu Items<?php echo MM_Utils::getInfoIcon($hideMenuItemsDesc); ?>
+		<?php echo _mmt("Hide Protected Menu Items"); ?><?php echo MM_Utils::getInfoIcon($hideMenuItemsDesc); ?>
 		<input id="mm_hide_menu_items" name="mm_hide_menu_items" type="hidden" value="<?php echo $hideMenuItems; ?>" />
-		<a href="http://support.membermouse.com/support/solutions/articles/9000020269-hide-protected-wordpress-pages-from-menus" target="_blank">Learn more</a>
+		<a href="http://support.membermouse.com/support/solutions/articles/9000020269-hide-protected-wordpress-pages-from-menus" target="_blank"><?php echo _mmt("Learn more"); ?></a>
 	</div>
 	<div style="margin-top:10px;">
 		<input id="mm_show_login_logout_link_cb" type="checkbox" <?php echo (($showLoginLogoutLink=="1")?"checked":""); ?> onchange="mmjs.updateWPMenuSettingsForm();" />
-		Show Login/Logout Link<?php echo MM_Utils::getInfoIcon($showLinkDesc); ?>
+		<?php echo _mmt("Show Login/Logout Link"); ?><?php echo MM_Utils::getInfoIcon($showLinkDesc); ?>
 		<input id="mm_show_login_logout_link" name="mm_show_login_logout_link" type="hidden" value="<?php echo $showLoginLogoutLink; ?>" />
-		<a href="http://support.membermouse.com/support/solutions/articles/9000020242-add-login-logout-link-to-main-menu" target="_blank">Learn more</a>
+		<a href="http://support.membermouse.com/support/solutions/articles/9000020242-add-login-logout-link-to-main-menu" target="_blank"><?php echo _mmt("Learn more"); ?></a>
 	</div>
 </div>

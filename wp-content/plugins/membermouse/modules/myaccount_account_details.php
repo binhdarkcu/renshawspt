@@ -7,7 +7,7 @@
 
 global $current_user;
 
-$user = new MM_User($current_user->ID);
+$user = MM_User::getCurrentWPUser();
 $enableUsernameChange = (MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_ENABLE_USERNAME_CHANGE) == "1") ? true : false;
 ?>
 

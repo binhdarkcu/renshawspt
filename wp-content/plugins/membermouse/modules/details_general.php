@@ -4,13 +4,13 @@
  * MemberMouse(TM) (http://www.membermouse.com)
  * (c) MemberMouse, LLC. All rights reserved.
  */
-
+	
 if(isset($_REQUEST[MM_Session::$PARAM_USER_ID])) 
 {
 	$user = new MM_User($_REQUEST[MM_Session::$PARAM_USER_ID]);
 
 	if($user->isValid()) 
-	{
+	{  
 		// check to make sure current employee has access to manage this member
 		global $current_user;
 		$employee = MM_Employee::findByUserId($current_user->ID);
@@ -35,7 +35,7 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 		<tr>
 			<td width="<?php echo $columnWidth; ?>px;">Membership Status</td>
 			<td>
-				<?php 
+				<?php  
 				$statusDesc = MM_Status::getImage($user->getStatus())." ";
 				
 				switch($user->getStatus())
@@ -65,7 +65,7 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 						
 					case MM_Status::$EXPIRED:
 						$statusDesc .= "Account ".MM_Status::getName($user->getStatus(), true)." on ".$user->getStatusUpdatedDate(true);
-						break;
+						break; 
 				}
 				?>
 				
@@ -179,6 +179,32 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 				<?php 
 				}
 				
+				$concurrentLoginIds = get_transient(MM_UserHooks::$MM_LOGIN_TRACK_PREFIX . "_" . $user->getEmail());
+				if(!is_array($concurrentLoginIds))
+				{
+					$concurrentLoginIds = (!is_null($concurrentLoginIds) && !empty($concurrentLoginIds))? array($concurrentLoginIds):array();
+				} 
+				
+				if(count($concurrentLoginIds)>0)
+				{
+					?>
+						<div style="margin-bottom:5px;">
+							<?php echo MM_Utils::getIcon('key', 'yellow', '1.2em', '1px'); ?>
+							<span style='font-family:courier; font-size:14px;'>User is logged in from <?php echo count($concurrentLoginIds); ?> location(s)</span>
+							<a href="javascript:{}" onclick="document.getElementById('reset_form').submit(); return false;" style="font-size:11px;">reset</a>
+						</div>	
+					<?php 
+				}
+				else
+				{
+					?>
+					<div style="margin-bottom:5px;">
+						<?php echo MM_Utils::getIcon('key', 'yellow', '1.2em', '1px'); ?>
+						<em>Customer does not have concurrent logins.</em>
+					</div>	
+					<?php 
+				}
+				
 				if($pageAccessCount > 0)
 				{
 				?>
@@ -210,11 +236,15 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 					<a style='cursor: pointer;' onclick="mmjs.loginAsMember('<?php echo $user->getId(); ?>');">Login as this member</a>
 				</div>
 				<?php if(!empty($welcomeEmailSent)) { ?>
-				<div>
+				<div style="margin-bottom:5px;">
 					<?php echo MM_Utils::getIcon('paper-plane-o', 'green', '1.2em', '1px'); ?>
 					<a style='cursor: pointer;' onclick="mmjs.sendWelcomeEmail('<?php echo $user->getId(); ?>');">Resend welcome email to member</a>
 				</div>
 				<?php } ?>
+				<div style="margin-bottom:5px;">
+					<?php echo MM_Utils::getIcon('eraser', 'pink', '1.2em', '1px'); ?> 
+					<a style='cursor: pointer;' onclick="mmjs.forgetMember('<?php echo $user->getId(); ?>');">Forget this member</a>
+				</div>
 			</td>
 		</tr>
 		
@@ -237,7 +267,7 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 			<td>
 				<input id="mm-username" type="text" style="width:200px;" value="<?php echo $user->getUsername() ?>" <?php echo ($enableUsernameChange == true) ? "":"disabled"; ?>>
 				<?php if(!$enableUsernameChange) { ?>
-				<span class="description">Username cannot be changed.</span> <a href="http://support.membermouse.com/support/solutions/articles/9000055501-allow-members-to-change-their-username-" target="_blank"><em>Learn more</em></a>
+				<span class="description">Username cannot be changed.</span> <a href="http://support.membermouse.com/support/solutions/articles/9000020516-allow-members-to-change-their-username" target="_blank"><em>Learn more</em></a>
 				<?php } ?>
 			</td>
 		</tr>
@@ -339,7 +369,7 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 			</tr>
 			<tr>
 				<td>State</td>
-				<?php
+				<?php 
 					$form = new MM_CheckoutForm();
 					$field = new stdClass();
 					$field->fieldId = "mm_field_shipping_state";
@@ -380,14 +410,16 @@ if(isset($_REQUEST[MM_Session::$PARAM_USER_ID]))
 	<div style="width:600px">
 		<input type="button" class="mm-ui-button blue" value="Update Member" onclick="mmjs.updateMember(<?php echo $user->getId(); ?>);">
 		
-		<?php if(($user->getStatus() == MM_Status::$ERROR) || ($user->getStatus() == MM_Status::$PENDING_ACTIVATION) || !$user->hasActiveSubscriptions()) { ?>
+		<?php if(($user->getStatus() == MM_Status::$ERROR) || ($user->getStatus() == MM_Status::$PENDING_ACTIVATION) ||   ($user->getStatus() == MM_Status::$PENDING_CANCELLATION)  || !$user->hasActiveSubscriptions()) { ?>
 		<span style="float:right;">
 			<input type="button" class="mm-ui-button red" value="Delete Member" onclick="mmjs.deleteMember(<?php echo $user->getId(); ?>, '<?php echo MM_ModuleUtils::getUrl($crntPage, MM_MODULE_BROWSE_MEMBERS); ?>');">
 		</span>
 		<?php } ?>
 	</div>
 </div>
-
+<form id='reset_form' name='reset_form' method='post' action="<?php echo "?page=".MM_MODULE_MANAGE_MEMBERS."&module=".MM_MODULE_MEMBER_DETAILS_GENERAL."&user_id=".$user->getId(); ?>">
+	<input type='hidden' name='resetsessions' value='<?php echo $user->getId(); ?>' />
+</form>
 <div style='clear: both; height:20px;'></div>
 <script language="javascript">
 	var mm_nonce_name_checkout_form = '<?=MM_View::$MM_NONCE_NAME_CHECKOUT_FORM?>';

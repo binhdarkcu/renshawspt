@@ -29,13 +29,13 @@ $products = MM_HtmlUtils::createCheckboxGroup(MM_Product::getAll(), "mm_products
 <div id="mm-coupons-container">
 	<table cellspacing="10">
 		<tr>
-			<td width="140">Name*</td>
+			<td width="140"><?php echo _mmt("Name"); ?>*</td>
 			<td><input type='hidden' id='id' value='<?php echo $coupon->getId(); ?>' />
 				<input id="mm_coupon_name" type="text" value='<?php echo $coupon->getCouponName(); ?>' style='width:300px;' />
 			</td>
 		</tr>
 		<tr>
-			<td width="140">Coupon Code*</td>
+			<td width="140"><?php echo _mmt("Coupon Code"); ?>*</td>
 			<td>
 				<input id="mm_coupon_code" <?php echo $editable; ?>  type="text" value='<?php echo strtoupper($coupon->getCouponCode()); ?>' />
 			</td>
@@ -45,9 +45,9 @@ $products = MM_HtmlUtils::createCheckboxGroup(MM_Product::getAll(), "mm_products
 			<td>
 				<input id="mm_coupon_value" <?php echo $editable; ?> type="text" value='<?php echo $coupon->getCouponValue(); ?>' style="width:85px;" />
 				<select id="mm_coupon_type" <?php echo $editable; ?> onchange="mmjs.typeChangeHandler();">
-					<option value='<?php echo MM_Coupon::$TYPE_PERCENTAGE; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_PERCENTAGE)?"selected":""); ?>>% Off</option>	
-					<option value='<?php echo MM_Coupon::$TYPE_DOLLAR; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_DOLLAR)?"selected":""); ?>>$ Off</option>	
-					<option value='<?php echo MM_Coupon::$TYPE_FREE; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_FREE)?"selected":""); ?>>Free</option>					
+					<option value='<?php echo MM_Coupon::$TYPE_PERCENTAGE; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_PERCENTAGE)?"selected":""); ?>>% <?php echo _mmt("Off"); ?></option>	
+					<option value='<?php echo MM_Coupon::$TYPE_DOLLAR; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_DOLLAR)?"selected":""); ?>>$ <?php echo _mmt("Off"); ?></option>	
+					<option value='<?php echo MM_Coupon::$TYPE_FREE; ?>' <?php echo (($coupon->getCouponType() == MM_Coupon::$TYPE_FREE)?"selected":""); ?>><?php echo _mmt("Free"); ?></option>					
 				</select>
 			</td>
 		</tr>
@@ -57,11 +57,11 @@ $products = MM_HtmlUtils::createCheckboxGroup(MM_Product::getAll(), "mm_products
 			</td>
 		</tr>
 		<tr>
-			<td width="140" style="vertical-align:top;">Subscription Options</td>
+			<td width="140" style="vertical-align:top;"><?php echo _mmt("Subscription Options"); ?></td>
 			<td>
 				<div id="mm_subscription_options_section">
-					<p style="margin:0px 0px 5px 0px;"><input id="mm_recurring_setting_first" <?php echo $editable; ?> name="mm_recurring_setting" type="radio" value='first' <?php echo (($coupon->getRecurringBillingSetting()=="first")?"checked":""); ?> /> Apply discount to the first charge only</p>
-					<p style="margin:10px 0px 0px 0px;"><input id="mm_recurring_setting_all" <?php echo $editable; ?> name="mm_recurring_setting" type="radio" value='all' <?php echo (($coupon->getRecurringBillingSetting()=="all")?"checked":""); ?> /> Apply discount to all charges</p>
+					<p style="margin:0px 0px 5px 0px;"><input id="mm_recurring_setting_first" <?php echo $editable; ?> name="mm_recurring_setting" type="radio" value='first' <?php echo (($coupon->getRecurringBillingSetting()=="first")?"checked":""); ?> /> <?php echo _mmt("Apply discount to the first charge only"); ?></p>
+					<p style="margin:10px 0px 0px 0px;"><input id="mm_recurring_setting_all" <?php echo $editable; ?> name="mm_recurring_setting" type="radio" value='all' <?php echo (($coupon->getRecurringBillingSetting()=="all")?"checked":""); ?> /> <?php echo _mmt("Apply discount to all charges"); ?></p>
 				</div>
 			</td>
 		</tr>
@@ -71,31 +71,31 @@ $products = MM_HtmlUtils::createCheckboxGroup(MM_Product::getAll(), "mm_products
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" width="140">Restrictions</td>
+			<td valign="top" width="140"><?php echo _mmt("Restrictions"); ?></td>
 			<td>
 				<table>
 					<tr>
-						<td width="140">Start Date</td>
+						<td width="140"><?php echo _mmt("Start Date"); ?></td>
 						<td>
 							<input id="mm_start_date" type="text" value='<?php echo $coupon->getStartDate(true); ?>' style="width:110px;" />
 							<a onClick="jQuery('#mm_start_date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a>
 						</td>
 					</tr>
 					<tr>
-						<td>End Date</td>
+						<td><?php echo _mmt("End Date"); ?></td>
 						<td>
 							<input id="mm_end_date" type="text" value='<?php echo $coupon->getEndDate(true); ?>' style="width:110px;" />
 							<a onClick="jQuery('#mm_end_date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a>
 						</td>
 					</tr>
 					<tr>
-						<td>Limit Quantity</td>
+						<td><?php echo _mmt("Limit Quantity"); ?></td>
 						<td>
 							<input id="mm_quantity" type="text" style='width: 80px;' value='<?php echo $coupon->getQuantity(); ?>' />
 						</td>
 					</tr>
 					<tr valign='top'>
-						<td valign='top'>Valid Products</td>
+						<td valign='top'><?php echo _mmt("Valid Products"); ?></td>
 						<td valign='top'>
 							<div style="overflow: auto; height: 165px; width: 250px; border: 1px solid #ccc;">
 							<?php echo $products; ?>
@@ -110,15 +110,19 @@ $products = MM_HtmlUtils::createCheckboxGroup(MM_Product::getAll(), "mm_products
 	
 	<script type='text/javascript'>
 		jQuery(document).ready(function(){
-			jQuery("#mm_start_date").datepicker();
-			jQuery("#mm_end_date").datepicker();
+			jQuery("#mm_start_date").datepicker({
+				dateFormat: "mm/dd/yy"
+			});
+			jQuery("#mm_end_date").datepicker({
+				dateFormat: "mm/dd/yy"
+			});
 			mmjs.typeChangeHandler();
 		});
 	</script>
 	
 <div class="mm-dialog-footer-container">
 <div class="mm-dialog-button-container">
-<a href="javascript:mmjs.createCoupon();" class="mm-ui-button blue">Save Coupon</a>
-<a href="javascript:mmjs.closeDialog();" class="mm-ui-button">Cancel</a>
+<a href="javascript:mmjs.createCoupon();" class="mm-ui-button blue"><?php echo _mmt("Save Coupon"); ?></a>
+<a href="javascript:mmjs.closeDialog();" class="mm-ui-button"><?php echo _mmt("Cancel"); ?></a>
 </div>
 </div>

@@ -1,15 +1,17 @@
 <?php
 /**
  * @package MemberMouse
- * @version 2.2.5
+ * @version 2.2.8
  *
  * Plugin Name: MemberMouse Platform
  * Plugin URI: http://membermouse.com
  * Description: MemberMouse is an enterprise-level membership platform that allows you to quickly and easily manage a membership site or subscription business. MemberMouse is designed to deliver digital content, automate customer self-service and provide you with advanced marketing tools to maximize the profitability of your continuity business.
  * Author: MemberMouse, LLC
- * Version: 2.2.5
+ * Version: 2.2.8
  * Author URI: http://membermouse.com
- * Copyright: 2009-2015 MemberMouse LLC. All rights reserved.
+ * Text Domain: membermouse
+ * Domain Path: /languages/
+ * Copyright: 2009-2018 MemberMouse LLC. All rights reserved.
  */
 
 require_once("includes/mm-constants.php");
@@ -47,7 +49,7 @@ if(!class_exists('MemberMouse',false))
 		private $defaults = array('count'=>10, 'append'=>1);
 		private $metaname = '_associated_membermouse';
 		private $installerRan = false;
-		private static $pluginVersion = "2.2.5";
+		private static $pluginVersion = "2.2.8";
 
 		public function __construct() 
 		{
@@ -95,6 +97,16 @@ if(!class_exists('MemberMouse',false))
 				add_filter('the_title', 'MM_TagProcessor::processSmartTags', 9);
 				add_filter('wp_title', 'MM_TagProcessor::processSmartTags', 9);
 				add_filter('the_content', 'MM_TagProcessor::processSmartTags', 9);
+				
+				add_filter('document_title_parts', function($title)
+				{
+				    if (is_array($title))
+				    {
+				        $title = array_map(array("MM_TagProcessor","processSmartTags"),$title);
+				    }
+				    return $title;
+				    
+				}, 9, 1 ); 
 			}
 			
 			$user_hooks = new MM_UserHooks();
@@ -131,7 +143,13 @@ if(!class_exists('MemberMouse',false))
 				add_filter('wp_footer', array($this,'addMMFooter'), 9);
 			}
 			
+// 			add_filter('mm_stripe_billing_statement_descriptor', function($descriptor, $order){ 
+// 				return "Your Order Description - ".array_pop($order->orderProducts)->description;
+// 			},1,2);
+			
 			$post_hook = new MM_PostHooks();
+			add_filter('rest_prepare_post', array($post_hook, "doRestFilter"), 12, 3);
+			add_filter('rest_prepare_page', array($post_hook, "doRestFilter"), 12, 3);
 			add_filter('manage_posts_columns', array($post_hook,'postsColumns'), 5);
 			add_filter('manage_pages_columns', array($post_hook,'pagesColumns'), 5);
 			add_filter('posts_where', array($post_hook, 'handlePostWhere'), 1, 1);
@@ -141,19 +159,19 @@ if(!class_exists('MemberMouse',false))
 			
 			//prevent members with pending status from logging in
 			add_filter('authenticate', array($user_hooks,'checkLogin'), 100, 3);
-			
+ 
 			//prevent wptexturize from running on mm_form tags
 			add_filter( 'no_texturize_shortcodes', function ($shortcodes) {
 				$shortcodes[] = 'MM_Form';
 				return $shortcodes;
 			});
+					
 		}
 		
 		public function addActions() 
 		{
 			if(function_exists("add_action"))
-			{
-			
+			{  
   				// Hook for PHPMailer to detect for any SMTP plugins that might be configured to send mail via SSL (Ex. AWS SES).
   				// add_action( 'phpmailer_init', array('MM_Email', 'mm_phpMailer'), 5 );
   			
@@ -169,6 +187,10 @@ if(!class_exists('MemberMouse',false))
 					{
 						MM_Session::sessionStart();
 					}
+				});
+				
+				add_action( 'init', function() {
+					load_plugin_textdomain( 'membermouse', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 				});
 				
 				add_action('shutdown', array('MM_Session','sessionWrite'));
@@ -274,6 +296,7 @@ if(!class_exists('MemberMouse',false))
 						add_action(MM_Event::$COMMISSION_INITIAL, array($pne, 'initialCommission'), 100, 2);
 						add_action(MM_Event::$COMMISSION_REBILL, array($pne, 'rebillCommission'), 100, 2);
 						add_action(MM_Event::$CANCEL_COMMISSION, array($pne, 'cancelCommission'), 100, 2);
+						add_action(MM_Event::$PRODUCT_PURCHASE, array($pne, 'productPurchase'), 100, 2);
 						
 						// isset methods are only necessary when customers are upgrading from MM 2.1.1 to 2.1.2. This can safely be removed
 						// once all customers are on 2.1.2 or above
@@ -330,9 +353,13 @@ if(!class_exists('MemberMouse',false))
 					add_action("init", array('MM_Extension', "performInitActions"), 9);
 				}
 				
+				add_action( 'init', array($this,"loadTextDomain") );
+				// add_filter( 'gettext', array($this,"filterTranslation"), 20, 3 );
+				
 				register_activation_hook( __FILE__, array($this, 'install'));
 				register_deactivation_hook( __FILE__, array($this, 'onDeactivate'));				
-			
+			 
+				
 				add_action('wp_footer', function() 
 				{
 					if (MM_Session::sessionExists() && (MM_Session::$MM_SESSION_DELAYED_CREATE === true))
@@ -340,8 +367,25 @@ if(!class_exists('MemberMouse',false))
 						echo MM_Session::generateDelayedCreateJavascript();
 					}
 				});
+				
+
+				// Multiple location login
+				add_action('wp_login', array($user_hooks, 'saveLogin'));
+				add_action('init', array($user_hooks, 'checkforMultipleLogins'));
 			}
+		} 
+		
+		public function filterTranslation($translatedText, $text, $domain)
+		{
+    		return $translatedText;
 		}
+		
+		
+		public function loadTextDomain()
+		{
+			load_plugin_textdomain("mm",false,dirname(plugin_basename(__FILE__))."/languages"); 
+		}
+		
 		
 		public function addMMFooter($content)
 		{
@@ -573,7 +617,7 @@ if(!class_exists('MemberMouse',false))
 				wp_enqueue_style('membermouse-'.$module, plugins_url("resources/css/admin/{$subfolder}mm-".$module.'.css', __FILE__), array());	
 			}
 			
-			wp_enqueue_style('membermouse-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array());
+			wp_enqueue_style('membermouse-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array());
 			
 			$this->loadJavascript($module);
 		}
@@ -752,6 +796,57 @@ if(!class_exists('MemberMouse',false))
 		public function showNotices()
 		{
 			$this->checkVersion();
+			
+			if(!function_exists("hash_hmac"))
+			{
+			    if (class_exists("MM_PaymentServiceFactory",false) && class_exists("MM_ScheduledPaymentService",false))
+			    {
+			        $activePaymentService = MM_PaymentServiceFactory::getOnsitePaymentService();
+			        if ($activePaymentService instanceof MM_ScheduledPaymentService)
+			        {
+			            $translatableHeader = _mmt("MemberMouse Missing Components");
+			            $translatableMsg = _mmt("hash_hmac PHP function and sha256 algorithm are not available on your server. Contact your hosting provide to address this");
+			            $learnMoreMsg = _mmt("Learn More");
+			            $learnMoreUrl = "http://support.membermouse.com/solution/articles/9000147182-warning-sha-256-and-hash-hmac-are-not-available-on-your-server";
+
+			            $errorMsg = "<i class=\"fa fa-exclamation-triangle\"></i> <strong>{$translatableHeader}</strong>";
+			            $errorMsg .= "<div style='margin-left:20px;'>";
+			            
+		                $errorMsg .= "<i class=\"fa fa-caret-right\"></i> {$translatableMsg} ";
+		                $errorMsg .= "<a href='{$learnMoreUrl}'>{$learnMoreMsg}</a><br/>";
+			            
+			            $errorMsg .= "</div>";
+			            MM_Messages::addError($errorMsg);
+			        }
+			    }
+			}
+			else
+			{
+				$algorithms = hash_algos();
+				if (is_array($algorithms) && !in_array("sha256",$algorithms))
+				{
+				    if (class_exists("MM_PaymentServiceFactory",false) && class_exists("MM_ScheduledPaymentService",false))
+				    {
+				        $activePaymentService = MM_PaymentServiceFactory::getOnsitePaymentService();
+				        if ($activePaymentService instanceof MM_ScheduledPaymentService)
+				        {
+				            $translatableHeader = _mmt("MemberMouse Missing Components");
+				            $translatableMsg = _mmt("The sha256 algorithm is not available on your server. Contact your hosting provide to address this");
+				            $learnMoreMsg = _mmt("Learn More");
+				            $learnMoreUrl = "http://support.membermouse.com/solution/articles/9000147182-warning-sha-256-and-hash-hmac-are-not-available-on-your-server";
+				            
+				            $errorMsg = "<i class=\"fa fa-exclamation-triangle\"></i> <strong>{$translatableHeader}</strong>";
+				            $errorMsg .= "<div style='margin-left:20px;'>";
+				            
+				            $errorMsg .= "<i class=\"fa fa-caret-right\"></i> {$translatableMsg} ";
+				            $errorMsg .= "<a href='{$learnMoreUrl}'>{$learnMoreMsg}</a><br/>";
+				            
+				            $errorMsg .= "</div>";
+				            MM_Messages::addError($errorMsg);
+				        }
+				    }				    
+				}
+			}
 		
 			// check to see if cache is being used
 			$writeableDir = MM_PLUGIN_ABSPATH."/com/membermouse/cache";
@@ -1002,7 +1097,15 @@ if(!class_exists('MemberMouse',false))
 					$response = $obj->callMethod($data);
 				}
 			}
-			echo json_encode($response);
+			
+			if (function_exists("wp_json_encode"))
+			{
+				echo wp_json_encode($response);
+			}
+			else 
+			{
+				echo json_encode($response);	
+			}
 			exit();
 		}
 		

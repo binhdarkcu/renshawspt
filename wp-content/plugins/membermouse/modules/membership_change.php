@@ -7,7 +7,7 @@
 
 global $current_user;
 $memberTypeId=$p->member_type_id;
-$user = new MM_User($current_user->ID);
+$user = MM_User::getCurrentWPUser();
 $userMemberType = new MM_MembershipLevel($user->getMembershipId());
 $memberType = new MM_MembershipLevel($memberTypeId);
 

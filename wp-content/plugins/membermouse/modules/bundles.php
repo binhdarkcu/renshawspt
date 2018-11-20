@@ -32,13 +32,13 @@ foreach($data as $key => $item)
 	   		}
 	    }
 	    
-	    $bundleType = MM_Utils::getIcon('dollar', 'green', '1.3em', '2px', 'Paid Bundle');
-		$productAssociations = MM_Utils::getIcon('shopping-cart', 'blue', '1.3em', '1px', 'Products', 'margin-right:5px;').join(', ' , $products);
-		$purchaseLinks = '<a title="Get purchase links" onclick="mmjs.showPurchaseLinks('.$item->id.',\''.htmlentities(addslashes($item->name), ENT_QUOTES).'\', \''.join(',' , $productIds).'\')" class="mm-ui-button" style="margin:0px;">'.MM_Utils::getIcon('money', '', '1.3em', '1px', '', 'margin-right:0px;').'</a>';
+	    $bundleType = MM_Utils::getIcon('dollar', 'green', '1.3em', '2px', _mmt('Paid Bundle'));
+		$productAssociations = MM_Utils::getIcon('shopping-cart', 'blue', '1.3em', '1px', _mmt('Products'), 'margin-right:5px;').join(', ' , $products);
+		$purchaseLinks = '<a title="'._mmt("Get purchase links").'" onclick="mmjs.showPurchaseLinks('.$item->id.',\''.htmlentities(addslashes($item->name), ENT_QUOTES, "UTF-8").'\', \''.join(',' , $productIds).'\')" class="mm-ui-button" style="margin:0px;">'.MM_Utils::getIcon('money', '', '1.3em', '1px', '', 'margin-right:0px;').'</a>';
 	}
 	else 
 	{
-		 $bundleType = MM_Utils::getIcon('dollar', 'red', '1.3em', '2px', 'Free Bundle');
+		 $bundleType = MM_Utils::getIcon('dollar', 'red', '1.3em', '2px', _mmt('Free Bundle'));
 		 $productAssociations = MM_NO_DATA;
 		 $purchaseLinks = MM_NO_DATA;
 	}  
@@ -50,21 +50,21 @@ foreach($data as $key => $item)
    	}
    	else
    	{
-   		$item->name .= '<p>'.MM_Utils::getIcon('users', 'grey', '1.2em', '1px', '', 'margin-right:2px;').' <i>No Subscribers</i></p>';
+   		$item->name .= '<p>'.MM_Utils::getIcon('users', 'grey', '1.2em', '1px', '', 'margin-right:2px;').' <i>'._mmt('No Subscribers').'</i></p>';
    	}
 
     // Actions
    	$editActionUrl = 'onclick="mmjs.edit(\'mm-bundles-dialog\', \''.$item->id.'\')"';
    	$deleteActionUrl = 'onclick="mmjs.remove(\''.$item->id.'\')"';
-   	$actions = MM_Utils::getEditIcon("Edit Bundle", '', $editActionUrl);
+   	$actions = MM_Utils::getEditIcon(_mmt("Edit Bundle"), '', $editActionUrl);
    	
     if(!$tag->hasAssociations() && intval($item->member_count) <= 0)
     {
-  	 	$actions .= MM_Utils::getDeleteIcon("Delete Bundle", 'margin-left:5px;', $deleteActionUrl);
+  	 	$actions .= MM_Utils::getDeleteIcon(_mmt("Delete Bundle"), 'margin-left:5px;', $deleteActionUrl);
     }
     else 
     {
-   		$actions .= MM_Utils::getDeleteIcon("This bundle is currently being used and cannot be deleted", 'margin-left:5px;', '', true);
+   		$actions .= MM_Utils::getDeleteIcon(_mmt("This bundle is currently being used and cannot be deleted"), 'margin-left:5px;', '', true);
     }
 
 	$rows[] = array
@@ -80,12 +80,12 @@ foreach($data as $key => $item)
 
 $headers = array
 (
-	'name'			=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">Name / Subscribers</a>'),
-	'is_free'		=> array('content' => '<a onclick="mmjs.sort(\'is_free\');" href="#">Type</a>'),
+	'name'			=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">'._mmt('Name / Subscribers').'</a>'),
+	'is_free'		=> array('content' => '<a onclick="mmjs.sort(\'is_free\');" href="#">'._mmt('Type').'</a>'),
 	'products'		=> array('content' => 'Products', 'attr'=>'style="width:500px;"'),
-   	'purchaselinks'	=> array('content' => 'Purchase Links'),
-	'status'		=> array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">Status</a>'),
-	'actions'		=> array('content' => 'Actions')
+   	'purchaselinks'	=> array('content' => _mmt('Purchase Links')),
+	'status'		=> array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">'._mmt('Status').'</a>'),
+	'actions'		=> array('content' => _mmt('Actions'))
 );
 
 $dataGrid->setHeaders($headers);
@@ -94,14 +94,14 @@ $dataGrid->setRows($rows);
 $dgHtml = $dataGrid->generateHtml();
 
 if($dgHtml == "") {
-	$dgHtml = "<p><i>No bundles.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No bundles").".</i></p>";
 }
 ?>
 <div class="mm-wrap">
 	
 	<?php if(MM_MemberMouseService::hasPermission(MM_MemberMouseService::$FEATURE_BUNDLES)) { ?>
 		<div class="mm-button-container">
-			<a onclick="mmjs.create('mm-bundles-dialog')" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Bundle</a>
+			<a onclick="mmjs.create('mm-bundles-dialog')" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Bundle");?></a>
 		</div>
 	
 		<div class="clear"></div>
@@ -111,7 +111,7 @@ if($dgHtml == "") {
 		</div>
 	<?php } else { ?>
 		<?php echo MM_Utils::getIcon('lock', 'yellow', '1.3em', '2px'); ?> 
-		This feature is not available on your current plan. To get access, <a href="<?php echo MM_MemberMouseService::getUpgradeUrl(MM_MemberMouseService::$FEATURE_BUNDLES); ?>" target="_blank">upgrade your plan now</a>.
+		<?php echo _mmt("This feature is not available on your current plan");?>. <?php echo sprintf(_mmt("To get access, %s upgrade your plan now %s"), '<a href="'.MM_MemberMouseService::getUpgradeUrl(MM_MemberMouseService::$FEATURE_BUNDLES).'" target="_blank">','</a>'); ?>
 	<?php } ?>
 </div>
 

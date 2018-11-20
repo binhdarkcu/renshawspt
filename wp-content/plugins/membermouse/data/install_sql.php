@@ -8,11 +8,12 @@
 $sql[] = "CREATE TABLE mm_sessions (
 id VARCHAR(55) NOT NULL,
 data LONGTEXT NOT NULL,
-ip_address VARCHAR(64) NOT NULL,
+ip_address VARCHAR(191) NOT NULL,
 expiration_date DATETIME,
 PRIMARY KEY  (id),
-KEY mm_session_lookup_idx (id,ip_address)
-);";
+KEY mm_session_lookup_idx (id,ip_address),
+KEY mm_session_reap_idx (expiration_date)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_bundles (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -26,7 +27,7 @@ expire_period ENUM('days','weeks','months') DEFAULT 'months',
 expires TINYINT(4) NOT NULL DEFAULT '0',
 short_name VARCHAR(10) NOT NULL,
 PRIMARY KEY  (id)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"; 
 
 $sql[]="CREATE TABLE mm_log_api (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -35,12 +36,12 @@ message TEXT NOT NULL ,
 ipaddress VARCHAR(355) NOT NULL ,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_membership_levels (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 reference_key VARCHAR(6) NOT NULL,
-name VARCHAR(250) NOT NULL,
+name VARCHAR(191) NOT NULL,
 is_free TINYINT NOT NULL DEFAULT '0',
 is_default TINYINT(4) NOT NULL DEFAULT '0',
 description TEXT,
@@ -56,33 +57,33 @@ expire_period ENUM('days','weeks','months') DEFAULT 'months',
 expires TINYINT(4) NOT NULL DEFAULT '0',
 PRIMARY KEY  (id),
 UNIQUE KEY mm_membership_levels_name_unique (name)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_membership_level_products (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 membership_id INT(11) UNSIGNED NOT NULL,
 product_id INT(11) UNSIGNED NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_membership_level_categories (
 category_id BIGINT(20) UNSIGNED NOT NULL,
 membership_level_id INT(11) UNSIGNED NOT NULL
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_bundle_products (
 bundle_id INT(11) UNSIGNED NOT NULL,	
 product_id INT(11) UNSIGNED NOT NULL
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_bundle_categories (
 category_id BIGINT(20) UNSIGNED NOT NULL,
 bundle_id INT(11) UNSIGNED NOT NULL
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_commission_profiles (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-name VARCHAR(250) NOT NULL,
+name VARCHAR(191) NOT NULL,
 is_default TINYINT(4) NOT NULL DEFAULT '0',
 description TEXT,
 initial_commission_enabled TINYINT(4) NOT NULL DEFAULT '1',
@@ -94,7 +95,7 @@ rebill_commission_limit INT(11) UNSIGNED NOT NULL,
 do_reverse_commissions TINYINT(4) NOT NULL DEFAULT '1',
 PRIMARY KEY  (id),
 UNIQUE KEY mm_commission_profiles_name_unique (name)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_posts_access (
 post_id BIGINT(20) UNSIGNED NOT NULL,
@@ -106,7 +107,7 @@ KEY post_id (post_id),
 KEY access_type (access_type),
 KEY is_smart_content (is_smart_content),
 KEY access_id (access_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_smarttag_groups (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -115,7 +116,7 @@ name VARCHAR(255) NOT NULL,
 visible TINYINT(4) NOT NULL DEFAULT '1',
 PRIMARY KEY  (id),
 KEY parent_id (parent_id,visible)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_smarttags (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -126,7 +127,7 @@ autoload TINYINT(1) NOT NULL DEFAULT '1',
 PRIMARY KEY  (id),
 KEY mm_smarttags_autoload_idx (autoload),
 KEY group_id (group_id,visible)
-);"; 
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_applied_bundles (
 access_type enum('user','membership') NOT NULL DEFAULT 'membership',
@@ -146,7 +147,7 @@ apply_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 UNIQUE KEY unique_access_type (access_type,bundle_id,access_type_id),
 KEY access_type (access_type),
 KEY bundle_id (bundle_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_core_pages (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -156,14 +157,14 @@ ref_type ENUM('member_type','error_type','access_tag','product') NULL DEFAULT NU
 ref_id INT(11) UNSIGNED NULL DEFAULT NULL,
 PRIMARY KEY  (id),
 KEY core_page_idx1 (core_page_type_id,ref_type,ref_id,page_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_core_page_types (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 name VARCHAR(255) NOT NULL,
 visible TINYINT NOT NULL DEFAULT '1',
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_products (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -189,7 +190,7 @@ last_modified timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 purchase_confirmation_message LONGTEXT NOT NULL,
 commission_profile_id INT(11) DEFAULT '-1',
 PRIMARY KEY  (id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_employee_accounts (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -204,7 +205,7 @@ role_id VARCHAR(255) NOT NULL,
 user_id BIGINT(20) UNSIGNED NULL,
 is_default TINYINT(4) NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_custom_fields (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -213,14 +214,14 @@ type VARCHAR(100) NOT NULL,
 show_on_my_account TINYINT(4) DEFAULT '1',
 is_hidden TINYINT(4) DEFAULT '0',
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_custom_field_options (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 custom_field_id BIGINT(20) UNSIGNED NOT NULL,
 value VARCHAR(255) NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_custom_field_data (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -231,7 +232,7 @@ date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 last_updated TIMESTAMP NOT NULL,
 PRIMARY KEY  (id),
 KEY custom_field_id (custom_field_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_api_keys (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -241,7 +242,7 @@ api_secret VARCHAR( 255 ) NOT NULL,
 status TINYINT(4) NOT NULL,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_actions (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -251,12 +252,12 @@ action_value LONGTEXT NOT NULL,
 event_attributes LONGTEXT NOT NULL,
 status TINYINT(4) NOT NULL,
 PRIMARY KEY  (id)
-); ";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_log_events (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-event_type VARCHAR(255) NULL,
-ip VARCHAR(64) NOT NULL,
+event_type VARCHAR(100) NULL,
+ip VARCHAR(255) NOT NULL,
 url VARCHAR(255) NOT NULL,
 referrer VARCHAR(255) NOT NULL,
 additional_params TEXT NOT NULL,
@@ -265,8 +266,8 @@ date_modified TIMESTAMP NULL,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id),
 KEY event_user_id_idx (user_id),
-KEY mm_log_events_idx1 (event_type,user_id,ip)
-); ";
+KEY mm_log_events_idx1 (event_type,user_id)
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_version_releases (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -274,7 +275,7 @@ version VARCHAR( 255 ) NOT NULL,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 date_modified TIMESTAMP NULL DEFAULT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_orders (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -312,20 +313,22 @@ tax decimal(19,4) DEFAULT NULL,
 total decimal(19,4) DEFAULT NULL,
 currency CHAR(3) NOT NULL DEFAULT 'USD',
 status TINYINT(4) NOT NULL,
-ip_address VARCHAR(64) DEFAULT NULL,
+ip_address VARCHAR(255) DEFAULT NULL,
+form_submission_id CHAR(10) NULL DEFAULT NULL,		
 date_added timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 date_modified timestamp NULL DEFAULT NULL,
 is_test TINYINT(1) NOT NULL DEFAULT '0',
 PRIMARY KEY  (id),
 UNIQUE KEY mm_orders_order_number_unique (order_number),
 KEY order_user_id_idx (user_id),
+KEY order_form_submission_idx (form_submission_id),
 KEY mm_order_is_test_idx (is_test)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_email_service_providers (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 provider_name VARCHAR(255) NOT NULL,
-provider_token VARCHAR(255) NOT NULL,
+provider_token VARCHAR(50) NOT NULL,
 username VARCHAR(255) NULL,
 password VARCHAR(255) NULL,
 api_key TEXT NULL,
@@ -335,7 +338,7 @@ prospect_list_id VARCHAR(255) NULL,
 cancellation_list_id VARCHAR(255) DEFAULT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY provider_token (provider_token)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_email_provider_mappings (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -343,7 +346,7 @@ member_type_id INT(11) UNSIGNED NOT NULL,
 list_id VARCHAR(255) NOT NULL,
 email_service_provider_id INT(11) UNSIGNED NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_email_provider_bundle_mappings (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -352,17 +355,17 @@ bundle_id INT(11) UNSIGNED NOT NULL,
 list_id VARCHAR(255) NOT NULL,
 email_service_provider_id INT(11) UNSIGNED NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_affiliate_providers (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 provider_name VARCHAR(255) NOT NULL,
-provider_token VARCHAR(255) NOT NULL,
+provider_token VARCHAR(50) NOT NULL,
 additional_data TEXT NULL,
 active SMALLINT UNSIGNED NOT NULL DEFAULT '0',
 PRIMARY KEY  (id),
 UNIQUE KEY provider_token (provider_token)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_affiliate_provider_mappings (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -371,15 +374,15 @@ membership_level_id INT(11) UNSIGNED NOT NULL,
 payout_profile_id VARCHAR(255) NOT NULL,
 additional_data TEXT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_affiliate_rebill_commissions (
 affiliate_provider_id INT(11) UNSIGNED NOT NULL,
-affiliate_id VARCHAR(255) NOT NULL,
+affiliate_id VARCHAR(150) NOT NULL,
 order_number VARCHAR(32) NOT NULL,
 transaction_id BIGINT(20) NOT NULL,
 PRIMARY KEY  (affiliate_provider_id,affiliate_id,order_number,transaction_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_affiliate_partner_payouts (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -387,7 +390,7 @@ affiliate_id VARCHAR(255) NOT NULL,
 product_id INT(11) NOT NULL,
 commission_profile_id INT(11) NOT NULL,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_coupon_usage (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -399,7 +402,7 @@ date_modified TIMESTAMP NULL DEFAULT NULL,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id),
 KEY coupon_usage_coupon_id_idx (coupon_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_coupon_restrictions (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -408,7 +411,7 @@ product_id INT(11) UNSIGNED NOT NULL,
 date_modified TIMESTAMP NULL DEFAULT NULL,
 date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_coupons (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -433,7 +436,7 @@ KEY coupons_coupon_code_idx (coupon_code),
 KEY coupons_start_date_end_date_idx (start_date,end_date),
 KEY coupons_gift_user_id_idx (gift_user_id),
 KEY coupons_gift_order_item_id_idx (gift_order_item_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_transaction_key (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -443,7 +446,7 @@ order_id BIGINT(20) UNSIGNED NOT NULL,
 age DATETIME NOT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY mm_transaction_key_transaction_key_unique (transaction_key)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_login_token (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -452,7 +455,7 @@ user_id BIGINT(20) UNSIGNED NOT NULL,
 age DATETIME NOT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY mm_login_token_login_token_unique (login_token)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_countries (
 iso CHAR(2) NOT NULL,
@@ -461,7 +464,7 @@ printable_name VARCHAR(80) NOT NULL,
 iso3 CHAR(3),
 numcode SMALLINT,
 PRIMARY KEY  (iso)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_country_subdivisions (
 iso CHAR(2) NOT NULL,
@@ -469,12 +472,12 @@ code VARCHAR(10) NOT NULL,
 name VARCHAR(80) NOT NULL,
 type VARCHAR(55) NULL,
 PRIMARY KEY  (iso,code)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_top_level_domains (
 suffix VARCHAR(55) NOT NULL,
 PRIMARY KEY  (suffix)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_card_on_file (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -484,7 +487,7 @@ payment_service_identifier VARCHAR(255) NOT NULL,
 original_order_id BIGINT(20) UNSIGNED DEFAULT NULL,
 PRIMARY KEY  (id),
 KEY card_on_file_user_id_idx (user_id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_order_items (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -512,7 +515,7 @@ PRIMARY KEY  (id),
 KEY order_items_order_id_idx (order_id),
 KEY item_type_item_id_idx (item_type,item_id),
 KEY mm_order_items_is_test_idx (is_test)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_order_item_access (
 order_item_id BIGINT(20) UNSIGNED NOT NULL,
@@ -521,7 +524,7 @@ access_type enum('membership','bundle') NOT NULL DEFAULT 'membership',
 access_type_id INT(11) NOT NULL,
 KEY order_item_access_order_item_id_idx (order_item_id),
 KEY order_item_access_user_id_idx (user_id)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_payment_services (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -531,7 +534,7 @@ settings LONGTEXT NOT NULL,
 active smallint(6) NOT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY mm_payment_services_token_unique (token)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_shipping_methods (
 id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -541,7 +544,7 @@ settings LONGTEXT NOT NULL,
 active smallint(6) NOT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY mm_shipping_methods_token_unique (token)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_transaction_log (
 id BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -561,7 +564,7 @@ KEY transaction_type_idx (transaction_type,transaction_date),
 KEY order_order_item_id (order_id,order_item_id),
 KEY payment_service_detail_lookup_idx (payment_service_id,payment_service_detail_id),
 KEY mm_transaction_log_is_test_idx (is_test)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[]="CREATE TABLE mm_user_data (
 wp_user_id BIGINT(20) NOT NULL,
@@ -596,6 +599,7 @@ origin_affiliate_id varchar(255) NOT NULL DEFAULT '',
 origin_subaffiliate_id varchar(255) NOT NULL DEFAULT '',
 became_active timestamp NULL DEFAULT NULL,
 welcome_email_sent timestamp NULL DEFAULT NULL,
+forgotten TINYINT(4) NOT NULL DEFAULT '0',
 last_login_date timestamp NULL DEFAULT NULL,
 status_updated timestamp NULL DEFAULT NULL,
 cancellation_date timestamp NULL DEFAULT NULL,
@@ -604,7 +608,7 @@ last_updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (wp_user_id),
 KEY mm_user_data_mls_lookup (membership_level_id,status),
 KEY mm_user_data_statdate_idx (status,status_updated)
-);";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_flatrate_shipping_options (
 id BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -612,7 +616,7 @@ option_name VARCHAR(255) NOT NULL,
 rate decimal(19,4) NOT NULL,
 currency CHAR(3) NOT NULL DEFAULT 'USD',
 PRIMARY KEY  (id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_scheduled_events (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -625,7 +629,7 @@ PRIMARY KEY  (id),
 KEY mm_scheduler_event_type_idx (event_type),
 KEY mm_scheduler_scheduled_date_idx (scheduled_date),
 KEY mm_scheduler_status_idx (status)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_scheduled_payments (
 id BIGINT(20) UNSIGNED NOT NULL,
@@ -634,7 +638,7 @@ order_item_id BIGINT(20) UNSIGNED NOT NULL,
 payment_service_id INT(11) UNSIGNED NOT NULL,
 PRIMARY KEY  (id),
 KEY scheduled_payment_oiu_lookup_idx (order_item_id,user_id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_queued_scheduled_events (
 event_id BIGINT(20) UNSIGNED NOT NULL,
@@ -645,7 +649,7 @@ batch_started DATETIME DEFAULT NULL,
 PRIMARY KEY  (event_id),
 KEY queued_event_command_type_lookup_idx (command,queued_date),
 KEY queued_event_batch_id_lookup_idx (batch_id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_report_data_cache (
 id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -658,7 +662,7 @@ status VARCHAR(32) NOT NULL,
 expiration_date DATETIME NOT NULL,
 PRIMARY KEY  (id),
 KEY mm_report_data_cache_date_idx (expiration_date)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_social_login_providers (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -672,17 +676,17 @@ signup_membership_level BIGINT(20) DEFAULT '0',
 settings LONGTEXT NOT NULL,
 PRIMARY KEY  (id),
 UNIQUE KEY mm_social_login_providers_token_unique (token)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_social_login_linked_profiles (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 provider_id BIGINT(20) NOT NULL,
-unique_id VARCHAR(255) NOT NULL,
+unique_id VARCHAR(191) NOT NULL,
 user_id BIGINT(20) NOT NULL,
 removable TINYINT(1) DEFAULT '1',
 PRIMARY KEY  (id),
 UNIQUE KEY social_login_unique_id_lookup_idx (provider_id,unique_id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_diagnostic_log (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -694,7 +698,7 @@ line INT(11) NULL,
 event TEXT NOT NULL,
 event_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY  (id)
-); ";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 $sql[] = "CREATE TABLE mm_user_defined_pages (
 id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -702,6 +706,6 @@ name VARCHAR(128) NOT NULL,
 url VARCHAR(255) NOT NULL,
 icon_type TINYINT(1) DEFAULT '1',
 PRIMARY KEY  (id)
-)";
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 
 ?>

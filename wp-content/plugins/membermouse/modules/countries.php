@@ -38,29 +38,29 @@ $countryList = MM_HtmlUtils::getCountryList($dfltCountry);
 ?>
 <div class="mm-wrap">
 <form name='savecountry' method='post'>
-   <p><strong>Select the countries customers can make purchases from below:</strong></p>   
+   <p><strong><?php echo _mmt("Select the countries customers can make purchases from below"); ?>:</strong></p>   
 	
 	<p style="margin-left:15px;"><select name='mm-country[]' multiple size='100' style='height: 300px; width: 400px; font-size: 12px;'>
 	<?php echo $fullCountryList; ?>
 	</select></p>
 	
 	<p style="font-size:11px; margin-left:15px;">
-	Select Multiple Countries: PC <code>ctrl + click</code>
+	<?php echo _mmt("Select Multiple Countries"); ?>: PC <code>ctrl + click</code>
 	Mac <code><img width="9" height="9" src="http://km.support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1343/ks_command.gif" alt="Command key icon" data-hires="true">
 (Command key) + click</code>
 	</p>
 	
-	<p><strong>Select the default country to display to customers:</strong></p> 
+	<p><strong><?php echo _mmt("Select the default country to display to customers"); ?>:</strong></p> 
 	<p style="margin-left:15px;"><select name="mm-default-country">
 	<?php echo $countryList; ?>
 	</select></p>
 	
-	<p><input type='submit' name='save' value='Save Settings' class="mm-ui-button blue" /></p>
+	<p><input type='submit' name='save' value='<?php echo _mmt("Save Settings"); ?>' class="mm-ui-button blue" /></p>
 </form>
 </div>
 
 <?php if($saved) { ?>
 <script type='text/javascript'>
-	alert("Settings saved successfully");
+	alert("<?php echo _mmt("Settings saved successfully"); ?>");
 </script>
 <?php } ?>

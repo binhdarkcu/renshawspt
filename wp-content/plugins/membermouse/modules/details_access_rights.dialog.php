@@ -42,7 +42,9 @@
 ?>
 <script type='text/javascript'>
 jQuery(document).ready(function() {
-	jQuery("#mm-custom-date").datepicker();
+	jQuery("#mm-custom-date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 });
 </script>
 <div id='mm-calc-method-div'>
@@ -114,8 +116,12 @@ if($appliedBundle->isPendingCancellation())
 <script type='text/javascript'>
 jQuery(document).ready(function()
 {	
-	jQuery("#mm-expiration-date").datepicker();	
-	jQuery("#mm-cancellation-date").datepicker();	
+	jQuery("#mm-expiration-date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});	
+	jQuery("#mm-cancellation-date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});	
 });
 </script>
 <?php } else { ?>

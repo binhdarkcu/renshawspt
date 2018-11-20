@@ -116,14 +116,14 @@ foreach($data as $key => $item)
 
 $headers = array
 (
-	'name'					=> array('content' => '<a onclick="mmjs.sort(\'c.coupon_name\');" href="#">Name</a>'),
-	'coupon_code'			=> array('content' => '<a onclick="mmjs.sort(\'c.coupon_code\');" href="#">Coupon Code</a>'),
-	'description'			=> array('content' => 'Description'),
-	'quantity_used'			=> array('content' => '<a onclick="mmjs.sort(\'quantity_used\');" href="#"># Used</a>'),
-	'start_date_end_date'	=> array('content' => '<a onclick="mmjs.sort(\'c.start_date\');" href="#">Valid Dates</a>'),
-	'product_restrictions'	=> array('content' => 'Product Restrictions'),
-	'actions'				=> array('content' => 'Actions', "attr" => "style='width:50px;'"),
-	'archive'				=> array('content' => 'Archive', "attr" => "style='width:20px;'")
+	'name'					=> array('content' => '<a onclick="mmjs.sort(\'c.coupon_name\');" href="#">'._mmt("Name").'</a>'),
+	'coupon_code'			=> array('content' => '<a onclick="mmjs.sort(\'c.coupon_code\');" href="#">'._mmt("Coupon Code").'</a>'),
+	'description'			=> array('content' => _mmt('Description')),
+	'quantity_used'			=> array('content' => '<a onclick="mmjs.sort(\'quantity_used\');" href="#"># '._mmt("Used").'</a>'),
+	'start_date_end_date'	=> array('content' => '<a onclick="mmjs.sort(\'c.start_date\');" href="#">'._mmt("Valid Dates").'</a>'),
+	'product_restrictions'	=> array('content' => _mmt('Product Restrictions')),
+	'actions'				=> array('content' => _mmt('Actions'), "attr" => "style='width:50px;'"),
+	'archive'				=> array('content' => _mmt('Archive'), "attr" => "style='width:20px;'")
 );
 
 $dataGrid->setHeaders($headers);
@@ -132,7 +132,7 @@ $dataGrid->setRows($rows);
 $dgHtml = $dataGrid->generateHtml();
 
 if($dgHtml == "") {
-	$dgHtml = "<p><i>No coupons.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No coupons").".</i></p>";
 }
 ?>
 <div class="mm-wrap">
@@ -143,7 +143,7 @@ if($dgHtml == "") {
 	<?php } ?>
 	
 	<div class="mm-button-container">
-		<a onclick="mmjs.create('mm-coupons-dialog', 620, 615)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Coupon</a>
+		<a onclick="mmjs.create('mm-coupons-dialog', 620, 615)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Coupon"); ?></a>
 		
 		<?php 
 			$showArchivedCoupons = (MM_OptionUtils::getOption(MM_CouponView::$SEARCH_OPTION_SHOW_ARCHIVED."-".$current_user->ID) == "1") ? true : false;
@@ -152,8 +152,8 @@ if($dgHtml == "") {
 		
 		<span style="font-size:11px;">
 			<input type='hidden' id='mm-admin-id' value='<?php echo $current_user->ID; ?>' />
-			<input type='checkbox' id='mm-show-archived-coupons' <?php echo ($showArchivedCoupons ? "checked":""); ?> style="margin-left:10px;" onclick="mmjs.storeCouponSearchOptions();" /> Show archived coupons
-			<input type='checkbox' id='mm-show-expired-coupons' <?php echo ($showExpiredCoupons ? "checked":""); ?> style="margin-left:10px;" onclick="mmjs.storeCouponSearchOptions();" /> Show expired coupons
+			<input type='checkbox' id='mm-show-archived-coupons' <?php echo ($showArchivedCoupons ? "checked":""); ?> style="margin-left:10px;" onclick="mmjs.storeCouponSearchOptions();" /> <?php echo _mmt("Show archived coupons"); ?>
+			<input type='checkbox' id='mm-show-expired-coupons' <?php echo ($showExpiredCoupons ? "checked":""); ?> style="margin-left:10px;" onclick="mmjs.storeCouponSearchOptions();" /> <?php echo _mmt("Show expired coupons"); ?>
 		</span>
 	</div>
 

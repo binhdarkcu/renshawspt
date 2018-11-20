@@ -48,7 +48,7 @@ foreach($data as $item)
 	}	
 
 	$eventTimestamp = date("m-d-Y H:i:s",strtotime($item->event_date));
-	$eventDataFull = htmlentities($item->event,ENT_QUOTES);
+	$eventDataFull = htmlentities($item->event,ENT_QUOTES, "UTF-8");
 	$eventDataBlurb = substr($eventDataFull,0,255);
     
     $rows[] = array

@@ -73,39 +73,39 @@ function updateCorePageCSSForm()
 </script>
 
 <div class="mm-wrap">
-    <p class="mm-header-text">Core Page CSS Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020466-use-built-in-css-on-core-pages" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Core Page CSS Settings"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020466-use-built-in-css-on-core-pages" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
 
    	<div style="margin-top:10px;">
-		<strong>Use MemberMouse CSS on the following core pages:</strong>
+		<strong><?php echo _mmt("Use MemberMouse CSS on the following core pages"); ?>:</strong>
 	</div>
 	
 	<div style="margin-top:10px; margin-left:20px;">
 		<input id="mm_use_mm_css_checkout_cb" type="checkbox" <?php echo (($useMMCSSCheckout=="1")?"checked":""); ?> onchange="updateCorePageCSSForm();" />
-		Checkout &amp; Redeem Gift
+		<?php echo sprintf(_mmt("Checkout %s Redeem Gift"),"&amp;"); ?>
 		<input id="mm_use_mm_css_checkout" name="mm_use_mm_css_checkout" type="hidden" value="<?php echo $useMMCSSCheckout; ?>" />
 	</div>
 	
 	<div style="margin-top:10px; margin-left:20px;">
 		<input id="mm_use_mm_css_my_account_cb" type="checkbox" <?php echo (($useMMCSSMyAccount=="1")?"checked":""); ?> onchange="updateCorePageCSSForm();" />
-		My Account
+		<?php echo _mmt("My Account"); ?>
 		<input id="mm_use_mm_css_my_account" name="mm_use_mm_css_my_account" type="hidden" value="<?php echo $useMMCSSMyAccount; ?>" />
 	</div>
 	
 	<div style="margin-top:10px; margin-left:20px;">
 		<input id="mm_use_mm_css_login_cb" type="checkbox" <?php echo (($useMMCSSLogin=="1")?"checked":""); ?> onchange="updateCorePageCSSForm();" />
-		Login
+		<?php echo _mmt("Login"); ?>
 		<input id="mm_use_mm_css_login" name="mm_use_mm_css_login" type="hidden" value="<?php echo $useMMCSSLogin; ?>" />
 	</div>
 	
 	<div style="margin-top:10px; margin-left:20px;">
 		<input id="mm_use_mm_css_forgot_pass_cb" type="checkbox" <?php echo (($useMMCSSForgotPassword=="1")?"checked":""); ?> onchange="updateCorePageCSSForm();" />
-		Forgot Password
+		<?php echo _mmt("Forgot Password"); ?>
 		<input id="mm_use_mm_css_forgot_pass" name="mm_use_mm_css_forgot_pass" type="hidden" value="<?php echo $useMMCSSForgotPassword; ?>" />
 	</div>
 	
 	<div style="margin-top:10px; margin-left:20px;">
 		<input id="mm_use_mm_css_reset_pass_cb" type="checkbox" <?php echo (($useMMCSSResetPassword=="1")?"checked":""); ?> onchange="updateCorePageCSSForm();" />
-		Reset Password
+		<?php echo _mmt("Reset Password"); ?>
 		<input id="mm_use_mm_css_reset_pass" name="mm_use_mm_css_reset_pass" type="hidden" value="<?php echo $useMMCSSResetPassword; ?>" />
 	</div>
 </div>

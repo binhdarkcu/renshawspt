@@ -9,8 +9,13 @@ require_once("../../../../wp-load.php");
 require_once("../includes/mm-constants.php");
 require_once("../includes/init.php");
 
-function returnStatus($status, $message)
+function returnStatus($status, $message,$lockName="")
 {
+	global $wpdb;
+	if (!empty($lockName))
+	{
+		$wpdb->query($wpdb->prepare("SELECT RELEASE_LOCK(%s)",$lockName));
+	}
 	echo json_encode(array('status'=>$status,'message'=>$message));
 	exit(0);
 }
@@ -48,8 +53,15 @@ else
 	MM_DiagnosticLog::log(MM_DiagnosticLog::$MM_ERROR, "System does not support sha256 hmac... proceeding to process schedules without auth");
 }
 
+global $wpdb;
 $eventId = $request['reference_id'];
-$eventType = $wpdb->get_var("SELECT event_type from ".MM_TABLE_SCHEDULED_EVENTS." where id='{$eventId}'");
+$eventLock = "mm-scheduler-event-lock-{$eventId}";
+$lockAcquired = $wpdb->get_var($wpdb->prepare("SELECT IF(IS_FREE_LOCK(%s),COALESCE(GET_LOCK(%s,0),0),0)",$eventLock,$eventLock));
+if ($lockAcquired != "1")
+{
+	returnStatus("ok", "{$eventId} already being processed");
+}
+$eventType = $wpdb->get_var($wpdb->prepare("SELECT event_type from ".MM_TABLE_SCHEDULED_EVENTS." where id=%s",$eventId));
 
 switch ($eventType)
 {	
@@ -59,23 +71,23 @@ switch ($eventType)
 		$paymentEvent->setBillingStatus($billingStatus);
 		if ($paymentEvent->getStatus() == MM_ScheduledEvent::$EVENT_PROCESSED)
 		{
-			returnStatus("ok","Event {$eventId} already processed");
+			returnStatus("ok","Event {$eventId} already processed",$eventLock);
 		}
 		$paymentService = MM_PaymentServiceFactory::getPaymentServiceById($paymentEvent->getPaymentServiceId());
 		if (is_null($paymentService))
 		{
-			returnStatus("error","Improper event configuration: Payment service with id {$paymentService->getPaymentServiceId()} not found");
+		    returnStatus("error","Improper event configuration: Payment service with id {$paymentEvent->getPaymentServiceId()} not found",$eventLock);
 		}
 		$response = $paymentService->processScheduledPaymentEvent($paymentEvent);
 		if (MM_PaymentServiceResponse::isError($response) || MM_PaymentServiceResponse::isFailed($response))
 		{
-			returnStatus("error", $response->message);
+			returnStatus("error", $response->message,$eventLock);
 		}
-		returnStatus("ok","");
+		returnStatus("ok","",$eventLock);
 		break;
 	default:
 		//TODO: logging
-		returnStatus('error','Invalid Event Type');
+		returnStatus('error','Invalid Event Type',$eventLock);
 		break;
 }
 

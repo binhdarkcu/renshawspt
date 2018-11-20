@@ -25,7 +25,7 @@ if($results)
 }
 ?>
 <div class="mm-wrap">
-    <p class="mm-header-text">Repair Core Pages</p>
+    <p class="mm-header-text"><?php echo _mmt("Repair Core Pages");?></p>
 	<div class="mm-button-container">
 	</div>
 	
@@ -36,7 +36,7 @@ if($results)
 		if(count($corruptPages) > 0) {
 			$pageIdList = array();
 	?>
-		<p>Below is a list of default core pages that are associated with WordPress pages that no longer exist:</p>
+		<p><?php echo _mmt("Below is a list of default core pages that are associated with WordPress pages that no longer exist"); ?>:</p>
 		
 		<ul>
 		<?php foreach($corruptPages as $page) {
@@ -45,11 +45,11 @@ if($results)
 		}?>
 		</ul>
 		
-		<p>Clicking on the <em>Repair Core Pages</em> button below will repair the core pages table by reinstalling the default core pages.</p>
-   		<a onclick="mmjs.repairCorePages('<?php echo implode(",", $pageIdList); ?>');" class="mm-ui-button green">Repair Core Pages</a>
+		<p><?php echo sprintf(_mmt("Clicking on the %sRepair Core Pages%s button below will repair the core pages table by reinstalling the default core pages."),"<em>","</em>"); ?></p>
+   		<a onclick="mmjs.repairCorePages('<?php echo implode(",", $pageIdList); ?>');" class="mm-ui-button green"><?php echo _mmt("Repair Core Pages");?></a>
 	</div>
 	<?php } else { ?>
-		There are no corrupt core pages.
+		<?php echo _mmt("There are no corrupt core pages.");?>
 	<?php } ?>
 	</div>
 </div>

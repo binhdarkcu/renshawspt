@@ -40,13 +40,13 @@ $height = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_PURCHASE_CONFIRM
 <div style="width: 600px; margin-top: 8px;" class="mm-divider"></div> 
 
 <div class="mm-wrap">
-	<p class="mm-header-text">1-Click Purchase Confirmation Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020386-adjust-the-size-of-the-1-click-purchase-confirmation-dialog" target="_blank">Learn more</a></span></p>
+	<p class="mm-header-text"><?php echo _mmt("1-Click Purchase Confirmation Settings");?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020386-adjust-the-size-of-the-1-click-purchase-confirmation-dialog" target="_blank"><?php echo _mmt("Learn More");?></a></span></p>
 	
 	<div style="margin-top:10px;">
-		<p>Set the width and height for the 1-click purchase confirmation dialog below:</p>
+		<p><?php echo _mmt("Set the width and height for the 1-click purchase confirmation dialog below"); ?>:</p>
 		<p>
-			Width: <input type='text' style='width: 60px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_PURCHASE_CONFIRMATION_DIALOG_WIDTH; ?>' value='<?php echo $width; ?>' />
-			<span style="margin-left:10px;">Height: <input type='text' style='width: 60px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_PURCHASE_CONFIRMATION_DIALOG_HEIGHT; ?>' value='<?php echo $height; ?>' /></span>
+			<?php echo _mmt("Width"); ?>: <input type='text' style='width: 60px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_PURCHASE_CONFIRMATION_DIALOG_WIDTH; ?>' value='<?php echo $width; ?>' />
+			<span style="margin-left:10px;"><?php echo _mmt("Height"); ?>: <input type='text' style='width: 60px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_PURCHASE_CONFIRMATION_DIALOG_HEIGHT; ?>' value='<?php echo $height; ?>' /></span>
 		</p>
 	</div>
 </div>

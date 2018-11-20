@@ -28,11 +28,11 @@ $dataGrid->recordName = "member";
 // define datagrid headers
 $headers = array
 (	    
-   	'last_name'				=> array('content' => '<a onclick="mmjs.sort(\'last_name\');" href="#">Name</a>'),
-   	'user_email'			=> array('content' => '<a onclick="mmjs.sort(\'user_email\');" href="#">Email</a>'),
-   	'phone'					=> array('content' => '<a onclick="mmjs.sort(\'phone\');" href="#">Phone</a>'),
-   	'membership_level_id'	=> array('content' => '<a onclick="mmjs.sort(\'membership_level_id\');" href="#">Membership Level</a>'),
-   	'bundles'				=> array('content' => 'Bundles')
+   	'last_name'				=> array('content' => '<a onclick="mmjs.sort(\'last_name\');" href="#">'._mmt('Name') .'</a>'),
+   	'user_email'			=> array('content' => '<a onclick="mmjs.sort(\'user_email\');" href="#">'._mmt('Email') .'</a>'),
+   	'phone'					=> array('content' => '<a onclick="mmjs.sort(\'phone\');" href="#">'._mmt('Phone') .'</a>'),
+   	'membership_level_id'	=> array('content' => '<a onclick="mmjs.sort(\'membership_level_id\');" href="#">'._mmt('Membership Level') .'</a>'),
+   	'bundles'				=> array('content' => _mmt('Bundles'))
 );
 
 if($useCustomField)
@@ -71,17 +71,17 @@ if($useCustomField2)
 switch($searchByDate)
 {
 	case "user_registered":
-		$headers["user_registered"] = array('content' => '<a onclick="mmjs.sort(\'user_registered\');" href="#">Registered</a>');
+		$headers["user_registered"] = array('content' => '<a onclick="mmjs.sort(\'user_registered\');" href="#">'._mmt('Registered').'</a>');
 		break;
 
 	case "status_updated":
-		$headers["status_updated"] = array('content' => '<a onclick="mmjs.sort(\'status_updated\');" href="#">Status Changed</a>');
+		$headers["status_updated"] = array('content' => '<a onclick="mmjs.sort(\'status_updated\');" href="#">'._mmt('Status Changed').'</a>');
 		break;
 }
 
-$headers["last_login_date"] = array('content' => '<a onclick="mmjs.sort(\'last_login_date\');" href="#">Engagement</a>');
-$headers["status"] = array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">Status</a>');
-$headers['actions'] = array('content' => 'Actions');
+$headers["last_login_date"] = array('content' => '<a onclick="mmjs.sort(\'last_login_date\');" href="#">'._mmt('Engagement').'</a>');
+$headers["status"] = array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">'._mmt('Status').'</a>');
+$headers['actions'] = array('content' => _mmt('Actions'));
 
 $datagridRows = array();
 
@@ -91,7 +91,7 @@ if($doGenerateCsv)
 {
 	$csvHeaders = array
 	(
-		'ID', 'First Name', 'Last Name', 'Email', 'Phone', 'Membership Level', 'Bundles', 'Registered', 'Status Changed', 'Status',
+		'ID', 'First Name', 'Last Name', 'Email', 'Phone', 'Membership Level', 'Bundles', 'Bundle Expirations', 'Membership Expiration', 'Registered', 'Status Changed', 'Status',
 		'Billing Address', 'Billing City', 'Billing State', 'Billing Zip', 'Billing Country',
 		'Shipping Address', 'Shipping City', 'Shipping State', 'Shipping Zip', 'Shipping Country'
 	);
@@ -161,7 +161,7 @@ foreach($data as $key=>$item)
    $deleteActionUrl = 'onclick="mmjs.remove(\''.$user->getId().'\', \''.$user->getEmail().'\')"';
    $actions = MM_Utils::getEditIcon("Edit Member", '', $editActionUrl);
     
-	if(($user->getStatus() == MM_Status::$ERROR) || ($user->getStatus() == MM_Status::$PENDING_ACTIVATION))
+	if(($user->getStatus() == MM_Status::$ERROR) || ($user->getStatus() == MM_Status::$PENDING_ACTIVATION) || ($user->getStatus() == MM_Status::$PENDING_CANCELLATION))
     {  	
     	$actions .= MM_Utils::getDeleteIcon("Delete Member", 'margin-left:5px;', $deleteActionUrl);
     } 
@@ -172,7 +172,7 @@ foreach($data as $key=>$item)
     else 
     {
     	$actions .= MM_Utils::getDeleteIcon("This member has an active paid membership or bundle which must be canceled before they can be deleted", 'margin-left:5px;', '', true);
-    }
+    } 
 	
     // membership level
 	$membershipStr = $user->getMembershipName();
@@ -185,40 +185,58 @@ foreach($data as $key=>$item)
 	// bundles	
 	if(!empty($item->bundles))
 	{
+		$bundleExpirations = array();
 		$bundles = explode(",", $item->bundles);
 		
 		// iterate over array of bundle IDs, lookup bundle ID name 
 		// and replace the ID with the bundle name
 		for($i = 0; $i < count($bundles); $i++)
 		{
-			$bundleId = $bundles[$i];
-			
-			if(isset($bundleName[$bundleId]))
-			{
-				$bundleName[$bundleId];
+			$bundleId = $bundles[$i]; 
+			if(isset($bundleNames[$bundleId]))
+			{   
+				$memberAppliedBundle = MM_AppliedBundle::getAppliedBundle($user->getId(), $bundle->getId()); 
+				$date = $memberAppliedBundle->getExpirationDate();
+				if(!is_null($date) && !empty($date))
+				{
+					$bundleExpirations[$bundleId] = $date;
+				}
 			}
 			else
 			{
 				$bundle = new MM_Bundle($bundleId);
 				
 				if($bundle->isValid())
-				{
+				{ 
 					// cache bundle name for future use while processing remaining rows
-					$bundleName[$bundleId] = $bundle->getName();
+					$bundleNames[$bundleId] = $bundle->getName();
+					$memberAppliedBundle = MM_AppliedBundle::getAppliedBundle($user->getId(), $bundle->getId());
+					
+					$date = $memberAppliedBundle->getExpirationDate();
+					if(!is_null($date) && !empty($date))
+					{
+						$bundleExpirations[$bundleId] = $date;
+					}
 				}
 				else 
-				{
-					$bundleName[$bundleId] = MM_NO_DATA;
+				{ 
+					$bundleNames[$bundleId] = MM_NO_DATA;
 				}
 			}
 			
-			$bundles[$i] = $bundleName[$bundleId];
+			$bundles[$i] = $bundleNames[$bundleId];
 		}
 		
 		$bundles = implode(", ", $bundles);
+		if (!is_array($bundleExpirations))
+		{
+			error_log("Offending content = ".print_r($bundleExpirations,true));
+		}
+		$bundleExpirations = implode(",", $bundleExpirations); 
 	}
 	else
 	{
+		$bundleExpirations = MM_NO_DATA;
 		$bundles = MM_NO_DATA;
 	}
 	
@@ -303,6 +321,30 @@ foreach($data as $key=>$item)
 	// build CSV row
 	if($doGenerateCsv)
 	{
+		$membershipRegistrationDate= "";
+		$membershipLevel = $user->getMembershipLevel(); 
+        if($membershipLevel instanceof MM_MembershipLevel)
+        {
+            if($membershipLevel->doesExpire())
+            {
+                $date = $user->getExpirationDate(true);
+                if(isset($item->expiration_date) &&
+                   !is_null($item->expiration_date) &&
+                   !empty($item->expiration_date))
+                {
+                    $membershipRegistrationDate = $item->expiration_date;
+                }
+                else
+                {
+                    $membershipRegistrationDate = $membershipLevel->getExpirationDate($user->getRegistrationDate());
+                }
+            }
+            else 
+            {
+                $membershipRegistrationDate = "N/A";
+            }
+        }
+		
 		$csvRow = array();
 			
 		$csvRow[] = $user->getId();
@@ -310,8 +352,10 @@ foreach($data as $key=>$item)
 		$csvRow[] = $user->getLastName();
 		$csvRow[] = $user->getEmail();
 		$csvRow[] = $user->getPhone();
-		$csvRow[] = $user->getMembershipName();
+		$csvRow[] = $user->getMembershipName(); 
 		$csvRow[] = ($bundles == MM_NO_DATA) ? "" : $bundles;
+		$csvRow[] = ($bundles == MM_NO_DATA) ? "" : $bundleExpirations;
+		$csvRow[] = $membershipRegistrationDate;
 		$csvRow[] = $user->getRegistrationDate(true);
 		$csvRow[] = MM_Utils::dateToLocal($item->status_updated);
 		$csvRow[] = $user->getStatusName();
@@ -352,8 +396,10 @@ if($doGenerateCsv)
 			$csvRow .= "\"".preg_replace("/[\"]+/", "", $elem)."\",";
 		}
 		$csv .= preg_replace("/(\,)$/", "", $csvRow)."\n";
-	}
-	MM_Session::value(MM_Session::$KEY_CSV, $csv);
+	}  
+	
+	MM_Session::value(MM_Session::$KEY_CSV, $csv);  
+	
 }
 
 $dataGrid->setHeaders($headers);
@@ -363,7 +409,7 @@ $dgHtml = $dataGrid->generateHtml();
 
 if(empty($dgHtml)) 
 {
-	$dgHtml = "<p><i>No members found.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No members found.") ."</i></p>";
 }
 
 echo $dgHtml;

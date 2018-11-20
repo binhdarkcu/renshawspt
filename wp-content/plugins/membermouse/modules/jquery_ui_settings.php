@@ -29,11 +29,11 @@ function updateJQueryUIForm()
 </script>
 
 <div class="mm-wrap">
-    <p class="mm-header-text">jQuery UI Options <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020443-disable-jquery-ui" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("jQuery UI Options"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020443-disable-jquery-ui" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
 
 	<div style="margin-top:10px;">
 		<input id="mm_use_jquery_ui_cb" type="checkbox" <?php echo (($useJQueryUI=="1")?"checked":""); ?> onchange="updateJQueryUIForm();" />
-		Use MemberMouse jQuery UI on the front-end
+		<?php echo _mmt("Use MemberMouse jQuery UI on the front-end"); ?>
 		<input id="mm_use_jquery_ui" name="mm_use_jquery_ui" type="hidden" value="<?php echo $useJQueryUI; ?>" />
 	</div>
 </div>

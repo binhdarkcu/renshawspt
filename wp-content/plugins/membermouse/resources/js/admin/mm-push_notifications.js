@@ -17,6 +17,7 @@ var MM_PushNotificationViewJS = MM_Core.extend({
 		if(jQuery("#mm-event-type").val() == "mm_member_status_change" ||
 				jQuery("#mm-event-type").val() == "mm_member_add" ||
 				jQuery("#mm-event-type").val() == "mm_bundles_add" ||
+				jQuery("#mm-event-type").val() == "mm_product_purchase" ||
 				jQuery("#mm-event-type").val() == "mm_bundles_status_change")
 		{
 			jQuery("#" + jQuery("#mm-event-type").val() + "_attributes").show();
@@ -28,12 +29,20 @@ var MM_PushNotificationViewJS = MM_Core.extend({
 		if(jQuery("#mm-action-type").val() == "action_send_email")
 		{
 			jQuery("#mm-action-send-email").show();
+			jQuery("#mm-action-notify-zapier").hide();
 			jQuery("#mm-action-call-script").hide();
 		}
 		else if(jQuery("#mm-action-type").val() == "action_call_script")
 		{
 			jQuery("#mm-action-send-email").hide();
+			jQuery("#mm-action-notify-zapier").hide();
 			jQuery("#mm-action-call-script").show();
+		}
+		else if(jQuery("#mm-action-type").val() == "action_notify_zapier")
+		{
+			jQuery("#mm-action-send-email").hide();
+			jQuery("#mm-action-notify-zapier").show();
+			jQuery("#mm-action-call-script").hide();
 		}
 	},
 	
@@ -43,13 +52,7 @@ var MM_PushNotificationViewJS = MM_Core.extend({
 	},
 	
 	validateForm: function()
-	{
-  	var ajax = new MM_Ajax(false, this.module, this.action, this.method);
-  	
-  	var values = {
-      mm_action: "validateInput"
-    };
-  	
+	{ 
 		if(jQuery("#mm-action-type").val() == "action_send_email")
 		{
 			if(jQuery('#mm-send-email-cc').val() == "")
@@ -69,11 +72,16 @@ var MM_PushNotificationViewJS = MM_Core.extend({
 				alert("Please enter an email body");
 				jQuery('#mm-send-email-body').focus();
 				return false;
-			}
-				
-      values.input_type  = 'EMAIL';
-      values.input_label = 'CC Email Addresses';
-      values.input_value = jQuery('#mm-send-email-cc').val();
+			} 
+		}
+		else if(jQuery("#mm-action-type").val() == "action_notify_zapier")
+		{	
+			if(jQuery('#mm-notify-zapier-mailbox').val() == "") 
+			{
+				alert("Please enter a Zapier mailbox");
+				jQuery('#mm-notify-zapier-mailbox').focus();
+				return false;
+			} 
 		}
 		else if(jQuery("#mm-action-type").val() == "action_call_script")
 		{
@@ -93,17 +101,9 @@ var MM_PushNotificationViewJS = MM_Core.extend({
 					jQuery('#mm-script-url').focus();
 					return false;
 				}
-			}
-			
-			values.input_type  = 'URL';
-			values.input_label = 'Custom Script URL';
-			values.input_value = url;
+			} 
 		}
-		
-		this.validated = false;
-		ajax.async = false;
-		ajax.send(values, false, 'mmjs', 'validateInputCallback');
-		return this.validated;
+		return true;
 	},
 	
 	sendTestNotification: function(actionId)

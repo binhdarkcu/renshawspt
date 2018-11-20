@@ -25,12 +25,12 @@
 				
 	<table cellspacing="10">
 		<tr>
-			<td width="135">Name*</td>
+			<td width="135"><?php echo _mmt("Name"); ?>*</td>
 			<td><input id="mm-display-name" type="text" style="width:100%;" value='<?php echo htmlentities($profile->getName(),ENT_QUOTES, 'UTF-8', true); ?>'/></td>
 		</tr>
 		
 		<tr>
-			<td>Description</td>
+			<td><?php echo _mmt("Description"); ?></td>
 			<td>
 				<textarea id="mm-description" name='description' style="width:100%;"><?php echo $profile->getDescription(); ?></textarea>
 			</td>
@@ -43,12 +43,12 @@
 		</tr>
 		
 		<tr>
-			<td>Commission Options</td>
+			<td><?php echo _mmt("Commission Options"); ?></td>
 			<td>	
-				<input type='checkbox' id='mm-enable-initial-commission-checkbox' name='mm-enable-initial-commission-checkbox' <?php echo $initialPaymentChecked; ?> /> Enable commission on initial payment
+				<input type='checkbox' id='mm-enable-initial-commission-checkbox' name='mm-enable-initial-commission-checkbox' <?php echo $initialPaymentChecked; ?> /> <?php echo _mmt("Enable commission on initial payment"); ?>
 				
 				<p>
-					<input type="checkbox" name="mm-enable-rebill-commissions-checkbox" id="mm-enable-rebill-commissions-checkbox" onclick="mmjs.renderRebillOptions()" <?php echo ($profile->rebillCommissionsEnabled() ? "checked":""); ?>  /> Enable Rebill Commissions
+					<input type="checkbox" name="mm-enable-rebill-commissions-checkbox" id="mm-enable-rebill-commissions-checkbox" onclick="mmjs.renderRebillOptions()" <?php echo ($profile->rebillCommissionsEnabled() ? "checked":""); ?>  /> <?php echo _mmt("Enable Rebill Commissions"); ?>
 				</p>
 				
 				<div style="margin-top:5px; margin-left:20px; display: none;" id='rebill_commission_options'>
@@ -60,18 +60,18 @@
 					?>
 					<p style="line-height:30px;" id="rebill_commission_type_selection">
 						<input id="rebill_commission_selector" name="rebill_commission_selector" value='default' type="radio" <?php echo $defaultCommissionSelected; ?> />
-						Use same commission as initial payment 
+						<?php echo _mmt("Use same commission as initial payment"); ?>
 						<?php echo MM_Utils::getInfoIcon('The commission used on initial payment is based on the commission settings defined for the affiliate in the 3rd party affiliate configuration.'); ?>
 					
 						<br/>
 						
 						<input id="rebill_commission_selector" name="rebill_commission_selector" value='custom' type="radio" <?php echo $customCommissionSelected; ?> />
-						Use the following commission on rebills 
+						<?php echo _mmt("Use the following commission on rebills"); ?> 
 						<input id="mm_rebill_commission_value" type="text" size="6" value="<?php echo $profile->getRebillCommissionValue(); ?>" onkeydown="return mmjs.checkRebillCommission(event)" onchange="mmjs.rebillCommissionChangeHandler()" />
 						
 						<select id="rebill_commission_type_selector" name="rebill_commission_type_selector">
 							<option value="<?php echo MM_CommissionProfile::$COMMISSION_TYPE_PERCENT; ?>" <?php echo $percentSelected; ?>>%</option>
-							<option value="<?php echo MM_CommissionProfile::$COMMISSION_TYPE_FLATRATE; ?>" <?php echo $flatrateSelected ?>>Flat Rate</option>
+							<option value="<?php echo MM_CommissionProfile::$COMMISSION_TYPE_FLATRATE; ?>" <?php echo $flatrateSelected ?>><?php echo _mmt("Flat Rate"); ?></option>
 						</select>
 						<?php echo MM_Utils::getInfoIcon('For flat rate commissions, express this value in the same currency that is set in your 3rd party affiliate configuration.'); ?>
 					</p>
@@ -79,14 +79,14 @@
 					
 					<p>
 						<input type='checkbox' id='mm-limit-rebill-commissions-checkbox' name='mm-limit-rebill-commissions-checkbox' <?php echo $limitRebillsChecked; ?> onchange="mmjs.renderRebillOptions()" /> 
-						Limit rebill commissions
+						<?php echo _mmt("Limit rebill commissions"); ?>
 					</p>
 					
 					<div style="margin-top:5px; margin-left:20px; display: none;" id='limit_rebill_commission_options'>
 						<p>
-							Limit to 
+						<?php echo _mmt("Limit to"); ?> 
 							<input id="mm_limit_rebill_commission_value" type="text" size="3" value="<?php echo $profile->getRebillCommissionLimit(); ?>" onkeydown="return mmjs.checkRebillCommission(event)" onchange="mmjs.rebillCommissionChangeHandler()" />
-							rebill payments
+							<?php echo _mmt("rebill payments"); ?>
 						</p>
 					</div>
 				</div>
@@ -100,11 +100,11 @@
 		</tr>
 		
 		<tr>
-			<td>Refund Options</td>
+			<td><?php echo _mmt("Refund Options"); ?></td>
 			<td>
 				<div>
 					<input type='checkbox' id='mm-enable-reverse-commissions-checkbox' name='mm-enable-reverse-commissions-checkbox' <?php echo $reverseCommissionsChecked; ?> /> 
-					Cancel commission when customer is refunded
+					<?php echo _mmt("Cancel commission when customer is refunded"); ?>
 					<?php echo MM_Utils::getInfoIcon('Only commissions that have not been paid out yet can be canceled.'); ?>
 				</div>
 			</td>
@@ -118,7 +118,7 @@
 
 <div class="mm-dialog-footer-container">
 <div class="mm-dialog-button-container">
-<a href="javascript:mmjs.save();" class="mm-ui-button blue">Save Commission Profile</a>
-<a href="javascript:mmjs.closeDialog();" class="mm-ui-button">Cancel</a>
+<a href="javascript:mmjs.save();" class="mm-ui-button blue"><?php echo _mmt("Save Commission Profile"); ?></a>
+<a href="javascript:mmjs.closeDialog();" class="mm-ui-button"><?php echo _mmt("Cancel"); ?></a>
 </div>
 </div>

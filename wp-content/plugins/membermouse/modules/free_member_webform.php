@@ -121,12 +121,9 @@ if(isset($_POST["membership_level"]))
 	<div style='padding-left: 10px;margin-top:10px;'>
 	        
 	    <div style='width:650px'>
-			<p>On this page you can build a webform that can be included on any site. It allows 
-			prospects to sign up for a free membership on your site. To create the form, just select the 
-			free membership level you want prospects to sign up for, then check off the fields that you want to 
-			include in the form and click <i>Generate HTML</i>.</p>
+			<p><?php echo sprintf(_mmt("On this page you can build a webform that can be included on any site. It allows prospects to sign up for a free membership on your site. To create the form, just select the free membership level you want prospects to sign up for, then check off the fields that you want to include in the form and click %sGenerate HTML%s."),"<i>","</i>"); ?></p>
 	
-			<p>The HTML for your webform will show up in a text box to the right. Just copy and paste this code to your site.</p>
+			<p><?php echo _mmt("The HTML for your webform will show up in a text box to the right. Just copy and paste this code to your site.");?></p>
 		</div>
 	</div>
 	
@@ -139,7 +136,7 @@ if(isset($_POST["membership_level"]))
 		else 
 		{
 		?>	
-		<h3>Membership Level</h3>
+		<h3><?php echo _mmt("Membership Level"); ?></h3>
 	
 		<select name='membership_level'>
 		<?php echo $freeMembershipList; ?>
@@ -149,37 +146,37 @@ if(isset($_POST["membership_level"]))
 
 		<table>
 			<tr>
-				<td width='145px'><span style='color: red;'>*</span> Email</td>
+				<td width='145px'><span style='color: red;'>*</span> <?php echo _mmt("Email"); ?></td>
 				<td>
 					<input type='checkbox' name='email' value='1' checked disabled='disabled'/>
 				</td>
 			</tr>
 			<tr>
-				<td>Username</td>
+				<td><?php echo _mmt("Username"); ?></td>
 				<td>
 					<input type='checkbox' name='username' value='1' <?php echo ((isset($_POST["username"]))?"checked":""); ?>/> 
 				</td>
 			</tr>
 			<tr>
-				<td>Password</td>
+				<td><?php echo _mmt("Password"); ?></td>
 				<td>
 					<input type='checkbox' name='password' value='1' <?php echo ((isset($_POST["password"]))?"checked":""); ?>/> 
 				</td>
 			</tr>
 			<tr>
-				<td>First Name</td>
+				<td><?php echo _mmt("First Name"); ?></td>
 				<td>
 					<input type='checkbox' name='first_name' value='1' <?php echo ((isset($_POST["first_name"]))?"checked":""); ?>/> 
 				</td>
 			</tr>
 			<tr>
-				<td>Last Name</td>
+				<td><?php echo _mmt("Last Name"); ?></td>
 				<td>
 					<input type='checkbox' name='last_name' value='1' <?php echo ((isset($_POST["last_name"]))?"checked":""); ?>/> 
 				</td>
 			</tr>
 			<tr>
-				<td>Phone</td>
+				<td><?php echo _mmt("Phone"); ?></td>
 				<td>
 					<input type='checkbox' name='phone' value='1' <?php echo ((isset($_POST["phone"]))?"checked":""); ?>/> 
 				</td>
@@ -197,7 +194,7 @@ if(isset($_POST["membership_level"]))
 					{
 					?>
 			<tr>
-				<td><?php echo $customField->getDisplayName(); ?></td>
+				<td><?php echo _mmt($customField->getDisplayName()); ?></td>
 				<td>
 					<input type='checkbox' name='custom_field_<?php echo $id; ?>' value='1' <?php echo ((isset($_POST["custom_field_{$id}"]))?"checked":""); ?>/>
 				</td>
@@ -213,7 +210,7 @@ if(isset($_POST["membership_level"]))
 				</td>
 			</tr>
 			<tr>
-				<td colspan='2'><input type='submit' name='submit' value='Generate HTML' class="mm-ui-button blue" /></td>
+				<td colspan='2'><input type='submit' name='submit' value='<?php echo _mmt("Generate HTML"); ?>' class="mm-ui-button blue" /></td>
 			</tr>
 		</table>
 		<?php } ?>

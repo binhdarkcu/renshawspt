@@ -29,13 +29,13 @@ function updateWPContentForm()
 </script>
 
 <div class="mm-wrap">
-    <p class="mm-header-text">WordPress Content Options</p>
+    <p class="mm-header-text"><?php echo _mmt("WordPress Content Options");?></p>
     
 	<div style="margin-top:10px;">
 		<input id="mm_enable_wp_autop_cb" type="checkbox" <?php echo (($enableWPAutoP=="1")?"":"checked"); ?> onchange="updateWPContentForm();" />
-		Disable WordPress auto-paragraph functionality on MemberMouse core pages
+		<?php echo _mmt("Disable WordPress auto-paragraph functionality on MemberMouse core pages");?>
 		<input id="mm_enable_wp_autop" name="mm_enable_wp_autop" type="hidden" value="<?php echo $enableWPAutoP; ?>" />
 		
-		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020534-disable-wordpress-auto-paragraph-wpautop-functionality-from-core-pages" target="_blank">Learn more</a></span>
+		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020534-disable-wordpress-auto-paragraph-wpautop-functionality-from-core-pages" target="_blank"><?php echo _mmt("Learn more");?></a></span>
 	</div>
 </div>

@@ -13,7 +13,7 @@ class RestResponse {
       * Constructor of RestServer
       * @param RestServer $rest
       */
-    function __contruct($rest=null) {
+    function __construct($rest=null) {
         $this->rest = $rest ;
     }
 

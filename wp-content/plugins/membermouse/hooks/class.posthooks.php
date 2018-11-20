@@ -65,6 +65,29 @@
 	 		$wp_query->posts = $posts;
  		}
  	}
+		
+	public function doRestFilter($data, $post, $context) {
+		global $current_user;
+		
+		$userId = 0;
+		if (isset ( $current_user->ID )) {
+			$userId = $current_user->ID;
+		} 
+		$postData = $data->get_data(); 
+		if(!is_null($postData) && !empty($postData) && is_array($postData)){  
+			$protectedContent = new MM_ProtectedContentEngine ();
+			if (! $protectedContent->canAccessPost ( $post->ID, $userId )) {
+				$postData["title"]["rendered"] = "You don't have access to view this content";
+				$postData["content"]["rendered"] = "You don't have access to view this content";
+				$data->set_data($postData);
+			} else {
+				$postData["title"]["rendered"] = MM_SmartTagUtil::processContent ( $post->post_title, new MM_Context() );
+				$postData["content"]["rendered"] = MM_SmartTagUtil::processContent ( $post->post_content, new MM_Context() );
+				$data->set_data($postData);
+			}
+		} 
+		return $data;
+	}
  	
  	public function postsColumns($defaults)
  	{

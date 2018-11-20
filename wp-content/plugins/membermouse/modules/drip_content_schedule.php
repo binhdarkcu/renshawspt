@@ -198,7 +198,7 @@ $rowCache = array();
     	<form id="mm_dsm_form_tag" method='post'>
     	<input type='hidden' id='mm-expanded-rows' name="mm_expanded_rows" value='' />
     	<div class='mm-dsm-section-summary' style="width:280px;">
-    		View the drip content schedule for the following...
+    		<?php echo _mmt("View the drip content schedule for the following"); ?>...
     	</div>
     	<div class='mm-dsm-options'>
     		<?php echo $viewDeliveryAccessTypes; ?>
@@ -211,13 +211,13 @@ $rowCache = array();
     	<form id="mm_dsm_copy_form_tag" method='post' onsubmit="return mmjs.verifyCopy();">
     	<input type='hidden' id='mm-expanded-rows-copy' name="mm_expanded_rows_copy" value='' />
     			<div class='mm-dsm-section-summary'>
-    			Copy an existing drip content schedule...
+    			<?php echo _mmt("Copy an existing drip content schedule"); ?>...
     			</div>
     			<div class='mm-dsm-options-right'>
     				<?php echo $copyAccessTypesFrom; ?>
     			</div>
     			<div class='mm-dsm-options-right-middle'>
-    				<?php echo MM_Utils::getIcon('copy', 'blue', '1.3em', '1px'); ?>
+    				<?php echo MM_Utils::getIcon(_mmt('copy'), 'blue', '1.3em', '1px'); ?>
     			</div>
     			<div class='mm-dsm-options-right'>
     				<?php echo $copyAccessTypesTo; ?>
@@ -227,7 +227,7 @@ $rowCache = array();
 	    			<input type='submit' class="mm-ui-button"  name='copy_schedule' value='Copy Schedule' />
 	    			<label for="overwrite" style="margin-left:10px;">
 	    				<input type='checkbox' id="overwrite" name='overwrite' value='1' onclick="mmjs.clearCache();" /> 
-	    				Overwrite existing schedule
+	    				<?php echo _mmt("Overwrite existing schedule"); ?>
 	    			</label>
 	    	</form>
     	</div>
@@ -241,7 +241,7 @@ $rowCache = array();
     	if(count($generatedRows)<=0 && is_null($selectedTypes)) { ?>
     		Please choose at least one Membership Level or Bundle to view a drip content schedule.
     	<?php } else if(count($generatedRows)<=0 && !is_null($selectedTypes)) {
-    		echo "<div style='line-height:22px; font-size:14px; margin-bottom:5px;'>There is currently no content protected by the selected access rights.</div>";
+    		echo "<div style='line-height:22px; font-size:14px; margin-bottom:5px;'>"._mmt("There is currently no content protected by the selected access rights").".</div>";
     		
     		foreach($showRows as $type) {
     		?>
@@ -258,16 +258,16 @@ $rowCache = array();
     <table>
     	<tr>
     		<td colspan='2' class='mm-dsm-expand-collapse-links'>
-    			<a onclick="mmjs.expandRows('<?php echo $totalRows; ?>','<?php echo $totalColumns; ?>')" style='cursor: pointer;'>Expand All</a> |
-    			<a onclick="mmjs.collapseRows('<?php echo $totalRows; ?>','<?php echo $totalColumns; ?>')" style='cursor: pointer;'>Collapse All</a>
+    			<a onclick="mmjs.expandRows('<?php echo $totalRows; ?>','<?php echo $totalColumns; ?>')" style='cursor: pointer;'><?php echo _mmt("Expand All"); ?></a> |
+    			<a onclick="mmjs.collapseRows('<?php echo $totalRows; ?>','<?php echo $totalColumns; ?>')" style='cursor: pointer;'><?php echo _mmt("Collapse All"); ?></a>
     		</td>
     		<td  align='center' class='mm-dsm-header' colspan='<?php echo count($rows); ?>'>
-    			Access Rights
+    			<?php echo _mmt("Access Rights"); ?>
     		</td>
     	</tr>
     	<tr>
-    		<td align='center'  class='mm-dsm-header' >Day</td>
-    		<td align='center'  class='mm-dsm-header'>Content</td>
+    		<td align='center'  class='mm-dsm-header' ><?php echo _mmt("Day"); ?></td>
+    		<td align='center'  class='mm-dsm-header'><?php echo _mmt("Content"); ?></td>
     		<?php 
     			foreach($showRows as $type) {
     				?>
@@ -277,7 +277,7 @@ $rowCache = array();
     					<?php } ?>
     					<span title='<?php echo $type->value; ?>'><?php echo MM_Utils::abbrevString($type->value, $maxHeaderLength); ?> </span>
     					
-    					<a title="Grant Access" onclick="mmjs.addAccessRights('<?php echo $type->id; ?>','<?php echo preg_replace("/[\"\']+/", "", $type->value); ?>');" class='mm-dsm-imagelink'><?php echo MM_Utils::getIcon('plus-circle', 'white', '1.4em', '2px'); ?></a> 
+    					<a title="<?php echo _mmt("Grant Access"); ?>" onclick="mmjs.addAccessRights('<?php echo $type->id; ?>','<?php echo preg_replace("/[\"\']+/", "", $type->value); ?>');" class='mm-dsm-imagelink'><?php echo MM_Utils::getIcon('plus-circle', 'white', '1.4em', '2px'); ?></a> 
     					</td>
     				<?php 
     			}
@@ -339,7 +339,7 @@ $rowCache = array();
 		    					$pagesLeft = (count($usedPages)>2)?count($usedPages)-2:0;
 								if($pagesLeft>0){
 		    					?>
-		    					and <?php echo $pagesLeft; ?> more.
+		    					<?php echo _mmt("and"); ?> <?php echo $pagesLeft; ?> <?php echo _mmt("more"); ?>.
 		    					<?php } ?>
 		    					</td>
 		    				</tr>
@@ -500,5 +500,5 @@ mmjs.toggleRow('<?php echo $rowCache[$row]; ?>', '<?php echo $totalRows; ?>');
 </script>
 <?php } else { ?>
 	<?php echo MM_Utils::getIcon('lock', 'yellow', '1.2em', '1px'); ?>
-	This feature is not available on your current plan. To get access, <a href="<?php echo MM_MemberMouseService::getUpgradeUrl(MM_MemberMouseService::$FEATURE_DRIP_CONTENT_SCHEDULE); ?>" target="_blank">upgrade your plan now</a>.
+	<?php echo sprintf(_mmt("This feature is not available on your current plan. To get access, %s upgrade your plan now %s."), '<a href="'.MM_MemberMouseService::getUpgradeUrl(MM_MemberMouseService::$FEATURE_DRIP_CONTENT_SCHEDULE).'" target="_blank">','</a>' )?>
 <?php } ?>

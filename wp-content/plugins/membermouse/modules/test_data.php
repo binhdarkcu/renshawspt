@@ -169,12 +169,11 @@
 ?>
 
 <p style="width:650px">
-	By filling out the test data below you're instructing MemberMouse to prepopulate checkout forms with the data entered. This can be 
-	very helpful when you're doing testing as it means you don't have to manually type in data for each test. 
+<?php echo _mmt("By filling out the test data below you're instructing MemberMouse to prepopulate checkout forms with the data entered. This can be very helpful when you're doing testing as it means you don't have to manually type in data for each test."); ?> 
 </p>
 <p>
 	<input id="mm_use_test_data_cb" type="checkbox" <?php echo (($useTestData=="1")?"checked":""); ?> onchange="toggleTestDataForm();" />
-	Use Test Data
+	<?php echo _mmt("Use Test Data"); ?>
 	<input id="mm_use_test_data" name="mm_use_test_data" type="hidden" value="<?php echo $useTestData; ?>" />
 </p>
 <div id="mm-test-data-form" class='mm-payment-service-box' style="display:none; margin-left: 10px; border: 1px solid #eee; background-color: #eee; width:625px; padding-left:10px;">
@@ -186,7 +185,7 @@
 			{
 	?>
 	<tr>
-		<td width="110"><?php echo $field->label; ?></td>
+		<td width="110"><?php echo _mmt($field->label); ?></td>
 		<td>
 		<span style="font-family:courier; font-size:11px; margin-top:5px;">
 			<?php 

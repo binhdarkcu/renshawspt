@@ -15,7 +15,7 @@
 		
 		<p><strong>Purchase Link SmartTag</strong><?php echo MM_Utils::getInfoIcon("You can use this Purchase Link SmartTag in any post or page on your site. When using this SmartTag MemberMouse will automatically generate a link customers can click on to purchase this product."); ?></p>
 
-		<input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($p->smartTag); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" />
+		<input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($p->smartTag,ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" />
 		
 		<ul style="margin-left:20px;">
 		<li>Set the <code>isGift</code> attribute to <code>true</code> to indicate that this purchase is a gift.</li>
@@ -28,7 +28,7 @@
 		
 		<p><strong>Static Link</strong><?php echo MM_Utils::getInfoIcon("You can use this link anywhere -- in a PPC or banner ad, email, on your site, on a 3rd party site, etc. Customers can click on this link to purchase this product"); ?></p>
 		
-		<input id="mm-static-link" type="text" readonly value="<?php echo htmlentities($p->staticLink); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link').focus(); jQuery('#mm-static-link').select();" />
+		<input id="mm-static-link" type="text" readonly value="<?php echo htmlentities($p->staticLink,ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link').focus(); jQuery('#mm-static-link').select();" />
 	
 		<?php 
 			$affiliateId = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_AFFILIATE);

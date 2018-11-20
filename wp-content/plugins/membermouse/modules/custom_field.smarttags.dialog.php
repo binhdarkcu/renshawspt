@@ -16,7 +16,7 @@ $smarttag = "[MM_Form_Field type='custom' id='{$p->customFieldId}' isRequired='f
 			<code>[MM_Form type='custom']...[/MM_Form]</code> SmartTags.
 		</p>
 		
-		<p style="margin-top:30px; margin-bottom:20px;"><input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($smarttag); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" /></p>
+		<p style="margin-top:30px; margin-bottom:20px;"><input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($smarttag,ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" /></p>
 		
 		<ul>
 		<li>Set the <code>isRequired</code> attribute to <code>true</code> if you want the field to be required.</li> 

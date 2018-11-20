@@ -75,7 +75,7 @@ function processLogin($request,$provider)
 }
 
 
-function processSignup($request,$provider)
+function processSignup($request,MM_AbstractSocialLoginExtension $provider)
 {
 	//don't attempt to signup already logged in users
 	if (MM_Utils::isLoggedIn())
@@ -95,7 +95,7 @@ function processSignup($request,$provider)
 	if (isset($request['membership_level']))
 	{
 		$membershipLevel = trim($request['membership_level']);
-		$membershipLevel = htmlentities($membershipLevel);
+		$membershipLevel = htmlentities($membershipLevel,ENT_COMPAT | ENT_HTML401, "UTF-8");
 		if (!is_numeric($membershipLevel))
 		{
 			//membership level was not passed as a valid id
@@ -160,8 +160,8 @@ function processSignup($request,$provider)
 	
 	if ($emailHandlingStrategy == MM_AbstractSocialLoginExtension::$EMAIL_RETRIEVED_BY_POPUP)
 	{
-		//TODO: sanitize email
-		$memberInfo['email'] = $request['email'];
+		//sanitize email
+		$memberInfo['email'] = filter_var($request['email'], FILTER_SANITIZE_EMAIL);
 	}
 	else if ($emailHandlingStrategy == MM_AbstractSocialLoginExtension::$EMAIL_PROVIDED)
 	{
@@ -175,15 +175,18 @@ function processSignup($request,$provider)
 		}
 		else
 		{
-			throw new Exception("Social Network provider was supposed to supply user email, but did not","1001013");
+			//Code 1001013 ("Social Network provider was supposed to supply user email, but did not") has been removed. 
+			//If the social network platform does not provide an email address, one is now generated
+			$emailHandlingStrategy = MM_AbstractSocialLoginExtension::$EMAIL_GENERATE_BOGUS_EMAIL;
 		}
 	}
-	else if ($emailHandlingStrategy == MM_AbstractSocialLoginExtension::$EMAIL_GENERATE_BOGUS_EMAIL)
+	
+	if ($emailHandlingStrategy == MM_AbstractSocialLoginExtension::$EMAIL_GENERATE_BOGUS_EMAIL)
 	{
+		$providerToken = $provider->getToken();
 		$bogusUser = MM_Utils::createRandomString(8,true).MM_Utils::createRandomString(24);
-		//TODO: tag user portion of email with social network identifier
 		$bogusDomain = "example.com";
-		$memberInfo['email'] = "{$bogusUser}@{$bogusDomain}";
+		$memberInfo['email'] = "{$providerToken}+{$bogusUser}@{$bogusDomain}";
 	}
 	
 	$socialSignupRequest = new MM_SocialLoginRequest($memberInfo);
@@ -218,7 +221,7 @@ try
 		//script called incorrectly
 		throw new Exception("Social login authenticator called incorrectly","1001003");
 	}
-	$providerToken = ucfirst(strtolower(htmlentities($request['provider']))); //hybridauth requires providers be all lowercase with the first letter capitalized
+	$providerToken = ucfirst(htmlentities($request['provider'],ENT_COMPAT | ENT_HTML401, "UTF-8")); //hybridauth requires providers be all lowercase with the first letter capitalized
 	
 	$provider = MM_ExtensionsFactory::getExtension($providerToken);
 	if (is_null($provider) || !($provider instanceof MM_AbstractSocialLoginExtension) || (!$provider->isActive()))

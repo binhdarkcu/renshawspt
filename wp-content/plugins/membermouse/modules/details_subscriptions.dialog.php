@@ -28,7 +28,9 @@ $orderItem = new MM_OrderItem($p->order_item_id);
 <script type='text/javascript'>
 jQuery(document).ready(function()
 {	
-	jQuery("#mm-next-rebill-date").datepicker();
+	jQuery("#mm-next-rebill-date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 });
 </script>
 <?php } else { ?>

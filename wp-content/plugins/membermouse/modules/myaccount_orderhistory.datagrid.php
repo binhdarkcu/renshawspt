@@ -8,11 +8,11 @@
 <table id="mm-order-history-table">
 	<thead>
 		<tr>
-      		<th id="mm-order-history-date-column">Order #</th>
-			<th id="mm-order-history-id-column">Order Date</th>
-		 	<th id="mm-order-history-description-column">Description</th>
-			<th id="mm-order-history-amount-column">Amount</th>
-			<th id="mm-order-history-type-column">Type</th>
+      		<th id="mm-order-history-date-column"><?php echo _mmt("Order #"); ?></th>
+			<th id="mm-order-history-id-column"><?php echo _mmt("Order Date"); ?></th>
+		 	<th id="mm-order-history-description-column"><?php echo _mmt("Description"); ?></th>
+			<th id="mm-order-history-amount-column"><?php echo _mmt("Amount"); ?></th>
+			<th id="mm-order-history-type-column"><?php echo _mmt("Type"); ?></th>
       	</tr>
 	</thead>
 	<tbody>

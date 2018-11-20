@@ -31,7 +31,7 @@ foreach($data as $key=>$item)
   		$actions .= MM_Utils::getDeleteIcon("This product is currently being used and cannot be deleted", 'margin-left:5px;', '', true);
 	}
 	
-	$purchaseLinks = '<a title="Get purchase links" onclick="mmjs.showPurchaseLinks('.$product->getId().',\''.htmlentities(addslashes($product->getName()), ENT_QUOTES).'\')" class="mm-ui-button" style="margin:0px;">'.MM_Utils::getIcon('money', '', '1.3em', '1px', '', 'margin-right:0px;').'</a>';
+	$purchaseLinks = '<a title="Get purchase links" onclick="mmjs.showPurchaseLinks('.$product->getId().',\''.htmlentities(addslashes($product->getName()), ENT_QUOTES, "UTF-8").'\')" class="mm-ui-button" style="margin:0px;">'.MM_Utils::getIcon('money', '', '1.3em', '1px', '', 'margin-right:0px;').'</a>';
 	
 	
 	// Associated Access
@@ -123,13 +123,13 @@ foreach($data as $key=>$item)
 
 $headers = array
 (
-		'name'			=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">Name</a>'),
-		'billing'		=> array('content' => 'Billing Description'),
-		'attributes'	=> array('content' => 'Attributes'),
-		'access'		=> array('content' => 'Associated Access'),
-		'links'			=> array('content' => 'Purchase Links'),
-		'status'		=> array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">Status</a>'),
-		'actions'		=> array('content' => 'Actions')
+		'name'			=> array('content' => '<a onclick="mmjs.sort(\'name\');" href="#">'._mmt("Name").'</a>'),
+		'billing'		=> array('content' => _mmt('Billing Description')),
+		'attributes'	=> array('content' => _mmt('Attributes')),
+		'access'		=> array('content' => _mmt('Associated Access')),
+		'links'			=> array('content' => _mmt('Purchase Links')),
+		'status'		=> array('content' => '<a onclick="mmjs.sort(\'status\');" href="#">'._mmt("Status").'</a>'),
+		'actions'		=> array('content' => _mmt('Actions'))
 );
 
 $dataGrid->setHeaders($headers);
@@ -144,7 +144,7 @@ if($dgHtml == "")
 ?>
 <div class="mm-wrap">
 	<div class="mm-button-container">
-		<a onclick="mmjs.create('mm-products-dialog', 580, 600)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Product</a>
+		<a onclick="mmjs.create('mm-products-dialog', 580, 600)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Product"); ?></a>
 	</div>
 	
 	<div class="clear"></div>

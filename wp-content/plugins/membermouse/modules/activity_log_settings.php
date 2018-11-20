@@ -37,17 +37,16 @@ if($cleanupInterval === false || $cleanupInterval === "")
 ?>
 <div style="width: 600px; margin-top: 8px;" class="mm-divider"></div> 
 <div class="mm-wrap">
-    <p class="mm-header-text">Activity Log Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020487-configure-activity-log-cleanup" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Activity Log Settings"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020487-configure-activity-log-cleanup" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
    
 	<div style="margin-top:10px;">
 		<input onchange="mmjs.showActivityLogForm()" id="mm-cb-enable-activity-log-cleanup" name="mm_enable_activity_log_cleanup" type="checkbox"  <?php echo (($enabled=="0")?"":"checked"); ?>  />
-		Enable activity log cleanup
+		<?php echo _mmt("Enable activity log cleanup"); ?>
 			
 		<input id="mm-enable-activity-log-cleanup" type="hidden" />
 	</div>
 	<div id="mm-activity-log-cleanup" style="margin-top:5px; display:none; padding-top:5px;">
-		Delete activity log entries older than 
-		<input id="mm-cleanup-interval" name="mm_cleanup_interval" type="text" size="5" value="<?php echo $cleanupInterval; ?>" /> days
+		<?php echo sprintf(_mmt("Delete activity log entries older than %s days"),'<input id="mm-cleanup-interval" name="mm_cleanup_interval" type="text" size="5" value="'.$cleanupInterval.'" /> '); ?>		
 	</div>
 </div>
 

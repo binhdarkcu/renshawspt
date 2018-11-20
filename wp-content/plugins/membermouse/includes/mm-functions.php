@@ -3,7 +3,25 @@
  * 
  * MemberMouse(TM) (http://www.membermouse.com)
  * (c) MemberMouse, LLC. All rights reserved.
+ */ 
+
+/**
+ * Stands for MemberMouse Translate - wraps __() functionality for translating text within the plugin.
+ *
+ * @param string $str The string of text to be translated.
+ * @param string $domain The text domain for the translation.
+ *
+ * @return string value of the translated text or null if function not defined.
  */
+function _mmt($str, $domain=MM_LANGUAGE_DOMAIN)
+{
+	if (function_exists("__"))
+ 	{
+ 		return __($str, $domain);
+ 	} 
+ 	return null;	
+}
+
 
 /**
  * Stands for MemberMouse Format - formats a currency value into a locale appropriate string

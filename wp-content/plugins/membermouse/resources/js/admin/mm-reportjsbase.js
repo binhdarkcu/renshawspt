@@ -428,7 +428,9 @@ jQuery(function() {
 		mmjs.submit();
 	});
 	
-	jQuery(".mm-reporting-datepicker").datepicker();
+	jQuery(".mm-reporting-datepicker").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 	
 	if (jQuery(".mm-report-visual-element[data-status='loading']").length) {
 		mmjs.poll();

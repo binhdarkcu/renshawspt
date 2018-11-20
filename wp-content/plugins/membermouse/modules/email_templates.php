@@ -31,7 +31,7 @@ if(isset($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY]) && $_POST[MM_
 	
 	if(!preg_match("/{$pattern}/i", stripslashes($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY])))
 	{
-		$error = "This template requires the following SmartTag:\\n[MM_CorePage_Link type=\'resetpassword\']\\n\\nYou\'ll need to include this SmartTag somewhere in the template before the template can be saved.";
+		$error = _mmt("This template requires the following SmartTag:\\n[MM_CorePage_Link type=\'resetpassword\']\\n\\nYou\'ll need to include this SmartTag somewhere in the template before the template can be saved.");
 	}
 	else
 	{
@@ -43,20 +43,20 @@ if(isset($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY]) && $_POST[MM_
 ?>
 <form name='configure_site_text' method='post' >
 <div class="mm-wrap">
-    <span class="mm-section-header">Forgot Password Email</span>
+    <span class="mm-section-header"><?php echo _mmt("Forgot Password Email"); ?></span>
 	<div id="mm-form-container" style="margin-top: 10px; margin-bottom: 15px;">	
 		<div style="margin-top:5px">
-			Subject*
+			<?php echo _mmt("Subject"); ?>*
 			<input name="mm-forgot-password-email-subject" type="text" style="width:454px; font-family:courier; font-size: 11px;" value="<?php echo $forgotPasswordEmail->subject ?>"/>
 		</div>
 		
 		<div style="margin-top:5px">
-			Body* <?php echo MM_SmartTagLibraryView::smartTagLibraryButtons("mm-forgot-password-email-body"); ?>
+			<?php echo _mmt("Body"); ?>* <?php echo MM_SmartTagLibraryView::smartTagLibraryButtons("mm-forgot-password-email-body"); ?>
 			<?php 
-				$validSmartTags = "Only the following SmartTags can be used here:\n";
-				$validSmartTags .= "[MM_Access_Decision] (you must provide an ID)\n";
-				$validSmartTags .= "[MM_Content_Data] (you must provide an ID)\n";
-				$validSmartTags .= "[MM_Content_Link] (you must provide an ID)\n";
+				$validSmartTags = _mmt("Only the following SmartTags can be used here").":\n";
+				$validSmartTags .= "[MM_Access_Decision] ("._mmt("you must provide an ID").")\n";
+				$validSmartTags .= "[MM_Content_Data] ("._mmt("you must provide an ID").")\n";
+				$validSmartTags .= "[MM_Content_Link] ("._mmt("you must provide an ID").")\n";
 				$validSmartTags .= "[MM_CorePage_Link]\n";
 				$validSmartTags .= "[MM_CustomField_Data]\n";
 				$validSmartTags .= "[MM_Employee_Data]\n";
@@ -65,9 +65,9 @@ if(isset($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY]) && $_POST[MM_
 				$validSmartTags .= "[MM_Member_Link]\n";
 				$validSmartTags .= "[MM_Purchase_Link]";
 			?>
-			<span style="font-size:11px; color:#666666; margin-left: 5px;"><em>Note: Only certain SmartTags can be used here</em></span>
+			<span style="font-size:11px; color:#666666; margin-left: 5px;"><em><?php echo _mmt("Note: Only certain SmartTags can be used here"); ?></em></span>
 			<?php echo MM_Utils::getInfoIcon($validSmartTags); ?>
-			<div style="font-size:11px; color:#666666; margin-top:5px;"><em>The following SmartTag is required:</em> <strong><code>[MM_CorePage_Link type='resetpassword']</code></strong></div>
+			<div style="font-size:11px; color:#666666; margin-top:5px;"><em><?php echo _mmt("The following SmartTag is required"); ?>:</em> <strong><code>[MM_CorePage_Link type='resetpassword']</code></strong></div>
 		</div>
 		
 		<div style="margin-top:5px">
@@ -76,7 +76,7 @@ if(isset($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY]) && $_POST[MM_
 	</div>
 </div>
 
-<input type='submit' name='submit' value='Save Settings' class="mm-ui-button blue" />
+<input type='submit' name='submit' value='<?php echo _mmt("Save Settings"); ?>' class="mm-ui-button blue" />
 </form>
 
 <script type='text/javascript'>
@@ -84,6 +84,6 @@ if(isset($_POST[MM_OptionUtils::$OPTION_KEY_FORGOT_PASSWORD_BODY]) && $_POST[MM_
 alert('<?php echo $error; ?>');
 <?php  } ?>
 <?php if($settingsSaved){ ?>
-alert('Settings saved successfully');
+alert('<?php echo _mmt("Settings saved successfully"); ?>');
 <?php  } ?>
 </script>

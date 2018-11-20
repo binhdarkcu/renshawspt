@@ -453,13 +453,13 @@ class MM_Session
 				$site_url_data = parse_url(site_url());
 				$host = $site_url_data['host'];
 				
-				$cookieId  = htmlspecialchars($cookieId);
-				$sessionId = htmlspecialchars($sessionId);
+				$cookieId  = htmlspecialchars($cookieId,ENT_COMPAT | ENT_HTML401, "UTF-8");
+				$sessionId = htmlspecialchars($sessionId,ENT_COMPAT | ENT_HTML401, "UTF-8");
 				$output .=  "<script type='text/javascript'>".
 							"document.cookie = '{$cookieId}={$sessionId}; path=/;";
 				if (!empty($host))
 				{
-					$output .= "domain=".htmlspecialchars($host);
+					$output .= "domain=".htmlspecialchars($host,ENT_COMPAT | ENT_HTML401, "UTF-8");
 				}
 				$output .="';</script>";
 			}

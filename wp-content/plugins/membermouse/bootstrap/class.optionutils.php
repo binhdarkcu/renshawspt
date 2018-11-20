@@ -84,8 +84,19 @@ class MM_OptionUtils
 	public static $OPTION_KEY_SAFE_MODE_PLUGINS = "mm-option-safe-mode-plugins";
 	public static $OPTION_KEY_SAFE_MODE_THEME = "mm-option-safe-mode-theme";
 	public static $OPTION_KEY_SAFE_MODE_LOG = "mm-option-safe-mode-log";
-	
+
 	public static $OPTION_KEY_CORE_PAGE_CACHE = "mm-option-core-page-cache";
+	public static $OPTION_KEY_SIMULTANEOUS_LOGINS = "mm-option-number-of-simultaneous-logins";
+	public static $OPTION_KEY_SIMULTANEOUS_LOGINS_INCLUDE_ADMINS = "mm-option-simultaneous-logins-include-admins";
+	
+	public static $OPTION_KEY_FORGET_MEMBER_EMAIL_ADDRESS      = "mm-option-forget-member-email_address";
+	public static $OPTION_KEY_FORGET_MEMBER_ADDRESS            = "mm-option-forget-member-address";
+	public static $OPTION_KEY_FORGET_MEMBER_ADDRESS_COUNTRY    = "mm-option-forget-member-country";
+	public static $OPTION_KEY_FORGET_MEMBER_ORDER_ADDRESS      = "mm-option-forget-member-order-address";
+	public static $OPTION_KEY_FORGET_MEMBER_ORDER_COUNTRY      = "mm-option-forget-member-order-country";
+	public static $OPTION_KEY_FORGET_MEMBER_ACTIVITY_LOG       = "mm-option-forget-member-activity-log";
+	public static $OPTION_KEY_FORGET_MEMBER_CUSTOM_FIELDS      = "mm-option-forget-member-custom-fields";
+	
 	
 	public static $DEFAULT_ACCT_SECURITY_ENABLED = "1";
 	public static $DEFAULT_ACCT_SECURITY_MAX_IPS = "5";

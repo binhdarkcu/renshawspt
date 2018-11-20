@@ -7,6 +7,7 @@ MemberMouse(TM) (http://www.membermouse.com)
  */
  class MM_UserHooks
  {	
+ 	public static $MM_LOGIN_TRACK_PREFIX = "mmlogintrackid";
 	/**
 	 *  Auto-login users on confirmation page, using a login token, or as a result of a social media login
 	 */
@@ -34,9 +35,18 @@ MemberMouse(TM) (http://www.membermouse.com)
 					// invalid transaction key
 					if($userId == 0)
 					{
-						$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCESS_DENIED);
-						wp_redirect($url);
-						exit;
+						// provide opportunity to bypass protection of the confirmation page
+						if(class_exists("MM_Filters"))
+						{
+							$allowAccess = apply_filters(MM_Filters::$BYPASS_CONTENT_PROTECTION, false);
+						}
+						
+						if(!$allowAccess)
+						{
+							$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCESS_DENIED);
+							wp_redirect($url);
+							exit;
+						}
 					}
 				}
 				else if(isset($_REQUEST[MM_Session::$PARAM_LOGIN_TOKEN]))
@@ -64,6 +74,129 @@ MemberMouse(TM) (http://www.membermouse.com)
 			}
 		}
 	}
+	
+	/*
+	 * One spot to calculate timeout for transient data
+	 * for mutliple login checks.
+	 */
+	private function getMultipleLoginTimeout()
+	{
+		return 3600*24*30;
+	}
+	
+
+	/*
+	 * Leverage new client browser info function 
+	 * to create hashed login signature for given client login.  
+	 * This helps identify the given login instance per platform/browser/ip address.
+	*/
+	private function getLoginSignature()
+	{ 
+		$browser = MM_Utils::getClientBrowsingInfo();   
+		if(isset($browser['browser']))
+		{ 
+			return md5($browser['browser'] . $browser['platform'] . $browser['ip'].time());
+		}
+		else if(isset($browser['name']))
+		{ 
+			return md5($browser['name'] . $browser['platform'] . $browser['ip'].time());
+		}
+		return null;
+	} 
+	
+
+	/*
+	 * User hook which is run on every page load.
+	 * If this given login (by signature) is not within the queue 
+	 * within $numOfSimultaneousSessions from the last position of the
+	 * stored array, they will get kicked.
+	 */
+	public function checkforMultipleLogins()
+	{ 
+		if(current_user_can("manage_options"))
+		{
+			if(isset($_POST["resetsessions"]))
+			{ 
+				$user = new MM_User($_POST["resetsessions"]);
+				if($user->isValid())
+				{
+					delete_transient(self::$MM_LOGIN_TRACK_PREFIX."_". $user->getEmail());
+					MM_Messages::addMessage("User's concurrent session data has been reset.");
+				}
+				else
+				{
+					MM_Messages::addError("Could not reset user's concurrent sessions.");	
+				}
+			}
+		}
+		
+		if(is_user_logged_in())
+		{	
+			global $current_user; 
+
+			$useAdminsInConcurrentLoginLimit = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_SIMULTANEOUS_LOGINS_INCLUDE_ADMINS);
+			$useAdmins = ($useAdminsInConcurrentLoginLimit=="1");
+			$numOfSimultaneousSessions = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_SIMULTANEOUS_LOGINS);
+			
+			// if you chose to exclude admins from this count, return now 
+			// (if you did *not* check the box in 'other settings' module).
+			if(!$useAdmins && current_user_can("manage_options"))
+			{
+				return;
+			}
+			
+			if(intval($numOfSimultaneousSessions)>0)
+			{  
+				$concurrentLoginIds = get_transient(self::$MM_LOGIN_TRACK_PREFIX . "_" . $current_user->user_login);
+ 
+				if(!is_array($concurrentLoginIds))
+				{
+					$concurrentLoginIds = (!is_null($concurrentLoginIds) && !empty($concurrentLoginIds))? array($concurrentLoginIds):array();
+				} 
+				  	 	
+				if($numOfSimultaneousSessions<count($concurrentLoginIds))
+				{ 
+					do 
+					{
+						array_shift($concurrentLoginIds);
+					}
+					while($numOfSimultaneousSessions<count($concurrentLoginIds));
+	
+					set_transient(self::$MM_LOGIN_TRACK_PREFIX . "_". $current_user->user_login, $concurrentLoginIds, time()+$this->getMultipleLoginTimeout());
+				}
+ 
+				if(!isset($_COOKIE[self::$MM_LOGIN_TRACK_PREFIX]) || 
+						empty($_COOKIE[self::$MM_LOGIN_TRACK_PREFIX]) ||
+							!in_array($_COOKIE[self::$MM_LOGIN_TRACK_PREFIX], $concurrentLoginIds)
+				)
+				{ 
+					wp_redirect(MM_CorePageEngine::getUrl(MM_CorePageType::$LOGOUT_PAGE));
+				} 
+			} 
+		}
+	}
+		
+	
+	/*
+	 * Store new login info to transient data by MM signature.
+	 */
+	public function saveLogin($userID)
+	{   
+		$newSessionId = $this->getLoginSignature();
+		if(!is_null($newSessionId))
+		{
+			$storedSessions = get_transient(self::$MM_LOGIN_TRACK_PREFIX."_" . $userID, false);
+			if(!is_array($storedSessions))
+			{ 
+				$storedSessions = (!is_null($storedSessions) && !empty($storedSessions))? array($storedSessions):array();
+			}  
+			$storedSessions[] = $newSessionId; 
+	 
+			set_transient(self::$MM_LOGIN_TRACK_PREFIX . "_" . $userID, $storedSessions, $this->getMultipleLoginTimeout()); 
+			setcookie(self::$MM_LOGIN_TRACK_PREFIX, $newSessionId, time()+$this->getMultipleLoginTimeout(), COOKIEPATH, COOKIE_DOMAIN, false);
+		}
+	}
+	
 	
 	/**
 	 *  Auto-logout users on logout page
@@ -121,6 +254,31 @@ MemberMouse(TM) (http://www.membermouse.com)
 							wp_redirect(MM_CorePageEngine::getUrl(MM_CorePageType::$LOGIN_PAGE));
 							exit;
 						}
+						
+						break;
+					case MM_CorePageType::$CHECKOUT:
+					    $onsiteService = MM_PaymentServiceFactory::getOnsitePaymentService();
+					    if ($onsiteService != null)
+					    {
+					        $onsiteService->checkoutInit();
+					    }
+						if (!headers_sent())
+						{
+							//send headers to discourage caching (especially bfcache) to force checkout page to be regenerated every page hit
+							//this should also ensure the generation of a fresh form submission id
+							nocache_headers();
+						}
+						break;
+						
+					case MM_CorePageType::$MY_ACCOUNT:
+						$onsiteService = MM_PaymentServiceFactory::getOnsitePaymentService();
+						if ($onsiteService != null)
+						{
+							$onsiteService->myAccountInit();
+						}
+						
+						//TODO: offsite services may utilize checkoutInit in the future. Determining which offsite payment services are possibly available
+						//		may be necessary here to support those services
 						
 						break;
 				}
@@ -249,9 +407,10 @@ MemberMouse(TM) (http://www.membermouse.com)
 		{
 			global $current_user;
 			
+			// Need to look at this.
 			if (class_exists("MM_User"))
 			{
-				$user = new MM_User($current_user->ID);
+				$user = MM_User::getCurrentWPUser();
 			}
 			
 			// log access for logged in users
@@ -388,8 +547,12 @@ MemberMouse(TM) (http://www.membermouse.com)
 			
 			if(!defined("DOING_AJAX") || !DOING_AJAX)
 			{
-  		  wp_redirect(MM_CorePageEngine::getUrl(MM_CorePageType::$LOGIN_PAGE));
-        exit;	
+				$useSiteOptionMMLoginPage = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_USE_MM_LOGIN_PAGE);
+				if($useSiteOptionMMLoginPage=="1")
+				{
+  		  			wp_redirect(MM_CorePageEngine::getUrl(MM_CorePageType::$LOGIN_PAGE));
+        			exit;	
+				}
 			}
 			else
 			{
@@ -501,25 +664,27 @@ MemberMouse(TM) (http://www.membermouse.com)
 				}
 				else 
 				{
-					// check user account status
-					$userObj = new MM_User($current_user->ID);
-					
-					if($userObj->getStatus() == MM_Status::$CANCELED || $userObj->getStatus() == MM_Status::$LOCKED)
+					// check user account status 
+					$userObj = MM_User::getCurrentWPUser();
+					if($userObj->isValid())
 					{
-						wp_logout();
-						
-						if($userObj->getStatus() == MM_Status::$LOCKED)
+						if($userObj->getStatus() == MM_Status::$CANCELED || $userObj->getStatus() == MM_Status::$LOCKED)
 						{
-							$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCOUNT_LOCKED);
-							wp_redirect($url);
-							exit;
-						}
-						else if(($userObj->getStatus() == MM_Status::$CANCELED) && (!MM_CorePageEngine::isSaveTheSalePage($wp_query->post->ID)))
-						{
-							$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCOUNT_CANCELED);
-							wp_redirect($url);
-							exit;
-						}
+							wp_logout();
+							
+							if($userObj->getStatus() == MM_Status::$LOCKED)
+							{
+								$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCOUNT_LOCKED);
+								wp_redirect($url);
+								exit;
+							}
+							else if(($userObj->getStatus() == MM_Status::$CANCELED) && (!MM_CorePageEngine::isSaveTheSalePage($wp_query->post->ID)))
+							{
+								$url = MM_CorePageEngine::getUrl(MM_CorePageType::$ERROR, MM_Error::$ACCOUNT_CANCELED);
+								wp_redirect($url);
+								exit;
+							}
+						} 
 					}
 				}
 				
@@ -618,8 +783,13 @@ MemberMouse(TM) (http://www.membermouse.com)
 					MM_Preview::getData();
 					$newRedirectTo = $employee->getHomepage();
 				}
-				
-				if(empty($newRedirectTo))
+				else if (is_super_admin($user->data->ID))
+				{
+				    //if this user is not an employee, but is a wordpress admin, just let them continue to their original destination or the admin panel if not set
+				    //is_super_admin() returns true for all admins on non-network installs
+				    $newRedirectTo = !empty($redirectTo)?$redirectTo:get_admin_url();
+				}
+				else 
 				{
 					$mmUser = new MM_User($user->data->ID);
 					
@@ -732,4 +902,4 @@ MemberMouse(TM) (http://www.membermouse.com)
 	}
  }
  
-?>
+ ?>

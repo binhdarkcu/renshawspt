@@ -32,16 +32,16 @@ $siteKey = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_CAPTCHA_KEY);
 $privateKey = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_CAPTCHA_PRIVATE_KEY);
 ?>
 <div class="mm-wrap">
-    <p class="mm-header-text">Captcha Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020327-add-captcha-validation-to-the-checkout-page" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Captcha Settings"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020327-add-captcha-validation-to-the-checkout-page" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
 	<div style="margin-bottom:10px;">
 		<img src="https://membermouse.com/assets/plugin_images/logos/recaptcha_v2.png" style="vertical-align:middle; margin-right:10px;" />
-		<a target="_blank" href="https://www.google.com/recaptcha/" class="mm-ui-button green">Create a Free Account</a> 
-		<a target="_blank" href="https://www.google.com/recaptcha/admin" class="mm-ui-button">Access Existing Account</a>
+		<a target="_blank" href="https://www.google.com/recaptcha/" class="mm-ui-button green"><?php echo _mmt("Create a Free Account"); ?></a> 
+		<a target="_blank" href="https://www.google.com/recaptcha/admin" class="mm-ui-button"><?php echo _mmt("Access Existing Account"); ?></a>
 	</div>
 	
 	<table>
 		<tr>
-			<td width='70'>Site Key </td>
+			<td width='70'><?php echo _mmt("Site Key"); ?> </td>
 			<td>
 				<span style="font-family: courier; font-size: 11px;">
 				<input type='text' id='mm_captcha_public_key' name='mm_captcha_public_key' value='<?php echo $siteKey; ?>' size="45" />
@@ -49,7 +49,7 @@ $privateKey = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_CAPTCHA_PRIV
 			</td>
 		</tr>
 		<tr>
-			<td width='70'>Secret Key</td>
+			<td width='70'><?php echo _mmt("Secret Key"); ?></td>
 			<td>
 				<span style="font-family: courier; font-size: 11px;">
 				<input type='text' id='mm_captcha_private_key' name='mm_captcha_private_key' value='<?php echo $privateKey; ?>' size="45" />

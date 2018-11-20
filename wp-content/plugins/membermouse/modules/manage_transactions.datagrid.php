@@ -26,13 +26,13 @@ foreach($data as $key=>$item)
 	switch ($item->transaction_type)
 	{
 		case MM_TransactionLog::$TRANSACTION_TYPE_PAYMENT:
-			$transactionTypeIcons .= MM_Utils::getIcon('money', 'green', '1.4em', '2px', "Initial Payment or One-Time Payment");
+			$transactionTypeIcons .= MM_Utils::getIcon('money', 'green', '1.4em', '2px', _mmt("Initial Payment or One-Time Payment"));
 			break;
 		case MM_TransactionLog::$TRANSACTION_TYPE_RECURRING_PAYMENT:
-			$transactionTypeIcons .= MM_Utils::getIcon('refresh', 'green', '1.4em', '2px', "Recurring Payment", "padding-left:2px;");
+			$transactionTypeIcons .= MM_Utils::getIcon('refresh', 'green', '1.4em', '2px',  _mmt("Recurring Payment", "padding-left:2px;"));
 			break;
 		case MM_TransactionLog::$TRANSACTION_TYPE_REFUND:
-			$transactionTypeIcons .= MM_Utils::getIcon('money', 'red', '1.4em', '2px', "Refund");
+			$transactionTypeIcons .= MM_Utils::getIcon('money', 'red', '1.4em', '2px',  _mmt("Refund"));
 			break;
 		default:
 			$transactionTypeIcons .= MM_NO_DATA;
@@ -78,7 +78,7 @@ $dgHtml = $dataGrid->generateHtml();
 
 if(empty($dgHtml)) 
 {
-	$dgHtml = "<p><i>No transactions found.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No transactions found")."."."</i></p>";
 }
 
 echo $dgHtml;

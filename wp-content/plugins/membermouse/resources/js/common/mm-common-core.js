@@ -327,7 +327,7 @@ var keycode=(event.keyCode?event.keyCode:(event.which?event.which:event.charCode
 if(data.message.url!=undefined)
 {document.location.href=data.message.url;return false;}}
 else if(data.message!=undefined&&data.message.length>0)
-{jQuery("#"+this.dialogId).dialog();jQuery("#"+this.dialogId).dialog("option","width",this.width);jQuery("#"+this.dialogId).dialog("option","height",this.height);jQuery("#"+this.dialogId).dialog("option","minWidth",this.width);jQuery("#"+this.dialogId).dialog("option","minHeight",this.height);if(this.dialogTitle!=undefined){jQuery("#"+this.dialogId).dialog("option","title",this.dialogTitle);}
+{jQuery("#"+this.dialogId).dialog({autoOpen:false});jQuery("#"+this.dialogId).dialog("option","width",this.width);jQuery("#"+this.dialogId).dialog("option","height",this.height);jQuery("#"+this.dialogId).dialog("option","minWidth",this.width);jQuery("#"+this.dialogId).dialog("option","minHeight",this.height);if(this.dialogTitle!=undefined){jQuery("#"+this.dialogId).dialog("option","title",this.dialogTitle);}
 jQuery("#"+this.dialogId).dialog("option","modal",true);jQuery("#"+this.dialogId).html(data.message);jQuery("#"+this.dialogId).dialog("open");this.bindEnterKey(this.findButton(this.dialogId),this.dialogId);dialogIsOpen=true;this.releaseButton();}
 else{alert("No data received");}},preventDblClick:function(){if(!allowDblClick){if(dialogIsOpen){var button=this.findButton(this.dialogId);if(button!=null){button.hide();}}}},releaseButton:function(){if(!allowDblClick){var button=this.findButton(this.dialogId);if(button!=null){button.show();}}},close:function(dialogId)
 {dialogIsOpen=false;try
@@ -411,7 +411,7 @@ if(doContinue)
 {pymtutils_js.closeDialog(mm_pymtdialog);values.mm_action="placeOrderCardOnFile";values.mm_product_id=productId;values.mm_user_id=userId;values.mm_source=sourceId;values.mm_is_gift=isGift;var ajax=new MM_Ajax(false,this.module,this.action,this.method);ajax.send(values,false,"pymtutils_js","placeOrderCardOnFileCallback");}},placeOrderCardOnFileCallback:function(data)
 {if(data==undefined)
 {alert("There was an error placing your order");}
-else if(data.type=="error"||data.status==4)
+else if((data.type=="error")||(data.status==4)||(data.type=="failed")||(data.status==2))
 {alert(data.message);}
 else
 {document.location.href=data.url;}},accessRightsUpdateHandler:function(data)

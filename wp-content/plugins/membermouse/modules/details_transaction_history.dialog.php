@@ -45,7 +45,9 @@ if($orderItem->isRecurring())
 <script type='text/javascript'>
 jQuery(document).ready(function()
 {	
-	jQuery("#mm-next-rebill-date").datepicker();
+	jQuery("#mm-next-rebill-date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 });
 </script>
 <?php } else { ?>

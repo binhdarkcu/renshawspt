@@ -62,7 +62,7 @@ $cacheId = $_POST['cacheId'];
 // Retrieve and cache data
 // ----------------------------------------------------------------
 set_time_limit($maxExecutionTime);
-$lockName = $wpdb->prepare("mm-report-data-cache-lock-%d",$cacheId);
+$lockName = sprintf("mm-report-data-cache-lock-%s",md5($cacheId));
 
 $lockAcquired = $wpdb->get_var("SELECT COALESCE(GET_LOCK('{$lockName}',10),0)");
 if ($lockAcquired != "1")

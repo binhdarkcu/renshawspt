@@ -7,18 +7,19 @@
 
 function isLocalInstall($specificServer="localhost")
 {
-	 if(isset($_SERVER["SERVER_NAME"]) && strlen($_SERVER["SERVER_NAME"])>0)
-	 {
-		 if(preg_match("/(".$specificServer.")/", $_SERVER["SERVER_NAME"]))
-		 {
-		 	return true;
-		 }
-	 }
-	 
-	 return false;
+	if(isset($_SERVER["SERVER_NAME"]) && strlen($_SERVER["SERVER_NAME"])>0)
+	{
+		if(preg_match("/(".$specificServer.")/", $_SERVER["SERVER_NAME"]))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 define("MM_PREFIX", "mm_");   
+define("MM_LANGUAGE_DOMAIN", "membermouse");
 //$centralServer = (isLocalInstall("localhost") || isLocalInstall("membermouse2.localhost") || isLocalInstall("wordpress.test"))?"http://localhost/mmcentral/index.php?q=/":"https://hub.membermouse.com/index.php?q=/";
 //$centralServerUrl = (isLocalInstall("localhost")  || isLocalInstall("membermouse2.localhost") || isLocalInstall("wordpress.test"))?"http://localhost/mmcentral":"https://hub.membermouse.com";
 //$centralServerPrettyUrl = (isLocalInstall("localhost")  || isLocalInstall("membermouse2.localhost") || isLocalInstall("wordpress.test"))?"http://localhost/mmcentral":"https://hub.membermouse.com";
@@ -245,6 +246,7 @@ define("MM_MODULE_PAYMENT_SETTINGS", "payment_settings");
 define("MM_MODULE_EMAIL_SETTINGS", "email_settings");
 define("MM_MODULE_ACTIVITY_LOG", "activity_log");
 define("MM_MODULE_PAYPAL_IPN_LOG", "paypal_ipn_log");
+define("MM_MODULE_LIMELIGHT_LOG", "limelight_log");
 define("MM_MODULE_LOGS", "logs");
 define("MM_MODULE_FREE_MEMBER_FORM", "free_member_webform");
 define("MM_MODULE_LOGIN_FORM", "login_webform");

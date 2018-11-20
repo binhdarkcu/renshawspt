@@ -86,7 +86,7 @@
 	
 	$compFunction = $actionParams->mm_jshandle.".";
 	$compFunction .= $actionParams->mm_compfunction."(";
-	$compFunction .= htmlspecialchars(json_encode($p->lastActionParams), ENT_NOQUOTES);
+	$compFunction .= htmlspecialchars(json_encode($p->lastActionParams), ENT_NOQUOTES, "UTF-8");
 	$compFunction .= ");";
 ?>
 

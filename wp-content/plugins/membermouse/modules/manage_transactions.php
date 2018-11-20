@@ -37,8 +37,8 @@ if (isset($current_user) && isset($current_user->ID))
 ?>
 <div class="mm-wrap">
 	<div style="margin-top:20px;" class="mm-button-container">			
-		<a id="mm-show-search-btn" onclick="mmjs.showSearch()" class="mm-ui-button blue" <?php echo ($showSearch) ? "style=\"display:none;\"" : ""; ?>><?php echo MM_Utils::getIcon('search-plus'); ?> Advanced Search</a>
-		<a id="mm-hide-search-btn" onclick="mmjs.hideSearch()" class="mm-ui-button" <?php echo ($showSearch) ? "" : "style=\"display:none;\""; ?>><?php echo MM_Utils::getIcon('search-minus'); ?> Advanced Search</a>
+		<a id="mm-show-search-btn" onclick="mmjs.showSearch()" class="mm-ui-button blue" <?php echo ($showSearch) ? "style=\"display:none;\"" : ""; ?>><?php echo MM_Utils::getIcon('search-plus'); ?> <?php echo _mmt("Advanced Search");?></a>
+		<a id="mm-hide-search-btn" onclick="mmjs.hideSearch()" class="mm-ui-button" <?php echo ($showSearch) ? "" : "style=\"display:none;\""; ?>><?php echo MM_Utils::getIcon('search-minus'); ?> <?php echo _mmt("Advanced Search");?></a>
 		
 		<?php 
 			if($showCsvExportButton) { 

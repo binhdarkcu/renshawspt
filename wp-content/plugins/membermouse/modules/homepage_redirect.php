@@ -21,23 +21,23 @@ $useWPFrontpageAfterLogin = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KE
 ?>
 
 <div class="mm-wrap">
-    <p class="mm-header-text">Member Homepage Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020214-member-homepage-settings" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Member Homepage Settings"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020214-member-homepage-settings" target="_blank">Learn more</a></span></p>
 	<div id="mm-form-container2" style="margin-top: 10px;">
-	<p>When members login...</p>
+	<p><?php echo _mmt("When members login"); ?>...</p>
 		<div>
 			<input onchange="mmjs.showMbrHomepageOptions();" name="mm_member_homepage_setting" value='0' type="radio" <?php echo (($useWPFrontpageOnLogin!="1")?"checked":""); ?>  />
-			Redirect to a homepage specific to their membership level
+			<?php echo _mmt("Redirect to a homepage specific to their membership level"); ?>
 		</div>
 		<div style="magin-top:30px; margin-left:20px; margin-botton:20px; line-height:22px;" id="mm-mbr-homepage-options-div">
-			When members are logged in and click to go to the site's homepage...<br/>
+			<?php echo _mmt("When members are logged in and click to go to the site's homepage"); ?>...<br/>
 			<input name="mm_member_homepage_use_mbr_homepage" value='0' type="radio" <?php echo (($useWPFrontpageAfterLogin!="1")?"checked":""); ?>  />
-				Send them to the homepage associated with their membership level<br/>
+				<?php echo _mmt("Send them to the homepage associated with their membership level"); ?><br/>
 			<input name="mm_member_homepage_use_mbr_homepage" value='1' type="radio" <?php echo (($useWPFrontpageAfterLogin=="1")?"checked":""); ?>  />
-				Send them to the default homepage associated with the WordPress site as defined <a href='options-reading.php'>here</a>
+				<?php echo sprintf(_mmt("Send them to the default homepage associated with the WordPress site as defined %shere%s"),"<a href='options-reading.php'>",'</a>'); ?>
 		</div>
 		<div style="margin-top:10px;">
 			<input onchange="mmjs.showMbrHomepageOptions();" name="mm_member_homepage_setting"  value='1' type="radio" <?php echo (($useWPFrontpageOnLogin=="1")?"checked":""); ?>  />
-			Redirect to the default homepage associated with the WordPress site as defined <a href='options-reading.php'>here</a>
+			<?php echo sprintf(_mmt("Redirect to the default homepage associated with the WordPress site as defined %shere%s"),"<a href='options-reading.php'>","</a>"); ?>
 		</div>
 		
 	</div>

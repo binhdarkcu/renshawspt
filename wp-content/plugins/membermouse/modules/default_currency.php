@@ -68,9 +68,7 @@ function showCurrencyFormat()
     <p class="mm-header-text">Currency <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020239-currency-settings" target="_blank">Learn more</a></span></p>
     <div style="clear:both; height: 10px;"></div>
     <div style="margin-bottom:10px; width:550px;">
-    	Setting the currency indicates which currency customers will pay in and also determines how all product and coupon prices are 
-    	formatted across the site. If you're changing the currency and you've already defined product and coupon prices, you'll need to go 
-    	through each product or coupon and update the prices to the new currency. MemberMouse does NOT perform automatic currency conversion.
+    	<?php echo _mmt("Setting the currency indicates which currency customers will pay in and also determines how all product and coupon prices are formatted across the site. If you're changing the currency and you've already defined product and coupon prices, you'll need to go through each product or coupon and update the prices to the new currency. MemberMouse does NOT perform automatic currency conversion"); ?>.
     </div>
 	
 	<div style="margin-top:10px;">
@@ -83,36 +81,33 @@ function showCurrencyFormat()
 	<div style='margin:10px 0px 5px;'>
 		<label>
 			<input id="mm_postfix_iso_to_currency" name="mm_postfix_iso_to_currency" value='1' type="checkbox" <?php echo ($postfixIsoToCurrency == "1") ? "checked":""; ?> />
-			Append the currency code after the amount (ie. $100.00 becomes $100.00 USD)
+			<?php echo _mmt("Append the currency code after the amount");?> (ie. $100.00 becomes $100.00 USD)
 		</label>
 	</div>
 	
 	<div style="margin-top:15px;">
-		Sample format: <span style="font-family:courier; font-size:14px; margin-right:5px;"><?php echo _mmf(12345.67); ?></span>
+		<?php echo _mmt("Sample format");?>: <span style="font-family:courier; font-size:14px; margin-right:5px;"><?php echo _mmf(12345.67); ?></span>
 		
-		<a href="#" onclick="showCurrencyFormat()" style="font-size:11px;">incorrect format?</a>
+		<a href="#" onclick="showCurrencyFormat()" style="font-size:11px;"><?php echo _mmt("incorrect format");?>?</a>
 	</div>
 	<div id="mm-currency-format" style="display:none;" title="Currency Format">
 		<p style="font-size:14px; line-height:20px;">
-		We do our best to ensure that every currency uses the most accepted format. If you find that your currency isn't formatted 
-		in the most accepted way, please let us know and we'll update it. 
+		<?php echo _mmt("We do our best to ensure that every currency uses the most accepted format. If you find that your currency isn't formatted in the most accepted way, please let us know and we'll update it");?>. 
 		</p>
 		
 		<p style="font-size:14px; line-height:20px;">
-		Just <strong><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GENERAL_SETTINGS, MM_MODULE_SUPPORT); ?>">send us an email</a></strong> and 
-		let us know the <strong>name of your currency</strong> and how your currency should be formatted by sending us a <strong>sample formatted 
-		number</strong> (i.e. $12,345.67 or &pound;12,345.67).
+		<?php echo sprintf(_mmt("Just %s send us an email %s and let us know the %s name of your currency %s and how your currency should be formatted by sending us a sample %s formatted number %s"),'<strong><a href="'.MM_ModuleUtils::getUrl(MM_MODULE_GENERAL_SETTINGS, MM_MODULE_SUPPORT).'">','</a></strong>','<strong>','</strong>','<strong>','</strong>');?> (i.e. $12,345.67 or &pound;12,345.67).
 		</p>
 		
 		<p style="font-size:14px; line-height:20px;">
-			Make sure the sample formatted number demonstrates the following:
+			<?php echo _mmt("Make sure the sample formatted number demonstrates the following");?>:
 		</p>
 		
 		<p style="font-size:14px; line-height:20px;">
-			- The currency symbol to use<br/>
-			- Whether the currency symbol is at the beginning or the end<br/>
-			- The punctuation mark to use for the thousands separator<br/>
-			- The punctuation mark to use for the decimal point<br/>
+			- <?php echo _mmt("The currency symbol to use"); ?><br/>
+			- <?php echo _mmt("Whether the currency symbol is at the beginning or the end"); ?><br/>
+			- <?php echo _mmt("The punctuation mark to use for the thousands separator"); ?><br/>
+			- <?php echo _mmt("The punctuation mark to use for the decimal point"); ?><br/>
 		</p>
 	</div>
 </div>

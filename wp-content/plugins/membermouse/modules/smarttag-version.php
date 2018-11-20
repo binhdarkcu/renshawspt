@@ -16,13 +16,13 @@ $smartTagVersion = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_SMARTTA
 <div style="width: 600px; margin-top: 8px;" class="mm-divider"></div> 
 
 <div class="mm-wrap">
-    <p class="mm-header-text">SmartTag Version <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020473-set-the-smarttag-version" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("SmartTag Version"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020473-set-the-smarttag-version" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
 	
 	<div style="margin-top:10px;">
 		<input name="mm_smarttag_version" value='2.1' type="radio" <?php echo (($smartTagVersion=="2.1")?"checked":""); ?>  />
-		SmartTags 2.1 (<em>recommended</em>)
+		<?php echo _mmt("SmartTags"); ?> 2.1 (<em><?php echo _mmt("recommended"); ?></em>)
 		
 		<input name="mm_smarttag_version" value='2.0' type="radio" <?php echo (($smartTagVersion!="2.1")?"checked":""); ?> style="margin-left:10px;" />
-		SmartTags 2.0
+		<?php echo _mmt("SmartTags"); ?> 2.0
 	</div>
 </div>

@@ -17,7 +17,7 @@ $active_provider_token = $provider_entity->getToken();
 <div class="mm-wrap">
 		<form id="provider-config-form" name="form" method="post" action="#" autocomplete="off">
 		<div id="mm-email-service-provider-select" style="margin-top: 15px; margin-bottom: 15px; line-height: 26px;">
-			Select Provider: 
+			<?php echo _mmt("Select Provider"); ?>: 
 			<select name="provider_token" id="provider_token" onChange="mmjs.showNewProviderOptions(jQuery('#provider-config-form :input').serializeArray());"><?php echo MM_HtmlUtils::getEmailServiceProvidersList($active_provider_token)?></select>
 		</div>
 		
@@ -157,10 +157,10 @@ $active_provider_token = $provider_entity->getToken();
 					
 					$headers = array
 					(
-							'name'				=> array('content' => 'Bundle'),
-							'active_list'		=> array('content' => 'Active List', "attr" => ""),
-							'canceled_list'		=> array('content' => 'Canceled List', "attr" => ""),
-							'actions'			=> array('content' => 'Actions', "attr" => "style='width:86px;'")
+							'name'				=> array('content' => _mmt('Bundle')),
+							'active_list'		=> array('content' => _mmt('Active List'), "attr" => ""),
+							'canceled_list'		=> array('content' => _mmt('Canceled List'), "attr" => ""),
+							'actions'			=> array('content' => _mmt('Actions'), "attr" => "style='width:86px;'")
 					);
 					
 					$dataGrid->setHeaders($headers);
@@ -174,7 +174,7 @@ $active_provider_token = $provider_entity->getToken();
 					}
 					?>
 					<div class="mm-button-container">
-						<a onclick="mmjs.create('mm-bundle-mapping-dialog', 475, 235)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Bundle Mapping</a>
+						<a onclick="mmjs.create('mm-bundle-mapping-dialog', 475, 235)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Bundle Mapping"); ?></a>
 					</div>
 					
 					<div class="clear"></div>

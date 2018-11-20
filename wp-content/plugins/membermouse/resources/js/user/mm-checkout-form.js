@@ -66,7 +66,7 @@ var MM_CheckoutView = MM_Core.extend({
             return "";
         }
     },
-    checkoutx: function(serviceToken, doSubmit) {
+    checkoutx: function(serviceToken, doSubmit) {  
         var isFree = (parseInt(jQuery("#mm_is_free").val()) == 1) ? true : false;
         if (isFree == true) {
             mmjs.checkout(doSubmit, "");
@@ -198,7 +198,10 @@ var MM_CheckoutView = MM_Core.extend({
         var isMember = (parseInt(jQuery("#mm_is_member").val()) == 1) ? true : false;
         var isFree = (parseInt(jQuery("#mm_is_free").val()) == 1) ? true : false;
         var doComp = (parseInt(jQuery("#mm_do_comp").val()) == 1) ? true : false;
-        var shippingSame = jQuery("#mm_field_billing_equals_shipping").val();
+        
+        var shippingSame = jQuery("#mm_field_billing_equals_shipping").val(); 
+        
+        
         var shippingReq = (parseInt(shippingSame) == 0) ? true : false;
         // validate standard fields
                 
@@ -281,10 +284,11 @@ var MM_CheckoutView = MM_Core.extend({
         }
         
         // validate custom fields
-        var customFields = jQuery(':input[id^="mm_custom"]').serializeArray();
-        for (i = 0; i < customFields.length; i++) {
+        var customFields = jQuery('input[id^="mm_custom"]'); //.serializeArray();  
+ 
+        for (i = 0; i < customFields.length; i++) {  
             if (jQuery("#" + customFields[i].name + "_required").length > 0 && jQuery("#" + customFields[i].name + "_required").val() == "1") {
-                crntValue = mmjs.ltrim(customFields[i].value);
+                crntValue = mmjs.ltrim(customFields[i].value); 
                 // get the custom field type
                 if (jQuery("#" + customFields[i].name + "_type").length > 0) {
                     fieldType = jQuery("#" + customFields[i].name + "_type").val();
@@ -296,9 +300,20 @@ var MM_CheckoutView = MM_Core.extend({
                         // the checkbox implementation always puts the checkbox after the off value with the same name
                         // so if the next field value equals mm_cb_on the checkbox is checked off, otherwise it's not
                         nextValue = "";
-                        if (customFields.length > (i + 1)) {
-                            nextValue = mmjs.ltrim(customFields[i + 1].value);
+//                        if (customFields.length > (i + 1)) {
+//                            nextValue = mmjs.ltrim(customFields[i + 1].value);
+//                        } 
+                        
+                        /// new implementation where we use the specific helper field which
+                        /// appears to be toggled on demand. 
+                        /// The above implementation was not obtaining the right field value in
+                        /// checkbox situations.
+                        var helper = jQuery("#"+customFields[i].name+"_helper");
+                        if(helper.length>0){
+                        	nextValue = helper.val();
                         }
+                        // end implementation
+                        
                         if (nextValue != "mm_cb_on") {
 									 doSubmit = false;
                             if (jQuery("#" + customFields[i].name + "_label").length > 0) {
@@ -310,7 +325,18 @@ var MM_CheckoutView = MM_Core.extend({
                             return;
                         }
                     }
-                } else {
+                } if (fieldType == "radio") { 
+                	var radioObj = jQuery('input[name='+customFields[i].name+']:checked');
+                	if(radioObj!=null && radioObj!=undefined){ 
+                    	var selectedValue = radioObj.val(); 
+                    	if ((selectedValue == null) || (selectedValue == undefined) || (selectedValue == '') || (selectedValue == ' ') || (selectedValue.length == 0) || (selectedValue == '')) {
+                    		 doSubmit = false; 
+    		                 alert('This field is required'); 
+    		                 jQuery("#" + customFields[i].name).focus();
+    		                 return;
+                    	}	
+                	}  
+                }else {
                     if ((crntValue == '') || (crntValue == ' ') || (customFields[i].value.length == 0) || (customFields[i].value == null) || (customFields[i].value == '')) {
 							   doSubmit = false;
                         if (jQuery("#" + customFields[i].name + "_label").length > 0) {
@@ -323,7 +349,8 @@ var MM_CheckoutView = MM_Core.extend({
                     }
                 }
             }
-        }
+        }  
+        
         if (ccReq && jQuery('#mm_field_cc_number').length > 0) {
             if (jQuery('#mm_field_cc_number').val().length < 13) {
 					 doSubmit = false;
@@ -331,35 +358,27 @@ var MM_CheckoutView = MM_Core.extend({
                 return;
             }
         }
-        if (jQuery('#mm_field_email').is(':visible') == true) {
-            var emailCheck = mmjs.isValidEmail(document.forms['mm_checkout_form'].mm_field_email.value);
-        } else {
-            var emailCheck = true;
-        }
-        if (emailCheck) {
-            if (isAdmin && isCustomerSupportOrder == false) {
-					 doSubmit = false;
-                var msg = "Checkout form validated successfully.\n\n";
-                msg += "Checkout processing is disabled for administrators.\n\nTo test the entire checkout process, ";
-                msg += "please log out or login with a test member account.";
-                alert(msg);
-                return void(0);
-            } else 
-            {
-            	//constraint: preCheckoutFunctions are only called when isFree is false
-            	 if (doSubmit && (isFree || mmjs.callPreCheckoutFunctions())) 
-                 {
-            		 mmjs.submitCheckoutForm(isFree);
-            		 return;
-                 } 
-                 else 
-                 {
-                 	return;
-                 }
-            }
-        } else {
-        	return;
-        }
+         
+        if (isAdmin && isCustomerSupportOrder == false) {
+				 doSubmit = false;
+            var msg = "Checkout form validated successfully.\n\n";
+            msg += "Checkout processing is disabled for administrators.\n\nTo test the entire checkout process, ";
+            msg += "please log out or login with a test member account.";
+            alert(msg);
+            return void(0);
+        } else 
+        {
+        	//constraint: preCheckoutFunctions are only called when isFree is false
+        	 if (doSubmit && (isFree || mmjs.callPreCheckoutFunctions())) 
+             { 
+        		 mmjs.submitCheckoutForm(isFree);
+        		 return;
+             } 
+             else 
+             {
+             	return;
+             }
+        } 
     },
     submitCheckoutForm: function(isFree) 
     {
@@ -369,7 +388,7 @@ var MM_CheckoutView = MM_Core.extend({
             jQuery('#hasFormSubmitted').val(d.toUTCString());
             document.charset = 'UTF-8';
         	if (isFree) 
-        	{
+        	{ 
                 jQuery.blockUI({ message: MemberMouseGlobal.checkoutProcessingFreeMessage });
             } 
         	else 
@@ -377,7 +396,19 @@ var MM_CheckoutView = MM_Core.extend({
                 jQuery.blockUI({ message: MemberMouseGlobal.checkoutProcessingPaidMessage });
             }
             jQuery(".blockMsg").addClass(MemberMouseGlobal.checkoutProcessingMessageCSS);
-            document.mm_checkout_form.submit();
+
+            // Safari fix?
+            var isSafari = navigator.userAgent.indexOf("Safari") > -1;
+            if(isSafari)
+            { 
+            	setTimeout(function(){
+            		document.mm_checkout_form.submit();
+            		}, 500);
+            }
+            else
+            {
+            	document.mm_checkout_form.submit();	
+            }
         }
     },
     isValidCreditCard: function(type, ccnum) {
@@ -419,7 +450,7 @@ var MM_CheckoutView = MM_Core.extend({
         }
     },
 	 isValidEmail: function(str) {
-
+		 var email = str.trim();
 		 var ajax = new MM_Ajax(false, this.module, this.action, this.method);
 
 		 var values = {
@@ -428,12 +459,13 @@ var MM_CheckoutView = MM_Core.extend({
 
 		values.input_type  = 'EMAIL';
 		values.input_label = 'Email';
-		values.input_value = str; 
-
+		values.input_value = email; 
+		
 		this.validated = false;
-		ajax.async		= false;
-
-		ajax.send(values, false, 'mmjs', 'validateInputCallback'); 
+		if(email.length>0){
+			ajax.async		= false;
+			ajax.send(values, false, 'mmjs', 'validateInputCallback');
+		}
 		return this.validated;
 
 	},
@@ -564,6 +596,7 @@ var MM_CheckoutView = MM_Core.extend({
         } 
         return result2;
     },
+    
     toggleShippingInfo: function() {
         if (jQuery("#mm_checkbox_billing_equals_shipping").length > 0) {
             if (jQuery("#mm_checkbox_billing_equals_shipping").is(":checked")) {
@@ -575,6 +608,7 @@ var MM_CheckoutView = MM_Core.extend({
             }
         }
     },
+    
     toggleGiftSection: function() {
         if (jQuery("#mm_checkbox_is_gift").length > 0) {
             if (jQuery("#mm_checkbox_is_gift").is(":checked")) {

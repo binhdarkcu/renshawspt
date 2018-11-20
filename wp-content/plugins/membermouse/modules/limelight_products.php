@@ -63,9 +63,20 @@ foreach($data as $key => $item)
    	$llProduct = "{$item->limelight_product_name} [{$item->limelight_product_id}]";
    	$llProduct .= '<a href="javascript:mmjs.getLimeLightProductDescription(\''.$item->limelight_product_id.'\');" style="margin-left: 5px; cursor:pointer;" title="View Lime Light Product Info">'.MM_Utils::getIcon("info-circle", "blue", "1.3em", "2px;").'</a>';
    	
+   	$llProductNameAndID = "{$item->limelight_campaign_name} [{$item->limelight_campaign_id}]";
+   	if(intval($item->limelight_campaign_id)<=0)
+   	{
+   		if($item->limelight_campaign_id==0){
+   			$llProductNameAndID = "<i>ALL CAMPAIGNS</i>";
+   		}
+   		else{
+   			$llProductNameAndID = "{$item->limelight_campaign_name}";
+   		}
+   	}
+   	
 	$rows[] = array
     (
-    	array( 'content' => "{$item->limelight_campaign_name} [{$item->limelight_campaign_id}]"),
+    	array( 'content' => $llProductNameAndID),
     	array( 'content' => $llProduct),
     	array( 'content' => $mmProductName),
     	array( 'content' => $mmProductDescription),
@@ -106,7 +117,7 @@ if($dgHtml == "")
 				{
 	?>
 				<div class="mm-button-container">
-					<a onclick="mmjs.create('mm-limelight-products-dialog', 550, 335)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Product Mapping</a>
+					<a onclick="mmjs.create('mm-limelight-products-dialog', 550, 535)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Product Mapping</a>
 				</div>
 			
 				<div class="clear"></div>

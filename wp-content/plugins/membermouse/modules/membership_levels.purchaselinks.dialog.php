@@ -14,7 +14,7 @@ function generatePurchaseSection($productId)
 	<p><strong>Purchase Link SmartTag</strong><?php echo MM_Utils::getInfoIcon("You can use this Purchase Link SmartTag in any post or page on your site. When using this SmartTag MemberMouse will automatically generate a link customers can click on to purchase this membership level."); ?></p>
 	
 	<?php $smartTag = "<a href=\"[MM_Purchase_Link productId='{$productId}']\">Buy Now</a>" ?>
-	<input id="mm-smart-tag-<?php echo $productId; ?>" type="text" readonly value="<?php echo htmlentities($smartTag); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag-<?php echo $productId; ?>').focus(); jQuery('#mm-smart-tag-<?php echo $productId; ?>').select();" />
+	<input id="mm-smart-tag-<?php echo $productId; ?>" type="text" readonly value="<?php echo htmlentities($smartTag,ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag-<?php echo $productId; ?>').focus(); jQuery('#mm-smart-tag-<?php echo $productId; ?>').select();" />
 	
 	<ul style="margin-left:20px;">
 	<li>Set the <code>isGift</code> attribute to <code>true</code> to indicate that this purchase is a gift.</li>
@@ -27,7 +27,7 @@ function generatePurchaseSection($productId)
 	
 	<p><strong>Static Link</strong><?php echo MM_Utils::getInfoIcon("You can use this link anywhere -- in a PPC or banner ad, email, on your site, on a 3rd party site, etc. Customers can click on this link to purchase this membership level."); ?></p>
 	
-	<input id="mm-static-link-<?php echo $productId; ?>" type="text" readonly value="<?php echo htmlentities(MM_CorePageEngine::getCheckoutPageStaticLink($productId)); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link-<?php echo $productId; ?>').focus(); jQuery('#mm-static-link-<?php echo $productId; ?>').select();" />
+	<input id="mm-static-link-<?php echo $productId; ?>" type="text" readonly value="<?php echo htmlentities(MM_CorePageEngine::getCheckoutPageStaticLink($productId),ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link-<?php echo $productId; ?>').focus(); jQuery('#mm-static-link-<?php echo $productId; ?>').select();" />
 	<?php 
 		$affiliateId = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_AFFILIATE);
 		$subAffiliateId = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_SUB_AFFILIATE);
@@ -86,11 +86,11 @@ function generatePurchaseSection($productId)
 		<p>Purchase Link SmartTag<?php echo MM_Utils::getInfoIcon("You can use this Purchase Link SmartTag in any post or page on your site. When using this SmartTag MemberMouse will automatically generate a link customers can click on to sign up for this free membership level."); ?></p>
 	
 		<?php $smartTag = "<a href=\"[MM_Purchase_Link membershipId='{$p->accessTypeId}']\">Sign Up Now</a>"; ?>
-		<input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($smartTag); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" />	
+		<input id="mm-smart-tag" type="text" readonly value="<?php echo htmlentities($smartTag,ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-smart-tag').focus(); jQuery('#mm-smart-tag').select();" />	
 		
 		<p>Static Link<?php echo MM_Utils::getInfoIcon("You can use this link anywhere -- in a PPC or banner ad, email, on your site, on a 3rd party site, etc. Customers can click on this link to sign up for this free membership level."); ?></p>
 		
-		<input id="mm-static-link" type="text" readonly value="<?php echo htmlentities(MM_CorePageEngine::getCheckoutPageStaticLink($p->accessTypeId, true)); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link').focus(); jQuery('#mm-static-link').select();" />
+		<input id="mm-static-link" type="text" readonly value="<?php echo htmlentities(MM_CorePageEngine::getCheckoutPageStaticLink($p->accessTypeId, true),ENT_COMPAT | ENT_HTML401, "UTF-8"); ?>" style="width:440px; font-family:courier; font-size:11px;" onclick="jQuery('#mm-static-link').focus(); jQuery('#mm-static-link').select();" />
 	<?php } ?>
 	</div>
 </div>

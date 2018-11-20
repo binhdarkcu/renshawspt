@@ -49,6 +49,14 @@ jQuery(function($){
 <a href='http://support.membermouse.com/support/solutions/articles/9000020458-configuring-lime-light' target='_blank'>Need help configuring Lime Light?</a>
 </div>
 
+
+
+<div style="margin-top:5px; margin-bottom:10px;">
+<a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_LOGS, MM_MODULE_LIMELIGHT_LOG); ?>" class='mm-ui-button blue'>
+	View Lime Light IPN Log
+</a>
+</div>
+
 <div style="margin-bottom:10px;">
 	Lime Light URL
 	

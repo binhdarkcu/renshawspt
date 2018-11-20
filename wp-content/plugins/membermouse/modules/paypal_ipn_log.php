@@ -34,8 +34,12 @@ if(!empty($_REQUEST["to_date"]))
 <script type='text/javascript'>
 jQuery(document).ready(function()
 {
-	jQuery("#from_date").datepicker();
-	jQuery("#to_date").datepicker();
+	jQuery("#from_date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
+	jQuery("#to_date").datepicker({
+		dateFormat: "mm/dd/yy"
+	});
 });
 
 function viewInfo(eventId)

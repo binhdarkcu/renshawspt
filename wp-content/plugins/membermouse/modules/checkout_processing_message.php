@@ -21,10 +21,10 @@ function updatePreviewButton()
 }
 </script>
 <div class="mm-wrap">
-    <p class="mm-header-text">Checkout Processing Message <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020472-customize-the-checkout-page-processing-message" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Checkout Processing Message"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020472-customize-the-checkout-page-processing-message" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
 	<table style="margin-bottom:10px;">
 		<tr>
-			<td width='110' style='vertical-align:top;'>Paid Message<?php echo MM_Utils::getInfoIcon("This is the message that will be displayed to customers when a payment is being processed."); ?></td>
+			<td width='110' style='vertical-align:top;'><?php echo _mmt("Paid Message"); ?><?php echo MM_Utils::getInfoIcon("This is the message that will be displayed to customers when a payment is being processed."); ?></td>
 			<td>
 				<span style="font-family: courier; font-size: 11px;">
 				<textarea id='mm_checkout_paid_message' name='mm_checkout_paid_message' style="width: 380px; height: 50px;" onkeydown="updatePreviewButton()"><?php echo $checkoutPaidMessage; ?></textarea>
@@ -32,7 +32,7 @@ function updatePreviewButton()
 			</td>
 		</tr>
 		<tr>
-			<td style='vertical-align:top;'>Free Message<?php echo MM_Utils::getInfoIcon("This is the message that will be displayed to customers when they're signing up for a free account."); ?></td>
+			<td style='vertical-align:top;'><?php echo _mmt("Free Message"); ?><?php echo MM_Utils::getInfoIcon("This is the message that will be displayed to customers when they're signing up for a free account."); ?></td>
 			<td>
 				<span style="font-family: courier; font-size: 11px;">
 				<textarea id='mm_checkout_free_message' name='mm_checkout_free_message' style="width: 380px; height: 50px;" onkeydown="updatePreviewButton()"><?php echo $checkoutFreeMessage; ?></textarea>
@@ -50,7 +50,7 @@ function updatePreviewButton()
 	</table>
 	
 	<div>
-		<a id="mm-preview-button" target="_blank" href="<?php echo MM_CorePageEngine::getUrl(MM_CorePageType::$CHECKOUT, '')."?mm-checkout-preview=true" ?>" class="mm-ui-button green">Preview</a> 
-		<span id="mm-save-changes" style="display:none; font-size:11px;"><em>*save settings before previewing changes</em></span>
+		<a id="mm-preview-button" target="_blank" href="<?php echo MM_CorePageEngine::getUrl(MM_CorePageType::$CHECKOUT, '')."?mm-checkout-preview=true" ?>" class="mm-ui-button green"><?php echo _mmt("Preview"); ?></a> 
+		<span id="mm-save-changes" style="display:none; font-size:11px;"><em>*<?php echo _mmt("save settings before previewing changes"); ?></em></span>
 	</div>
 </div>

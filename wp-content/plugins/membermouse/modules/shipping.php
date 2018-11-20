@@ -16,9 +16,9 @@ $rows = array();
 
 $headers = array
 (	    
-   	'name'				=> array('content' => 'Name'),
-   	'rate'				=> array('content' => 'Rate'),
-   	'actions'			=> array('content' => 'Actions')
+   	'name'				=> array('content' => _mmt('Name')),
+   	'rate'				=> array('content' => _mmt('Rate')),
+   	'actions'			=> array('content' => _mmt('Actions'))
 );
 
 foreach($data as $key=>$item)
@@ -51,7 +51,7 @@ if($dgHtml == "") {
 ?>
 <div class="mm-wrap">
 	<div class="mm-button-container">
-		<a onclick="mmjs.create('mm-shipping-dialog', 300,195)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> Create Shipping Method</a>
+		<a onclick="mmjs.create('mm-shipping-dialog', 300,195)" class="mm-ui-button green"><?php echo MM_Utils::getIcon('plus-circle', '', '1.2em', '1px'); ?> <?php echo _mmt("Create Shipping Method"); ?></a>
 	</div>
 	
 	<div class="clear"></div>

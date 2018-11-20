@@ -30,7 +30,7 @@
 					<td>Search By</td>
 					<td>
 						<select id="mm-member-search-by-date" >
-							<option value='user_registered'>Registration Date</option>
+							<option value='user_registered'><?php echo _mmt('Registration Date'); ?></option>
 							<option value='status_updated'>Status Changed Date</option>
 						</select>
 					</td>
@@ -38,31 +38,31 @@
 				<tr>
 					<td>From</td>
 					<td>
-						<input id="mm-from-date" type="text" style="width: 152px" /> 
+						<input id="mm-from-date" type="text" style="width: 152px" placeholder="mm/dd/yyyy" /> 
 						<a onClick="jQuery('#mm-from-date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a>
 					</td>
 				</tr>
 				<tr>
 					<td>To</td>
 					<td>
-						<input id="mm-to-date" type="text" style="width: 152px"  />
+						<input id="mm-to-date" type="text" style="width: 152px" placeholder="mm/dd/yyyy" />
 						<a onClick="jQuery('#mm-to-date').focus();"><?php echo MM_Utils::getCalendarIcon(); ?></a>
 					</td>
 				</tr>
 				<tr>
-					<td>Member ID</td>
+					<td><?php echo _mmt('Member ID'); ?></td>
 					<td><input id="mm-member-id" type="text" size="25" /></td>
 				</tr>
 				<tr>
-					<td>First Name</td>
+					<td><?php echo _mmt('First Name'); ?></td>
 					<td><input id="mm-first-name" type="text" size="25" /></td>
 				</tr>
 				<tr>
-					<td>Last Name</td>
+					<td><?php echo _mmt('Last Name'); ?></td>
 					<td><input id="mm-last-name" type="text" size="25" /></td>
 				</tr>
 				<tr>
-					<td>Email</td>
+					<td><?php echo _mmt('Email'); ?></td>
 					<td><input id="mm-email" type="text" size="25" /></td>
 				</tr>
 			</table>
@@ -72,7 +72,7 @@
 			<td valign="top">
 			<table cellspacing="5">
 				<tr>
-					<td>Membership Levels</td>
+					<td><?php echo _mmt('Membership Levels'); ?></td>
 					<td>
 						<select id="mm-memberships[]" size="6" multiple="multiple" style="width:300px;">
 						<?php echo MM_HtmlUtils::getMemberships($selectedMembership); ?>
@@ -80,7 +80,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Bundles</td>
+					<td><?php echo _mmt('Bundles'); ?></td>
 					<td>
 						<select id="mm-bundles[]" size="6" multiple="multiple" style="width:300px;">
 						<?php echo MM_HtmlUtils::getBundles($selectedBundle); ?>
@@ -94,7 +94,7 @@
 			<td valign="top">
 			<table cellspacing="5">
 				<tr>
-					<td>Membership Status</td>
+					<td><?php echo _mmt('Membership Status'); ?></td>
 					<td>
 						<select id="mm-member-status-types[]" size="5" multiple="multiple" style="width:120px;">
 						<?php echo MM_HtmlUtils::getMemberStatusList(); ?>
@@ -104,7 +104,7 @@
 				
 				<?php if(MM_CustomField::hasCustomFields(false)) { ?>
 				<tr>
-					<td>Custom Field 1</td>
+					<td><?php echo _mmt('Custom Field 1'); ?></td>
 					<td>
 						<select id="mm-member-custom-field"  onchange="mmjs.changeCustomField('mm-member-custom-field');">
 							<option value=''>None</option>
@@ -116,7 +116,7 @@
 				</tr>
 				<?php if(count(MM_CustomField::getCustomFieldsList(false, false)) > 1) { ?>
 				<tr>
-					<td>Custom Field 2</td>
+					<td><?php echo _mmt('Custom Field 2'); ?></td>
 					<td>
 						<select id="mm-member-custom-field2"  onchange="mmjs.changeCustomField('mm-member-custom-field2');">
 							<option value=''>None</option>
@@ -133,14 +133,18 @@
 		</tr>
 	</table>
 	
-	<input type="button" class="mm-ui-button blue" value="Show Members" onclick="mmjs.search(0);">
-	<input type="button" class="mm-ui-button" value="Reset Form" onclick="mmjs.resetForm();">
+	<input type="button" class="mm-ui-button blue" value="<?php echo _mmt('Show Members'); ?>" onclick="mmjs.search(0);">
+	<input type="button" class="mm-ui-button" value="<?php echo _mmt('Reset Form'); ?>" onclick="mmjs.resetForm();">
 </div>
 
 <script type='text/javascript'>
 	jQuery(document).ready(function(){
-		jQuery("#mm-from-date").datepicker();
-		jQuery("#mm-to-date").datepicker();
+		jQuery("#mm-from-date").datepicker({
+				dateFormat: "mm/dd/yy"
+		});
+		jQuery("#mm-to-date").datepicker({
+				dateFormat: "mm/dd/yy"
+		});
 		jQuery("#mm-form-container :input").keypress(function(e) {
 	        if(e.which == 13) {
 	            jQuery(this).blur();

@@ -85,8 +85,12 @@
 
 <script type='text/javascript'>
 	jQuery(document).ready(function(){
-		jQuery("#mm-from-date").datepicker();
-		jQuery("#mm-to-date").datepicker();
+		jQuery("#mm-from-date").datepicker({
+				dateFormat: "mm/dd/yy"
+		});
+		jQuery("#mm-to-date").datepicker({
+				dateFormat: "mm/dd/yy"
+		});
 		jQuery("#mm-form-container :input").keypress(function(e) {
 	        if(e.which == 13) {
 	            jQuery(this).blur();

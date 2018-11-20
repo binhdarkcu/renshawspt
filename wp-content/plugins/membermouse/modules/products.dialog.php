@@ -60,7 +60,7 @@ function renderFieldOption($optionId, $affiliateId, $profileId)
 		</option>
 		<?php echo MM_HtmlUtils::getCommissionProfilesList($profileId); ?>
 	</select>
-	<a href="javascript:mmjs.addFieldOption('<?php echo htmlentities(MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'), ENT_QUOTES); ?>', '<?php echo htmlentities(MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'), ENT_QUOTES); ?>');"><?php echo MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'); ?></a>
+	<a href="javascript:mmjs.addFieldOption('<?php echo htmlentities(MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'), ENT_QUOTES, "UTF-8"); ?>', '<?php echo htmlentities(MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'), ENT_QUOTES, "UTF-8"); ?>');"><?php echo MM_Utils::getIcon('plus-circle', 'green', '1.2em', '1px'); ?></a>
 		
 	<?php if($optionId > 1) { ?>
 	<a href="javascript:mmjs.removeFieldOption('mm-partner-container-<?php echo $optionId; ?>');"><?php echo MM_Utils::getIcon('trash-o', 'red', '1.2em', '1px'); ?></a>
@@ -117,7 +117,7 @@ function insertAdvancedTemplate()
 
 function insertTemplate(str)
 {
-	jQuery("#purchase_confirmation_message").val(str);
+	jQuery("#mm-purchase_confirmation_message").val(str);
 }
 
 function unlockProduct()
@@ -356,7 +356,7 @@ function unlockProduct()
 	<?php 
 		$affiliateProvider = MM_AffiliateProviderFactory::getActiveProvider(); 
 		
-		if(!$affiliateProvider->supportsFeature(MM_AffiliateProviderFeatures::COMMISSION_TRACKING))
+		if(!empty($affiliateProvider) && !$affiliateProvider->supportsFeature(MM_AffiliateProviderFeatures::COMMISSION_TRACKING))
 		{
 	?>
 	<tr>

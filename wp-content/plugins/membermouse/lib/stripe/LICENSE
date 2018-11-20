@@ -1,8 +1,6 @@
-The stripe libraries (consisting of the files in this directory and any subdirectory) are licensed under:
-
 The MIT License
 
-Copyright (c) 2010 Stripe
+Copyright (c) 2010-2015 Stripe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -29,21 +29,6 @@ function loadFileContents($path)
 	return false;
 }
 
-function showLoadedClasses($class, $str="")
-{
-	if(isset($_GET["debug"]))
-	{
-		if($_GET["debug"]=="log")
-		{
-			LogMe::write($class." ".$str);
-		}
-		else
-		{
-			echo $class." ".$str."<br />";
-		}
-	}
-}
-
 class MM_ClassLoader
 {	
 	private static function includeLocalFiles($className,$classFileName)
@@ -140,7 +125,6 @@ class MM_ClassLoader
 				{
 					if(class_exists($className, false) || interface_exists($className,false))
 					{
-	        			showLoadedClasses($className, "<b>DB Class</b> Added {$className}");
 	        			return true;
 					}
 				}
@@ -245,23 +229,20 @@ class MM_ClassLoader
 									{
 					        			if(class_exists($className,false) || interface_exists($className,false))
 					        			{
-					        				showLoadedClasses($className, "Eval Added {$className} from cache");
-											return true;
+					        				return true;
 					        			}
 									}
 								}
 				        	}
 				        	else
 				        	{
-				        		showLoadedClasses($className, "Eval Added {$className} from cache");
 				        		return true;
 				        	}
 					    }
 		        	}
 		        	else
 		        	{
-				        showLoadedClasses($className, "<b>Stream</b> Added {$className} from cache");
-		        		return true;
+				        return true;
 		        	}
 			    }
 			}
@@ -274,12 +255,11 @@ class MM_ClassLoader
 	{
 		if(!$canRecurse)
 		{
-			LogMe::write("Missing {$className} from cache");
-			showLoadedClasses($className, "Eval Missing {$className} from cache");
+			MM_DiagnosticLog::logResponse(MM_DiagnosticLog::$MM_ERROR,"Missing {$className} from cache");
 		}
 		
 		/** only try to load MemberMouse classes **/
-		if ((strpos($className, "MM_") !== 0) && !preg_match("/LogMe/",$className))
+		if (strpos($className, "MM_") !== 0)
 		{
 			return false;
 		}
@@ -299,7 +279,7 @@ class MM_ClassLoader
 		
 		$forceUseDBCache = (MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_FORCE_USE_DB_CACHE) == "1") ? true : false;
 		
-		if (isLocalInstall("localhost") && !$forceUseDBCache)
+		if ((isLocalInstall("localhost")) && !$forceUseDBCache)
 		{
 			// look locally
 			if(self::includeLocalFiles($className, $classFileName))
@@ -363,11 +343,11 @@ class MM_ClassLoader
 		//if execution gets here, then a needed class is unloadable, meaning its not in the cache or in the dbcache
 		//reauth if we haven't already done so in the last 10 mins, and attempt to populate both
 		$lastAuth = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_LAST_CODE_REFRESH);
-		$minInterval = time() - 600; //(600 secs = 10 min)
+		$minInterval = time() - 86400; //(86400 secs = 1 day)
 		if ($canRecurse && class_exists("MM_MemberMouseService") && (empty($lastAuth) || ($lastAuth <= $minInterval)))
 		{			
-			$authSuccess = MM_MemberMouseService::authorize();
 			MM_OptionUtils::setOption(MM_OptionUtils::$OPTION_KEY_LAST_CODE_REFRESH, time());
+			$authSuccess = MM_MemberMouseService::authorize();
 			if ($authSuccess)
 			{
 				return MM_ClassLoader::load($className,false); //this will break if the session doesnt work.. but then you have bigger problems...

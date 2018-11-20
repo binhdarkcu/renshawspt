@@ -40,21 +40,21 @@ function updateWPLoginPageForm()
 </script>
 
 <div class="mm-wrap">
-    <p class="mm-header-text">WordPress Login Settings</p>
+    <p class="mm-header-text"><?php echo _mmt("WordPress Login Settings"); ?></p>
     
 	<div style="margin-top:10px;">
 		<input id="mm_login_page_cb" type="checkbox" <?php echo (($useMMLoginPage=="1")?"checked":""); ?> onchange="updateWPLoginPageForm();" />
-		Use the MemberMouse Login Page as the Default
+		<?php echo _mmt("Use the MemberMouse Login Page as the Default"); ?>
 		<input id="mm_login_page" name="mm_login_page" type="hidden" value="<?php echo $useMMLoginPage; ?>" />
 		
-		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020527-configure-the-default-login-page" target="_blank">Learn more</a></span>
+		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020527-configure-the-default-login-page" target="_blank"><?php echo _mmt("Learn more"); ?></a></span>
 	</div>
 	
 	<div style="margin-top:10px;">
 		<input id="mm_reset_password_page_cb" type="checkbox" <?php echo (($useMMResetPasswordPage=="1")?"checked":""); ?> onchange="updateWPLoginPageForm();" />
-		Use the MemberMouse Reset Password Page as the Default
+		<?php echo _mmt("Use the MemberMouse Reset Password Page as the Default"); ?>
 		<input id="mm_reset_password_page" name="mm_reset_password_page" type="hidden" value="<?php echo $useMMResetPasswordPage; ?>" />
 		
-		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020539-use-wordpress-reset-password-page" target="_blank">Learn more</a></span>
+		<span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020539-use-wordpress-reset-password-page" target="_blank"><?php echo _mmt("Learn more"); ?></a></span>
 	</div>
 </div>

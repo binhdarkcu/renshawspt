@@ -17,12 +17,12 @@ $dataGrid->recordName = "duplicate";
 // define datagrid headers
 $headers = array
 (	
-   	'member_name'			=> array('content' => 'Name', "attr" => "style='width:140px;'"),
-   	'user_email'			=> array('content' => 'Email', "attr" => "style='width:200px;'"),
-   	'order_number'			=> array('content' => 'Order#', "attr" => "style='width:80px;'"),
-   	'product'				=> array('content' => 'Product'),
-	'date_added'			=> array('content' => 'Date', "attr" => "style='width:140px;'"),
-	'actions'				=> array('content' => 'Actions', "attr" => "style='width:160px;'")
+   	'member_name'			=> array('content' => _mmt('Name'), "attr" => "style='width:140px;'"),
+   	'user_email'			=> array('content' => _mmt('Email'), "attr" => "style='width:200px;'"),
+   	'order_number'			=> array('content' => _mmt('Order#'), "attr" => "style='width:80px;'"),
+   	'product'				=> array('content' => _mmt('Product')),
+	'date_added'			=> array('content' => _mmt('Date'), "attr" => "style='width:140px;'"),
+	'actions'				=> array('content' => _mmt('Actions'), "attr" => "style='width:160px;'")
 );
 $datagridRows = array();
 
@@ -66,7 +66,7 @@ $dgHtml = $dataGrid->generateHtml();
 
 if(empty($dgHtml)) 
 {
-	$dgHtml = "<p><i>No duplicate subscriptions found.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No duplicate subscriptions found.")."</i></p>";
 }
 
 

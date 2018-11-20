@@ -37,16 +37,16 @@ if($maxIPs === false || $maxIPs === "")
 ?>
 <div style="width: 600px; margin-top: 8px;" class="mm-divider"></div> 
 <div class="mm-wrap">
-    <p class="mm-header-text">Account Sharing Protection <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020318-account-sharing-protection" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Account Sharing Protection"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020318-account-sharing-protection" target="_blank">Learn more</a></span></p>
    
 	<div style="margin-top:10px;">
 		<input onchange="mmjs.showAccountSharingForm()" id="mm-cb-enable-acct-sharing-prevention" name="mm_enable_acct_sharing_prevention" type="checkbox"  <?php echo (($enabled=="0")?"":"checked"); ?>  />
-		Enable account sharing protection
+		<?php echo _mmt("Enable account sharing protection"); ?>
 			
 		<input id="mm-enable-acct-sharing-prevention" type="hidden" />
 	</div>
 	<div id="mm-acct-sharing-prevention" style="margin-top:5px; display:none; padding-top:5px;">
-		Max IP Addresses Allowed in 24-Hour Period
+		<?php echo _mmt("Max IP Addresses Allowed in 24-Hour Period"); ?>
 		<input id="mm-acct-sharing-max-ips" name="mm_acct_sharing_max_ips" type="text" size="5" value="<?php echo $maxIPs; ?>" />
 	</div>
 </div>

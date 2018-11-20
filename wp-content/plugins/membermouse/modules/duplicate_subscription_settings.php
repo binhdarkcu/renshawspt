@@ -26,17 +26,16 @@ function allowSubscriptionChangeHandler()
 }
 </script>
 <div class="mm-wrap">
-    <p class="mm-header-text">Duplicate Subscription Settings <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020485-duplicate-subscription-settings" target="_blank">Learn more</a></span></p>
+    <p class="mm-header-text"><?php echo _mmt("Duplicate Subscription Settings"); ?> <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020485-duplicate-subscription-settings" target="_blank"><?php echo _mmt("Learn more"); ?></a></span></p>
     <div style="clear:both; height: 10px;"></div>
-    <div style="margin-bottom:10px; width:550px;">Checking the check box below indicates that when a member attempts to purchase a subscription that 
-    they already have active, MemberMouse will allow the purchase to go through and create a duplicate subscription. If the option below is unchecked, 
-    an error will be displayed to the member indicating that they have already purchased that subscription and it's still active.</div>
+    <div style="margin-bottom:10px; width:550px;">
+<?php echo _mmt("Checking the check box below indicates that when a member attempts to purchase a subscription that they already have active, MemberMouse will allow the purchase to go through and create a duplicate subscription. If the option below is unchecked, an error will be displayed to the member indicating that they have already purchased that subscription and it's still active");?>.</div>
 	
 	<div>
 		<label>
 			<input id="mm_allow_duplicate_subscriptions_cb" value='1' type="checkbox" <?php echo ($allowDuplicateSubscriptions == "1") ? "checked":""; ?> onchange="allowSubscriptionChangeHandler();" />
 			<input id="mm_allow_duplicate_subscriptions" name="mm_allow_duplicate_subscriptions" value='<?php echo $allowDuplicateSubscriptions; ?>' type="hidden" />
-			Allow members to have more than one of the same subscription active
+			<?php echo _mmt("Allow members to have more than one of the same subscription active"); ?>
 		</label>
 	</div>
 </div>

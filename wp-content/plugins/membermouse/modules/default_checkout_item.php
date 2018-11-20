@@ -47,20 +47,19 @@ function itemTypeChangeHandler()
 <div class="mm-wrap">
     <p class="mm-header-text">Default Membership Level or Product <span style="font-size:12px;"><a href="http://support.membermouse.com/support/solutions/articles/9000020291-set-the-default-membership-level-or-product" target="_blank">Learn more</a></span></p>
     <div style="clear:both; height: 10px;"></div>
-    <div style="margin-bottom:10px; width:550px;">Select the membership level or product MemberMouse should use if a customer visits the checkout
-    page without specifying a specific item to purchase:</div>
+    <div style="margin-bottom:10px; width:550px;"><?php echo _mmt("Select the membership level or product MemberMouse should use if a customer visits the checkout page without specifying a specific item to purchase"); ?>:</div>
 	
 	<div>
 		<label>
 			<input onchange="itemTypeChangeHandler();" name="mm_checkout_item_type" value='membership_level' type="radio" <?php echo (($dfltCheckoutItemType == "membership_level")?"checked":""); ?>  />
-			Membership Level
+			<?php echo _mmt("Membership Level"); ?>
 		</label>
 		
 		&nbsp;&nbsp;
 		
 		<label>
 			<input onchange="itemTypeChangeHandler();" name="mm_checkout_item_type" value='product' type="radio" <?php echo (($dfltCheckoutItemType == "product")?"checked":""); ?>  />
-			Product
+			<?php echo _mmt("Product"); ?>
 		</label>
 	</div>
 	

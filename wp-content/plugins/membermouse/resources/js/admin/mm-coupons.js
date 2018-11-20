@@ -141,6 +141,9 @@ var MM_CouponViewJS = MM_Core.extend({
 		else if(jQuery("#mm_coupon_type").val() != "free" && (jQuery("#mm_coupon_value").val()=="" || !re.test(jQuery("#mm_coupon_value").val()))){
 			return this.throwError("Please enter a numeric discount amount");
 		}
+		else if(jQuery("#mm_coupon_type").val() == "percentage" && parseInt(jQuery("#mm_coupon_value").val())>100){
+			return this.throwError("The coupon value must be less than or equal to 100.");
+		}
 		else if(jQuery("#mm_start_date").val()==""){
 			return this.throwError("Please provide a coupon start date");
 		}

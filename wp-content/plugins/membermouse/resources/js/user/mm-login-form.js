@@ -12,7 +12,7 @@ var MM_LoginFormViewJS = MM_Core.extend({
       mm_action: "login",
       log: jQuery('#log', this.form).val(),
       pwd: jQuery('#pwd', this.form).val(),
-      rememberme: jQuery('#rememberme', this.form).val() ? true : false,
+      rememberme: jQuery('#rememberme', this.form).is(":checked"),
       referer: jQuery("input[name='_wp_http_referer']", this.form).val(),
     };
     

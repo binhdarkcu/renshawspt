@@ -36,17 +36,17 @@ if (isset($current_user) && isset($current_user->ID))
 <div class="mm-wrap">
 	<?php if(count(MM_MembershipLevel::getMembershipLevelsList()) > 0) { ?>
 		<div style="margin-top:20px;" class="mm-button-container">			
-			<a id="mm-show-search-btn" onclick="mmjs.showSearch()" class="mm-ui-button blue" <?php echo ($showSearch) ? "style=\"display:none;\"" : ""; ?>><?php echo MM_Utils::getIcon('search-plus'); ?> Advanced Search</a>
-			<a id="mm-hide-search-btn" onclick="mmjs.hideSearch()" class="mm-ui-button" <?php echo ($showSearch) ? "" : "style=\"display:none;\""; ?>><?php echo MM_Utils::getIcon('search-minus'); ?> Advanced Search</a>
+			<a id="mm-show-search-btn" onclick="mmjs.showSearch()" class="mm-ui-button blue" <?php echo ($showSearch) ? "style=\"display:none;\"" : ""; ?>><?php echo MM_Utils::getIcon('search-plus'); ?> <?php echo _mmt('Advanced Search'); ?></a>
+			<a id="mm-hide-search-btn" onclick="mmjs.hideSearch()" class="mm-ui-button" <?php echo ($showSearch) ? "" : "style=\"display:none;\""; ?>><?php echo MM_Utils::getIcon('search-minus'); ?> <?php echo _mmt('Advanced Search'); ?></a>
 			
-			<a onclick="mmjs.create('mm-create-member-dialog', 500, 360)" class="mm-ui-button green" style="margin-left:15px;"><?php echo MM_Utils::getIcon('user'); ?> Create Member</a>
+			<a onclick="mmjs.create('mm-create-member-dialog', 500, 360)" class="mm-ui-button green" style="margin-left:15px;"><?php echo MM_Utils::getIcon('user'); ?> <?php echo _mmt('Create Member'); ?></a>
 			
-			<a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_MEMBERS, MM_MODULE_IMPORT_WIZARD); ?>" class="mm-ui-button" style="margin-left:15px;"><?php echo MM_Utils::getIcon('upload'); ?> Import Members</a>
+			<a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_MEMBERS, MM_MODULE_IMPORT_WIZARD); ?>" class="mm-ui-button" style="margin-left:15px;"><?php echo MM_Utils::getIcon('upload'); ?> <?php echo _mmt('Import Members'); ?></a>
 		
 			<?php 
 				if($showCsvExportButton) { 
 			?>
-			<a class="mm-ui-button" onclick="mmjs.csvExport(0);" style="margin-left:15px;"><?php echo MM_Utils::getIcon('download'); ?> Export Members</a>
+			<a class="mm-ui-button" onclick="mmjs.csvExport(0);" style="margin-left:15px;"><?php echo MM_Utils::getIcon('download'); ?> <?php echo _mmt('Export Members'); ?></a>
 			<?php } ?>
 		</div>
 	<?php } ?>

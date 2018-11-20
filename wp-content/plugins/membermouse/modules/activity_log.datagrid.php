@@ -32,16 +32,16 @@ $dataGrid->recordName = "event";
 $rows = array();
 $headers = array();
 
-$headers['event_type'] = array('content' => '<a onclick="mmjs.sort(\'event_type\');" href="#">Type</a>', "attr" => "style='width:50px;'");
+$headers['event_type'] = array('content' => '<a onclick="mmjs.sort(\'event_type\');" href="#">'._mmt("Type").'</a>', "attr" => "style='width:50px;'");
 
 if(!$isMemberDetailsArea)
 {
-   	$headers['user_id'] = array('content' => '<a onclick="mmjs.sort(\'user_id\');" href="#">Member</a>', "attr" => "style='width:250px;'");
+   	$headers['user_id'] = array('content' => '<a onclick="mmjs.sort(\'user_id\');" href="#">'._mmt("Member").'</a>', "attr" => "style='width:250px;'");
 }
 
-$headers['details'] = array('content' => 'Details');
-$headers['ip'] = array('content' => '<a onclick="mmjs.sort(\'ip\');" href="#">IP Address</a>', "attr" => "style='width:100px;'");
-$headers['date_added'] = array('content' => '<a onclick="mmjs.sort(\'date_added\');" href="#">Date</a>', "attr" => "style='width:150px;'");
+$headers['details'] = array('content' => _mmt('Details'));
+$headers['ip'] = array('content' => '<a onclick="mmjs.sort(\'ip\');" href="#">'._mmt("IP Address").'</a>', "attr" => "style='width:100px;'");
+$headers['date_added'] = array('content' => '<a onclick="mmjs.sort(\'date_added\');" href="#">'._mmt("Date").'</a>', "attr" => "style='width:150px;'");
 
 foreach($data as $key=>$item)
 {	
@@ -136,11 +136,11 @@ foreach($data as $key=>$item)
 						$affiliateInfo = "";
 						if(!empty($params[MM_ActivityLog::$PARAM_AFFILIATE_ID]))
 						{
-							$affiliateInfo .= "Affiliate ID: {$params[MM_ActivityLog::$PARAM_AFFILIATE_ID]}\n";
+							$affiliateInfo .= _mmt("Affiliate ID").": {$params[MM_ActivityLog::$PARAM_AFFILIATE_ID]}\n";
 						}
 						if(!empty($params[MM_ActivityLog::$PARAM_SUBAFFILIATE_ID]))
 						{
-							$affiliateInfo .= "Sub-affiliate ID: {$params[MM_ActivityLog::$PARAM_SUBAFFILIATE_ID]}";
+							$affiliateInfo .= _mmt("Sub-affiliate ID").": {$params[MM_ActivityLog::$PARAM_SUBAFFILIATE_ID]}";
 						}
 						$details .= MM_Utils::getAffiliateIcon($affiliateInfo, "margin-left:5px;");
 					}
@@ -209,28 +209,29 @@ foreach($data as $key=>$item)
 					}
 				}
 				
+				// render affiliate commission details dialog
 				if(($params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_EVENT] == MM_AffiliateController::$AFFILIATE_EVENT_TRACK_INITIAL_COMMISSION) ||
 					($params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_EVENT] == MM_AffiliateController::$AFFILIATE_EVENT_TRACK_REBILL_COMMISSION))
 				{
 				?>
 					<div id="mm-view-info-<?php echo $item->id; ?>" style="display:none;" title="Commission Request Details" style="font-size:11px;">
-						<p><strong>Commission Request Data</strong></p>
+						<p><strong><?php echo _mmt("Commission Request Data"); ?></strong></p>
 						
 						<p>
 				<?php 
 					if(!empty($params[MM_ActivityLog::$PARAM_AFFILIATE_ID]))
 					{
 				?>
-							Affiliate ID: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ID]; ?></span><br/>
+							<?php echo _mmt("Affiliate ID"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ID]; ?></span><br/>
 				<?php } ?>
-							Order Number: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_NUMBER]; ?></span><br/>
-							Order Total: <span style="font-family:courier;"><?php echo _mmf($params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_TOTAL]); ?></span><br/>
-							IP Address: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_IP_ADDRESS]; ?></span><br/>
+							<?php echo _mmt("Order Number"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_NUMBER]; ?></span><br/>
+							<?php echo _mmt("Order Total"); ?>: <span style="font-family:courier;"><?php echo _mmf($params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_TOTAL]); ?></span><br/>
+							<?php echo _mmt("IP Address"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_ORDER_IP_ADDRESS]; ?></span><br/>
 				<?php 
 					if(!empty($params[MM_ActivityLog::$PARAM_AFFILIATE_COUPON_CODE]))
 					{
 				?>
-							Coupon Code: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_COUPON_CODE]; ?></span>
+							<?php echo _mmt("Coupon Code"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_COUPON_CODE]; ?></span>
 				<?php } ?>
 						</p>
 						
@@ -238,18 +239,34 @@ foreach($data as $key=>$item)
 					if(!empty($params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_URL]))
 					{
 				?>
-						<p><strong>Request Sent to <?php echo $affiliateProviderName ?></strong></p>
+						<p><strong><?php echo _mmt("Request Sent to"); ?> <?php echo $affiliateProviderName ?></strong></p>
 						
-						<p style="font-size:12px;">This is the exact request that was sent to <?php echo $affiliateProviderName ?>. Note that this is a request only which means 
-						that a commission will not necessarily be recorded in <?php echo $affiliateProviderName ?>. Once the request is received, <?php echo $affiliateProviderName ?> 
-						will determine if a commission should be recorded based on the information provided. To know definitively which commissions
-						are being recorded log into <?php echo $affiliateProviderName ?>.</p>
+						<p style="font-size:12px;"><?php echo sprintf(_mmt("This is the exact request that was sent to %s. Note that this is a request only which means that a commission will not necessarily be recorded in %s. Once the request is received, %s will determine if a commission should be recorded based on the information provided. To know definitively which commissions are being recorded log into %s. "),$affiliateProviderName,$affiliateProviderName,$affiliateProviderName,$affiliateProviderName); ?></p>
 						
 						<p><span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_URL]; ?></span></p>
 				<?php } ?>
 					</div>
 				<?php 
 					$details .= MM_Utils::getInfoIcon("View commission request details", "margin-left:4px;", "viewInfo({$item->id})");
+				}
+				
+				
+				// render affiliate account create details dialog
+				if($params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_EVENT] == MM_AffiliateController::$AFFILIATE_EVENT_CREATE_ACCOUNT)
+				{
+				?>
+					<div id="mm-view-info-<?php echo $item->id; ?>" style="display:none;" title="<?php echo _mmt("Affiliate Account Creation Request Details"); ?>" style="font-size:11px;">						
+				<?php 
+					if(!empty($params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_URL]))
+					{
+				?>
+						<p style="font-size:12px;"><?php echo sprintf(_mmt("This is the request that was sent to %s to create an affiliate account"),$affiliateProviderName);?>:</p>
+						
+						<p style="width:400px;"><span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_AFFILIATE_TRACKING_URL]; ?></span></p>
+				<?php } ?>
+					</div>
+				<?php 
+					$details .= MM_Utils::getInfoIcon("View affiliate account creation request details", "margin-left:4px;", "viewInfo({$item->id})");
 				}
 				
 				break;
@@ -286,7 +303,7 @@ foreach($data as $key=>$item)
 								
 								if($params[MM_ActivityLog::$PARAM_ACCESS_STATUS] == MM_Status::$ERROR && !empty($params[MM_ActivityLog::$PARAM_ACCESS_STATUS_MESSAGE]))
 								{
-									$accessStatusInfo .= MM_Utils::getInfoIcon(htmlentities($params[MM_ActivityLog::$PARAM_ACCESS_STATUS_MESSAGE], ENT_QUOTES), "margin-left:4px;");
+									$accessStatusInfo .= MM_Utils::getInfoIcon(htmlentities($params[MM_ActivityLog::$PARAM_ACCESS_STATUS_MESSAGE], ENT_QUOTES, "UTF-8"), "margin-left:4px;");
 								}
 							}
 							break;
@@ -301,7 +318,7 @@ foreach($data as $key=>$item)
 							}
 							else
 							{
-								$accessName = "Unknown Bundle";
+								$accessName = _mmt("Unknown Bundle");
 							}
 							
 							if(!empty($params[MM_ActivityLog::$PARAM_ACCESS_STATUS]))
@@ -377,6 +394,7 @@ foreach($data as $key=>$item)
 					$hasCoupon = false;
 					$hasProration = false;
 					$orderTotal = "";
+					$undefinedPaymentAmount = false;
 					switch($params[MM_ActivityLog::$PARAM_BILLING_EVENT])
 					{
 						case MM_Event::$PAYMENT_RECEIVED:
@@ -419,8 +437,16 @@ foreach($data as $key=>$item)
 							
 							$details = "<span style='font-family:courier;'>Order# {$params[MM_ActivityLog::$PARAM_BILLING_ORDER_NUMBER]}</span>: ";
 							
-							$orderTotal = _mmf($params[MM_ActivityLog::$PARAM_BILLING_ORDER_TOTAL]);
-							$orderTotal = "<span style='font-family:courier;'>{$orderTotal}</span>";
+					        if(!preg_match("/[a-zA-Z]+/", $params[MM_ActivityLog::$PARAM_BILLING_ORDER_TOTAL]))
+                            {
+                            	$orderTotal = _mmf($params[MM_ActivityLog::$PARAM_BILLING_ORDER_TOTAL]);
+                                $orderTotal = "<span style='font-family:courier;'>{$orderTotal}</span>";
+                            }
+                            else
+                            {
+                            	$orderTotal = $params[MM_ActivityLog::$PARAM_BILLING_ORDER_TOTAL];
+                            	$undefinedPaymentAmount = true;
+                            }
 							break;
 					}
 						
@@ -442,7 +468,11 @@ foreach($data as $key=>$item)
 								
 						case MM_Event::$PAYMENT_REBILL:
 							$eventType = MM_Utils::getIcon('money', 'green', '1.4em', '2px', 'Rebill Payment Received');
-							$details .= "Rebill payment of {$orderTotal} received for subscription product <em>{$productName}</em>";
+							if(!$undefinedPaymentAmount)
+								$details .= "Rebill payment of {$orderTotal} received for subscription product <em>{$productName}</em>";
+							else 
+								$details .= $orderTotal. " Rebill payment received for <em>{$productName}</em>.";
+							
 							break;
 								
 						case MM_Event::$PAYMENT_REBILL_DECLINED:
@@ -563,12 +593,12 @@ foreach($data as $key=>$item)
 						{
 						?>
 	<div id="mm-view-info-<?php echo $item->id; ?>" style="display:none;" title="Email Viewer" style="font-size:11px;">
-		<p>To: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_TO_ADDRESS]; ?></span><br/>
+		<p><?php echo _mmt("To"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_TO_ADDRESS]; ?></span><br/>
 		<?php if(!empty($params[MM_ActivityLog::$PARAM_EMAIL_CC_ADDRESSES])) { ?>
-		Cc: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_CC_ADDRESSES]; ?></span><br/>
+		<?php echo _mmt("Cc"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_CC_ADDRESSES]; ?></span><br/>
 		<?php } ?>
-		From: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_FROM_ADDRESS]; ?></span><br/>
-		Subject: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_SUBJECT]; ?></span></p>
+		<?php echo _mmt("From"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_FROM_ADDRESS]; ?></span><br/>
+		<?php echo _mmt("Subject"); ?>: <span style="font-family:courier;"><?php echo $params[MM_ActivityLog::$PARAM_EMAIL_SUBJECT]; ?></span></p>
 		<p><span style="font-family:courier;"><?php echo nl2br($params[MM_ActivityLog::$PARAM_EMAIL_BODY]); ?></span></p>
 	</div>
 						<?php 
@@ -581,7 +611,6 @@ foreach($data as $key=>$item)
 						$details .= $urlParts[0];
 					}
 				}
-				
 				break;
 		}
 	}
@@ -608,7 +637,7 @@ $dgHtml = $dataGrid->generateHtml();
 
 if($dgHtml == "") 
 {
-	$dgHtml = "<p><i>No activity found.</i></p>";
+	$dgHtml = "<p><i>"._mmt("No activity found.")."</i></p>";
 }
 
 echo $dgHtml;

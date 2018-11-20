@@ -78,9 +78,7 @@ $aliasDescription = "You can use aliases if there's more than one querystring pa
 <div class="mm-wrap">
 <div style="width:600px">
 
-<p>Affiliate IDs and Sub-affiliate IDs are passed to your site via parameters appended to the end of the URL (read this article to 
-<a href="http://support.membermouse.com/support/solutions/articles/9000020330-create-an-affiliate-link" target="_blank">learn more about creating affiliate links</a>). Enter the parameter keywords below that you want to use
-to pass affiliate and sub-affiliate IDs to your site:</p>
+<p><?php echo sprintf(_mmt("Affiliate IDs and Sub-affiliate IDs are passed to your site via parameters appended to the end of the URL (read this article to %slearn more about creating affiliate links%s). Enter the parameter keywords below that you want to useto pass affiliate and sub-affiliate IDs to your site"),'<a href="http://support.membermouse.com/support/solutions/articles/9000020330-create-an-affiliate-link" target="_blank">','</a>');?>:</p>
 </div>
 <div id="mm-form-container" style="margin-top: 10px; margin-bottom: 15px;">	
 	<table>
@@ -106,7 +104,7 @@ to pass affiliate and sub-affiliate IDs to your site:</p>
 		
 		<tr>
 			<td width='150px'>
-				Affiliate Keyword
+				<?php echo _mmt("Affiliate Keyword");?>
 			</td>
 			<td>
 				<input type='text' name='<?php echo MM_OptionUtils::$OPTION_KEY_AFFILIATE; ?>' value='<?php echo $affiliateId; ?>' size='30' style="font-family:courier;" />
@@ -114,21 +112,21 @@ to pass affiliate and sub-affiliate IDs to your site:</p>
 		</tr>
 		<tr>
 			<td width='125px'>
-				Affiliate Keyword Aliases
+				<?php echo _mmt("Affiliate Keyword Aliases");?>
 			</td>
 			<td>
 				<input type='text' name='<?php echo MM_OptionUtils::$OPTION_KEY_AFFILIATE_ALIAS; ?>' value='<?php echo $affiliateIdAlias; ?>' size='30' style="font-family:courier;" />
 				
 				<span style="margin-left:5px; color:#999;">
 					<?php echo MM_Utils::getInfoIcon($aliasDescription, ""); ?>
-					<em>separate multiple aliases with commas</em>
+					<em><?php echo _mmt("separate multiple aliases with commas");?></em>
 				</span>
 			</td>
 		</tr>
 		<tr><td style="height:5px;"></td></tr>
 		<tr>
 			<td>
-				Sub-Affiliate Keyword
+				<?php echo _mmt("Sub-Affiliate Keyword");?>
 			</td>
 			<td>
 				<input type='text' name='<?php echo MM_OptionUtils::$OPTION_KEY_SUB_AFFILIATE; ?>' value='<?php echo $subAffiliateId; ?>' size='30' style="font-family:courier;" />
@@ -136,28 +134,28 @@ to pass affiliate and sub-affiliate IDs to your site:</p>
 		</tr>
 		<tr>
 			<td width='125px'>
-				Sub-Affiliate Keyword Aliases
+				<?php echo _mmt("Sub-Affiliate Keyword Aliases");?> 
 			</td>
 			<td>
 				<input type='text' name='<?php echo MM_OptionUtils::$OPTION_KEY_SUB_AFFILIATE_ALIAS; ?>' value='<?php echo $subAffiliateIdAlias; ?>' size='30' style="font-family:courier;" />
 				
 				<span style="margin-left:5px; color:#999;">
 					<?php echo MM_Utils::getInfoIcon($aliasDescription, ""); ?>
-					<em>separate multiple aliases with commas</em>
+					<em><?php echo _mmt("separate multiple aliases with commas");?></em>
 				</span>
 			</td>
 		</tr>
 		<tr><td style="height:5px;"></td></tr>
 		<tr>
 			<td>
-				Lifespan
+				<?php echo _mmt("Lifespan");?>
 			</td>
 			<td>
-				<input type='text' style='width: 50px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_AFFILIATE_LIFESPAN; ?>' value='<?php echo $lifespan; ?>' style="font-family:courier;" /> days
+				<input type='text' style='width: 50px;' name='<?php echo MM_OptionUtils::$OPTION_KEY_AFFILIATE_LIFESPAN; ?>' value='<?php echo $lifespan; ?>' style="font-family:courier;" /> <?php echo _mmt("days");?>
 				</td>
 			</tr>
 		</table>
-<p><input type='submit' value='Save Settings' class="mm-ui-button blue" /></p>
+<p><input type='submit' value='<?php echo _mmt("Save Settings");?>' class="mm-ui-button blue" /></p>
 </div>
 </div>
 </form>
@@ -169,5 +167,5 @@ alert('<?php echo $error; ?>');
 </script>
 
 <?php if(isset($_POST[MM_OptionUtils::$OPTION_KEY_AFFILIATE_LIFESPAN])) { ?>
-<script>alert("Settings saved successfully");</script>
+<script>alert("<?php echo _mmt("Settings saved successfully");?>");</script>
 <?php } ?>

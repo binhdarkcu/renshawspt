@@ -7,7 +7,22 @@ var MM_LimeLightProductsViewJS = MM_Core.extend({
   
 	processForm: function()
 	{   
-		jQuery("#limelight_campaign_name").attr('value', jQuery("#limelight_campaign_id :selected").text());
+		//jQuery("#limelight_campaign_name").attr('value', jQuery("#limelight_campaign_id :selected").text());
+		
+	    var selectedNames = $("#limelight_campaign_id option:selected").map(function () {
+	        return $(this).text();
+	    }).get().join('|');
+	    
+	    jQuery("#limelight_campaign_name").attr('value', selectedNames);
+	    
+	    if(jQuery("#limelight_map_all_associated_campaigns").is(":checked"))
+	    {
+	    	jQuery("#limelight_campaign_map_all").val("1");
+	    }
+	    else
+	    {
+	    	jQuery("#limelight_campaign_map_all").val("0");
+	    }
 		
 		if(jQuery("#limelight_product_id_selector").is(":visible"))
 		{
@@ -48,6 +63,18 @@ var MM_LimeLightProductsViewJS = MM_Core.extend({
 	    
 	    var ajax = new MM_Ajax(false, module, action, method);
 	    ajax.send(values, false, 'mmjs','limeLightProductsHandler');	
+	},
+	
+	doToggleCampaignSelection: function()
+	{ 
+		if(jQuery("#limelight_map_all_associated_campaigns").is(":checked"))
+		{
+			jQuery("#limelight_campaign_id").attr("disabled","disabled");
+		}
+		else
+		{
+			jQuery("#limelight_campaign_id").removeAttr("disabled");
+		}
 	},
 	
 	limeLightProductsHandler: function(data)
@@ -122,7 +149,7 @@ var MM_LimeLightProductsViewJS = MM_Core.extend({
 			alert(data.message);
 		}
 		else
-		{		
+		{		 
 			jQuery('#mm_product_description').html(data.message);
 		}
 	}

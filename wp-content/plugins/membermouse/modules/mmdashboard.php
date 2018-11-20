@@ -7,7 +7,7 @@
 global $wpdb;
 global $current_user;
 
-$startDate = MM_Utils::dateToUTC(MM_Utils::getCurrentTime("Y-m-d 00:00",false), "Y-m-d H:i:s");
+$startDate = MM_Utils::dateToUTC(MM_Utils::getCurrentTime("Y-m-d 00:00",false), "Y-m-d 00:00:00","00:00:00"); 
 
 /* 
  * start calculations
@@ -140,32 +140,32 @@ $startDate = MM_Utils::dateToLocal($startDate);
 	<div class="mm-dashboard-header">       
         <div class="logo"><a href="http://membermouse.com/" target="_blank"><img src="https://membermouse.com/assets/plugin_images/membermouse-logo.png" alt="MemberMouse" style="width:340px; padding-top:12px;"></a></div> 
 		        <ul class="mm-quick-nav">
-	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_MEMBERS); ?>"><i class="fa fa-users"></i> Manage Members</a></li>
-	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_TRANSACTIONS); ?>"><i class="fa fa-money"></i> Browse Transactions</a></li>
-	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_REPORTING); ?>"><i class="fa fa-bar-chart-o"></i> Reporting Suite</a></li>
-	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_PRODUCT_SETTINGS); ?>"><i class="fa fa-shopping-cart"></i> Product Settings</a></li>
+	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_MEMBERS); ?>"><i class="fa fa-users"></i> <?php echo _mmt("Manage Members"); ?></a></li>
+	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_MANAGE_TRANSACTIONS); ?>"><i class="fa fa-money"></i> <?php echo _mmt("Browse Transactions"); ?></a></li>
+	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_REPORTING); ?>"><i class="fa fa-bar-chart-o"></i> <?php echo _mmt("Reporting Suite"); ?></a></li>
+	   				<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_PRODUCT_SETTINGS); ?>"><i class="fa fa-shopping-cart"></i> <?php echo _mmt("Product Settings"); ?></a></li>
 	   			</ul>       
 		    </div>
 		    
    			<div class="mm-metric-wrapper">
    				<div class="mm-metric-container mm-metric-container-25 blue">
    					<h3 class="metric-header">
-   						<i class="fa fa-users"></i> Membership Snapshot
+   						<i class="fa fa-users"></i> <?php echo _mmt("Membership Snapshot"); ?>
    					</h3>
    					<div class="metric-row">
-	   					Free Members Today
+	   					<?php echo _mmt("Free Members Today"); ?>
 	   					<span class="row-value"><?php echo number_format($newMembersFree); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Total Free Members
+	   					<?php echo _mmt("Total Free Members"); ?>
 	   					<span class="row-value"><?php echo number_format($statistics[MM_MemberMouseService::$USAGE_FREE_MEMBERS]); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Paid Members Today
+	   					<?php echo _mmt("Paid Members Today"); ?>
 	   					<span class="row-value"><?php echo number_format($newMembersPaid); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Total Paid Members
+	   					<?php echo _mmt("Total Paid Members"); ?>
 	   					<span class="row-value"><?php echo number_format($statistics[MM_MemberMouseService::$USAGE_PAID_MEMBERS]); ?></span>
 	   				</div>
    				</div>
@@ -173,22 +173,22 @@ $startDate = MM_Utils::dateToLocal($startDate);
    				
    				<div class="mm-metric-container mm-metric-container-25 blue">
    					<h3 class="metric-header">
-   						<i class="fa fa-cubes"></i> Bundle Snapshot
+   						<i class="fa fa-cubes"></i> <?php echo _mmt("Bundle Snapshot"); ?>
    					</h3>
    					<div class="metric-row">
-	   					Free Bundles Today
+	   					<?php echo _mmt("Free Bundles Today"); ?>
 	   					<span class="row-value"><?php echo number_format($newBundlesFree); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Total Free Bundles
+	   					<?php echo _mmt("Total Free Bundles"); ?>
 	   					<span class="row-value"><?php echo number_format($statistics[MM_MemberMouseService::$USAGE_FREE_BUNDLES]); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Paid Bundles Today
+	   					<?php echo _mmt("Paid Bundles Today"); ?>
 	   					<span class="row-value"><?php echo number_format($newBundlesPaid); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Total Paid Bundles
+	   					<?php echo _mmt("Total Paid Bundles"); ?>
 	   					<span class="row-value"><?php echo number_format($statistics[MM_MemberMouseService::$USAGE_PAID_BUNDLES]); ?></span>
 	   				</div>
    				</div>
@@ -196,18 +196,18 @@ $startDate = MM_Utils::dateToLocal($startDate);
    				
    				<div class="mm-metric-container mm-metric-container-25 blue">
    					<h3 class="metric-header">
-   						<i class="fa fa-shopping-cart"></i> Product Snapshot
+   						<i class="fa fa-shopping-cart"></i> <?php echo _mmt("Product Snapshot"); ?>
    					</h3>
    					<div class="metric-row">
-	   					Products
+	   					<?php echo _mmt("Products"); ?>
 	   					<span class="row-value"><?php echo number_format($statistics[MM_MemberMouseService::$CONFIG_PRODUCTS]); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Membership Levels
+	   					<?php echo _mmt("Membership Levels"); ?>
 	   					<span class="row-value"><?php echo (number_format($statistics[MM_MemberMouseService::$CONFIG_MEMBERSHIPS_FREE]) + number_format($statistics[MM_MemberMouseService::$CONFIG_MEMBERSHIPS_PAID])) ; ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Bundles
+	   					<?php echo _mmt("Bundles"); ?>
 	   					<span class="row-value"><?php echo (number_format($statistics[MM_MemberMouseService::$CONFIG_BUNDLES_FREE]) + number_format($statistics[MM_MemberMouseService::$CONFIG_BUNDLES_PAID])) ; ?></span>
 	   				</div>
 	   				<div class="metric-row">
@@ -218,22 +218,22 @@ $startDate = MM_Utils::dateToLocal($startDate);
    				
    				<div class="mm-metric-container mm-metric-container-25 blue">
    					<h3 class="metric-header">
-   						<i class="fa fa-times"></i> Retention Snapshot
+   						<i class="fa fa-times"></i> <?php echo _mmt("Retention Snapshot"); ?>
    					</h3>
    					<div class="metric-row">
-	   					Canceled Free Memberships
+	   					<?php echo _mmt("Canceled Free Memberships"); ?>
 	   					<span class="row-value"><?php echo number_format($newMbrCancelFree); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Canceled Paid Memberships
+	   					<?php echo _mmt("Canceled Paid Memberships"); ?>
 	   					<span class="row-value"><?php echo number_format($newMbrCancelPaid); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Canceled Free Bundles
+	   					<?php echo _mmt("Canceled Free Bundles"); ?>
 	   					<span class="row-value"><?php echo number_format($newBundleCancelFree); ?></span>
 	   				</div>
 	   				<div class="metric-row">
-	   					Canceled Paid Bundles
+	   					<?php echo _mmt("Canceled Paid Bundles"); ?>
 	   					<span class="row-value"><?php echo number_format($newBundleCancelPaid); ?></span>
 	   				</div>
    				</div>
@@ -259,7 +259,7 @@ $startDate = MM_Utils::dateToLocal($startDate);
    			<div>
 				<div class="mm-video-header" style="cursor:pointer;" onclick="mmjs.toggleTrainingVideos();">
 			 		<h3 style="color:#fff">
-			 			<i class="fa fa-youtube-play" style="left:6px; top:1px;"></i> Training Videos
+			 			<i class="fa fa-youtube-play" style="left:6px; top:1px;"></i> <?php echo _mmt("Training Videos"); ?>
 			 			<a id="hide-training-videos-btn" <?php echo ($showTrainingVideos) ? "style=\"display:none;\"" : ""; ?>><i class="fa fa-chevron-circle-down" style="color:#fff"></i></a>
 			 			<a id="show-training-videos-btn" <?php echo ($showTrainingVideos) ? "" : "style=\"display:none;\""; ?>><i class="fa fa-chevron-circle-up" style="color:#fff"></i></a>
 			 		</h3>
@@ -271,31 +271,31 @@ $startDate = MM_Utils::dateToLocal($startDate);
    			
    			<div class="mm-content-wrapper" style="margin-top:20px">
    				<div class="mm-content-container" style="position:relative;">
-   					<h3><i class="fa fa-support" style="top:0px;"></i> Support</h3>
+   					<h3><i class="fa fa-support" style="top:0px;"></i> <?php echo _mmt("Support"); ?></h3>
    					<div style="position:absolute; top:-5px; right:0px;">
    						<a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GENERAL_SETTINGS, MM_MODULE_SAFE_MODE); ?>" class="mm-ui-button white"><i class="fa fa-life-saver"></i> Safe Mode</a>
    					</div>
    					<ul class="spaced-list">
-   						<li><a href="http://support.membermouse.com/support/home" target="_blank">Support Center</a></li>
+   						<li><a href="http://support.membermouse.com/support/home" target="_blank"><?php echo _mmt("Support Center"); ?></a></li>
    						<?php if(MM_SupportUtils::hasEmailSupport()) { ?>
-   						<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GENERAL_SETTINGS, MM_MODULE_SUPPORT); ?>"><i class="fa fa-envelope"></i> Contact Support</a></li>
+   						<li><a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GENERAL_SETTINGS, MM_MODULE_SUPPORT); ?>"><i class="fa fa-envelope"></i> <?php echo _mmt("Contact Support"); ?></a></li>
    						<?php } ?>
    						<?php if(MM_SupportUtils::hasPhoneSupport() && false) { ?>
 		   				<li><i class="fa fa-phone"></i> (512) 630-2219</li>
 		   				<?php } ?>
    					</ul>
 	   				
-   					<h3><i class="fa fa-money" style="top:1px;"></i> Profit Alerts</h3>
+   					<h3><i class="fa fa-money" style="top:1px;"></i> <?php echo _mmt("Profit Alerts"); ?></h3>
    					<ul class="tips">
    					<?php
    						if(MM_MemberMouseService::hasPermission(MM_MemberMouseService::$FEATURE_REPORTING_SUITE) != MM_MemberMouseService::$ACTIVE)
    						{
    					?>
-   						<li><i class="fa fa-check-square"></i> Learn more about the <a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GET_REPORTING); ?>">Advanced Reporting Suite</a></li>
+   						<li><i class="fa fa-check-square"></i> <?php echo _mmt("Learn more about the"); ?> <a href="<?php echo MM_ModuleUtils::getUrl(MM_MODULE_GET_REPORTING); ?>"><?php echo _mmt("Advanced Reporting Suite"); ?></a></li>
    					<?php } ?>
-   						<li><i class="fa fa-check-square"></i> Earn 20% recurring commission with our <a href="http://membermouse.com/affiliate-program/" target="_blank">Affiliate Program</a></li>
+   						<li><i class="fa fa-check-square"></i> <?php echo _mmt("Earn 20% recurring commission with our"); ?> <a href="http://membermouse.com/affiliate-program/" target="_blank"><?php echo _mmt("Affiliate Program"); ?></a></li>
    					</ul>
-   					<h3><i class="fa fa-comments"></i> News</h3>
+   					<h3><i class="fa fa-comments"></i> <?php echo _mmt("News"); ?></h3>
    					<div class="mm-news-feed">
    						<?php 
 	   			function changeCachePeriod($secs)
@@ -343,7 +343,7 @@ $startDate = MM_Utils::dateToLocal($startDate);
    				
    				<div class="mm-content-container w50">
    					
-   					<h3><i class="fa fa-bank" style="top:1px;"></i> MemberMouse Academy</h3>
+   					<h3><i class="fa fa-bank" style="top:1px;"></i> <?php echo _mmt("MemberMouse Academy"); ?></h3>
    					<div class="mm-academy-feed">
    						<?php 
 	   			if(function_exists('fetch_feed')) 
@@ -391,7 +391,7 @@ $startDate = MM_Utils::dateToLocal($startDate);
    		$minorVersion = MM_OptionUtils::getOption(MM_OptionUtils::$OPTION_KEY_MINOR_VERSION);
    		if(empty($minorVersion)) { $minorVersion = MM_MemberMouseService::$DEFAULT_MINOR_VERSION; }
    	?>
-   	<div class="mm-version">MemberMouse Version <span><?php echo MemberMouse::getPluginVersion()."-".$minorVersion; ?></span></div>
+   	<div class="mm-version"><?php echo _mmt("MemberMouse Version"); ?> <span><?php echo MemberMouse::getPluginVersion()."-".$minorVersion; ?></span></div>
    		
 </div>
 <!--/.mm-view-container-->
