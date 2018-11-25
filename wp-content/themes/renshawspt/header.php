@@ -49,9 +49,9 @@
         <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/jquery-migrate.min.js?ver=1.4.1'></script>
         <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/gdpr-banner.js?ver=1.0.0'></script>
 
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/global.js?ver=2.2.8'></script>
+<!--        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/global.js?ver=2.2.8'></script>
         <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/user/mm-preview.js?ver=2.2.8'></script>
+        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/user/mm-preview.js?ver=2.2.8'></script>-->
         <link rel='https://api.w.org/' href='https://www.renshawspt.com/wp-json/' />
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.renshawspt.com/xmlrpc.php?rsd" />
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.renshawspt.com/wp-includes/wlwmanifest.xml" />
@@ -132,7 +132,7 @@
                         <div class="navbar-wrapper clearfix">
 
                             <nav id="main-nav-wrap" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
-                                <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="https://www.renshawspt.com/login/">Member Login</a> </li>
+                                <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url(); ?>/login/">Member Login</a> </li>
                                 </ul>									<!-- /#main-nav -->
 
                             </nav>
