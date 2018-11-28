@@ -109,41 +109,45 @@
             var tbScrollHighlight = {"fixedHeaderSelector":"#headerwrap.fixed-header", "speed":"900", "navigation":"#main-nav", "scrollOffset":"-5", "scroll":"internal"};
             /* ]]> */
         </script>
-        <script type='text/javascript' defer="defer" src='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/js/main.min.js?ver=3.5.8'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/accordion.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' defer="defer" src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/themify/js/main.min.js?ver=3.5.8'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/accordion.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
         <script type='text/javascript'>
             jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close", "currentText":"Today", "monthNames":["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthNamesShort":["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "nextText":"Next", "prevText":"Previous", "dayNames":["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "dayNamesShort":["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "dayNamesMin":["S", "M", "T", "W", "T", "F", "S"], "dateFormat":"MM d, yy", "firstDay":1, "isRTL":false}); });
         </script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/droppable.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/progressbar.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/selectable.min.js?ver=1.11.4'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/droppable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/progressbar.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/selectable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
         <script type='text/javascript'>
             /* <![CDATA[ */
             var tve_dash_front = {"ajaxurl":"https:\/\/www.renshawspt.com\/wp-admin\/admin-ajax.php", "force_ajax_send":"", "is_crawler":""};
             /* ]]> */
         </script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/thrive-visual-editor/thrive-dashboard/js/dist/frontend.min.js?ver=2.0.30'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/thrive-visual-editor/thrive-dashboard/js/dist/frontend.min.js?ver=2.0.30'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
         <script type='text/javascript' defer="defer" src='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/js/themify.sidemenu.min.js?ver=1.9.9'></script>
         <script type='text/javascript'>
             /* <![CDATA[ */
             var themifyScript = {"themeURI":"https:\/\/www.renshawspt.com\/wp-content\/themes\/themify-ultra", "lightbox":{"lightboxSelector":".themify_lightbox", "lightboxOn":true, "lightboxContentImages":false, "lightboxContentImagesSelector":"", "theme":"pp_default", "social_tools":false, "allow_resize":true, "show_title":false, "overlay_gallery":false, "screenWidthNoLightbox":600, "deeplinking":false, "contentImagesAreas":"", "gallerySelector":".gallery-icon > a", "lightboxGalleryOn":true}, "lightboxContext":"#pagewrap", "fixedHeader":"fixed-header", "sticky_header":"", "ajax_nonce":"e9e32cde0f", "ajax_url":"https:\/\/www.renshawspt.com\/wp-admin\/admin-ajax.php", "smallScreen":"760", "resizeRefresh":"250", "parallaxHeader":"1", "loadingImg":"https:\/\/www.renshawspt.com\/wp-content\/themes\/themify-ultra\/images\/loading.gif", "maxPages":"0", "currentPage":"1", "autoInfinite":"auto", "bufferPx":"50", "infiniteURL":"0", "scrollToNewOnLoad":"scroll", "resetFilterOnLoad":"reset", "fullPageScroll":"", "shop_masonry":"no", "tiledata":{"grids":{"post":{"1":["AAAA"], "2":["BBCC", "BBCC"], "3":["DD.."], "4":[".EEF", ".EEF"], "5":["DD..", "BBCC", "BBCC"], "6":[".EEF", ".EEF", "BBCC", "BBCC"], "7":[".EEF", ".EEF", "DD.."], "8":[".EEF", ".EEF", "DD..", "AAAA"], "9":[".EEF", ".EEF", "DD..", "BBCC", "BBCC"], "10":[".EEF", ".EEF", "DD..", "MMNN", "MMPP"], "11":[".EEF", ".EEF", "DD..", "MMNN", "MMPP", "AAAA"], "12":[".EEF", ".EEF", "DD..", "MMNN", "MMPP", "BBCC", "BBCC"], "13":[".EEF", ".EEF", "DD..", "MMNN", "MMPP", "LSRR", "LSRR"]}, "mobile":["AA", ".."]}, "default_grid":"post", "small_screen_grid":"mobile", "breakpoint":800, "padding":5, "full_width":false, "animate_init":false, "animate_resize":true, "animate_template":false}, "responsiveBreakpoints":{"tablet_landscape":"1024", "tablet":"768", "mobile":"375"}};
             /* ]]> */
         </script>
-        <script type='text/javascript' defer="defer" src='https://www.renshawspt.com/wp-content/themes/themify-ultra/js/themify.script.min.js?ver=1.9.9'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+        <script type='text/javascript' defer="defer" src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/js/themify.script.min.js?ver=1.9.9'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/user/mm-preview.js?ver=2.2.8'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/user/mm-forgotpassword.js?ver=2.2.8'></script>
         <script type="text/javascript">/*<![CDATA[*/if (!window.TL_Const) {var TL_Const = {"security":"7209a3ad53", "ajax_url":"https:\/\/www.renshawspt.com\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":[], "current_screen":{"screen_type":1, "screen_id":0}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]}; } else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"7209a3ad53", "ajax_url":"https:\/\/www.renshawspt.com\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":[], "current_screen":{"screen_type":1, "screen_id":0}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]})} /*]]> */</script>
         <?php // wp_footer();?>
+        
     </body>
 </html>
