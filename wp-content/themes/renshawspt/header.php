@@ -98,7 +98,7 @@
         <?php // wp_head(); ?>
     </head>
 
-    <body class="home page-template-default page page-id-5 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie <?php is_home() ? 'full_width sidebar-none transparent-header':''?> no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black  social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled">
+    <body class="home page-template-default page page-id-5 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie full_width sidebar-none transparent-header no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black  social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled">
 
         <script type="text/javascript">
             function themifyMobileMenuTrigger(e) {
