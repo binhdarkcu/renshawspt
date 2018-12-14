@@ -178,7 +178,7 @@
 
 
                                                         <div class="image-wrap">
-                                                            <a href="/"
+                                                            <a href="<?php echo get_site_url();?>"
                                                                >
                                                                 <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png" class=" wp-post-image wp-image-1605" alt="Renshaws Personal Training Black" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png 1024w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-768x217.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" />                </a>
 

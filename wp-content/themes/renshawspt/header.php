@@ -40,6 +40,7 @@
         <link rel='stylesheet' id='theme-style-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/style.min.css?ver=1.9.9' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-media-queries-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/media-queries.min.css?ver=1.9.9' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-skin-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/style2.min.css?ver=3.5.8' type='text/css' media='all' />
+        <link rel='stylesheet' id='themify-skin-css2'  href='<?php echo get_site_url();?>/wp-content/themes/themify-ultra/skins/lawyer/style.min.css?ver=3.5.8' type='text/css' media='all' />
         <link rel='stylesheet' id='ultra-color-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/theme-color-black.min.css?ver=4.9.8' type='text/css' media='all' />
         <link rel='stylesheet' id='ultra-header-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/header-top-widgets.min.css?ver=4.9.8' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-customize-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify-customizer.css?ver=18.08.18.18.10.57' type='text/css' media='all' />
@@ -98,7 +99,7 @@
         <?php // wp_head(); ?>
     </head>
 
-    <body class="home page-template-default page page-id-5 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie full_width sidebar-none transparent-header no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black  social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled">
+    <body class="page-template-default page page-id-476 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie default_width sidebar-none no-home no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled sidemenu-active page-loaded themify_lightbox_loaded">
 
         <script type="text/javascript">
             function themifyMobileMenuTrigger(e) {
@@ -132,9 +133,17 @@
                         <div class="navbar-wrapper clearfix">
 
                             <nav id="main-nav-wrap" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
-                                <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url(); ?>/login/">Member Login</a> </li>
-                                </ul>									<!-- /#main-nav -->
-
+                                <?php global $post; ?>
+                                <?php if (is_object($post) && $post->post_name ==='forgot-password'): ?>
+                                    <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id="menu-item-319" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/member-dashboard/">Dashboard</a> </li>
+                                        <li id="menu-item-649" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
+                                        <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/myaccount/">Help Desk</a> </li>
+                                        <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?php echo get_site_url();?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
+                                    </ul>
+                                <?php else: ?>
+                                    <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url(); ?>/login/">Member Login</a> </li>
+                                    </ul>									<!-- /#main-nav -->
+                                <?php endif; ?>
                             </nav>
                             <!-- /#main-nav-wrap -->
 
