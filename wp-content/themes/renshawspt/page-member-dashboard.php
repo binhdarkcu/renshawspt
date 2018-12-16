@@ -144,7 +144,7 @@
 
 
                     <div class="header-bar">
-                        <div id="site-logo"><a href="/" title="Renshaw&#039;s Personal Training"><img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-White.png" alt="Renshaw&#039;s Personal Training" title="Renshaw&#039;s Personal Training" /></a></div>
+                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Renshaw&#039;s Personal Training"><img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-White.png" alt="Renshaw&#039;s Personal Training" title="Renshaw&#039;s Personal Training" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
                     <!-- /.header-bar -->
 
@@ -314,7 +314,7 @@
 
                                                         <div class="module-buttons large squared">
                                                             <div class="module-buttons-item  buttons-horizontal">
-                                                                <a href="/start-here" class="ui builder_button" ><i class="fa fa-power-off"></i> <span>START HERE</span></a>                </div>
+                                                                <a href="<?php echo get_site_url(); ?>/start-here" class="ui builder_button" ><i class="fa fa-power-off"></i> <span>START HERE</span></a>                </div>
                                                         </div>
                                                     </div>
                                                     <!-- /module buttons -->
@@ -334,7 +334,7 @@
 
                                                         <div class="module-buttons large squared">
                                                             <div class="module-buttons-item  buttons-horizontal">
-                                                                <a href="/new-workouts" class="ui builder_button" ><i class="fa fa-fire"></i> <span>NEW WORKOUTS</span></a>                </div>
+                                                                <a href="<?php echo get_site_url(); ?>/new-workouts" class="ui builder_button" ><i class="fa fa-fire"></i> <span>NEW WORKOUTS</span></a>                </div>
                                                         </div>
                                                     </div>
                                                     <!-- /module buttons -->
