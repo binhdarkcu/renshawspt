@@ -1,4 +1,11 @@
+<?php
+$my_postid = get_the_ID(); //This is page id or post id
+$content_post = get_post($my_postid);
+$content = $content_post->post_content;
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
 
+?>
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -50,9 +57,9 @@
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/gdpr-banner/js/gdpr-banner.js?ver=1.0.0'></script>
         <script type='text/javascript'>
-                            /* <![CDATA[ */
-                            var MemberMouseGlobal = {"jsIsAdmin":"", "adminUrl":"<?php echo get_site_url(); ?>\/wp-admin\/", "globalurl":"<?php echo get_site_url(); ?>\/wp-content\/plugins\/membermouse", "checkoutProcessingPaidMessage":"Please wait while we process your order...", "checkoutProcessingFreeMessage":"Please wait while we create your account...", "checkoutProcessingMessageCSS":"mm-checkout-processing-message", "currencyInfo":{"currency":"USD", "postfixIso":false, "name":"United States Dollar", "int_curr_symbol":"&#85;&#83;&#68;&#32;", "currency_symbol":"$", "mon_decimal_point":".", "mon_thousands_sep":",", "mon_grouping":"3;3", "positive_sign":"", "negative_sign":"", "int_frac_digits":"2", "frac_digits":"2", "p_cs_precedes":"1", "p_sep_by_space":"0", "n_cs_precedes":"1", "n_sep_by_space":"0", "p_sign_posn":"1", "n_sign_posn":"1"}};
-                            /* ]]> */
+            /* <![CDATA[ */
+            var MemberMouseGlobal = {"jsIsAdmin":"", "adminUrl":"<?php echo get_site_url(); ?>\/wp-admin\/", "globalurl":"<?php echo get_site_url(); ?>\/wp-content\/plugins\/membermouse", "checkoutProcessingPaidMessage":"Please wait while we process your order...", "checkoutProcessingFreeMessage":"Please wait while we create your account...", "checkoutProcessingMessageCSS":"mm-checkout-processing-message", "currencyInfo":{"currency":"USD", "postfixIso":false, "name":"United States Dollar", "int_curr_symbol":"&#85;&#83;&#68;&#32;", "currency_symbol":"$", "mon_decimal_point":".", "mon_thousands_sep":",", "mon_grouping":"3;3", "positive_sign":"", "negative_sign":"", "int_frac_digits":"2", "frac_digits":"2", "p_cs_precedes":"1", "p_sep_by_space":"0", "n_cs_precedes":"1", "n_sep_by_space":"0", "p_sign_posn":"1", "n_sign_posn":"1"}};
+            /* ]]> */
         </script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/global.js?ver=2.2.8'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
@@ -178,7 +185,7 @@
 
 
                                                         <div class="image-wrap">
-                                                            <a href="<?php echo get_site_url();?>"
+                                                            <a href="<?php echo get_site_url(); ?>"
                                                                >
                                                                 <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png" class=" wp-post-image wp-image-1605" alt="Renshaws Personal Training Black" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png 1024w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-768x217.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" />                </a>
 
@@ -200,7 +207,10 @@
                                                             jQuery('#pwd').attr('placeholder', 'Enter Your Password');
                                                             });</script></p>
 
-                                                        <br /><form action="<?php echo get_site_url();?>/wp-login.php" method="post" id="mm-login-form">
+                                                        <br />
+                                                                                                        <?php echo $content; ?>
+
+<!--                                                        <form action="<?php echo get_site_url(); ?>/wp-login.php" method="post" id="mm-login-form">
                                                             </p>
                                                             <div class="mm-login">
                                                                 <div class="loginbox">
@@ -215,7 +225,8 @@
                                                                             Remember me</label></div>
                                                                 </div>
                                                             </div>
-                                                            <p></form>
+                                                            <p>
+                                                        </form>-->
                                                         <script>var mm_nonce_name_login_form = 'mm-security';</script><br /></div>
                                                     <!-- /module text -->
 
@@ -296,7 +307,7 @@
             }
         </script>
         <div id="gdpr_banner">
-            <p>By using this website you agree to accept our<a href="<?php echo get_site_url();?>/privacy-policy/"> Privacy Policy</a> and <a href="<?php echo get_site_url();?>/terms-conditions/">Terms &amp; Conditions</a> <button id="gdpr_accept">Accept</button></p></div><div id="mm-payment-options-dialog"></div>
+            <p>By using this website you agree to accept our<a href="<?php echo get_site_url(); ?>/privacy-policy/"> Privacy Policy</a> and <a href="<?php echo get_site_url(); ?>/terms-conditions/">Terms &amp; Conditions</a> <button id="gdpr_accept">Accept</button></p></div><div id="mm-payment-options-dialog"></div>
         <div id="mm-payment-confirmation-dialog"></div>
         <script>
             jQuery(document).ready(function(){
@@ -305,7 +316,7 @@
             jQuery("#mm-payment-confirmation-dialog").dialog({autoOpen: false});
             }
             });</script>
-        <link rel='stylesheet' id='membermouse-login-css-css'  href='<?php echo get_site_url();?>/wp-content/plugins/membermouse/resources/css/user/mm-login.css?ver=2.2.8' type='text/css' media='all' />
+        <link rel='stylesheet' id='membermouse-login-css-css'  href='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/css/user/mm-login.css?ver=2.2.8' type='text/css' media='all' />
         <script type='text/javascript'>
             /* <![CDATA[ */
             var themify_vars = {"version":"3.5.8", "url":"<?php echo get_site_url(); ?>\/wp-content\/themes\/themify-ultra\/themify", "map_key":"AIzaSyAsx3CqZiWQpUkP2hER8sWl0zU-sUixznY", "includesURL":"<?php echo get_site_url(); ?>\/wp-includes\/", "isCached":"on", "minify":{"css":{"themify-icons":1, "themify.framework":1, "lightbox":1, "themify-builder-style":1}, "js":{"backstretch.themify-version":1, "bigvideo":1, "themify.dropdown":1, "themify-tiles":1, "themify.mega-menu":1, "themify.builder.script":1, "themify.scroll-highlight":1, "themify-youtube-bg":1, "themify.parallaxit":1, "themify.ticks":1}}};
@@ -321,7 +332,7 @@
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
         <script type='text/javascript'>
-    jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close", "currentText":"Today", "monthNames":["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthNamesShort":["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "nextText":"Next", "prevText":"Previous", "dayNames":["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "dayNamesShort":["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "dayNamesMin":["S", "M", "T", "W", "T", "F", "S"], "dateFormat":"MM d, yy", "firstDay":1, "isRTL":false}); });</script>
+            jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close", "currentText":"Today", "monthNames":["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthNamesShort":["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "nextText":"Next", "prevText":"Previous", "dayNames":["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "dayNamesShort":["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "dayNamesMin":["S", "M", "T", "W", "T", "F", "S"], "dateFormat":"MM d, yy", "firstDay":1, "isRTL":false}); });</script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
@@ -333,11 +344,11 @@
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
         <script type='text/javascript'>
             /* <![CDATA[ */
-            var tve_dash_front = {"ajaxurl":"<?php echo get_site_url();?>\/wp-admin\/admin-ajax.php", "force_ajax_send":"", "is_crawler":""};
+            var tve_dash_front = {"ajaxurl":"<?php echo get_site_url(); ?>\/wp-admin\/admin-ajax.php", "force_ajax_send":"", "is_crawler":""};
             /* ]]> */
         </script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/thrive-visual-editor/thrive-dashboard/js/dist/frontend.min.js?ver=2.0.30'></script>
-        <script type='text/javascript' src='<?php echo get_site_url();?>/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
         <script type='text/javascript' defer="defer" src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/themify/js/themify.sidemenu.min.js?ver=1.9.9'></script>
         <script type='text/javascript'>
             /* <![CDATA[ */
@@ -348,7 +359,7 @@
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/user/mm-login-form.js?ver=2.2.8'></script>
-        <script type="text/javascript">/*<![CDATA[*/if (!window.TL_Const) {var TL_Const = {"security":"7209a3ad53", "ajax_url":"<?php echo get_site_url();?>\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":{"http_referrer":"<?php echo get_site_url(); ?>\/"}, "current_screen":{"screen_type":3, "screen_id":227}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]}; } else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"7209a3ad53", "ajax_url":"<?php echo get_site_url(); ?>\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":{"http_referrer":"<?php echo get_site_url(); ?>\/"}, "current_screen":{"screen_type":3, "screen_id":227}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]})} /*]]> */</script>
+        <script type="text/javascript">/*<![CDATA[*/if (!window.TL_Const) {var TL_Const = {"security":"7209a3ad53", "ajax_url":"<?php echo get_site_url(); ?>\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":{"http_referrer":"<?php echo get_site_url(); ?>\/"}, "current_screen":{"screen_type":3, "screen_id":227}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]}; } else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"7209a3ad53", "ajax_url":"<?php echo get_site_url(); ?>\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":{"http_referrer":"<?php echo get_site_url(); ?>\/"}, "current_screen":{"screen_type":3, "screen_id":227}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]})} /*]]> */</script>
 
     </body>
 </html>
