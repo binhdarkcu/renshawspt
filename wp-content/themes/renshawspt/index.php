@@ -22,7 +22,7 @@
 
                     <script type="text/javascript">
                         if (!document.getElementById("builder-styles") && document.getElementById("builder-styles-css"))
-                            document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
+                            document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
                     </script><div id="themify_builder_content-5" data-postid="5" class="themify_builder_content themify_builder_content-5 themify_builder">
 
 
