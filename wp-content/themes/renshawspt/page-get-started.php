@@ -118,25 +118,6 @@
 
         <div id="pagewrap" class="hfeed site">
 
-            <div id="headerwrap"   >
-
-                <header id="header" class="pagewidth clearfix" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
-
-
-                    <div class="header-bar">
-
-                        <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
-                    <!-- /.header-bar -->
-
-
-
-
-
-                </header>
-                <!-- /#header -->
-
-
-            </div>
             <!-- /#headerwrap -->
 
             <div id="body" class="clearfix">
@@ -240,7 +221,10 @@
 
 
                                                         <div class="image-wrap">
-                                                            <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png" width="350" class=" wp-post-image wp-image-1613" alt="Renshaws Personal Training Black 1" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png 350w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-768x217.png 768w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289.png 1024w" sizes="(max-width: 350px) 100vw, 350px" />
+                                                            <a href="<?php echo get_site_url();?>">
+                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png" width="350" class=" wp-post-image wp-image-1613" alt="Renshaws Personal Training Black 1" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png 350w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-768x217.png 768w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289.png 1024w" sizes="(max-width: 350px) 100vw, 350px" />
+
+                                                            </a>
                                                         </div>
                                                         <!-- /image-wrap -->
 
@@ -672,4 +656,4 @@
             </div>
             <!-- /body -->
 
-            <?php get_footer();?>
+            <?php get_footer(); ?>
