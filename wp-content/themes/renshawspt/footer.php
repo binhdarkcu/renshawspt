@@ -143,11 +143,8 @@
         <script type='text/javascript' defer="defer" src='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/js/themify.script.min.js?ver=1.9.9'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
         <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
-        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
-        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/user/mm-preview.js?ver=2.2.8'></script>
-        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/user/mm-forgotpassword.js?ver=2.2.8'></script>
         <script type="text/javascript">/*<![CDATA[*/if (!window.TL_Const) {var TL_Const = {"security":"7209a3ad53", "ajax_url":"<?php echo get_site_url(); ?>\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":[], "current_screen":{"screen_type":1, "screen_id":0}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]}; } else {ThriveGlobal.$j.extend(true, TL_Const, {"security":"7209a3ad53", "ajax_url":"https:\/\/www.renshawspt.com\/wp-admin\/admin-ajax.php", "forms":[], "action_conversion":"tve_leads_ajax_conversion", "action_impression":"tve_leads_ajax_impression", "ajax_load":1, "custom_post_data":[], "current_screen":{"screen_type":1, "screen_id":0}, "ignored_fields":["email", "_captcha_size", "_captcha_theme", "_captcha_type", "_submit_option", "_use_captcha", "g-recaptcha-response", "__tcb_lg_fc", "__tcb_lg_msg", "_state", "_form_type", "_error_message_option", "_back_url", "_submit_option", "url", "_asset_group", "_asset_option", "mailchimp_optin"]})} /*]]> */</script>
-        <?php // wp_footer();?>
-        
+        <?php wp_footer();?>
+
     </body>
 </html>

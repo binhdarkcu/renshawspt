@@ -1,4 +1,11 @@
+<?php
+$my_postid = get_the_ID(); //This is page id or post id
+$content_post = get_post($my_postid);
+$content = $content_post->post_content;
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
 
+?>
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -31,35 +38,17 @@
         <link rel='stylesheet' id='ultra-header-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/header-top-widgets.min.css?ver=4.9.8' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-builder-452-generated-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify-builder-452-generated.css?ver=1534698710' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C400i%2C600%2C700%7CCormorant+Garamond%3A400%2C600%2C700%7COpen+Sans&#038;subset=latin&#038;ver=4.9.8' type='text/css' media='all' />
-        <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.js?ver=1.12.4'></script>
-        <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/jquery-migrate.min.js?ver=1.4.1'></script>
-        <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/gdpr-banner.js?ver=1.0.0'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+        <script type='text/javascript' src='<?php echo get_site_url(); ?>/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
 
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/global.js?ver=2.2.8'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/common/mm-common-core.js?ver=2.2.8'></script>
-        <script type='text/javascript' src='https://www.renshawspt.com/wp-content/plugins/membermouse/resources/js/user/mm-preview.js?ver=2.2.8'></script>
-        <link rel='https://api.w.org/' href='https://www.renshawspt.com/wp-json/' />
-        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.renshawspt.com/xmlrpc.php?rsd" />
-        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.renshawspt.com/wp-includes/wlwmanifest.xml" />
         <meta name="generator" content="WordPress 4.9.8" />
-        <link rel="canonical" href="https://www.renshawspt.com/get-started/" />
-        <link rel='shortlink' href='https://www.renshawspt.com/?p=452' />
-        <link rel="alternate" type="application/json+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2Fget-started%2F" />
-        <link rel="alternate" type="text/xml+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2Fget-started%2F&#038;format=xml" />
-        <script async>(function (s, u, m, o, j, v) {
-                j = u.createElement(m);
-                v = u.getElementsByTagName(m)[0];
-                j.async = 1;
-                j.src = o;
-                j.dataset.sumoSiteId = '5d960f009cb48000bf40f400e4946f00decd4200ff09eb00ba5db80074c64000';
-                j.dataset.sumoPlatform = 'wordpress';
-                v.parentNode.insertBefore(j, v)
-            })(window, document, 'script', '//load.sumo.com/');</script>
-
-
 
         <link href="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Icon-1.png" rel="shortcut icon" />
-
+        <script type='text/javascript'>
+            /* <![CDATA[ */
+            var MemberMouseGlobal = {"jsIsAdmin":"", "adminUrl":"<?php echo get_site_url(); ?>\/wp-admin\/", "globalurl":"<?php echo get_site_url(); ?>\/wp-content\/plugins\/membermouse", "checkoutProcessingPaidMessage":"Please wait while we process your order...", "checkoutProcessingFreeMessage":"Please wait while we create your account...", "checkoutProcessingMessageCSS":"mm-checkout-processing-message", "currencyInfo":{"currency":"USD", "postfixIso":false, "name":"United States Dollar", "int_curr_symbol":"&#85;&#83;&#68;&#32;", "currency_symbol":"$", "mon_decimal_point":".", "mon_thousands_sep":",", "mon_grouping":"3;3", "positive_sign":"", "negative_sign":"", "int_frac_digits":"2", "frac_digits":"2", "p_cs_precedes":"1", "p_sep_by_space":"0", "n_cs_precedes":"1", "n_sep_by_space":"0", "p_sign_posn":"1", "n_sign_posn":"1"}};
+            /* ]]> */
+        </script>
         <script type="text/javascript">
             var tf_mobile_menu_trigger_point = 1190;
         </script>
@@ -397,139 +386,9 @@
 
                                                                     <!-- module text -->
                                                                     <div  id="text-452-sub_row_2-0-0-1-0" class="module module-text text-452-sub_row_2-0-0-1-0 mobile-hide repeat ">
-
-                                                                        <div class="mm-checkoutContainer" style="background-color: #ffffee; margin-bottom: 22px; border-radius: 7px; border: none;">
-                                                                            <form id='mm_checkout_form' name='mm_checkout_form' action='https://www.renshawspt.com/wp-content/plugins/membermouse/api/processOrder.php' onsubmit="return mmjs.checkout(true);" method='post'><input type='hidden' id='mm_membership_level_id' name='mm_membership_level_id' value='2' /><input type='hidden' id='mm_product_id' name='mm_product_id' value='1' /><input type='hidden' id='mm_is_member' name='mm_is_member' value='0' /><input type='hidden' id='mm_field_user_id' name='mm_field_user_id' value='0' /><input type='hidden' id='mm_is_free' name='mm_is_free' value='0' /><input type='hidden' id='mm_is_gift' name='mm_is_gift' value='0' /><input type='hidden' id='mm_is_shippable' name='mm_is_shippable' value='0' /><input type='hidden' id='mm_checkout_url' name='mm_checkout_url' value='https://www.renshawspt.com/get-started/' /><input type='hidden' id='mm_checkout_debug_mode' name='mm_checkout_debug_mode' value='0' /><input type='hidden' id='mm_field_payment_service' name='mm_field_payment_service' /><input type='hidden' id='mm_field_billing_equals_shipping' name='mm_field_billing_equals_shipping' value='1' /><input type='hidden' id='mm_is_admin' value='0' /><input type='hidden' id='mm_is_customer_support_order' name='mm_is_customer_support_order' value='0' /><input type='hidden' id='mm_data_product_price' value='$27.00' /><input type='hidden' id='mm_data_shipping_price' value='0' /><input type='hidden' id='mm_data_discount' value='0' /><input type='hidden' id='mm_do_comp' value='0' /><input type='hidden' id='hasFormSubmitted' value='' /><br />
-                                                                                </p>
-                                                                                <div >
-                                                                                    <div id="mm-account-information-section" class="mm-checkoutInfoBlock">
-                                                                                        <h3 style="background-color: #44556f !important; color: #fff; font-family: 'Open Sans', sans-serif; text-align: center; font-size: 24px; padding-top: 5px; padding-bottom: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;">Secure Order Form</h3>
-                                                                                        <p class="mm-formField"><input type='text' id='mm_field_first_name' name='mm_field_first_name' value='' class='mm-textField' placeholder="First Name" />
-                                                                                        </p>
-                                                                                        <p class="mm-formField"><input type='text' id='mm_field_last_name' name='mm_field_last_name' value='' class='mm-textField' placeholder="Last Name" />
-                                                                                        </p>
-                                                                                        <p class="mm-formField"><input type='text' id='mm_field_email' name='mm_field_email' value='' class='mm-textField' placeholder="Email Address" />
-                                                                                        </p>
-                                                                                        <p class="mm-formField"><input type='password' autocomplete='off' id='mm_field_password' name='mm_field_password' class='mm-textField'  placeholder="Password" />
-                                                                                        </p>
-                                                                                        <p></p>
-                                                                                    </div>
-                                                                                    <div class="secpmt">
-                                                                                        <div>
-                                                                                            <p style="text-align: center; background-color: lightgreen; padding: 6px;"><strong>Shopping is Safe &#038; Secure - Guaranteed</strong></p>
-                                                                                        </div>
-                                                                                        <div style="background-color: #f1f1f1; padding: 3px; margin-top: -16px;">
-                                                                                            <p><img class="alignleft" src="https://www.renshawspt.com/wp-content/uploads/2017/06/secure-order-lock-02-40x40.png" width="50" height="50" /></p>
-                                                                                            <p style="font-size: 10px; text-align: left;">Secure credit card payment. This is a secure, 256-bit SSL encrypted payment.</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div >
-                                                                                        <div id="mm-billing-information-section" class="mm-checkoutInfoBlock">
-                                                                                            <h3>Billing Details</h3>
-                                                                                            <p class="mm-ccLogos"><img src="https://www.renshawspt.com/wp-content/plugins/membermouse/resources/images/cclogos.gif" alt="Visa, Master Card, American Express, Discover" width="199" height="30" /></p>
-                                                                                            <p class="mm-formField"><label>Credit Card:</label><br />
-                                                                                                <input type='text' maxlength='16' onkeydown="return mmjs.onlyNumbers(event, 'cc')" id='mm_field_cc_number' autocomplete='off' name='mm_field_cc_number' class='mm-textField' placeholder="Credit Card Number" />
-                                                                                            </p>
-                                                                                            <p class="mm-formField"><label>Security Code:</label><br />
-                                                                                                <input autocomplete='off' type='password' maxlength='4' onkeydown="return mmjs.onlyNumbers(event, 'cc')" id='mm_field_cc_cvv' name='mm_field_cc_cvv' class='mm-textField'  placeholder="Security Code" />
-                                                                                            </p>
-                                                                                            <p id="mm-checkout-expiration-date" class="mm-checkout-expiration-date mm-formField"><label>Expiration Date: </label><br />
-                                                                                                <select name='mm_field_cc_exp_month' id='mm_field_cc_exp_month'  class="mm-selectList mm-expMonthList">
-                                                                                                    <option value='01'  >(01) Jan</option>
-                                                                                                    <option value='02'  >(02) Feb</option>
-                                                                                                    <option value='03'  >(03) Mar</option>
-                                                                                                    <option value='04'  >(04) Apr</option>
-                                                                                                    <option value='05'  >(05) May</option>
-                                                                                                    <option value='06'  >(06) Jun</option>
-                                                                                                    <option value='07'  >(07) Jul</option>
-                                                                                                    <option value='08'  >(08) Aug</option>
-                                                                                                    <option value='09'  >(09) Sep</option>
-                                                                                                    <option value='10'  >(10) Oct</option>
-                                                                                                    <option value='11'  >(11) Nov</option>
-                                                                                                    <option value='12'  >(12) Dec</option>
-                                                                                                </select><select name='mm_field_cc_exp_year' id='mm_field_cc_exp_year' class="mm-selectList mm-expYearList">
-                                                                                                    <option value='2018'  >2018</option>
-                                                                                                    <option value='2019'  >2019</option>
-                                                                                                    <option value='2020'  >2020</option>
-                                                                                                    <option value='2021'  >2021</option>
-                                                                                                    <option value='2022'  >2022</option>
-                                                                                                    <option value='2023'  >2023</option>
-                                                                                                    <option value='2024'  >2024</option>
-                                                                                                    <option value='2025'  >2025</option>
-                                                                                                    <option value='2026'  >2026</option>
-                                                                                                    <option value='2027'  >2027</option>
-                                                                                                    <option value='2028'  >2028</option>
-                                                                                                    <option value='2029'  >2029</option>
-                                                                                                    <option value='2030'  >2030</option>
-                                                                                                    <option value='2031'  >2031</option>
-                                                                                                    <option value='2032'  >2032</option>
-                                                                                                    <option value='2033'  >2033</option>
-                                                                                                    <option value='2034'  >2034</option>
-                                                                                                    <option value='2035'  >2035</option>
-                                                                                                    <option value='2036'  >2036</option>
-                                                                                                    <option value='2037'  >2037</option>
-                                                                                                    <option value='2038'  >2038</option>
-                                                                                                </select>
-                                                                                            </p>
-                                                                                            <h3 class="mm-hr">Billing Address</h3>
-                                                                                            <p class="mm-formField"><input type='text' id='mm_field_billing_address' name='mm_field_billing_address' value='' class='mm-textField' placeholder="Billing Address" />
-                                                                                            </p>
-                                                                                            <p class="mm-formField"><input type='text' id='mm_field_billing_city' name='mm_field_billing_city' value='' class='mm-textField' placeholder="Billing City" />
-                                                                                            </p>
-                                                                                            <p class="mm-formField"><select id='mm_field_billing_state_dd' size='1' onchange="mmjs.stateChangeHandler('billing');" class="mm-selectList billing_country_subdivisions" placeholder="Billing State">
-                                                                                                    <option value=''>Please select your state</option><option value='ACT'>Australian Capital Territory</option>
-                                                                                                    <option value='NSW'>New South Wales</option>
-                                                                                                    <option value='NT'>Northern Territory</option>
-                                                                                                    <option value='QLD'>Queensland</option>
-                                                                                                    <option value='SA'>South Australia</option>
-                                                                                                    <option value='TAS'>Tasmania</option>
-                                                                                                    <option value='VIC'>Victoria</option>
-                                                                                                    <option value='WA'>Western Australia</option>
-                                                                                                    <option value='-1'>Other...</option>
-                                                                                                </select>
-                                                                                                <input type='text' id='mm_field_billing_state' name='mm_field_billing_state' value='' class='mm-textField' placeholder="Billing State" style='display:none;' />
-                                                                                            </p>
-                                                                                            <p class="mm-formField"><input type='text' id='mm_field_billing_zip' name='mm_field_billing_zip' value='' class='mm-textField' placeholder="Billing Zip Code" />
-                                                                                            </p>
-                                                                                            <p class="mm-formField"><select id='mm_field_billing_country' name='mm_field_billing_country' onchange="mmjs.countryChangeHandler('billing');" class="mm-selectList" >
-                                                                                                    <option value='AU' selected >Australia</option>
-                                                                                                    <option value='CA'  >Canada</option>
-                                                                                                    <option value='IN'  >India</option>
-                                                                                                    <option value='NZ'  >New Zealand</option>
-                                                                                                    <option value='GB'  >United Kingdom</option>
-                                                                                                    <option value='US'  >United States</option>
-                                                                                                </select>
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mm-checkoutSection2">
-                                                                                    <p class="mm-productDesc"><span class="mm-data"></span>
-                                                                                    </p>
-                                                                                    <p style="text-align: left;"><em>(By registering for this Membership, you are creating an account with Renshaw’s Personal Training, and hereby consent to receiving emails and targeted advertisements. If you are a EU data subject and wish to exercise your rights under GDPR with respect to your account data, please contact <a href="mailto:GDPR@renshawspt.com">GDPR@renshawspt.com</a>)</em></p>
-                                                                                    <hr />
-                                                                                    <p class="mm-productDesc" style="text-align: center;">Clicking the "Submit Order" or "PayPal" button states that you agree to the<span style="color: #0000ff;"><a class="" style="color: #0000ff;" href="http://www.renshawspt.com/terms-conditions/" target="_blank" rel="noopener noreferrer"><span style="color: #0000ff;"> terms and conditions</span></a></span> and <span style="color: #0000ff;"><a style="color: #0000ff;" href="https://www.renshawspt.com/privacy-policy/" target="_blank" rel="noopener">privacy policy</a> </span>of Renshaw's Personal Training</p>
-                                                                                    <h6 style="text-align: center;"><strong>Monthly Membership: $27 USD</strong></h6>
-                                                                                    <div class="mm-purchaseSection">
-                                                                                        <div class="mm-paymentbuttons"><center><p><a href="javascript: mmjs.checkout(true);" class="mm-button large orange" style="width:160px; text-align:center;">Submit Order</a><p><a href="javascript:mmjs.checkoutx('PAYPAL', true);" class="mm-paypalCheckoutBtn"></a></p></center></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <p><input type='hidden' id='mm_field_phone_override' name='mm_field_phone_override' value='' />
-                                                                                <div style="border: 0 none; height: 0; width: 0; padding: 0; margin: 0; overflow: hidden;"><input type="submit" tabindex="-1"/></div>
-                                                                                <input type='hidden' id='mm_submission_mutex' name='mm_submission_mutex' value='1g38ewngqn' /></form>
-                                                                            <script>
-                                                                                jQuery(function () {
-                                                                                    mmjs.toggleShippingInfo();
-                                                                                    mmjs.toggleGiftSection();
-                                                                                    mmjs.shippingMethodChangeHandler();
-                                                                                    mmjs.discountChangeHandler(mmjs.formatMoney("0.00"));
-                                                                                    mmjs.applyCoupon();
-                                                                                    jQuery('#mm_field_payment_service').val('');
-                                                                                });
-                                                                                var mm_nonce_name_checkout_form = 'mm-security';
-                                                                            </script>
-
-                                                                        </div>
+                                                                        
+                                                                        <?php echo $content;?>
+                                                                        
                                                                     </div>
                                                                     <!-- /module text -->
                                                                 </div>
