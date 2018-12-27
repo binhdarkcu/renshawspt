@@ -82,6 +82,14 @@
                 animation: themifyAnimatedBG 30000ms infinite alternate;
             }
         </style>
+        <style class="cp-pen-styles">
+
+        .swing {
+          -moz-animation: shake 2s infinite;
+          -webkit-animation: shake 2s infinite;
+          animation: shake 2s infinite;
+        }
+        </style>
     </head>
     <?php  global $post; $post_slug=$post->post_name;?>
     <?php if($post_slug === "hello-world"):?>
@@ -89,7 +97,7 @@
     <?php else:?>
     <body class="page-template-default page page-id-476 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie default_width sidebar-none no-home no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled sidemenu-active page-loaded themify_lightbox_loaded">
     <?php endif;?>
-    
+
 
         <script type="text/javascript">
             function themifyMobileMenuTrigger(e) {
@@ -114,7 +122,7 @@
                 <header id="header" class="pagewidth clearfix" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 
                     <div class="header-bar">
-                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Renshaw&#039;s Personal Training"><img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-White.png" alt="Renshaw&#039;s Personal Training" title="Renshaw&#039;s Personal Training" /></a></div>
+                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Renshaw&#039;s Personal Training"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Renshaw&#039;s Personal Training" title="Renshaw&#039;s Personal Training" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
                     <!-- /.header-bar -->
 

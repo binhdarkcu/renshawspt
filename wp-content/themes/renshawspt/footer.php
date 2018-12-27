@@ -56,7 +56,7 @@
                     </div>
                     <div class="footer-text clearfix">
                         <div class="footer-text-inner">
-                            <div class="one">Copyright © 2018 Renshaw’s Personal Training. All Rights Reserved.</div>																														</div>
+                            <div class="one">Copyright © 2018 NICKY ARTHUR FITNESS Training. All Rights Reserved.</div>																														</div>
                     </div>
                     <!-- /.footer-text -->
 

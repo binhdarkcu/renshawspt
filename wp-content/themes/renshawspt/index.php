@@ -102,9 +102,9 @@
                                                         <!-- module text -->
                                                         <div  id="text-5-sub_row_0-0-1-1-0" class="module module-text text-5-sub_row_0-0-1-1-0 hero repeat  wow fadeInUp">
 
-                                                            <h1>The Simple And Effective Way For Men To Build Quality Muscle After 30!</h1>
-                                                            <h3>This exclusive program gives you instant access to all of Bryan&#8217;s</h3>
-                                                            <h3>&#8220;Muscle Building Secrets&#8221;</h3></div>
+                                                            <h1>The healthy and most simplistic way For women to  get fit lose fat and build lean muscle the sustainable way After 30!</h1>
+                                                            <h3>This exclusive online program gives you instant access to Nicky’s Life long</h3>
+                                                            <h3>&#8220;Healthy Clean Lifestyle Living and Muscle Building Secrets&#8221;</h3></div>
                                                         <!-- /module text -->
                                                     </div>
                                                 </div>
@@ -121,12 +121,12 @@
 
 
                                                         <!-- module buttons -->
-                                                        <div  id="buttons-5-sub_row_0-0-2-1-0" class="module module-buttons buttons-5-sub_row_0-0-2-1-0   wow swing">
+                                                        <div  id="buttons-5-sub_row_0-0-2-1-0" class="module module-buttons buttons-5-sub_row_0-0-2-1-0   wow ">
 
 
                                                             <div class="module-buttons small squared">
                                                                 <div class="module-buttons-item  buttons-horizontal">
-                                                                    <a href="/get-started/" class="ui builder_button" ><i class="fa fa-arrow-circle-right"></i> <span>JOIN TODAY!</span></a>                </div>
+                                                                    <a href="/get-started/" class="ui builder_button" ><i class="fa fa-arrow-circle-right swing"></i> <span>JOIN TODAY!</span></a>                </div>
                                                             </div>
                                                         </div>
                                                         <!-- /module buttons -->
@@ -166,7 +166,7 @@
                                         <!-- module text -->
                                         <div  id="text-5-1-0-0" class="module module-text text-5-1-0-0 white fullcover ">
 
-                                            <h3 style="text-align: center;">LOW MONTHLY PRICE</h3><p>Everything you need to build quality muscle… for a low rate of $27/month <br />(under $1/day)</p></div>
+                                            <h3 style="text-align: center;">LOW MONTHLY PRICE</h3><p>Everything you need to LOSE FAT and build lean muscle… for a low rate of $27/month <br />(under $1/day)</p></div>
                                         <!-- /module text -->
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                         <!-- module text -->
                                         <div  id="text-5-1-1-0" class="module module-text text-5-1-1-0 white  ">
 
-                                            <h3 style="text-align: center;">MONTHLY WORKOUTS</h3><p>5 New muscle building workouts uploaded on the 1st of every month. Follow along with the workouts that Bryan currently uses!</p></div>
+                                            <h3 style="text-align: center;">MONTHLY WORKOUTS</h3><p>5 New specific lean muscle building workouts uploaded on the 1st of every month. Follow along with the workouts that Nicky currently uses for lifestyle Fitness Time efficient</p></div>
                                         <!-- /module text -->
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@
                                         <!-- module text -->
                                         <div  id="text-5-1-2-0" class="module module-text text-5-1-2-0 white  ">
 
-                                            <h3 style="text-align: center;">EDUCATION</h3><p>Learn how Bryan structures a workout program and a meal plan, and how to create yours. This is crucial for building quality muscle.</p></div>
+                                            <h3 style="text-align: center;">EDUCATION</h3><p>Learn how Nicky structures a workout program and a healthy  meal planning, and how to create yours. This is crucial for building quality muscle and living the lifestyle change. Learn how to end dieting and eat for lifestyle.</p></div>
                                         <!-- /module text -->
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                         <!-- module text -->
                                         <div  id="text-5-2-0-1" class="module module-text text-5-2-0-1   ">
 
-                                            <h2 style="text-align: center; text-transform: none;">Making Excuses Builds ZERO Muscle!</h2></div>
+                                            <h2 style="text-align: center; text-transform: none;">“YoYo Dieting builds zero muscle”</h2></div>
                                         <!-- /module text -->
                                         <!-- module divider -->
                                         <div  id="divider-5-2-0-2" class="module module-divider divider-5-2-0-2 solid   divider-custom divider-center" style="border-width: 1px;border-color: #1c50a3;margin-top: 15px;margin-bottom: 30px;width:200px;">
@@ -238,12 +238,12 @@
                                         <!-- module text -->
                                         <div  id="text-5-3-0-0" class="module module-text text-5-3-0-0   ">
 
-                                            <h2 style="text-align: center; text-transform: none;">Meet your Online Coach and Certified Personal Trainer Bryan Renshaw</h2></div>
+                                            <h2 style="text-align: center; text-transform: none;">Meet your Online Coach, Certified Yoga Coach & Award <br/> winning Fitness Model Nicky Arthur</h2></div>
                                         <!-- /module text -->
                                         <!-- module text -->
                                         <div  id="text-5-3-0-1" class="module module-text text-5-3-0-1   ">
 
-                                            <p>Hi, my name is Bryan. Going into college I developed my true passion towards bodybuilding and helping others. Over my 10 years of experience, I&#8217;ve realized that building a symmetrical body is extremely important. This is how I train my clients, through symmetry and balance. </p><p> </p></div>
+                                            <p>Hi, my name is Nicky. Going into my early twenties I developed my true passion towards bodybuilding and helping others. Over my 20 years of experience, I’ve realized that building a symmetrical body is extremely important, especially the over 30 years. This is how I train my clients, through symmetry, flexibility and balance. I learnt the mistake of YoYo Dieting bak in my 20’s Builds Zero Muscle. If you are 30 + then you need to know my secrets for healthy lifestyle living, the sustainable and most time efficient way to train. </p><p> </p></div>
                                         <!-- /module text -->
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                                         <!-- module text -->
                                         <div  id="text-5-4-0-0" class="module module-text text-5-4-0-0   ">
 
-                                            <h3 style="text-align: center;"><strong>WHY RENSHAW’S PERSONAL TRAINING GETS RESULTS!</strong></h3></div>
+                                            <h3 style="text-align: center;"><strong>WHY NICKY’S ONLINE  FITNESS  TRAINING GETS RESULTS!</strong></h3></div>
                                         <!-- /module text -->
                                         <div class="themify_builder_sub_row module_subrow clearfix sub_row_4-0-1">
                                             <div class="subrow_inner " >
@@ -286,7 +286,7 @@
                                                         <!-- module text -->
                                                         <div  id="text-5-sub_row_4-0-1-0-1" class="module module-text text-5-sub_row_4-0-1-0-1   ">
 
-                                                            <h4 style="text-align: center;">WORKOUTS</h4><p>Every month, workouts are switched up to shock the muscles into growth. Also, technique is tremendously encouraged.</p></div>
+                                                            <h4 style="text-align: center;">WORKOUTS</h4><p>Every month, workouts are changed  up to create a shock in  the muscles which helps you to grow lean muscle. Good safe technique is taught to help you understand what body part and muscle you are training for better faster results.</p></div>
                                                         <!-- /module text -->
                                                     </div>
                                                 </div>
@@ -296,7 +296,7 @@
                                                         <div  id="image-5-sub_row_4-0-1-1-0" class="module module-image image-5-sub_row_4-0-1-1-0 circle image-top   auto_fullwidth">
 
                                                             <div class="image-wrap">
-                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan.png" class=" wp-post-image wp-image-691" alt="mealplan" srcset="https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan.png 396w, https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan-150x150.png 150w, https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
+                                                                <img style="height: 361px;" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/structure.jpg" class=" wp-post-image wp-image-691" alt="mealplan" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/structure.jpg 396w, https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan-150x150.png 150w, https://www.renshawspt.com/wp-content/uploads/2016/12/mealplan-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
                                                             </div>
                                                             <!-- /image-wrap -->
 
@@ -306,7 +306,7 @@
                                                         <!-- module text -->
                                                         <div  id="text-5-sub_row_4-0-1-1-1" class="module module-text text-5-sub_row_4-0-1-1-1   ">
 
-                                                            <h4 style="text-align: center;">STRUCTURE</h4><p>Learn how to organize a meal plan and how to structure a workout program that works… The process is simple and effective.</p></div>
+                                                            <h4 style="text-align: center;">STRUCTURE</h4><p>Learn how to organize a healthy time effective meal planning and how to structure your workout program.The process is healthy and simple for effective results.</p></div>
                                                         <!-- /module text -->
                                                     </div>
                                                 </div>
@@ -315,11 +315,11 @@
 
 
                                                         <!-- module image -->
-                                                        <div  id="image-5-sub_row_4-0-1-2-0" class="module module-image image-5-sub_row_4-0-1-2-0  image-top   auto_fullwidth">
+                                                        <div  id="image-5-sub_row_4-0-1-2-0" class="module module-image image-5-sub_row_4-0-1-2-0 circle image-top   auto_fullwidth">
 
 
                                                             <div class="image-wrap">
-                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help.png" class=" wp-post-image wp-image-692" alt="hand-help" srcset="https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help.png 396w, https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help-150x150.png 150w, https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
+                                                                <img style="height: 361px;" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/support.jpg" class=" wp-post-image wp-image-692" alt="hand-help" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/support.jpg 396w, https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help-150x150.png 150w, https://www.renshawspt.com/wp-content/uploads/2016/12/hand-help-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
                                                             </div>
                                                             <!-- /image-wrap -->
                                                         </div>
@@ -327,7 +327,7 @@
 
                                                         <!-- module text -->
                                                         <div  id="text-5-sub_row_4-0-1-2-1" class="module module-text text-5-sub_row_4-0-1-2-1   ">
-                                                            <h4 style="text-align: center;">SUPPORT</h4><p>Unlimited access to our private Facebook group. Ask questions and be part of the muscle building community.</p></div>
+                                                            <h4 style="text-align: center;">SUPPORT</h4><p>Unlimited access to Nickys  private Facebook group. Ask questions and be part of the Fitness  muscle building Tribe.</p></div>
                                                         <!-- /module text -->
                                                     </div>
                                                 </div>

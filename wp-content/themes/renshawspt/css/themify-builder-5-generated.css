@@ -1,5 +1,5 @@
 .themify_builder_5_row.module_row_0.module_row{background-image: url("https://www.renshawspt.com/wp-content/uploads/2017/05/renshaw-banner-1024x683.jpg");background-repeat: no-repeat;background-size: cover;background-attachment: scroll;background-position: center top;text-align: center;padding-top:18%;padding-right:16px;padding-bottom:16%;padding-left:16px}
-.themify_builder_5_row.module_row_0.module_row>.builder_row_cover:before{background-color:rgba(0,0,0, 0.40)}
+.themify_builder_5_row.module_row_0.module_row>.builder_row_cover:before{background-color:rgba(0,0,0, 0.40); }
 .module_row_0 .module_column_0 .sub_row_0-0-1.module_subrow{background-repeat: repeat;background-attachment: scroll;background-position: center center;margin-top:-130px}
 .themify_builder .text-5-sub_row_0-0-1-1-0.module-text{background-repeat: repeat;font-size:2.0em;text-align: center;padding-top:130px}
 .themify_builder .text-5-sub_row_0-0-1-1-0.module-text,.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h1,.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h2,.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h3:not(.module-title),.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h4,.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h5,.themify_builder .text-5-sub_row_0-0-1-1-0.module-text h6{font-family: Open Sans}
@@ -30,15 +30,15 @@
 .themify_builder .buttons-5-sub_row_0-0-2-1-0 div.module-buttons{text-align: center;padding-right:200px}
 }
 .themify_builder_5_row.module_row_1.module_row{background-position: center center;margin-top:-90px}
-.module_row_1 .module_column_0.tb_5_column.module_column{background-image: url("https://www.renshawspt.com/wp-content/uploads/2017/06/iStock-621698098.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top:90px;padding-bottom:90px}
-.module_row_1 .module_column_0.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(0,0,0, 0.70)}
+.module_row_1 .module_column_0.tb_5_column.module_column{background-image: url("../assets/images/hinh-1.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top: 65px;padding-bottom: 65px;padding-left: 10px;padding-right: 10px; border-radius: 50%!important;}
+.module_row_1 .module_column_0.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(0,0,0, 0.70); border-radius: 50%!important;}
 .themify_builder .text-5-1-0-0.module-text{background-size: cover}
-.module_row_1 .module_column_1.tb_5_column.module_column{background-image: url("https://www.renshawspt.com/wp-content/uploads/2017/06/dumbbells600sq.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top:90px;padding-bottom:90px}
-.module_row_1 .module_column_1.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(211,15,24, 0.60)}
-.module_row_1 .module_column_2.tb_5_column.module_column{background-image: url("https://www.renshawspt.com/wp-content/uploads/2016/12/06a96a33c1b86d9e9a356868765384791-512x450.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top:90px;padding-bottom:90px}
-.module_row_1 .module_column_2.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(4,92,169, 0.60)}
+.module_row_1 .module_column_1.tb_5_column.module_column{background-image: url("../assets/images/hinh-2.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top: 65px;padding-bottom: 65px;padding-left: 10px;padding-right: 10px; border-radius: 50%!important;}
+.module_row_1 .module_column_1.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(211,15,24, 0.60); border-radius: 50%!important;}
+.module_row_1 .module_column_2.tb_5_column.module_column{background-image: url("../assets/images/hinh-3.jpg");background-repeat: no-repeat;background-size: cover;background-position: center top;padding-top: 65px;padding-bottom: 65px;padding-left: 10px;padding-right: 10px; border-radius: 50%!important;}
+.module_row_1 .module_column_2.tb_5_column.module_column>.builder_row_cover:before{background-color:rgba(4,92,169, 0.60); border-radius: 50%!important;}
 .themify_builder_5_row.module_row_2.module_row{padding-top:4%;padding-bottom:4%}
-.themify_builder_5_row.module_row_3.module_row{background-image: url("https://www.renshawspt.com/wp-content/uploads/2017/05/Main_Banner-2.jpg");background-repeat: no-repeat;background-size: cover;padding-top:60px;padding-right:60px;padding-bottom:60px;padding-left:60px}
+.themify_builder_5_row.module_row_3.module_row{    background: url(../assets/images/nicky.jpg) no-repeat right center #2605aa; background-size: contain; padding-top:60px;padding-right:60px;padding-bottom:60px;padding-left:60px}
 .themify_builder .text-5-3-0-0.module-text,.themify_builder .text-5-3-0-0.module-text h1,.themify_builder .text-5-3-0-0.module-text h2,.themify_builder .text-5-3-0-0.module-text h3:not(.module-title),.themify_builder .text-5-3-0-0.module-text h4,.themify_builder .text-5-3-0-0.module-text h5,.themify_builder .text-5-3-0-0.module-text h6{font-family: Open Sans;color:#ffffff}
 .themify_builder .text-5-3-0-1.module-text,.themify_builder .text-5-3-0-1.module-text h1,.themify_builder .text-5-3-0-1.module-text h2,.themify_builder .text-5-3-0-1.module-text h3:not(.module-title),.themify_builder .text-5-3-0-1.module-text h4,.themify_builder .text-5-3-0-1.module-text h5,.themify_builder .text-5-3-0-1.module-text h6{font-family: Open Sans;color:#ffffff}
 .themify_builder .text-5-3-0-1.module-text{font-size:18px;line-height:26px;text-align: left}

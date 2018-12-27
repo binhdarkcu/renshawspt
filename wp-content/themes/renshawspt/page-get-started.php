@@ -386,9 +386,9 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                                                                     <!-- module text -->
                                                                     <div  id="text-452-sub_row_2-0-0-1-0" class="module module-text text-452-sub_row_2-0-0-1-0 mobile-hide repeat ">
-                                                                        
+
                                                                         <?php echo $content;?>
-                                                                        
+
                                                                     </div>
                                                                     <!-- /module text -->
                                                                 </div>
