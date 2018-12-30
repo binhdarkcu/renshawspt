@@ -4,7 +4,6 @@ $content_post = get_post($my_postid);
 $content = $content_post->post_content;
 $content = apply_filters('the_content', $content);
 $content = str_replace(']]>', ']]&gt;', $content);
-
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
     <head>
         <meta charset="UTF-8" />
         <!-- wp_head -->
-        <title>Get Started &#8211; Renshaw&#039;s Personal Training</title>
+        <title>Get Started &#8211; Nicky Arthur Fitness</title>
         <link rel='dns-prefetch' href='//ajax.googleapis.com' />
         <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -93,15 +92,15 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
         <script type="text/javascript">
             function themifyMobileMenuTrigger(e) {
-                if (document.body.clientWidth > 0 && document.body.clientWidth <= tf_mobile_menu_trigger_point) {
-                    document.body.classList.add('mobile_menu_active');
-                } else {
-                    document.body.classList.remove('mobile_menu_active');
-                }
+            if (document.body.clientWidth > 0 && document.body.clientWidth <= tf_mobile_menu_trigger_point) {
+            document.body.classList.add('mobile_menu_active');
+            } else {
+            document.body.classList.remove('mobile_menu_active');
+            }
             }
             themifyMobileMenuTrigger();
             document.addEventListener('DOMContentLoaded', function () {
-                jQuery(window).on('tfsmartresize.tf_mobile_menu', themifyMobileMenuTrigger);
+            jQuery(window).on('tfsmartresize.tf_mobile_menu', themifyMobileMenuTrigger);
             }, false);
         </script>
 
@@ -130,7 +129,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                                 <script type="text/javascript">
                                     if (!document.getElementById("builder-styles") && document.getElementById("builder-styles-css"))
-                                        document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
+                                            document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
                                 </script><div id="themify_builder_content-452" data-postid="452" class="themify_builder_content themify_builder_content-452 themify_builder">
 
 
@@ -210,7 +209,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
 
                                                         <div class="image-wrap">
-                                                            <a href="<?php echo get_site_url();?>">
+                                                            <a href="<?php echo get_site_url(); ?>">
                                                                 <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png" width="350" class=" wp-post-image wp-image-1613" alt="Renshaws Personal Training Black 1" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png 350w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-768x217.png 768w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289.png 1024w" sizes="(max-width: 350px) 100vw, 350px" />
 
                                                             </a>
@@ -289,36 +288,27 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                         <h5 style="text-align: center;">Testimonials</h5></div>
                                                                     <!-- /module text -->
 
-
                                                                     <!-- module feature -->
                                                                     <div  id="feature-452-sub_row_2-0-0-0-4" class="module module-feature feature-452-sub_row_2-0-0-0-4 no-chart layout-icon-left size-large feature ">
 
                                                                         <style type="text/css"></style>
 
                                                                         <div class="module-feature-image">
-
-
                                                                             <div class="module-feature-chart-html5"
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-
                                                                                         <img src="https://www.renshawspt.com/wp-content/uploads/2017/09/FullSizeRender-1024x1007.jpg" alt="Ben B. " />
-
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-
-
                                                                         </div>
-
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Ben B. </h3>            <p>Here is my update with being on the membership program. 2 months in and still have just a little bit more to go. So as you can see, if you just follow the program and the diet correctly, it definitely works. From 215 to 200.4. Thanks Bryan Renshaw. </p>        </div>
-
+                                                                            <h3 class="module-feature-title">Ben B. </h3>            
+                                                                            <p>Here is my update with being on the membership program. 2 months in and still have just a little bit more to go. So as you can see, if you just follow the program and the diet correctly, it definitely works. From 215 to 200.4. Thanks Bryan Renshaw. </p>        
+                                                                        </div>
                                                                     </div>
                                                                     <!-- /module feature -->
-
-
 
                                                                     <!-- module feature -->
                                                                     <div  id="feature-452-sub_row_2-0-0-0-5" class="module module-feature feature-452-sub_row_2-0-0-0-5 no-chart layout-icon-right size-large feature ">
@@ -332,22 +322,19 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-
                                                                                         <img src="https://www.renshawspt.com/wp-content/uploads/2017/05/chad.jpg" alt="Chad S." />
-
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-
-
                                                                         </div>
 
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Chad S.</h3>            <p>It has been 3 months since I started with Bryan and the results have been great. I will be working with Bryan for years to come. Also, I would like to end by saying, anyone that&#8217;s looking to take back control of your body and health, I highly recommend this. </p>        </div>
+                                                                            <h3 class="module-feature-title">Chad S.</h3>            
+                                                                            <p>It has been 3 months since I started with Bryan and the results have been great. I will be working with Bryan for years to come. Also, I would like to end by saying, anyone that&#8217;s looking to take back control of your body and health, I highly recommend this. </p>        
+                                                                        </div>
 
                                                                     </div>
                                                                     <!-- /module feature -->
-
 
 
                                                                     <!-- module feature -->
@@ -356,25 +343,19 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                         <style type="text/css"></style>
 
                                                                         <div class="module-feature-image">
-
-
                                                                             <div class="module-feature-chart-html5"
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-
                                                                                         <img src="https://www.renshawspt.com/wp-content/uploads/2018/06/IMG_0145-1024x1024.jpg" alt="Paul D. " />
-
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-
-
                                                                         </div>
-
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Paul D. </h3>            <p>I thought I&#8217;d put my 6-month transformation pic. This is most definitely the best thing I&#8217;ve ever done, and I would have never made this progress on my own. I&#8217;m in the best shape I&#8217;ve ever been in and this is just the start. </p>        </div>
-
+                                                                            <h3 class="module-feature-title">Paul D. </h3>            
+                                                                            <p>I thought I&#8217;d put my 6-month transformation pic. This is most definitely the best thing I&#8217;ve ever done, and I would have never made this progress on my own. I&#8217;m in the best shape I&#8217;ve ever been in and this is just the start. </p>        
+                                                                        </div>
                                                                     </div>
                                                                     <!-- /module feature -->
 
@@ -383,11 +364,10 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                             <div  class="col3-1 sub_column module_column last sub_column_post_452 sub_column_2-0-0-1">
                                                                 <div class="tb-column-inner">
 
-
                                                                     <!-- module text -->
                                                                     <div  id="text-452-sub_row_2-0-0-1-0" class="module module-text text-452-sub_row_2-0-0-1-0 mobile-hide repeat ">
 
-                                                                        <?php echo $content;?>
+                                                                        <?php echo $content; ?>
 
                                                                     </div>
                                                                     <!-- /module text -->
@@ -410,17 +390,16 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                                                         <h6 style="text-align: center;"><strong><img class="size-full wp-image-557 alignleft" src="https://www.renshawspt.com/wp-content/uploads/2017/05/sat-guaranteed-150x150.png" alt="" width="150" height="150" /></strong></h6>
                                                         <h6 style="text-align: center;">Satisfaction Guaranteed</h6>
-                                                        <p style="text-align: left;">We are 100% committed to your success. If you don’t believe Renshaw’s Personal Training is worth your small investment of $27 a month, you can cancel anytime and never be re-billed. In fact, you can simply login, cancel your account and never have to cancel directly with us. There’s zero risk.</p>
+                                                        <p style="text-align: left;">We are 100% committed to your success. If you don’t believe Nicky Arthur Fitness Training is worth your small investment of $27 a month, you can cancel anytime and never be re-billed. 
+ Plus you can simply login, cancel your account and never have to cancel directly with us. There’s zero risk.
+</p>
                                                     </div>
                                                     <!-- /module text -->
-
 
                                                     <!-- module divider -->
                                                     <div  id="divider-452-2-0-3" class="module module-divider divider-452-2-0-3 solid    " style="border-width: 1px;border-color: #ffffff;">
                                                     </div>
                                                     <!-- /module divider -->
-
-
 
                                                     <!-- module accordion -->
                                                     <div  id="accordion-452-2-0-4" class="module module-accordion accordion-452-2-0-4  " data-behavior="toggle">
@@ -430,50 +409,79 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                             <li class="builder-accordion-active">
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            What Is Renshaw’s Personal Training?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                            
+                                                                        What Is Nicky Arthur’s Fitness Training?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix ">
-                                                                    <p style="text-align: left;">It teaches you and shows you the simplest and most effective way to build muscle through up to date workouts.</p>                    </div>
+                                                                    <p style="text-align: left;">The training teaches you and shows you the healthy,  simplest and most effective way to build muscle through safe and up to date workouts.</p>                    
+                                                                </div>
                                                             </li>
                                                             <li >
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            How Often Is It Updated?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                            
+                                                                        How Often Is It Updated?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix  default-closed">
-                                                                    <p style="text-align: left;">5 new muscle building workout videos will be added on the 1<sup>st</sup> of every month.</p>                    </div>
+                                                                    <p style="text-align: left;">6 new fitness  muscle building workout videos will be added on the 1st of every month includes Core and Stretching.</p>                    
+                                                                </div>
                                                             </li>
                                                             <li >
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            I’m New To Working Out. Is This Right For Me?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                            
+                                                                        I’m New To Working Out. Is This Right For Me?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix  default-closed">
-                                                                    <p style="text-align: left;">Yes. We have focused on a “Start Here” section which takes you through the basics. You learn how to structure your workouts and your own eating plan.</p>                    </div>
+                                                                    <p style="text-align: left;">
+                                                                        Yes. We have focused on a “Start Here” section which takes you through the basics. You learn how to structure your workouts and your own eating plan to suit your body and lifestyle.
+                                                                    </p>                    </div>
                                                             </li>
                                                             <li >
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            Will I Get Overwhelmed?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                            
+                                                                        Will I Get Overwhelmed?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix  default-closed">
-                                                                    <p style="text-align: left;">Not at all. We make sure we don’t give you too much at one time. We find that 5 workouts are what most people need for the month.</p>                    </div>
+                                                                    <p style="text-align: left;">
+                                                                        Not at all. We make sure we don’t give you too much at one time. We find that 6 workouts are what most people need for the month. It train each body part with a focus on core and simple and effective stretching. .
+                                                                    </p>                    
+                                                                </div>
                                                             </li>
                                                             <li >
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            Do I Have To Sign A Long-Term Contract? How Do I Cancel?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                            
+                                                                        Do I Have To Sign A Long-Term Contract? How Do I Cancel?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix  default-closed">
-                                                                    <p style="text-align: left;">No, there’s no long-term contract. You can easily cancel by logging into your account and click the “cancel” button.</p>                    </div>
+                                                                    <p style="text-align: left;">
+                                                                        No. You can easily cancel by logging into your account and click the “cancel” button. There’s no long-term contract.</p>                    
+                                                                </div>
                                                             </li>
                                                             <li >
                                                                 <div class="accordion-title">
                                                                     <a href="#">
-                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            <i class="accordion-active-icon fa fa-angle-double-down"></i>                            Why Is It So Inexpensive?                        </a>
+                                                                        <i class="accordion-icon fa fa-angle-double-right"></i>                            
+                                                                        <i class="accordion-active-icon fa fa-angle-double-down"></i>                           
+                                                                        Why Is It So Inexpensive?                        
+                                                                    </a>
                                                                 </div>
                                                                 <div class="accordion-content clearfix  default-closed">
-                                                                    <p style="text-align: left;">We wanted to create a true no brainer resource for those who are passionate about building muscle. Doing it this way, we can reach out and help more people.</p>                    </div>
+                                                                    <p style="text-align: left;">
+                                                                        We wanted to create a true no brainer resource for those who are passionate about getting fit and healthy for the over 30 plus, educating the most efficient way to losing fat and building lean muscle to change peoples body composition as they age and help others age without pain and excess body fat. Doing it this way, we can reach out and help more people, help more people.</p>                    
+                                                                </div>
                                                             </li>
                                                         </ul>
 
@@ -491,8 +499,6 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                     <!-- /module_row -->
                                 </div>
 
-
-
                                 <!-- comments -->
                                 <!-- /comments -->
 
@@ -501,18 +507,11 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                         </div><!-- /.type-page -->
 
-
                     </div>
                     <!-- /content -->
 
-
-
-
                 </div>
                 <!-- /layout-container -->
-
-
             </div>
             <!-- /body -->
-
             <?php get_footer(); ?>

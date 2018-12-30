@@ -4,13 +4,13 @@
     <head>
         <meta charset="UTF-8" />
         <!-- wp_head -->
-        <title>Renshaw&#039;s Personal Training &#8211; Simple and Effective Workouts</title>
+        <title>Nicky Arthur Fitness ; Simple and Effective Workouts</title>
         <link rel='dns-prefetch' href='//ajax.googleapis.com' />
         <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
         <link rel='dns-prefetch' href='//s.w.org' />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Feed" href="https://www.renshawspt.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Comments Feed" href="https://www.renshawspt.com/comments/feed/" />
+        <link rel="alternate" type="application/rss+xml" title="Nicky Arthur Fitness; Feed" href="<?php echo get_site_url();?>/feed/" />
+        <link rel="alternate" type="application/rss+xml" title="Nicky Arthur Fitness; Comments Feed" href="<?php echo get_site_url();?>/comments/feed/" />
 
         <?php  wp_head(); ?>
         <style type="text/css">
@@ -39,14 +39,7 @@
         <link rel='stylesheet' id='themify-customize-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify-customizer.css?ver=18.08.18.18.10.57' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-builder-5-generated-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify-builder-5-generated.css?ver=1534487784' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C400i%2C600%2C700%7CCormorant+Garamond%3A400%2C600%2C700%7COpen+Sans&#038;subset=latin&#038;ver=4.9.8' type='text/css' media='all' />
-        <link rel='https://api.w.org/' href='https://www.renshawspt.com/wp-json/' />
-        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.renshawspt.com/xmlrpc.php?rsd" />
-        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.renshawspt.com/wp-includes/wlwmanifest.xml" />
         <meta name="generator" content="WordPress 4.9.8" />
-        <link rel="canonical" href="https://www.renshawspt.com/" />
-        <link rel='shortlink' href='https://www.renshawspt.com/' />
-        <link rel="alternate" type="application/json+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2F" />
-        <link rel="alternate" type="text/xml+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2F&#038;format=xml" />
         <script async>(function(s, u, m, o, j, v){j = u.createElement(m); v = u.getElementsByTagName(m)[0]; j.async = 1; j.src = o; j.dataset.sumoSiteId = '5d960f009cb48000bf40f400e4946f00decd4200ff09eb00ba5db80074c64000'; j.dataset.sumoPlatform = 'wordpress'; v.parentNode.insertBefore(j, v)})(window, document, 'script', '//load.sumo.com/');</script>
 
 
@@ -122,7 +115,7 @@
                 <header id="header" class="pagewidth clearfix" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 
                     <div class="header-bar">
-                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Renshaw&#039;s Personal Training"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Renshaw&#039;s Personal Training" title="Renshaw&#039;s Personal Training" /></a></div>
+                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Nicky Arthur Fitness"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
                     <!-- /.header-bar -->
 
@@ -136,12 +129,24 @@
                                     <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id="menu-item-319" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/member-dashboard/">Dashboard</a> </li>
                                         <li id="menu-item-649" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
                                         <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/myaccount/">Help Desk</a> </li>
-                                        <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?php echo get_site_url();?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
+                                        <?php if(is_user_logged_in()):?>
+                                            <li id='menu-item-812' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  href="<?php echo get_site_url();?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
+                                        <?php else: ?>
+                                           <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a  href="<?php echo get_site_url(); ?>/login/">Login</a>  </li>
+                                        <?php endif;?>
                                     </ul>
+                                <?php elseif(is_user_logged_in()): ?>
+                                    <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id='menu-item-319' class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-312 current_page_item" ><a  href="<?php echo get_site_url(); ?>/member-dashboard/">Dashboard</a> </li>
+                                        <li id='menu-item-630' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/start-here/">Start Here</a> </li>
+                                        <li id='menu-item-648' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/new-workouts/">New Workouts</a> </li>
+                                        <li id='menu-item-647' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/workout-archive/">Workout Archive</a> </li>
+                                        <li id='menu-item-649' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
+                                        <li id='menu-item-631' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/myaccount/">Help Desk</a> </li>
+                                        <li id='menu-item-812' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  href="<?php echo get_site_url();?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
+                                    </ul>							<!-- /#main-nav -->
                                 <?php else: ?>
-                                    <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url(); ?>/login/">Member Login</a> </li>
-                                    </ul>									<!-- /#main-nav -->
-                                <?php endif; ?>
+                                    <ul id="main-nav" class="main-nav menu-name-homepage-nav"><li id='menu-item-425' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url(); ?>/login/">Member Login</a> </li></ul>	
+                                <?php endif;?>
                             </nav>
                             <!-- /#main-nav-wrap -->
 

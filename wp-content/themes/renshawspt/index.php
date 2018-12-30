@@ -277,7 +277,7 @@
 
 
                                                             <div class="image-wrap">
-                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2016/12/dumbbells.png" class=" wp-post-image wp-image-690" alt="dumbbells" srcset="https://www.renshawspt.com/wp-content/uploads/2016/12/dumbbells.png 396w, https://www.renshawspt.com/wp-content/uploads/2016/12/dumbbells-150x150.png 150w, https://www.renshawspt.com/wp-content/uploads/2016/12/dumbbells-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
+                                                                <img src="<?php echo get_site_url();?>/wp-content/uploads/2016/12/dumbbells.png" class=" wp-post-image wp-image-690" alt="dumbbells" srcset="<?php echo get_site_url();?>/wp-content/uploads/2016/12/dumbbells.png 396w, <?php echo get_site_url();?>/wp-content/uploads/2016/12/dumbbells-150x150.png 150w, <?php echo get_site_url();?>/wp-content/uploads/2016/12/dumbbells-300x300.png 300w" sizes="(max-width: 396px) 100vw, 396px" />
                                                             </div>
                                                             <!-- /image-wrap -->
                                                         </div>

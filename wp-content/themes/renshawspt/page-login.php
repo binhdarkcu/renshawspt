@@ -13,17 +13,14 @@ $content = str_replace(']]>', ']]&gt;', $content);
     <head>
         <meta charset="UTF-8" />
         <!-- wp_head -->
-        <title>Member Login &#8211; Renshaw&#039;s Personal Training</title>
+        <title>Member Login &#8211; Nicky Arthur Fitness</title>
         <link rel='dns-prefetch' href='//ajax.googleapis.com' />
         <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
         <link rel='dns-prefetch' href='//s.w.org' />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Feed" href="<?php echo get_site_url(); ?>/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Comments Feed" href="<?php echo get_site_url(); ?>/comments/feed/" />
-        <script type="text/javascript">
-            window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/", "ext":".png", "svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/", "svgExt":".svg", "source":{"concatemoji":"https:\/\/www.renshawspt.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
-            !function(a, b, c){function d(a, b){var c = String.fromCharCode; l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, a), 0, 0); var d = k.toDataURL(); l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, b), 0, 0); var e = k.toDataURL(); return d === e}function e(a){var b; if (!l || !l.fillText)return!1; switch (l.textBaseline = "top", l.font = "600 32px Arial", a){case"flag":return!(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) && (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]), !b); case"emoji":return b = d([55358, 56760, 9792, 65039], [55358, 56760, 8203, 9792, 65039]), !b}return!1}function f(a){var c = b.createElement("script"); c.src = a, c.defer = c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c)}var g, h, i, j, k = b.createElement("canvas"), l = k.getContext && k.getContext("2d"); for (j = Array("flag", "emoji"), c.supports = {everything:!0, everythingExceptFlag:!0}, i = 0; i < j.length; i++)c.supports[j[i]] = e(j[i]), c.supports.everything = c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[j[i]]); c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function(){c.DOMReady = !0}, c.supports.everything || (h = function(){c.readyCallback()}, b.addEventListener?(b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)):(a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function(){"complete" === b.readyState && c.readyCallback()})), g = c.source || {}, g.concatemoji?f(g.concatemoji):g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji)))}(window, document, window._wpemojiSettings);
-        </script>
+        <link rel="alternate" type="application/rss+xml" title="Nicky Arthur Fitness; Feed" href="<?php echo get_site_url(); ?>/feed/" />
+        <link rel="alternate" type="application/rss+xml" title="Nicky Arthur Fitness; Comments Feed" href="<?php echo get_site_url(); ?>/comments/feed/" />
+ 
         <style type="text/css">
             img.wp-smiley,
             img.emoji {
@@ -70,11 +67,6 @@ $content = str_replace(']]>', ']]&gt;', $content);
         <meta name="generator" content="WordPress 4.9.8" />
         <link rel="canonical" href="<?php echo get_site_url(); ?>/login/" />
         <link rel='shortlink' href='<?php echo get_site_url(); ?>/?p=227' />
-        <link rel="alternate" type="application/json+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2Flogin%2F" />
-        <link rel="alternate" type="text/xml+oembed" href="https://www.renshawspt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.renshawspt.com%2Flogin%2F&#038;format=xml" />
-        <script async>(function(s, u, m, o, j, v){j = u.createElement(m); v = u.getElementsByTagName(m)[0]; j.async = 1; j.src = o; j.dataset.sumoSiteId = '5d960f009cb48000bf40f400e4946f00decd4200ff09eb00ba5db80074c64000'; j.dataset.sumoPlatform = 'wordpress'; v.parentNode.insertBefore(j, v)})(window, document, 'script', '//load.sumo.com/');</script>
-
-
 
         <link href="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Icon-1.png" rel="shortcut icon" />
 
@@ -187,7 +179,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                         <div class="image-wrap">
                                                             <a href="<?php echo get_site_url(); ?>"
                                                                >
-                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png" class=" wp-post-image wp-image-1605" alt="Renshaws Personal Training Black" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1024x289.png 1024w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-768x217.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" />                </a>
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" class=" wp-post-image wp-image-1605" alt="Nicky Arthur Fitness" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 1024w, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 300w, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" style="height: 135px;"/>                </a>
 
                                                         </div>
                                                         <!-- /image-wrap -->
@@ -241,7 +233,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                     <!-- module text -->
                                                     <div  id="text-227-0-1-3" class="module module-text text-227-0-1-3   ">
 
-                                                        Not a member yet?  Click <a style="color: #045ca9; text-decoration: underline; font-weight: 600;" href="/get-started">HERE for details</a>.  Take advantage of Bryan&#8217;s expertise and ever-growing training library.</div>
+                                                        Not a member yet?  Click <a style="color: #045ca9; text-decoration: underline; font-weight: 600;" href="/get-started">HERE for details</a>.  Take advantage of Nicky&#8217;s expertise and ever-growing training library.</div>
                                                     <!-- /module text -->
                                                 </div>
                                             </div>
