@@ -210,7 +210,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                                                         <div class="image-wrap">
                                                             <a href="<?php echo get_site_url(); ?>">
-                                                                <img src="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png" width="350" class=" wp-post-image wp-image-1613" alt="Renshaws Personal Training Black 1" srcset="https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289-350x98.png 350w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-300x85.png 300w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-768x217.png 768w, https://www.renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Black-1-1024x289.png 1024w" sizes="(max-width: 350px) 100vw, 350px" />
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" width="350" class=" wp-post-image wp-image-1613" alt="Nicky Arthur Fitness" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 350w, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 300w, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 768w, <?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg 1024w" sizes="(max-width: 350px) 100vw, 350px" style="height: 110px;"/>
 
                                                             </a>
                                                         </div>
@@ -304,8 +304,17 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                             </div>
                                                                         </div>
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Ben B. </h3>            
-                                                                            <p>Here is my update with being on the membership program. 2 months in and still have just a little bit more to go. So as you can see, if you just follow the program and the diet correctly, it definitely works. From 215 to 200.4. Thanks Bryan Renshaw. </p>        
+                                                                            <h3 class="module-feature-title">SONIA WA. </h3>            
+                                                                            <p>The results have been amazing. I have lost 8.1 kg in weight in the first two weeks.
+                                                                                My initial measurements until day 5 but since then have lost an average 1-2 cm off all areas except the waist, which is now 9cm, less.
+                                                                                It is nice to be able to get one on one coaching. It helps keep me inspired.
+                                                                                Nicky, when it comes to being a coach, you are awesome.</p>
+                                                                            <strong> Cheers, Sonia WA </strong>
+                                                                                <br/><br/>
+                                                                            <p>
+                                                                                Sonia Before and After weight loss 33kg in 20 weeks.  Sonia first lost 21kg on the 10 week Bikini Mama  online program and then completed round 2  and lost a further 12kg. 3 years later Sonia has maintained her weight loss journey. 
+
+                                                                            </p>        
                                                                         </div>
                                                                     </div>
                                                                     <!-- /module feature -->
@@ -391,8 +400,8 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                         <h6 style="text-align: center;"><strong><img class="size-full wp-image-557 alignleft" src="https://www.renshawspt.com/wp-content/uploads/2017/05/sat-guaranteed-150x150.png" alt="" width="150" height="150" /></strong></h6>
                                                         <h6 style="text-align: center;">Satisfaction Guaranteed</h6>
                                                         <p style="text-align: left;">We are 100% committed to your success. If you don’t believe Nicky Arthur Fitness Training is worth your small investment of $27 a month, you can cancel anytime and never be re-billed. 
- Plus you can simply login, cancel your account and never have to cancel directly with us. There’s zero risk.
-</p>
+                                                            Plus you can simply login, cancel your account and never have to cancel directly with us. There’s zero risk.
+                                                        </p>
                                                     </div>
                                                     <!-- /module text -->
 
