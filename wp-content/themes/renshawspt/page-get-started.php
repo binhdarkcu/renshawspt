@@ -17,8 +17,6 @@ $content = str_replace(']]>', ']]&gt;', $content);
         <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
         <link rel='dns-prefetch' href='//s.w.org' />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Feed" href="https://www.renshawspt.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Renshaw&#039;s Personal Training &raquo; Comments Feed" href="https://www.renshawspt.com/comments/feed/" />
 
         <link rel='stylesheet' id='gdpr_css-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/gdpr-banner.css?ver=1.0.0' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-common-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify.common.min.css?ver=4.9.8' type='text/css' media='all' />
@@ -129,7 +127,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
                                 <script type="text/javascript">
                                     if (!document.getElementById("builder-styles") && document.getElementById("builder-styles-css"))
-                                            document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='https://www.renshawspt.com/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
+                                            document.getElementById("builder-styles-css").insertAdjacentHTML("beforebegin", "<link id='builder-styles' rel='stylesheet' href='<?php echo get_site_url(); ?>/wp-content/themes/themify-ultra/themify/themify-builder/css/themify-builder-style.min.css?ver=3.5.8' type='text/css' />");
                                 </script><div id="themify_builder_content-452" data-postid="452" class="themify_builder_content themify_builder_content-452 themify_builder">
 
 
@@ -298,7 +296,15 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-                                                                                        <img src="https://www.renshawspt.com/wp-content/uploads/2017/09/FullSizeRender-1024x1007.jpg" alt="Ben B. " />
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/sonia_1.jpg" alt="Sonia WA. " />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <br/><br/><br/>
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/sonia_2.jpg" alt="Sonia WA. " />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -310,7 +316,7 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                                 It is nice to be able to get one on one coaching. It helps keep me inspired.
                                                                                 Nicky, when it comes to being a coach, you are awesome.</p>
                                                                             <strong> Cheers, Sonia WA </strong>
-                                                                                <br/><br/>
+                                                                            <br/><br/>
                                                                             <p>
                                                                                 Sonia Before and After weight loss 33kg in 20 weeks.  Sonia first lost 21kg on the 10 week Bikini Mama  online program and then completed round 2  and lost a further 12kg. 3 years later Sonia has maintained her weight loss journey. 
 
@@ -331,15 +337,24 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-                                                                                        <img src="https://www.renshawspt.com/wp-content/uploads/2017/05/chad.jpg" alt="Chad S." />
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/m_green.jpg" alt="M.Green" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Chad S.</h3>            
-                                                                            <p>It has been 3 months since I started with Bryan and the results have been great. I will be working with Bryan for years to come. Also, I would like to end by saying, anyone that&#8217;s looking to take back control of your body and health, I highly recommend this. </p>        
+                                                                            <h3 class="module-feature-title">M.Green</h3>            
+                                                                            <p>In life, everything has timing, and for me that occurred 6 weeks ago when I bumped into Nicki Arthur in the locker rooms 
+                                                                                at my local gym. 
+                                                                                I mentioned to her that I was constantly battling my 2-3 kgs weight gain which I wanted to rid and although I was quite vigilant during the week, after the weekends, I was back to square one! 
+                                                                                Her wonderful face lit up and she said....”I can help you!!’
+                                                                                She told me that on her program we just needed to tweak certain things for the desired outcome. 
+                                                                                Tweak she did and 6 weeks to the day, I have lost 4 kgs!!! 
+                                                                                It was so easy and doable and her vivacious spirit and motivational enthusiasm kept me on track, with weekly catch ups, and weekly emails with recipes and shopping lists. 
+                                                                                I feel amazing and love the fact that I can slip easily into clothes and have a new sense of eating properly. 
+                                                                                I can only praise Nicki and would highly recommend her to anyone, as I already have. 
+                                                                            </p>        
                                                                         </div>
 
                                                                     </div>
@@ -356,18 +371,139 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                                                  >
                                                                                 <div class="chart-html5-circle">
                                                                                     <div class="chart-html5-inset">
-                                                                                        <img src="https://www.renshawspt.com/wp-content/uploads/2018/06/IMG_0145-1024x1024.jpg" alt="Paul D. " />
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/tina_1.jpg" alt="Tina NZ" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/tina_2.jpg" alt="Tina NZ" />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="module-feature-content">
-                                                                            <h3 class="module-feature-title">Paul D. </h3>            
-                                                                            <p>I thought I&#8217;d put my 6-month transformation pic. This is most definitely the best thing I&#8217;ve ever done, and I would have never made this progress on my own. I&#8217;m in the best shape I&#8217;ve ever been in and this is just the start. </p>        
+                                                                            <h3 class="module-feature-title">Tina NZ </h3>            
+                                                                            <p>Sometimes what you think is the problem, isn’t actually the issue. I found this out over the last 10 weeks as I’ve undertaken one on one coaching with Nicky. I thought my problem was the weight I was carrying; in fact this isn’t the case.
+                                                                                By talking with Nicky week by week, we started to unravel of whole lot of thoughts and ideas I had about myself which were untrue and each time, I was able to start growing in a new direction. There were ups and downs, that’s part of the journey.
+                                                                                Life isn’t about what the scales tell you it’s just a number, life is about how you want to live your life and allowing yourself to change and grow. It’s about letting go of old ideas, thoughts and negative patterns that no longer serve you. By doing this you are able to move towards the life you really want. I have done this through the coaching and each day I find myself growing and being more open to the amazing life I already have and am further enhancing.
+                                                                            </p>        
                                                                         </div>
                                                                     </div>
                                                                     <!-- /module feature -->
 
+
+                                                                    <!-- module feature -->
+                                                                    <div  id="feature-452-sub_row_2-0-0-0-7" class="module module-feature feature-452-sub_row_2-0-0-0-5 no-chart layout-icon-right size-large feature ">
+
+                                                                        <style type="text/css"></style>
+
+                                                                        <div class="module-feature-image">
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/ann_1.jpg" alt="Ann" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/ann_2.jpg" alt="Ann" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/ann_3.jpg" alt="Ann" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="module-feature-content">
+                                                                            <h3 class="module-feature-title">Ann</h3>            
+                                                                            <p>The motivation to join the programme was to do something for myself & to get back on track with my food & body shape. I was struggling to fit into my clothes & felt very uncomfortable in my own skin!
+                                                                                I knew something was not aligned but I couldn’t work out what it was. My health was good not great & energy levels could have been better.
+
+                                                                                The main changes were around these four areas:
+
+                                                                                What to eat - food choices
+                                                                                When to eat - no carbs after 4pm
+                                                                                Best time to exercise for maximum benefit & also to fit into my lifestyle.
+                                                                                The importance of planning a menu, preparing food & packing my food on work days. I found what worked for me & have ‘tweeted’ things here & there to suit my week & schedule.
+
+                                                                                Other outcomes of the coaching included:
+
+                                                                                Overall heath is so much better - I look healthy, my rosacea has improved, I have a lot of energy & my body’s immune system is stronger!
+                                                                                I feel like I am much better equipped to cope with what life throws at me - I have learnt about food choices that support & nourish my body & soul even in times of stress - plus I never felt hungry.
+                                                                                Nic was always there with the most amazing advice, supporting me all the way so there was no way I could fail.
+                                                                                She has an invested interest in every one of her clients & her individual approach is why it works.
+                                                                                She has also taught me how to eat out without anxiety or fear that the weight will creep back on. I can travel for work or play & make great food choices when I am away from my own kitchen. 
+                                                                                feel very fortunate & grateful that Nic was there to support me through this amazing transformation. Whether u have 10kgs or 50kgs to lose you need the same commitment, discipline & support. 
+                                                                                I could not recommend Nic highly enough to anyone who is contemplating making a lifestyle change & investing in their mind & body!
+                                                                                I am a more healthy, happier version of myself thanks to her!
+                                                                                Love & light to you Nic! You are amazing & kind & incredibly knowledgeable about food, nutrition & exercise .
+
+                                                                            </p>        
+                                                                            <p>Ann’s success story:   <a href="http://bit.ly/1SXTMMn" style="color: blue" target="_blank">http://bit.ly/1SXTMMn</a></p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!-- /module feature -->
+
+                                                                    <!-- module feature -->
+                                                                    <div  id="feature-452-sub_row_2-0-0-0-8" class="module module-feature feature-452-sub_row_2-0-0-0-6 no-chart layout-icon-left size-large feature ">
+
+                                                                        <style type="text/css"></style>
+
+                                                                        <div class="module-feature-image">
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/liz.jpg" alt="LEANNE NZ" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="module-feature-content">
+                                                                            <h3 class="module-feature-title">LEANNE NZ</h3>            
+                                                                            <p>The week of the 12th of May this year, I had had enough. Something needed to change. I was depressed, I was frustrated with what I had ultimately let myself become. I wasn’t being the best mum I could be, I wasn’t the best friend or wife I could be, I was embarrassed, ashamed and just lost. Really, really lost. I had trouble getting to sleep, I would go to bed tired and lie awake for hours while my husband and dog were snoring their heads off. I would get to sleep eventually and then after a few hours I would wake and the cycle would repeat. 
+                                                                                I was desperate.  I was after a quick fix, desperate to see the scales going down. Desperate for any change. I had tried everything I could think of. I had calorie counted, really restricting my calories and then I would end up binging as I would be starving or just have no energy at all. I had done weight watchers on and off for years. I would get so obsessed with counting points that it was taking over my life. All day every day I would think about food and points, it was like I couldn’t focus fully on everything else. I was thinking about my next meal, my next carb hit, my next step to declining health.
+                                                                                Fast forward to today and I cant even recognise that person from ten weeks ago. When I see my starting photo and the look on my face, how dark my eyes were etc it just makes me want to cry. I am so much more confident, have so much more energy. I hold myself completely different now, and in approximately my third week I had a very good friend comment on this. I feel like I have my spark back. My eyes are brighter, my skin clearer, I enjoy going out now, I don’t shy away from social situations anymore. I have smashed so many goals in that first ten weeks its insane. For example, I got back to pre second baby weight, I got under 120kgs, I got back to my pre first baby weight, and I nearly back to the weight I was when I met my husband.  I am absolutely loving life again. I am extremely excited about what the future has in store for me, my family and working alongside Nicky to reach more goals!!!
+                                                                            </p>        
+                                                                            <p>
+                                                                                LIZ Story 
+                                                                                <br/>
+                                                                                Youtube <a href="https://www.youtube.com/watch?v=c38GTUX0P_0" style="color: blue">https://www.youtube.com/watch?v=c38GTUX0P_0</a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /module feature -->
+
+                                                                    <!-- module feature -->
+                                                                    <div  id="feature-452-sub_row_2-0-0-0-9" class="module module-feature feature-452-sub_row_2-0-0-0-5 no-chart layout-icon-right size-large feature ">
+
+                                                                        <style type="text/css"></style>
+
+                                                                        <div class="module-feature-image">
+                                                                            <div class="module-feature-chart-html5">
+                                                                                <div class="chart-html5-circle">
+                                                                                    <div class="chart-html5-inset">
+                                                                                        <img src="<?php get_site_url(); ?>/wp-content/uploads/2018/12/temo.jpg" alt="TEMO" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="module-feature-content">
+                                                                            <h3 class="module-feature-title">TEMO</h3>            
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!-- /module feature -->
                                                                 </div>
                                                             </div>
                                                             <div  class="col3-1 sub_column module_column last sub_column_post_452 sub_column_2-0-0-1">
