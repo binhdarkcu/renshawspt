@@ -127,6 +127,7 @@
                                 <?php global $post; ?>
                                 <?php if (is_object($post) && $post->post_name ==='forgot-password'): ?>
                                     <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id="menu-item-319" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/member-dashboard/">Dashboard</a> </li>
+                                        <li id="menu-item-642" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="<?php echo get_site_url();?>/vip-program/">VIP Program</a> </li>
                                         <li id="menu-item-649" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
                                         <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo get_site_url();?>/myaccount/">Help Desk</a> </li>
                                         <?php if(is_user_logged_in()):?>
