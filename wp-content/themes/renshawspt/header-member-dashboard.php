@@ -145,16 +145,18 @@
 
                             <div class="navbar-wrapper clearfix">
 
-
-
                                 <nav id="main-nav-wrap" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
                                     <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id='menu-item-319' class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-312 current_page_item" ><a  href="<?php echo get_site_url(); ?>/member-dashboard/">Dashboard</a> </li>
                                         <li id='menu-item-630' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/start-here/">Start Here</a> </li>
                                         <li id='menu-item-648' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/new-workouts/">New Workouts</a> </li>
                                         <li id='menu-item-647' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/workout-archive/">Workout Archive</a> </li>
                                         <li id='menu-item-649' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
+                                        <?php if(is_user_logged_in()):?>
                                         <li id='menu-item-631' class="menu-item menu-item-type-post_type menu-item-object-page" ><a  href="<?php echo get_site_url();?>/myaccount/">Help Desk</a> </li>
                                         <li id='menu-item-812' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  href="<?php echo get_site_url();?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
+                                        <?php else:?>
+                                        <li id='menu-item-813' class="menu-item menu-item-type-custom menu-item-object-custom" ><a  href="<?php echo get_site_url();?>/wp-login.php">Log In</a> </li>
+                                        <?php endif;?>
                                     </ul>									<!-- /#main-nav -->
 
 

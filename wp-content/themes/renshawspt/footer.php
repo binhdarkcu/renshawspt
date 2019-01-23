@@ -41,10 +41,10 @@
                             <div class="footer-widgets clearfix">
                                 <div class=" first">
                                     <div id="text-1010" class="widget widget_text">			<div class="textwidget"><ul class="foot-nav">
-                                                <li><a href="/">HOME</a></li>
-                                                <li><a href="/login/">MEMBER LOGIN</a></li>
-                                                <li><a href="/terms-and-conditions/">TERMS & CONDITIONS</a></li>
-                                                <li><a href="/privacy-policy">PRIVACY POLICY</a></li>
+                                                <li><a href="<?php echo get_site_url();?>/">HOME</a></li>
+                                                <li><a href="<?php echo get_site_url();?>/login/">MEMBER LOGIN</a></li>
+                                                <li><a href="<?php echo get_site_url();?>/terms-and-conditions/">TERMS & CONDITIONS</a></li>
+                                                <li><a href="<?php echo get_site_url();?>/privacy-policy">PRIVACY POLICY</a></li>
                                             </ul>
                                         </div>
                                     </div>				</div>
