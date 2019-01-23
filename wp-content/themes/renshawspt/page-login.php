@@ -200,25 +200,8 @@ $content = str_replace(']]>', ']]&gt;', $content);
                                                             });</script></p>
 
                                                         <br />
-                                                                                                        <?php echo $content; ?>
+                                                        <?php echo $content; ?>
 
-<!--                                                        <form action="<?php echo get_site_url(); ?>/wp-login.php" method="post" id="mm-login-form">
-                                                            </p>
-                                                            <div class="mm-login">
-                                                                <div class="loginbox">
-                                                                    <p><br /></p>
-                                                                    <h3>Members Login Here</h3>
-                                                                    <div class="mm-field-column username"><input type="text" id="log" name="log" class="mm-field" /></div>
-                                                                    <div class="mm-field-column password"><input type="hidden" id="mm-security" name="mm-security" value="198ad9c044" /><input type="hidden" name="_wp_http_referer" value="/login/" /><input type="password" id="pwd" name="pwd" class="mm-field" /></div>
-                                                                    <div class="forgotpass"><a class="mm-forgot-password" href="<?php echo get_site_url(); ?>/forgot-password/">Forgot Password?</a></div>
-                                                                    <div class="loginbtn"><input type="submit" name="submit" value="Login" id="mm-login-button" class="mm-button " /></div>
-                                                                    <div class="rememberme"><label for="rememberme" class="mm-remember-me">
-                                                                            <input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" />
-                                                                            Remember me</label></div>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                        </form>-->
                                                         <script>var mm_nonce_name_login_form = 'mm-security';</script><br /></div>
                                                     <!-- /module text -->
 

@@ -150,7 +150,8 @@
 
                                                         <div class="module-buttons large squared">
                                                             <div class="module-buttons-item  buttons-horizontal">
-                                                                <a href="<?php echo get_site_url(); ?>/new-workouts" class="ui builder_button" ><i class="fa fa-fire"></i> <span>NEW WORKOUTS</span></a>                </div>
+                                                                <a href="<?php echo get_site_url(); ?>/new-workouts" class="ui builder_button" ><i class="fa fa-fire"></i> <span>NEW WORKOUTS</span></a>                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!-- /module buttons -->
