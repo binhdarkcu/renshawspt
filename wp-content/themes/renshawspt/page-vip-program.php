@@ -251,12 +251,15 @@
                                 <div class="out" style="background-color: #ebebeb;">
                                     <div class="in lightSec">
                                         <div class="cck clearfix tve_empty_dropzone">
-                                            <div class="thrv_wrapper thrv_text_element tve_empty_dropzone on_hover"><p class="tve_p_center" style="margin: 0; padding: 0; color: #666666; font-size: 22px;">Copyright 2019 - Renshaw's PT. &nbsp;All Rights Reserved.</p></div><div class="thrv_wrapper thrv_custom_html_shortcode"><center><ul class="foot-nav">
+                                            <div class="thrv_wrapper thrv_text_element tve_empty_dropzone on_hover"><p class="tve_p_center" style="margin: 0; padding: 0; color: #666666; font-size: 22px;">Copyright 2019 - Renshaw's PT. &nbsp;All Rights Reserved.</p></div><div class="thrv_wrapper thrv_custom_html_shortcode">
+                                                <center><ul class="foot-nav">
                                                         <li><a href="/" target="_self">HOME</a></li>
                                                         <li><a href="/login/" target="_self">MEMBER LOGIN</a></li>
                                                         <li><a href="/terms-conditions/" target="_self">TERMS &amp; CONDITIONS</a></li>
                                                         <li><a href="/privacy-policy" target="_self">PRIVACY POLICY</a></li>
-                                                    </ul></center></div>
+                                                    </ul>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
