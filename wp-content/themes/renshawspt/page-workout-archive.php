@@ -81,7 +81,7 @@ $site_url = get_site_url();
         <link rel="shortlink" href="<?php echo $site_url; ?>/?p=645">
 
 
-        <link href="<?php echo $site_url; ?>/wp-content/uploads/2018/08/Renshaws-Personal-Training-Icon-1.png" rel="shortcut icon"> 
+        <link href="https://renshawspt.com/wp-content/uploads/2018/08/Renshaws-Personal-Training-Icon-1.png" rel="shortcut icon"> 
 
         <script type="text/javascript">
             var tf_mobile_menu_trigger_point = 1190;
@@ -144,7 +144,7 @@ $site_url = get_site_url();
 
 
                     <div class="header-bar">
-                        <div id="site-logo"><a href="/" title="Nicky Arthur Fitness"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/08/Renshaws-Personal-Training-White.png" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness"></a></div>					
+                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Nicky Arthur Fitness"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
                     <!-- /.header-bar -->
 
@@ -159,7 +159,7 @@ $site_url = get_site_url();
                                     <li id="menu-item-630" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/start-here/">Start Here</a> </li>
                                     <li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/new-workouts/">New Workouts</a> </li>
                                     <li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-645 current_page_item"><a href="<?php echo $site_url; ?>/workout-archive/">Archive</a> </li>
-                                    <li id="menu-item-1795" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="<?php echo $site_url; ?>/online-training">VIP Program</a> </li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="<?php echo $site_url; ?>/vip-program">VIP Program</a> </li>
                                     <li id="menu-item-649" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
                                     <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/myaccount/">Help Desk</a> </li>
                                     <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?php echo $site_url; ?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
@@ -241,7 +241,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/january-2019/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/12/IMG_0075.jpeg" class=" wp-post-image wp-image-1774" alt="IMG_0075" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/12/IMG_0075.jpeg 2304w, <?php echo $site_url; ?>/wp-content/uploads/2018/12/IMG_0075-300x200.jpeg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/12/IMG_0075-768x512.jpeg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/12/IMG_0075-1024x683.jpeg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/january-2019/"><img src="https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075.jpeg" class=" wp-post-image wp-image-1774" alt="IMG_0075" srcset="https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075.jpeg 2304w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-300x200.jpeg 300w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-768x512.jpeg 768w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-1024x683.jpeg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
 
                                                                 </figure>
 
@@ -294,7 +294,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/december-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/11/IMG_0071.jpeg" class=" wp-post-image wp-image-1731" alt="IMG_0071" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/11/IMG_0071.jpeg 2305w, <?php echo $site_url; ?>/wp-content/uploads/2018/11/IMG_0071-300x200.jpeg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/11/IMG_0071-768x512.jpeg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/11/IMG_0071-1024x682.jpeg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/december-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071.jpeg" class=" wp-post-image wp-image-1731" alt="IMG_0071" srcset="https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071.jpeg 2305w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-300x200.jpeg 300w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-768x512.jpeg 768w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-1024x682.jpeg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
 
                                                                 </figure>
 
@@ -347,7 +347,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/november-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/10/IMG_0337.jpg" class=" wp-post-image wp-image-1696" alt="IMG_0337" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/10/IMG_0337.jpg 2304w, <?php echo $site_url; ?>/wp-content/uploads/2018/10/IMG_0337-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/10/IMG_0337-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/10/IMG_0337-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/november-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337.jpg" class=" wp-post-image wp-image-1696" alt="IMG_0337" srcset="https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
 
                                                                 </figure>
 
@@ -400,7 +400,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/october-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/09/IMG_0054.jpg" class=" wp-post-image wp-image-1672" alt="IMG_0054" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/09/IMG_0054.jpg 2306w, <?php echo $site_url; ?>/wp-content/uploads/2018/09/IMG_0054-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/09/IMG_0054-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/09/IMG_0054-1024x683.jpg 1024w" sizes="(max-width: 2306px) 100vw, 2306px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/october-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054.jpg" class=" wp-post-image wp-image-1672" alt="IMG_0054" srcset="https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054.jpg 2306w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-1024x683.jpg 1024w" sizes="(max-width: 2306px) 100vw, 2306px"></a>
 
                                                                 </figure>
 
@@ -453,7 +453,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/september-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/08/IMG_0034.jpg" class=" wp-post-image wp-image-1630" alt="IMG_0034" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/08/IMG_0034.jpg 2305w, <?php echo $site_url; ?>/wp-content/uploads/2018/08/IMG_0034-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/08/IMG_0034-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/08/IMG_0034-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/september-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034.jpg" class=" wp-post-image wp-image-1630" alt="IMG_0034" srcset="https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
 
                                                                 </figure>
 
@@ -506,7 +506,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/august-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/07/IMG_0009.jpg" class=" wp-post-image wp-image-1570" alt="IMG_0009" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/07/IMG_0009.jpg 2304w, <?php echo $site_url; ?>/wp-content/uploads/2018/07/IMG_0009-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/07/IMG_0009-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/07/IMG_0009-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/august-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009.jpg" class=" wp-post-image wp-image-1570" alt="IMG_0009" srcset="https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
 
                                                                 </figure>
 
@@ -559,7 +559,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/july-2018/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/06/IMG_0164.jpg" class=" wp-post-image wp-image-1542" alt="IMG_0164" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/06/IMG_0164.jpg 2304w, <?php echo $site_url; ?>/wp-content/uploads/2018/06/IMG_0164-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/06/IMG_0164-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/06/IMG_0164-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/july-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164.jpg" class=" wp-post-image wp-image-1542" alt="IMG_0164" srcset="https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
 
                                                                 </figure>
 
@@ -612,7 +612,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/2018-june/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/05/IMG_0138.jpg" class=" wp-post-image wp-image-1386" alt="IMG_0138" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/05/IMG_0138.jpg 2305w, <?php echo $site_url; ?>/wp-content/uploads/2018/05/IMG_0138-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/05/IMG_0138-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/05/IMG_0138-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/2018-june/"><img src="https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138.jpg" class=" wp-post-image wp-image-1386" alt="IMG_0138" srcset="https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
 
                                                                 </figure>
 
@@ -665,7 +665,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/2018-may/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/04/IMG_0117.jpg" class=" wp-post-image wp-image-1242" alt="IMG_0117" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/04/IMG_0117.jpg 2086w, <?php echo $site_url; ?>/wp-content/uploads/2018/04/IMG_0117-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/04/IMG_0117-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/04/IMG_0117-1024x683.jpg 1024w" sizes="(max-width: 2086px) 100vw, 2086px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/2018-may/"><img src="https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117.jpg" class=" wp-post-image wp-image-1242" alt="IMG_0117" srcset="https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117.jpg 2086w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-1024x683.jpg 1024w" sizes="(max-width: 2086px) 100vw, 2086px"></a>
 
                                                                 </figure>
 
@@ -718,7 +718,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/2018-april/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/03/IMG_0103.jpg" class=" wp-post-image wp-image-1212" alt="IMG_0103" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/03/IMG_0103.jpg 1018w, <?php echo $site_url; ?>/wp-content/uploads/2018/03/IMG_0103-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/03/IMG_0103-768x512.jpg 768w" sizes="(max-width: 1018px) 100vw, 1018px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/2018-april/"><img src="https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103.jpg" class=" wp-post-image wp-image-1212" alt="IMG_0103" srcset="https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103.jpg 1018w, https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103-768x512.jpg 768w" sizes="(max-width: 1018px) 100vw, 1018px"></a>
 
                                                                 </figure>
 
@@ -771,7 +771,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/2018-march/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/02/flex.jpg" class=" wp-post-image wp-image-937" alt="flex" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/02/flex.jpg 2079w, <?php echo $site_url; ?>/wp-content/uploads/2018/02/flex-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/02/flex-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/02/flex-1024x683.jpg 1024w" sizes="(max-width: 2079px) 100vw, 2079px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/2018-march/"><img src="https://renshawspt.com/wp-content/uploads/2018/02/flex.jpg" class=" wp-post-image wp-image-937" alt="flex" srcset="https://renshawspt.com/wp-content/uploads/2018/02/flex.jpg 2079w, https://renshawspt.com/wp-content/uploads/2018/02/flex-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/02/flex-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/02/flex-1024x683.jpg 1024w" sizes="(max-width: 2079px) 100vw, 2079px"></a>
 
                                                                 </figure>
 
@@ -824,7 +824,7 @@ $site_url = get_site_url();
 
                                                                 <figure class="post-image  clearfix">
 
-                                                                    <a href="<?php echo $site_url; ?>/2018-february/"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/01/IMG_0037.jpg" class=" wp-post-image wp-image-917" alt="IMG_0037" srcset="<?php echo $site_url; ?>/wp-content/uploads/2018/01/IMG_0037.jpg 2305w, <?php echo $site_url; ?>/wp-content/uploads/2018/01/IMG_0037-300x200.jpg 300w, <?php echo $site_url; ?>/wp-content/uploads/2018/01/IMG_0037-768x512.jpg 768w, <?php echo $site_url; ?>/wp-content/uploads/2018/01/IMG_0037-1024x683.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
+                                                                    <a href="<?php echo $site_url; ?>/2018-february/"><img src="https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037.jpg" class=" wp-post-image wp-image-917" alt="IMG_0037" srcset="https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-1024x683.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
 
                                                                 </figure>
 
@@ -948,7 +948,7 @@ $site_url = get_site_url();
                     </div>
                     <div class="footer-text clearfix">
                         <div class="footer-text-inner">
-                            <div class="one">Copyright © 2019 Renshaw’s Personal Training. All Rights Reserved.</div>									</div>
+                            <div class="one">Copyright © 2019 Nicky Arthur Fitness. All Rights Reserved.</div>									</div>
                     </div>
                     <!-- /.footer-text -->
 
@@ -976,7 +976,7 @@ $site_url = get_site_url();
             }
             });
         </script>
-        <link rel="stylesheet" id="themify-builder-1773-generated-css" href="<?php echo $site_url; ?>/wp-content/uploads/themify-css/themify-builder-1773-generated.css?ver=1547233244" type="text/css" media="all">
+        <link rel="stylesheet" id="themify-builder-1773-generated-css" href="https://renshawspt.com/wp-content/uploads/themify-css/themify-builder-1773-generated.css?ver=1547233244" type="text/css" media="all">
         <link rel="stylesheet" id="themify-builder-1730-generated-css" href="<?php echo $site_url; ?>/wp-content/uploads/themify-css/themify-builder-1730-generated.css?ver=1543960652" type="text/css" media="all">
         <link rel="stylesheet" id="themify-builder-1695-generated-css" href="<?php echo $site_url; ?>/wp-content/uploads/themify-css/themify-builder-1695-generated.css?ver=1543960979" type="text/css" media="all">
         <link rel="stylesheet" id="themify-builder-1671-generated-css" href="<?php echo $site_url; ?>/wp-content/uploads/themify-css/themify-builder-1671-generated.css?ver=1538269190" type="text/css" media="all">

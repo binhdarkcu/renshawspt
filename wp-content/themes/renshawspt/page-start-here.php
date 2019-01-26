@@ -178,7 +178,7 @@ $site_url = get_site_url();
 
 
                     <div class="header-bar">
-                        <div id="site-logo"><a href="/" title="Nicky Arthur Fitness"><img src="<?php echo $site_url; ?>/wp-content/uploads/2018/08/Renshaws-Personal-Training-White.png" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness"></a></div>					
+                        <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Nicky Arthur Fitness"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
                     <!-- /.header-bar -->
 
@@ -454,7 +454,7 @@ $site_url = get_site_url();
                     </div>
                     <div class="footer-text clearfix">
                         <div class="footer-text-inner">
-                            <div class="one">Copyright © 2019 Renshaw’s Personal Training. All Rights Reserved.</div>									</div>
+                            <div class="one">Copyright © 2019 Nicky Arthur Fitness. All Rights Reserved.</div>									</div>
                     </div>
                     <!-- /.footer-text -->
 
