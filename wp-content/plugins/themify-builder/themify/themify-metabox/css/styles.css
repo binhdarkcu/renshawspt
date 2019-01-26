@@ -104,8 +104,6 @@ a.preview-icon {
 	line-height: 1.1em;
 	padding: 4px 6px;
 	border-radius: 3px;
-	-webkit-transform: translate(-50%, -6px);
-	-ms-transform: translate(-50%, -6px);
 	transform: translate(-50%, -6px);
 	display: none;
 }
@@ -149,8 +147,6 @@ a.preview-icon {
 	color: #fff;
 	padding: 4px 6px;
 	border-radius: 3px;
-	-webkit-transform: translateX(-50%) translateY(-60%);
-	-ms-transform: translateX(-50%) translateY(-60%);
 	transform: translateX(-50%) translateY(-60%);
 }
 .themify_field-layout .tm-option-title:before {
@@ -177,7 +173,6 @@ a.preview-icon {
 .hide-if {
 	opacity: 1;
 	visibility: visible;
-	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
 }
 .hide-if.conceal {
@@ -247,17 +242,14 @@ a.preview-icon {
 	bottom: 0;
 	margin: auto 0;
 	background: currentColor;
-	-webkit-transition: background 0.2s ease;
 	transition: background 0.2s ease;
 }
 
 .themify-repeater-remove-row a:before {
-	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
 
 .themify-repeater-remove-row a:after {
-	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
 
@@ -357,8 +349,6 @@ a.preview-icon {
 	overflow: hidden;
 	display: block;
 	background: rgb(150,149,149);
-	background: -moz-linear-gradient(top, rgb(150,149,149) 0%, rgb(108,108,108) 100%);
-	background: -webkit-linear-gradient(top, rgb(150,149,149) 0%,rgb(108,108,108) 100%);
 	background: linear-gradient(to bottom, rgb(150,149,149) 0%,rgb(108,108,108) 100%);
 	border: 1px solid rgba(0,0,0,.5);
 	border-radius: 50%;
@@ -376,13 +366,9 @@ a.preview-icon {
 	top: 9px;
 }
 .themify_field .themify_featimg_remove a:before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 .themify_field .themify_featimg_remove a:after {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
 .themify_field .themify_medialib_wrapper {
@@ -566,7 +552,6 @@ input.themifyDatePicker {
 	visibility: hidden;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	opacity: 0;
-	-webkit-transition: opacity 0.2s ease-out;
 	transition: opacity 0.2s ease-out;
 }
 .themifyFadeIn {
@@ -589,7 +574,6 @@ input.themifyDatePicker {
 }
 .ui-datepicker.themifyDateTimePickerPanel .ui-datepicker-prev, .ui-datepicker.themifyDateTimePickerPanel .ui-datepicker-next {
 	border: 1px solid #eee;
-	-webkit-transition: border-color 0.2s ease-out;
 	transition: border-color 0.2s ease-out;
 }
 .ui-datepicker.themifyDateTimePickerPanel .ui-datepicker-prev .ui-icon, .ui-datepicker.themifyDateTimePickerPanel .ui-datepicker-next .ui-icon {
@@ -634,7 +618,6 @@ input.themifyDatePicker {
 	background: #f6f6f6;
 	border-radius: 3px;
 	border: 2px solid #eee;
-	-webkit-transition: border-color 0.2s ease-out;
 	transition: border-color 0.2s ease-out;
 }
 .ui-datepicker.themifyDateTimePickerPanel .ui-state-active, .ui-datepicker.themifyDateTimePickerPanel .ui-state-default:active {
@@ -751,8 +734,6 @@ input.themifyDatePicker {
 	color: #fff;
 	padding: 4px 6px;
 	border-radius: 3px;
-	-webkit-transform: translateX(-50%) translateY(-60%);
-	-ms-transform: translateX(-50%) translateY(-60%);
 	transform: translateX(-50%) translateY(-60%);
 }
 .themify_field-image_radio .tm-option-title:before {

@@ -646,7 +646,7 @@ if (!function_exists('themify_builder_module_settings_field')) {
                                     $default_checked = (isset($field['default']) && $field['default'] == $k) ? 'checked="checked"' : '';
                                     $data_el = $option_js ? 'data-selected="tb_group_element_' . $k . '"' : '';
                                     ?>
-                                    <input <?php if (!empty($v['disable']) && is_array($v)): ?>disabled="disabled"<?php endif; ?> id="<?php echo $field['id'] . '_' . $k; ?>" name="<?php echo $field['id']; ?>" type="radio" value="<?php  esc_attr_e($k); ?>" <?php echo " $default_checked $data_el"; ?> <?php echo $data; ?>/>
+                                    <input <?php if (!empty($v['disable']) && is_array($v)): ?>disabled="disabled"<?php endif; ?> id="<?php echo $field['id'] . '_' . $k; ?>" name="<?php echo $field['id']; ?>" type="radio" value="<?php echo esc_attr($k); ?>" <?php echo " $default_checked $data_el"; ?> <?php echo $data; ?>/>
                                     <label for="<?php echo $field['id'] . '_' . $k; ?>" class="pad-right">
                                         <?php if($is_icon):?>
                                             <?php echo $is_icon ? $v['icon'] : (isset($v['name']) ? $v['name'] : ''); ?><?php if ($is_icon): ?><span class="themify_tooltip"><?php echo isset($v['name']) ? $v['name'] : '' ?></span><?php endif; ?>

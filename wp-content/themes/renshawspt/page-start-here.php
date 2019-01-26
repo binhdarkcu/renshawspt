@@ -54,7 +54,8 @@ $site_url = get_site_url();
         <link rel="stylesheet" id="themify-google-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C400i%2C600%2C700%7CCormorant+Garamond%3A400%2C600%2C700&amp;subset=latin&amp;ver=5.0.3" type="text/css" media="all">
         <script type="text/javascript" src="<?php echo $site_url; ?>/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
         <script type="text/javascript" src="<?php echo $site_url; ?>/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
-        <script type="text/javascript" id="-950360219" src="<?php echo $site_url; ?>/wp-content/themes/themify-ultra/themify/themify-builder/js/themify.builder.script.min.js?ver=4.2.2" async=""></script><script async="" src="//load.sumo.com/" data-sumo-site-id="5d960f009cb48000bf40f400e4946f00decd4200ff09eb00ba5db80074c64000" data-sumo-platform="wordpress"></script><script type="text/javascript">
+        <script type="text/javascript" id="-950360219" src="<?php echo $site_url; ?>/wp-content/themes/themify-ultra/themify/themify-builder/js/themify.builder.script.min.js?ver=4.2.2" async=""></script>
+        <script type="text/javascript">
             window._wpemojiSettings = {"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/", "svgExt": ".svg", "source": {"concatemoji": "<?php echo $site_url; ?>/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.3"}};
             !function (a, b, c) {
                 function d(a, b) {
@@ -114,13 +115,6 @@ $site_url = get_site_url();
         <meta name="generator" content="WordPress 5.0.3">
         <link rel="canonical" href="<?php echo $site_url; ?>/start-here/">
         <link rel="shortlink" href="<?php echo $site_url; ?>/?p=628">
-        <script async="">(function (s, u, m, o, j, v) {
-                j = u.createElement(m); v = u.getElementsByTagName(m)[0]; j.async = 1; j.src = o;
-                j.dataset.sumoSiteId = '5d960f009cb48000bf40f400e4946f00decd4200ff09eb00ba5db80074c64000'; j.dataset.sumoPlatform = 'wordpress'; v.parentNode.insertBefore(j, v)
-            })(window, document, 'script', '//load.sumo.com/');</script>
-
-
-
         <link href="<?php echo $site_url; ?>/wp-content/uploads/2018/08/Renshaws-Personal-Training-Icon-1.png" rel="shortcut icon"> 
 
         <script type="text/javascript">
@@ -199,7 +193,7 @@ $site_url = get_site_url();
                                     <li id="menu-item-630" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-628 current_page_item"><a href="<?php echo $site_url; ?>/start-here/">Start Here</a> </li>
                                     <li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/new-workouts/">New Workouts</a> </li>
                                     <li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/workout-archive/">Archive</a> </li>
-                                    <li id="menu-item-1795" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="<?php echo $site_url; ?>/online-training">VIP Program</a> </li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="<?php echo $site_url; ?>/vip-program">VIP Program</a> </li>
                                     <li id="menu-item-649" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://www.facebook.com/groups/1795496737376961/">Group</a> </li>
                                     <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/myaccount/">Help Desk</a> </li>
                                     <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?php echo $site_url; ?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>

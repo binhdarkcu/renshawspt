@@ -3,7 +3,7 @@
 Plugin Name: Themify Builder
 Plugin URI: https://themify.me/builder
 Description: Build responsive layouts that work for desktop, tablets, and mobile using intuitive &quot;what you see is what you get&quot; drag &amp; drop framework with live edits and previews.
-Version: 4.1.1
+Version: 4.1.4
 Author: Themify
 Author URI: https://themify.me
 Text Domain:  themify
@@ -48,7 +48,7 @@ function themify_builder_plugin_meta( $links, $file ) {
 	return (array) $links;
 }
 }
-if(!function_exists('themify_builder_plugin_meta')){
+if(!function_exists('themify_builder_action_links')){
 function themify_builder_action_links( $links ) {
 	if ( is_plugin_active( 'themify-updater/themify-updater.php' ) ) {
 		$tlinks = array(
@@ -196,20 +196,6 @@ function themify_builder_plugin_init() {
 	// register builder options page
 	if ( class_exists( 'Themify_Builder_Options' ) ) {
 		$ThemifyBuilderOptions = new Themify_Builder_Options();
-		// Include Updater
-		/*if (Themify_Builder_Model::is_premium() && is_admin() && current_user_can( 'update_plugins' ) ) {
-			require_once( THEMIFY_BUILDER_DIR . '/themify-builder-updater.php' );
-			if ( ! function_exists( 'get_plugin_data') )
-				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-			$plugin_basename = plugin_basename( __FILE__ );
-			$plugin_data = get_plugin_data( trailingslashit( plugin_dir_path( __FILE__ ) ) . basename( $plugin_basename ) );
-			$themify_builder_updater = new Themify_Builder_Updater( array(
-				'name' => trim( dirname( $plugin_basename ), '/' ),
-				'nicename' => $plugin_data['Name'],
-				'update_type' => 'plugin',
-			), THEMIFY_BUILDER_VERSION, THEMIFY_BUILDER_SLUG );
-		} */
 	}
 
 	if( is_admin() ) {

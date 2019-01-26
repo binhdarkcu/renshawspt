@@ -868,16 +868,7 @@ input[type=checkbox]:checked:before{
     top:10%;
     left:10%;
     content:'';
-    -webkit-animation:circle-loader 1.4s infinite linear;
     animation:circle-loader 1.4s infinite linear;
-}
-@-webkit-keyframes circle-loader{
-    0%{
-        transform:rotate(0deg);
-    }
-    100%{
-        transform:rotate(360deg);
-    }
 }
 @keyframes circle-loader{
     0%{
@@ -937,7 +928,6 @@ input[type=checkbox]:checked:before{
     top:10%;
     left:10%;
     content:'';
-    -webkit-animation:circle-loader 1.4s infinite linear;
     animation:circle-loader 1.4s infinite linear;
 }
 .themify_loader.loader_medium{
@@ -955,7 +945,6 @@ input[type=checkbox]:checked:before{
     margin:12px 30px 12px 25px;
     position:relative;
     font-size:11px;
-    -webkit-animation-delay:-.16s;
     animation-delay:-.16s;
 }
 .themify_horizontal_loader,
@@ -965,7 +954,6 @@ input[type=checkbox]:checked:before{
     border-radius:100%;
     width:9px !important;
     height:9px !important;
-    -webkit-animation:horizontal-loader 1s infinite ease-in-out;
     animation:horizontal-loader 1s infinite ease-in-out;
 }
 .themify_horizontal_loader:before,
@@ -976,21 +964,10 @@ input[type=checkbox]:checked:before{
 }
 .themify_horizontal_loader:before{
     left:-150%;
-    -webkit-animation-delay:-.32s;
     animation-delay:-.32s;
 }
 .themify_horizontal_loader:after{
     left:150%;
-}
-@-webkit-keyframes horizontal-loader{
-    0%,
-    80%,
-    100%{
-        opacity:1;
-    }
-    40%{
-        opacity:.5;
-    }
 }
 @keyframes horizontal-loader{
     0%,
@@ -2507,7 +2484,6 @@ li.role-access-controller{
 .themify_404_autocomplete_wrap.themify_autocomplete_run:after{
     visibility:visible;
     opacity:1;
-    -webkit-animation:circle-loader .7s infinite linear;
     animation:circle-loader .7s infinite linear;
 }
 

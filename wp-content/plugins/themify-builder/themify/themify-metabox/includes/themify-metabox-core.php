@@ -133,8 +133,9 @@ class Themify_Metabox {
 		if( ! isset( $_POST['post_type'] ) ) {
 			return $post_id;
 		}
+		$post_type = sanitize_text_field( $_POST['post_type'] );
 
-		if ( 'page' === $_POST['post_type'] ) {
+		if ( 'page' === $post_type ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) )
 				return $post_id;
 		} else {
@@ -142,10 +143,10 @@ class Themify_Metabox {
 				return $post_id;
 		}
 
-		if( !empty( $_POST['themify_proper_save'] )) {
+		if ( ! empty( $_POST['themify_proper_save'] )) {
 			foreach( $this->get_meta_boxes() as $meta_box ) {
-				$tabs = $this->get_meta_box_options( $meta_box['id'], $_POST['post_type'] );
-				if( empty( $tabs ) )
+				$tabs = $this->get_meta_box_options( $meta_box['id'], $post_type );
+				if ( empty( $tabs ) )
 					continue;
 
 				foreach( $tabs as $tab ) {
@@ -176,7 +177,7 @@ class Themify_Metabox {
 	 * @since 1.0.2
 	 */
 	function _save_meta( $field, $post_id ) {
-		$new_meta = isset( $field['name'],$_POST[$field['name']] ) ? $_POST[$field['name']] : '';
+		$new_meta = isset( $field['name'], $_POST[ $field['name'] ] ) ? $_POST[ $field['name'] ] : '';
 		$old_meta = get_post_meta( $post_id, $field['name'], true );
 
 		// when a default value is set for the field and it's the same as $new_meta, do not bother with saving the field

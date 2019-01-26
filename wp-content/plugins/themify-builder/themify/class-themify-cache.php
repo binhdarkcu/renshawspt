@@ -873,7 +873,7 @@ class TFCache {
 
 }
 
-if ((!defined('THEMIFY_BUILDER_VERSION') || Themify_Builder_Model::is_premium()) && TFCache::check_version() && TFCache::is_cache_activate() && (!isset($_POST['action']) || (isset($_POST['action']) && $_POST['action']==='themify_clear_all_caches')) && !isset($_GET['builder_grid_activate'])) {
+if ((!defined('THEMIFY_BUILDER_VERSION') || Themify_Builder_Model::is_premium()) && TFCache::check_version() && TFCache::is_cache_activate() && (!isset($_POST['action']) || (isset($_POST['action']) && sanitize_text_field( $_POST['action'] ) ==='themify_clear_all_caches')) && !isset($_GET['builder_grid_activate'])) {
     TFCache::$turnoff_cache = TFCache::is_builder_cache_activate();
     add_action('wp_ajax_themify_clear_all_caches', array('TFCache', 'clear_caches'));
     if(TFCache::$turnoff_cache && TFCache::check_builder_cache()){

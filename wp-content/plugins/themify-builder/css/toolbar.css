@@ -568,6 +568,7 @@ MODULES
     border-radius:0 2px 2px 0;
     min-height: 24px;
     outline:none;
+	box-sizing: unset !important;
 }
 .tb_toolbar_revision_btn .ti-angle-down{
     font-size:14px;
@@ -863,10 +864,6 @@ body:not(.tb_responsive_mode) .tb_iframe{
 }
 
 /* Themify Gutenberg Editor */
-.themify-gutenberg-editor .tb_toolbar_revision_btn{
-    line-height:normal;
-    padding-bottom:8px;
-}
 #tb_toolbar .tb_rows_grid .tb_row_grid {
     width: 55px;
     height: 29px;
@@ -880,32 +877,40 @@ body:not(.tb_responsive_mode) .tb_iframe{
 }
 .edit-post-layout__content .editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before{
     outline-color:#e2e4e7;
+    background: none;
 }
 .edit-post-layout__content .editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit{
     padding-top:0;
 }
-.gutenberg .edit-post-layout .components-notice-list .notice{
+.themify-gutenberg-editor .edit-post-layout .components-notice-list .notice{
     padding:1px 12px;
     min-height:30px;
 }
-.gutenberg .edit-post-layout .components-notice-list .notice .notice-dismiss {
+.themify-gutenberg-editor .edit-post-layout .components-notice-list .notice .notice-dismiss {
 	padding: 3px 10px;
 }
-.gutenberg-editor #adminmenuwrap:hover{
+.themify-gutenberg-editor #adminmenuwrap:hover{
     z-index:10000;
 }
+@media (min-width:600px){
+	.gutenberg .editor-post-title,
+	.gutenberg .editor-block-list__layout {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
 @media (min-width:782px){
-    .gutenberg .edit-post-layout .components-notice-list{
+    .themify-gutenberg-editor .edit-post-layout .components-notice-list{
         top:auto;
         bottom:0;
     }
-    .gutenberg .edit-post-layout .components-notice-list .notice{
+    .themify-gutenberg-editor .edit-post-layout .components-notice-list .notice{
         margin-bottom:0;
     }
 }
 @media (min-width:960px){
-    .tb_module_panel_locked .gutenberg .edit-post-layout .components-notice-list,
-    .gutenberg .edit-post-layout .components-notice-list{
+    .tb_module_panel_locked.themify-gutenberg-editor .edit-post-layout .components-notice-list,
+    .themify-gutenberg-editor .edit-post-layout .components-notice-list{
         margin-left: 32px;
     }
 }

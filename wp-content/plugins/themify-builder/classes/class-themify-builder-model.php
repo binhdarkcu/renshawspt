@@ -1409,14 +1409,18 @@ final class Themify_Builder_Model {
      * Check if gutenberg active
      * @return boolean
      */
-    public static function is_gutenberg_active() {
-        static $is_active = null;
-        if($is_active===null){
-            $is_active = self::is_plugin_active('gutenberg/gutenberg.php');
-        }
-        return $is_active;
+     public static function is_gutenberg_active() {
+	static $is = null;
+	if ($is === null) {
+	    global $wp_version;
+	    $is = self::is_plugin_active('gutenberg/gutenberg.php') || version_compare( $wp_version, '5.0', '>=' );
+	    if($is===true && version_compare( $wp_version, '5.0', '>=' )){
+		$is = !self::is_plugin_active('disable-gutenberg/disable-gutenberg.php') && !self::is_plugin_active('classic-editor/classic-editor.php');
+	    }
+	}
+	return $is;
     }
-    
+	    
     /**
     * Plugin Active checking
     * 
@@ -1439,7 +1443,49 @@ final class Themify_Builder_Model {
      * @return boolean
      */
     public static function is_gutenberg_editor() {
-        return  !isset( $_GET['classic-editor'] ) && self::is_gutenberg_active();
+        static $is = null;
+        if($is===null){
+        /*
+         * There have been reports of specialized loading scenarios where `get_current_screen`
+         * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
+         */
+        global $post;
+        $is= !(!is_admin() || isset( $_GET['classic-editor'] ) || ! function_exists( 'get_current_screen' ) || get_current_screen()->base !== 'post' ||  !self::is_gutenberg_active() || !self::gutenberg_can_edit_post( $post ) );
+        }
+        return $is;
+    }
+
+    private static function gutenberg_can_edit_post( $post ) {
+        $post     = get_post( $post );
+        $can_edit = !(!$post || 'trash' === $post->post_status || ! self::gutenberg_can_edit_post_type( $post->post_type ) || ! current_user_can( 'edit_post', $post->ID ) || (absint( get_option( 'page_for_posts' ) ) === $post->ID && empty( $post->post_content ) ));
+
+        /**
+         * Filter to allow plugins to enable/disable Gutenberg for particular post.
+         *
+         * @since 3.5
+         *
+         * @param bool $can_edit Whether the post can be edited or not.
+         * @param WP_Post $post The post being checked.
+         */
+        return apply_filters( 'gutenberg_can_edit_post', $can_edit, $post );
+
+    }
+
+    private static function gutenberg_can_edit_post_type( $post_type ) {
+        $can_edit = !(!post_type_exists( $post_type ) || !post_type_supports( $post_type, 'editor' ));
+        if($can_edit===true){
+            $post_type_object = get_post_type_object( $post_type );
+            $can_edit = !($post_type_object && ! $post_type_object->show_in_rest);
+        }
+        /**
+         * Filter to allow plugins to enable/disable Gutenberg for particular post types.
+         *
+         * @since 1.5.2
+         *
+         * @param bool   $can_edit  Whether the post type can be edited or not.
+         * @param string $post_type The post type being checked.
+         */
+        return apply_filters( 'gutenberg_can_edit_post_type', $can_edit, $post_type );
     }
     
     /**

@@ -263,8 +263,6 @@ a.shortcode.button.lavender.outline:hover{
 }
 /* gradient */
 a.shortcode.button.gradient{
-    background-image:-moz-linear-gradient(top,  rgba(255,255,255,0.35) 0%, rgba(170,170,170,0.15) 66%, rgba(0,0,0,0.05) 100%);
-    background-image:-webkit-linear-gradient(top,  rgba(255,255,255,0.35) 0%,rgba(170,170,170,0.15) 66%,rgba(0,0,0,0.05) 100%);
     background-image:linear-gradient(to bottom,  rgba(255,255,255,0.35) 0%,rgba(170,170,170,0.15) 66%,rgba(0,0,0,0.05) 100%);
 }
 /* flat */
@@ -822,7 +820,6 @@ CAROUSEL STYLES
     clear:none;
 }
 .slider.shortcode .post{
-    -webkit-animation-name:inherit !important;
     animation-name:inherit !important;
 }
 .shortcode.post-slider .post-video,

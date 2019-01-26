@@ -196,7 +196,7 @@ window.themifybuilderapp = window.themifybuilderapp || {};
             model.model.trigger('custom:change', model);
         },
         backendLivePreview: function () {
-            $('.tb_element_cid_' + this.cid).find('.module_excerpt').text(this.getExcerpt(tempSettings));
+            $('.tb_element_cid_' + this.cid).find('.module_excerpt').text(this.getExcerpt());
         },
         // for instant live preview
         getPreviewSettings: function () {
@@ -959,7 +959,7 @@ window.themifybuilderapp = window.themifybuilderapp || {};
         tagName: 'div',
         attributes: function () {
             return {
-                'class': 'tb_module module-' + this.model.get('mod_name') + ' active_module tb_element_cid_' + this.model.cid,
+                'class': 'tb_module module-' + this.model.get('mod_name') + ' active_module tb_element_cid_' + this.model.cid+' tb_'+this.model.get('element_id'),
                 'data-cid': this.model.cid
             };
         },

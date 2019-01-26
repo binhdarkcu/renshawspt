@@ -88,7 +88,7 @@ function themify_posts_where($search, &$wp_query ){
  * @package themify
  */
 function themify_plupload() {
-    $imgid = $_POST['imgid'];
+    $imgid = sanitize_text_field( $_POST['imgid'] );
     ! empty( $_POST[ '_ajax_nonce' ] ) && check_ajax_referer($imgid . 'themify-plupload');
 	/** Check whether this image should be set as a preset. @var String */
 	$haspreset = isset( $_POST['haspreset'] )? $_POST['haspreset'] : '';
@@ -282,17 +282,19 @@ function themify_delete_attachment($attach_id){
 function themify_remove_post_image(){
 	check_ajax_referer( 'themify-custom-panel', 'nonce' );
 	$is_post_thumbnail = (isset($_POST['attach_id'])) ? false : true ;
-	
-	if( isset($_POST['postid']) && isset($_POST['customfield'])){
+
+	if ( isset( $_POST['postid'] ) && isset( $_POST['customfield'] ) ) {
+		$postid = (int) $_POST['postid'];
+		$customfield = sanitize_key( $_POST['customfield'] );
 		// Un attach image from custom field
-		delete_post_meta($_POST['postid'], '_'.$_POST['customfield'].'_attach_id');
+		delete_post_meta($postid, '_'.$customfield.'_attach_id');
 		
 		// Clear Themify custom field for post image
-		update_post_meta($_POST['postid'], $_POST['customfield'], '');
+		update_post_meta($postid, $customfield, '');
 		
 		if( $is_post_thumbnail ) {
 			// Clear hidden custom field
-			update_post_meta($_POST['postid'], '_thumbnail_id', array());
+			update_post_meta($postid, '_thumbnail_id', array());
 		}
 	} else {
 		_e('Missing vars: post ID and custom field.', 'themify');
@@ -308,7 +310,7 @@ function themify_remove_post_image(){
 function themify_remove_video() {
 	check_ajax_referer( 'themify-custom-panel', 'nonce' );
 	if ( isset( $_POST['postid'] ) && isset( $_POST['customfield'] ) ) {
-		update_post_meta( $_POST['postid'], $_POST['customfield'], '' );
+		update_post_meta( (int) $_POST['postid'], sanitize_key( $_POST['customfield'] ), '' );
 	} else {
 		_e( 'Missing vars: post ID and custom field.', 'themify' );
 	}
@@ -426,10 +428,10 @@ function themify_export() {
 			$datafile = 'data_export.txt';
 			$wp_filesystem->put_contents( $datafile, serialize( themify_get_data() ) );
 			$files_to_zip = array(
-				'../wp-content/themes/' . $theme_name_lc . '/custom-modules.php',
-				'../wp-content/themes/' . $theme_name_lc . '/custom-functions.php',
-				'../wp-content/themes/' . $theme_name_lc . '/custom-config.php',
-				'../wp-content/themes/' . $theme_name_lc . '/custom_style.css',
+				get_template_directory() . '/custom-modules.php',
+				get_template_directory() . '/custom-functions.php',
+				get_template_directory() . '/custom-config.php',
+				get_template_directory() . '/custom_style.css',
 				$datafile
 			);
 			//print_r($files_to_zip);
@@ -495,8 +497,8 @@ function themify_add_link_field(){
 	check_ajax_referer( 'ajax-nonce', 'nonce' );
 	
 	if( isset($_POST['fid']) ) {
-		$hash = $_POST['fid'];
-		$type = isset( $_POST['type'] )? $_POST['type'] : 'image-icon';
+		$hash = (int) $_POST['fid'];
+		$type = ( isset( $_POST['type'] ) && sanitize_text_field( $_POST['type'] ) === 'font-icon' ) ? 'font-icon' : 'image-icon';
 		echo themify_add_link_template( 'themify-link-'.$hash, array(), true, $type);
 		exit();
 	}
@@ -511,16 +513,16 @@ function themify_media_lib_browse() {
 	if ( ! wp_verify_nonce( $_POST['media_lib_nonce'], 'media_lib_nonce' ) ) die(-1);
 
 	$file = array();
-	$postid = $_POST['post_id'];
-	$attach_id = $_POST['attach_id'];
+	$postid = (int) $_POST['post_id'];
+	$attach_id = (int) $_POST['attach_id'];
 
 	$full = wp_get_attachment_image_src( $attach_id, 'full' );
-	if( $_POST['featured'] ){
+	if( isset( $_POST['featured'] ) && $_POST['featured'] ) {
 		//Set the featured image for the post
 		set_post_thumbnail($postid, $attach_id);
 	}
-	update_post_meta($postid, $_POST['field_name'], $full[0]);
-	update_post_meta($postid, '_'.$_POST['field_name'] . '_attach_id', $attach_id);
+	update_post_meta($postid, sanitize_key( $_POST['field_name'] ), $full[0]);
+	update_post_meta($postid, '_'. sanitize_key( $_POST['field_name'] ) . '_attach_id', $attach_id);
 
 	$thumb = wp_get_attachment_image_src( $attach_id, 'thumbnail' );
 				
@@ -551,7 +553,7 @@ function themify_refresh_webfonts() {
 function themify_get_sample_content_file() {
 	if( isset( $_POST['skin'] ) ) {
 		// importing demo content for an skin
-		$resource_file = THEME_DIR . '/skins/' . $_POST['skin'] . '/import.zip';
+		$resource_file = THEME_DIR . '/skins/' . sanitize_key( $_POST['skin'] ) . '/import.zip';
 	} else {
 		// regular old demo import
 		$resource_file = THEME_DIR . '/sample/import.zip';
@@ -621,8 +623,8 @@ function themify_erase_sample_content() {
  */
 function themify_notice_dismiss() {
 	check_ajax_referer( 'ajax-nonce', 'nonce' );
-	if ( isset( $_POST['notice'] ) && '' != $_POST['notice'] ) {
-		update_option( 'themify_' . $_POST['notice'] . '_notice', 0 );
+	if ( isset( $_POST['notice'] ) && ! empty( $_POST['notice'] ) ) {
+		update_option( 'themify_' . sanitize_text_field( $_POST['notice'] ) . '_notice', 0 );
 	}
 	die();
 }

@@ -11,6 +11,7 @@
         <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
         <link rel='dns-prefetch' href='//s.w.org' />
+         <?php  wp_head(); ?>
         <style type="text/css">
             img.wp-smiley,
             img.emoji {

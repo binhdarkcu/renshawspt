@@ -3,8 +3,8 @@ Contributors: themifyme
 Plugin Name: Themify Builder
 Tags: builder, drag-and-drop, page-builder, drag-and-drop-builder, layout, layout-builder, page, content, editor, content-builder, column, grid, responsive, visual, visual-builder, wysiwyg, template, template-builder
 Requires at least: 4.5
-Tested up to: 4.9.8
-Stable tag: 4.1.0
+Tested up to: 5.0.2
+Stable tag: 4.1.4
 
 Build responsive layouts that work for desktop, tablets, and mobile using intuitive &quot;what you see is what you get&quot; drag &amp; drop framework with live edits and previews.
 

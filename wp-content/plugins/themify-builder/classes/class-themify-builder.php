@@ -139,10 +139,8 @@ if (!class_exists('Themify_Builder')) :
                             // Filtered post types
                             add_filter('themify_post_types', array($this, 'extend_post_types'));
                             Themify_Builder_Model::load_general_metabox(); // setup metabox fields
-                            if ( ! Themify_Builder_Model::is_gutenberg_editor() ) {
-                                add_filter('themify_do_metaboxes', array($this, 'builder_write_panels'), 11);
-                                add_action('themify_builder_metabox', array($this, 'add_builder_metabox'), 10);
-                            }
+                            add_filter('themify_do_metaboxes', array($this, 'builder_write_panels'), 11);
+                            add_action('themify_builder_metabox', array($this, 'add_builder_metabox'), 10);
                             add_action('admin_enqueue_scripts', array($this, 'load_admin_interface'), 10);
                             add_action( 'load-post.php', array( $this, 'builder_static_badge_scripts' ) );
                             add_action( 'load-post-new.php', array( $this, 'builder_static_badge_scripts' ) );
@@ -384,6 +382,8 @@ if (!class_exists('Themify_Builder')) :
          * @return array
          */
         public function builder_write_panels($meta_boxes) {
+            if ( Themify_Builder_Model::is_gutenberg_editor() ) 
+                return $meta_boxes;
 
             // Page builder Options
             $page_builder_options = apply_filters('themify_builder_write_panels_options', array(
@@ -978,7 +978,7 @@ if (!class_exists('Themify_Builder')) :
             // Check For page break module
             $page_breaks = 0;
             foreach($module_list as $module){
-                if('page-break' == $module['mod_name']){
+                if( isset( $module['mod_name'] ) && 'page-break' == $module['mod_name']){
                     $page_breaks++;
                 }
             }
@@ -988,6 +988,12 @@ if (!class_exists('Themify_Builder')) :
             Themify_Builder_Component_Base::$post_id = $post_id;
             $template = $this->in_the_loop ? 'builder-output-in-the-loop.php' : 'builder-output.php';
             $builder_output = Themify_Builder_Component_Base::retrieve_template($template, array('builder_output' => $builder_data, 'builder_id' => $post_id), '', '', false);
+            
+            // Start builder block replacement
+            if (Themify_Builder_Model::is_gutenberg_active() && $ThemifyBuilder_Data_Manager->has_builder_block($content)) {
+                $content = $ThemifyBuilder_Data_Manager->update_static_content_string('', $content); // remove static content tag
+                $content = $ThemifyBuilder_Data_Manager->replace_builder_block_tag('<!--themify_builder_static--><!--/themify_builder_static-->', $content);
+            }
             
             if ( $ThemifyBuilder_Data_Manager->has_static_content( $content ) ) {
                     $content = $ThemifyBuilder_Data_Manager->update_static_content_string( $builder_output, $content );
@@ -1028,11 +1034,11 @@ if (!class_exists('Themify_Builder')) :
                 $wrapper = sprintf('<div id="themify_builder_content-%1$d" data-postid="%1$d" class="themify_builder_content themify_builder_content-%1$d themify_builder"></div>', $post_id);
 
                 // Start builder block replacement
-                if ( Themify_Builder_Model::is_gutenberg_active() && $ThemifyBuilder_Data_Manager->has_builder_block( $content ) ) {
-                    $content = $ThemifyBuilder_Data_Manager->replace_builder_block_tag( $wrapper, $content );
-                    $content = $ThemifyBuilder_Data_Manager->update_static_content_string( '', $content ); // remove static content tag
-                    return $content;
-                }
+				if (Themify_Builder_Model::is_gutenberg_active() && $ThemifyBuilder_Data_Manager->has_builder_block($content)) {
+					$content = $ThemifyBuilder_Data_Manager->replace_builder_block_tag($wrapper, $content);
+					$content = $ThemifyBuilder_Data_Manager->update_static_content_string('', $content); // remove static content tag
+					return $content;
+				}
 
                 // Start static content replacement
                 if ( $ThemifyBuilder_Data_Manager->has_static_content( $content ) ) {

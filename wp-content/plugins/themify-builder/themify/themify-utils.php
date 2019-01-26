@@ -108,10 +108,10 @@ function themify_scrub_decode( $string = '' ) {
  * @since 1.1.1
  *******************************************************/
 function themify_enqueue_scripts($page){
-	$pagenow = isset( $_GET['page'] ) ? $_GET['page'] : '';
+	$pagenow = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
 
 	// Don't do anything while updating the theme
-	if ( 'themify' === $pagenow && isset( $_GET['action'] ) && 'upgrade' === $_GET['action'] ) {
+	if ( 'themify' === $pagenow && isset( $_GET['action'] ) && 'upgrade' === sanitize_text_field( $_GET['action'] ) ) {
 		return;
 	}
 
@@ -1511,7 +1511,7 @@ if(!function_exists('themify_get_current_post_type')){
 		elseif( isset( $_REQUEST['post_type'] ) )
 			return sanitize_key( $_REQUEST['post_type'] );
 		elseif(isset( $_GET['post'] ) )
-			return get_post_type( $_GET['post'] );
+			return get_post_type( sanitize_text_field( $_GET['post'] ) );
 		return null;
 	}
 }

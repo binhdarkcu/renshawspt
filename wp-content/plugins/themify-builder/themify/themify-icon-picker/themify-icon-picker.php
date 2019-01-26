@@ -98,7 +98,7 @@ class Themify_Icon_Picker {
 	 */
 	public function tf_ajax_get_icon() {
 		if( isset( $_GET['tf_icon'] ) ) {
-			echo htmlspecialchars( themify_get_icon( $_GET['tf_icon'] ) );
+			echo htmlspecialchars( themify_get_icon( sanitize_text_field( $_GET['tf_icon'] ) ) );
 		}
 		die;
 	}

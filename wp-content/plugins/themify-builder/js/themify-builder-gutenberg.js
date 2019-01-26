@@ -18,24 +18,23 @@
 		restoreHTML: function( props ){
 			if ( 'undefined' === typeof themifybuilderapp ) return;
 			
-			var api = themifybuilderapp;
 			if ( ! _.isNull( this.tempHTML ) && ! this.isRendered() && document.getElementById('tb_canvas_block') ) {
 				document.getElementById('tb_canvas_block').innerHTML = this.tempHTML;
-				if ( ! _.isUndefined(api.Instances.Builder[0]) ) {
+				if ( ! _.isUndefined(themifybuilderapp.Instances.Builder[0]) ) {
 					
 					var batch = document.getElementById('tb_row_wrapper').querySelectorAll('[data-cid]');
 					batch = Array.prototype.slice.call(batch);
 					for (var i = 0, len = batch.length; i < len; ++i) {
-					var model = api.Models.Registry.lookup(batch[i].getAttribute('data-cid'));
+					var model = themifybuilderapp.Models.Registry.lookup(batch[i].getAttribute('data-cid'));
 						if (model) {
 							model.trigger('change:view', batch[i]);
 						}
 					}
-					api.toolbar.setElement( $('#tb_toolbar') ).render();
-					api.toolbarCallback();
+					themifybuilderapp.toolbar.setElement( $('#tb_toolbar') ).render();
+					themifybuilderapp.toolbarCallback();
 					
-					api.Instances.Builder[0].setElement($('#tb_row_wrapper'));
-					api.Instances.Builder[0].init(true);
+					themifybuilderapp.Instances.Builder[0].setElement($('#tb_row_wrapper'));
+					themifybuilderapp.Instances.Builder[0].init(true);
 				}
 			}
 		},
@@ -43,13 +42,12 @@
 			if ( 'undefined' === typeof themifybuilderapp || this.stateInit ) return;
 			this.stateInit = true;
 			console.log('manageState_callback');
-			var api = themifybuilderapp;
-			api.vent.on('dom:change', function () {
-				if (api.hasChanged) {
+			themifybuilderapp.vent.on('dom:change', function () {
+				if (themifybuilderapp.hasChanged) {
 					props.setAttributes({data: blocks.builderUtils.number++ });
 				}
 			});
-			api.vent.on('backend:switchfrontend', function(url){
+			themifybuilderapp.vent.on('backend:switchfrontend', function(url){
 				window.top.location.href = url;
 			});
 		},
@@ -143,9 +141,4 @@
 		}
 	});
 
-} )(
-	window.wp.blocks,
-	window.wp.i18n,
-	window.wp.element,
-	jQuery
-);
+} )(window.wp.blocks,window.wp.i18n,window.wp.element,jQuery);

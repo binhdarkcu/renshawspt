@@ -315,6 +315,7 @@
     font-size:16px;
     height:14px;
     padding:0 0 9px;
+	box-sizing: unset !important;
 }
 .tb_module_panel_rows_wrap, .tb_module_panel_library_wrap,
 .tb_placeholder_helper .tb_favorite,

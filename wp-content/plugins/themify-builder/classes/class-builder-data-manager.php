@@ -368,7 +368,7 @@ class ThemifyBuilder_Data_Manager {
 		$text = array();
 		if( is_array( $data ) ) {
 			foreach( $data as $module ) {
-				if( isset( Themify_Builder_Model::$modules[$module['mod_name']] ) ) {
+				if( isset( $module['mod_name'] ) && isset( Themify_Builder_Model::$modules[$module['mod_name']] ) ) {
 					$text[] = Themify_Builder_Model::$modules[$module['mod_name']]->get_plain_content( $module );
 				}
 			}

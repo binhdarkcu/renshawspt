@@ -61,6 +61,10 @@ foreach ($settings['gallery_images'] as $image) :
         </dd>
     </dl>
 
+    <?php if ($columns > 0 && ++$i % $columns === 0) : ?>
+        <br style="clear: both" />
+    <?php endif; ?>
+
 <?php endforeach; // end loop  ?>
 <br style="clear: both" />
 <?php if ($pagination) : ?>

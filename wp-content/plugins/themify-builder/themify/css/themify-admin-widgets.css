@@ -131,7 +131,6 @@
     border:2px solid transparent;
     border-top-color:currentColor;
     border-right-color:currentColor;
-    -webkit-animation:0.5s themify-ajax-spinner infinite ease-out;
     animation:0.5s themify-ajax-spinner infinite ease-out;
 }
 .themify-ajax-active.themify-ajax-success:after{

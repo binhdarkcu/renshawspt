@@ -26,11 +26,12 @@ class Themify_Builder_Gutenberg {
 			wp_register_style(
 				'themify-builder-style',
 				themify_enque(THEMIFY_BUILDER_URI . '/css/themify-builder-style.css'),
-				array( 'wp-blocks' )
+				array()
 			);
 
 			register_block_type( 'themify-builder/canvas', array(
 				'render_callback' => array( $this, 'render_builder_block'),
+				'editor_style' => 'themify-builder-style',
 				'style' => 'themify-builder-style'
 			) );
 		}
@@ -55,24 +56,7 @@ class Themify_Builder_Gutenberg {
 	}
 
 	public function render_builder_block( $attributes ) {
-
-		if ( Themify_Builder_Model::is_front_builder_activate() ) {
-			return '<!--themify-builder:block-->';
-		} else {
-			remove_filter('the_content', array($this->builder, 'builder_show_on_front'), 11);
-		}
-
-		$post_id = get_the_ID();
-		$builder_data = $this->builder->get_builder_data($post_id);
-
-		do_action('themify_builder_before_template_content_render');
-
-		if ( !is_array($builder_data) ) {
-			$builder_data = array();
-		}
-		Themify_Builder_Component_Base::$post_id = $post_id;
-		$template = $this->builder->in_the_loop ? 'builder-output-in-the-loop.php' : 'builder-output.php';
-		return Themify_Builder_Component_Base::retrieve_template($template, array('builder_output' => $builder_data, 'builder_id' => $post_id), '', '', false);
+		return '<!--themify-builder:block-->'; // just return custom block tag, let builder the_content filter to render builder output
 	}
 
 	public function exclude_defer_script( $handles ) {
@@ -89,17 +73,22 @@ class Themify_Builder_Gutenberg {
 	 */
 	public function enable_block_existing_content( $data, $post, $context ) {
 		global $ThemifyBuilder_Data_Manager;
-                if('edit' === $context['context']){
-                    if ( ! empty( $data->data['content']['raw'] ) &&  ! preg_match( '/<!-- wp:themify-builder\/canvas/s', $data->data['content']['raw'] ) ) {
-                            $data->data['content']['raw'] = $data->data['content']['raw'] . ' ' . $this->block_patterns;
-                    }
-                    // Remove static content
-                    if ( ! empty( $data->data['content']['raw'] )) {
-                        $data->data['content']['builder_static_content'] = $ThemifyBuilder_Data_Manager->get_static_content( $data->data['content']['raw'] );
-                        $data->data['content']['raw'] = $ThemifyBuilder_Data_Manager->update_static_content_string( '', $data->data['content']['raw'] );
-                            //$data->data['content']['raw'] = str_replace('<p></p>', '', $data->data['content']['raw'] );
-                    }
-                }
+		if('edit' === $context['context']){
+			
+			if ( isset( $data->data['content']['raw'] ) ){
+				$has_builder_block = preg_match( '/<!-- wp:themify-builder\/canvas/s', $data->data['content']['raw'] );
+				$data->data['content']['builder_static_content'] = $ThemifyBuilder_Data_Manager->get_static_content( $data->data['content']['raw'] );
+
+				if ( $has_builder_block ) {
+					if ( ! empty( $data->data['content']['builder_static_content'] ) ) {
+						$data->data['content']['raw'] = preg_replace( '/<!-- wp:themify-builder\/canvas(\s+(\{.*?\}))?\s+(\/)?-->/', '', $data->data['content']['raw'] );
+						$data->data['content']['raw'] = $ThemifyBuilder_Data_Manager->update_static_content_string( $this->block_patterns, $data->data['content']['raw'] );
+					}
+				} else {
+					$data->data['content']['raw'] = $data->data['content']['raw'] . ' ' . $this->block_patterns;
+				}
+			}
+		}
 		return $data;
 	}
 
