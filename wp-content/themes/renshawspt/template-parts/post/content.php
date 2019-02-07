@@ -9,67 +9,45 @@
  * @since 1.0
  * @version 1.2
  */
-
+$image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+$categories_id = wp_get_post_categories(get_the_ID());
+$category = get_category($categories_id[0]);
 ?>
+<article id="post-1773" class="post clearfix post-1773 type-post status-publish format-standard has-post-thumbnail hentry category-2019-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author <?php foreach ($categories_id as $cat_id){ echo 'cat-'.$cat_id;};?>" style="position: absolute; left: 0px; top: 0px;">
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-	if ( is_sticky() && is_home() ) :
-		echo twentyseventeen_get_svg( array( 'icon' => 'thumb-tack' ) );
-	endif;
-	?>
-	<header class="entry-header">
-		<?php
-		if ( 'post' === get_post_type() ) {
-			echo '<div class="entry-meta">';
-				if ( is_single() ) {
-					twentyseventeen_posted_on();
-				} else {
-					echo twentyseventeen_time_link();
-					twentyseventeen_edit_link();
-				};
-			echo '</div><!-- .entry-meta -->';
-		};
+    <a href="<?php echo get_permalink();?>" data-post-permalink="yes" style="display: none;"></a>
 
-		if ( is_single() ) {
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		} elseif ( is_front_page() && is_home() ) {
-			the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-		} else {
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		}
-		?>
-	</header><!-- .entry-header -->
+    <figure class="post-image  clearfix">
 
-	<?php if ( '' !== get_the_post_thumbnail() && ! is_single() ) : ?>
-		<div class="post-thumbnail">
-			<a href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'twentyseventeen-featured-image' ); ?>
-			</a>
-		</div><!-- .post-thumbnail -->
-	<?php endif; ?>
+        <a href="<?php echo get_permalink(); ?>"><img src="<?php echo get_the_post_thumbnail_url();?>" class=" wp-post-image wp-image-1774"  srcset="<?php echo get_the_post_thumbnail_url();?> <?php echo $image_data[1];?>w, <?php echo the_post_thumbnail_url('medium');?> 300w, <?php echo the_post_thumbnail_url('medium_large');?> 768w, <?php echo the_post_thumbnail_url('large');?> 1024w" sizes="(max-width: <?php echo $image_data[1];?>px) 100vw, <?php echo $image_data[1];?>px"></a>
 
-	<div class="entry-content">
-		<?php
-		/* translators: %s: Name of current post */
-		the_content( sprintf(
-			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-			get_the_title()
-		) );
+    </figure>
 
-		wp_link_pages( array(
-			'before'      => '<div class="page-links">' . __( 'Pages:', 'twentyseventeen' ),
-			'after'       => '</div>',
-			'link_before' => '<span class="page-number">',
-			'link_after'  => '</span>',
-		) );
-		?>
-	</div><!-- .entry-content -->
+    <div class="post-content">
+        <div class="post-content-inner">
 
-	<?php
-	if ( is_single() ) {
-		twentyseventeen_entry_footer();
-	}
-	?>
+            <div class="post-date-wrap">
+                <time class="post-date entry-date updated" datetime="2018-12-30">
+                    <span class="month">December</span>
+                    <span class="day">30</span>
+                    <span class="year">2018</span>
+                </time>
+            </div>
 
-</article><!-- #post-## -->
+            <h2 class="post-title entry-title"><a href="<?php echo get_permalink(); ?>"><?php the_title();?></a> </h2>			
+            <p class="post-meta entry-meta">
+                <span class="post-category"><a href="<?php echo get_category_link($categories_id[0]); ?>" rel="tag" class="term-<?php echo $category->category_nicename;?>"><?php echo strtolower(get_cat_name($categories_id[0]));?></a></span>					
+            </p>
+            <!-- /post-meta -->
+
+            <div class="entry-content">
+
+            </div><!-- /.entry-content -->
+
+        </div>
+        <!-- /.post-content-inner -->
+    </div>
+    <!-- /.post-content -->
+
+</article>
+<!-- /.post -->

@@ -1,11 +1,21 @@
 <?php
-$my_postid = get_the_ID(); //This is page id or post id
-$content_post = get_post($my_postid);
-$content = $content_post->post_content;
-$content = apply_filters('the_content', $content);
-$content = str_replace(']]>', ']]&gt;', $content);
+$page = get_query_var('page', 1);
+$page2 = $page == 0 ? 1 : $page;
+$original_query = $wp_query;
+$wp_query = null;
+
+$post_per_page = 12;
+$args = array('posts_per_page'=> $post_per_page, 'tag' => 'workout-archive', 'paged' => $page2);
+$args_postcount = array('posts_per_page'=> -1, 'tag' => 'workout-archive');
+
+$wp_query_postcount = new WP_Query( $args_postcount );
+
+$wp_query = new WP_Query( $args );
 
 $site_url = get_site_url();
+
+$categories = get_categories();
+
 ?>
 
 <!DOCTYPE html>
@@ -142,7 +152,6 @@ $site_url = get_site_url();
 
                 <header id="header" class="pagewidth clearfix" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 
-
                     <div class="header-bar">
                         <div id="site-logo"><a href="<?php echo get_site_url();?>" title="Nicky Arthur Fitness"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" alt="Nicky Arthur Fitness" title="Nicky Arthur Fitness" /></a></div>
                         <div id="site-description" class="site-description"><span>Simple and Effective Workouts</span></div>									</div>
@@ -151,8 +160,6 @@ $site_url = get_site_url();
                     <div id="mobile-menu" class="sidemenu sidemenu-off">
 
                         <div class="navbar-wrapper clearfix">
-
-
 
                             <nav id="main-nav-wrap" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement">
                                 <ul id="main-nav" class="main-nav menu-name-member-navigation"><li id="menu-item-319" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/member-dashboard/">Dashboard</a> </li>
@@ -164,7 +171,6 @@ $site_url = get_site_url();
                                     <li id="menu-item-631" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo $site_url; ?>/myaccount/">Help Desk</a> </li>
                                     <li id="menu-item-812" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?php echo $site_url; ?>/wp-login.php?action=logout&amp;redirect_to=%2Flogout%2F&amp;_wpnonce=3b2e83ba70">Log Out</a> </li>
                                 </ul>									<!-- /#main-nav -->
-
 
                             </nav>
                             <!-- /#main-nav-wrap -->
@@ -222,651 +228,41 @@ $site_url = get_site_url();
                                                     <!-- module post -->
                                                     <div id="post-645-0-0-0" class="module module-post post-645-0-0-0 ">
                                                         <!--insert-->
-                                                        <ul class="post-filter filter-visible">	<li class="cat-item cat-item-36" style="display: none;"><a href="<?php echo $site_url; ?>/category/2017-workouts/">2017 workouts</a>
-                                                            </li>
-                                                            <li class="cat-item cat-item-37"><a href="<?php echo $site_url; ?>/category/2018-workouts/">2018 workouts</a>
-                                                            </li>
-                                                            <li class="cat-item cat-item-38"><a href="<?php echo $site_url; ?>/category/2019-workouts/">2019 workouts</a>
-                                                            </li>
-                                                        </ul>        <div class="builder-posts-wrap clearfix loops-wrapper  grid4 boxed masonry-done" style="position: relative; height: 878.589px;"><div class="grid-sizer"></div><div class="gutter-sizer"></div>
+                                                        <ul class="post-filter filter-visible">	
+                                                            <?php foreach ($categories as $category):?>
+                                                                <li class="cat-item cat-item-<?php echo $category->cat_ID;?>" style="display: none;"><a href="<?php get_category_link( $category->cat_ID); ?>"><?php echo $category->name;?></a></li>
+                                                            <?php endforeach;?>
+                                 
+                                                        </ul>        
+                                                        <div class="builder-posts-wrap clearfix loops-wrapper  grid4 boxed masonry-done" style="position: relative; height: 878.589px;"><div class="grid-sizer"></div><div class="gutter-sizer"></div>
 
+                                                        <?php
+                                                        /* Start the Loop */
+                                                        while ( have_posts() ) : the_post();
 
-                                                            <article id="post-1773" class="post clearfix post-1773 type-post status-publish format-standard has-post-thumbnail hentry category-2019-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-38" style="position: absolute; left: 0px; top: 0px;">
+                                                                get_template_part( 'template-parts/post/content', get_post_format() );
 
-                                                                <a href="<?php echo $site_url; ?>/january-2019/" data-post-permalink="yes" style="display: none;"></a>
 
 
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/january-2019/"><img src="https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075.jpeg" class=" wp-post-image wp-image-1774" alt="IMG_0075" srcset="https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075.jpeg 2304w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-300x200.jpeg 300w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-768x512.jpeg 768w, https://renshawspt.com/wp-content/uploads/2018/12/IMG_0075-1024x683.jpeg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-12-30">
-                                                                                <span class="month">December</span>
-                                                                                <span class="day">30</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/january-2019/">January 2019: Beast Drop Sets, Endangered Set</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2019-workouts/" rel="tag" class="term-2019-workouts">2019 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1730" class="post clearfix post-1730 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 299px; top: 0px;">
-
-                                                                <a href="<?php echo $site_url; ?>/december-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/december-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071.jpeg" class=" wp-post-image wp-image-1731" alt="IMG_0071" srcset="https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071.jpeg 2305w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-300x200.jpeg 300w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-768x512.jpeg 768w, https://renshawspt.com/wp-content/uploads/2018/11/IMG_0071-1024x682.jpeg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-11-30">
-                                                                                <span class="month">November</span>
-                                                                                <span class="day">30</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/december-2018/">December 2018: Free Weight Pyramid Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1695" class="post clearfix post-1695 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 598px; top: 0px;">
-
-                                                                <a href="<?php echo $site_url; ?>/november-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/november-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337.jpg" class=" wp-post-image wp-image-1696" alt="IMG_0337" srcset="https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/10/IMG_0337-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-10-30">
-                                                                                <span class="month">October</span>
-                                                                                <span class="day">30</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/november-2018/">November 2018: Barbell Bull’s-Eye Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1671" class="post clearfix post-1671 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 897px; top: 0px;">
-
-                                                                <a href="<?php echo $site_url; ?>/october-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/october-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054.jpg" class=" wp-post-image wp-image-1672" alt="IMG_0054" srcset="https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054.jpg 2306w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/09/IMG_0054-1024x683.jpg 1024w" sizes="(max-width: 2306px) 100vw, 2306px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-09-29">
-                                                                                <span class="month">September</span>
-                                                                                <span class="day">29</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/october-2018/">October 2018: Dumbbell Stamina Super Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1629" class="post clearfix post-1629 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 0px; top: 292px;">
-
-                                                                <a href="<?php echo $site_url; ?>/september-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/september-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034.jpg" class=" wp-post-image wp-image-1630" alt="IMG_0034" srcset="https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/08/IMG_0034-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-08-31">
-                                                                                <span class="month">August</span>
-                                                                                <span class="day">31</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/september-2018/">September 2018: Savage Sets, Predator Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1569" class="post clearfix post-1569 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 299px; top: 292px;">
-
-                                                                <a href="<?php echo $site_url; ?>/august-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/august-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009.jpg" class=" wp-post-image wp-image-1570" alt="IMG_0009" srcset="https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/07/IMG_0009-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-07-29">
-                                                                                <span class="month">July</span>
-                                                                                <span class="day">29</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/august-2018/">August 2018: Journey Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1541" class="post clearfix post-1541 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 598px; top: 292px;">
-
-                                                                <a href="<?php echo $site_url; ?>/july-2018/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/july-2018/"><img src="https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164.jpg" class=" wp-post-image wp-image-1542" alt="IMG_0164" srcset="https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164.jpg 2304w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/06/IMG_0164-1024x683.jpg 1024w" sizes="(max-width: 2304px) 100vw, 2304px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-06-30">
-                                                                                <span class="month">June</span>
-                                                                                <span class="day">30</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/july-2018/">July 2018: (Free-Weights) Strong Man Sets, Insane Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1379" class="post clearfix post-1379 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 897px; top: 292px;">
-
-                                                                <a href="<?php echo $site_url; ?>/2018-june/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/2018-june/"><img src="https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138.jpg" class=" wp-post-image wp-image-1386" alt="IMG_0138" srcset="https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/05/IMG_0138-1024x682.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-05-31">
-                                                                                <span class="month">May</span>
-                                                                                <span class="day">31</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/2018-june/">2018 June: All Dumbbell – Berserk Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1241" class="post clearfix post-1241 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 0px; top: 585px;">
-
-                                                                <a href="<?php echo $site_url; ?>/2018-may/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/2018-may/"><img src="https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117.jpg" class=" wp-post-image wp-image-1242" alt="IMG_0117" srcset="https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117.jpg 2086w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/04/IMG_0117-1024x683.jpg 1024w" sizes="(max-width: 2086px) 100vw, 2086px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-04-29">
-                                                                                <span class="month">April</span>
-                                                                                <span class="day">29</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/2018-may/">2018 May: All Cables – Hydra Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-1211" class="post clearfix post-1211 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 299px; top: 585px;">
-
-                                                                <a href="<?php echo $site_url; ?>/2018-april/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/2018-april/"><img src="https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103.jpg" class=" wp-post-image wp-image-1212" alt="IMG_0103" srcset="https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103.jpg 1018w, https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/03/IMG_0103-768x512.jpg 768w" sizes="(max-width: 1018px) 100vw, 1018px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-03-30">
-                                                                                <span class="month">March</span>
-                                                                                <span class="day">30</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/2018-april/">2018 April: Free Weight – K.O. Super Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-936" class="post clearfix post-936 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 598px; top: 585px;">
-
-                                                                <a href="<?php echo $site_url; ?>/2018-march/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/2018-march/"><img src="https://renshawspt.com/wp-content/uploads/2018/02/flex.jpg" class=" wp-post-image wp-image-937" alt="flex" srcset="https://renshawspt.com/wp-content/uploads/2018/02/flex.jpg 2079w, https://renshawspt.com/wp-content/uploads/2018/02/flex-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/02/flex-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/02/flex-1024x683.jpg 1024w" sizes="(max-width: 2079px) 100vw, 2079px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-02-25">
-                                                                                <span class="month">February</span>
-                                                                                <span class="day">25</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/2018-march/">2018 March: Barbaric Sets, 0-Gravity Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
-
-
-                                                            <article id="post-915" class="post clearfix post-915 type-post status-publish format-standard has-post-thumbnail hentry category-2018-workouts has-post-title has-post-date has-post-category has-post-tag no-post-comment no-post-author   cat-37" style="position: absolute; left: 897px; top: 585px;">
-
-                                                                <a href="<?php echo $site_url; ?>/2018-february/" data-post-permalink="yes" style="display: none;"></a>
-
-
-
-
-
-                                                                <figure class="post-image  clearfix">
-
-                                                                    <a href="<?php echo $site_url; ?>/2018-february/"><img src="https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037.jpg" class=" wp-post-image wp-image-917" alt="IMG_0037" srcset="https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037.jpg 2305w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-300x200.jpg 300w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-768x512.jpg 768w, https://renshawspt.com/wp-content/uploads/2018/01/IMG_0037-1024x683.jpg 1024w" sizes="(max-width: 2305px) 100vw, 2305px"></a>
-
-                                                                </figure>
-
-
-
-
-                                                                <div class="post-content">
-                                                                    <div class="post-content-inner">
-
-                                                                        <div class="post-date-wrap">
-                                                                            <time class="post-date entry-date updated" datetime="2018-01-27">
-                                                                                <span class="month">January</span>
-                                                                                <span class="day">27</span>
-                                                                                <span class="year">2018</span>
-                                                                            </time>
-                                                                        </div>
-
-                                                                        <h2 class="post-title entry-title"><a href="<?php echo $site_url; ?>/2018-february/">2018 February: Compound Exercise, Gladiator Sets</a> </h2>			
-                                                                        <p class="post-meta entry-meta">
-
-                                                                            <span class="post-category"><a href="<?php echo $site_url; ?>/category/2018-workouts/" rel="tag" class="term-2018-workouts">2018 workouts</a></span>					
-
-                                                                        </p>
-                                                                        <!-- /post-meta -->
-
-
-                                                                        <div class="entry-content">
-
-
-
-                                                                        </div><!-- /.entry-content -->
-
-
-                                                                    </div>
-                                                                    <!-- /.post-content-inner -->
-                                                                </div>
-                                                                <!-- /.post-content -->
-
-                                                            </article>
-                                                            <!-- /.post -->
+                                                        endwhile; // End of the loop.
+                                                        ?>                                                 
                                                         </div><!-- .builder-posts-wrap -->
-                                                        <div class="pagenav clearfix"> <span class="number current">1</span>  <a href="<?php echo $site_url; ?>/workout-archive/page/2/" class="number">2</a> </div>                    </div>
+
+                                                        <div class="pagenav clearfix"> 
+                                                            <?php $postcount = $wp_query_postcount->post_count;
+                                                                  $pages = $postcount%$post_per_page == 0 ? $postcount/$post_per_page : $post_per_page/$post_per_page + 1;
+                                                            ?>
+                                                            <?php for($i=1; $i <= $pages; $i++):?>
+                                                                <?php if($i == $page2):?>
+                                                                    <span class="number current"><?php echo $i;?></span>
+                                                                <?php else:?>
+                                                                    <a href="<?php echo $site_url; ?>/workout-archive/<?php echo $i;?>/" class="number"><?php echo $i;?></a> 
+                                                                <?php endif;?>
+                                                            <?php endfor;?>
+                                                              
+                                                            
+                                                        </div>                    
+                                                    </div>
                                                     <!-- /module post -->
 
                                                 </div>
@@ -878,7 +274,12 @@ $site_url = get_site_url();
                                 </div>
                                 <!-- /themify_builder_content -->
 
+                                <?php 
+                                $wp_query = null;
+                                $wp_query = $original_query;
+                                wp_reset_postdata();
 
+                                ?>
                                 <!-- comments -->
                                 <!-- /comments -->
 
