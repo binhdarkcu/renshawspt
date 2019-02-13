@@ -12,9 +12,13 @@
 
 get_header(); ?>
 
-<div class="wrap">
+<?php 
 
-	<?php if ( have_posts() ) : ?>
+$obj = get_queried_object();
+?>
+<div id="layout" class="pagewidth clearfix">
+    <div id="content" class="clearfix">
+  	<?php if ( have_posts() ) : ?>
 		<header class="page-header">
 			<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -23,8 +27,10 @@ get_header(); ?>
 		</header><!-- .page-header -->
 	<?php endif; ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+        <ul class="post-filter filter-visible">	
+            <li class="cat-item cat-item-<?php echo $obj->cat_ID; ?> current-cat"><a href="#"><?php echo $obj->name;?></a></li>
+        </ul>                 
+	<div id="loops-wrapper" class="loops-wrapper sidebar1 auto_tiles  overlay pagination masonry-done loading-finish" style="position: relative; height: 1045px;">
 
 		<?php
 		if ( have_posts() ) : ?>
@@ -41,21 +47,25 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_pagination( array(
-				'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-				'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-			) );
-
 		else :
 
 			get_template_part( 'template-parts/post/content', 'none' );
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
+	</div><!-- #primary -->  
+        
+        <?php 
+        
+        the_posts_pagination( array(
+                'prev_text' => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+                'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+        ) );       
+        ?>
+    </div>
+
+	<?php // get_sidebar(); ?>
 </div><!-- .wrap -->
 
 <?php get_footer();
