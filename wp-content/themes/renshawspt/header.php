@@ -87,10 +87,11 @@
     <?php  global $post; $post_slug=$post->post_name;?>
     <?php if($post_slug === "default-homepage"):?>
     <body class="home page-template-default page page-id-5 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie full_width sidebar-none no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo transparent-header footer-block theme-color-black  social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled">
+    <?php elseif(is_category()):?>
+    <body class="page-template-default page page-id-476 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie default_width  no-home no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled sidemenu-active page-loaded themify_lightbox_loaded">
     <?php else:?>
     <body class="page-template-default page page-id-476 themify-fw-3-5-8 themify-ultra-1-9-9 skin-lawyer webkit not-ie default_width sidebar-none no-home no-touch builder-parallax-scrolling-active header-top-widgets fixed-header no-shrinking-logo footer-block theme-color-black social-widget-off rss-off search-off header-widgets-off footer-menu-navigation-off tile_enable filter-hover-none filter-featured-only masonry-enabled sidemenu-active page-loaded themify_lightbox_loaded">
     <?php endif;?>
-
 
         <script type="text/javascript">
             function themifyMobileMenuTrigger(e) {

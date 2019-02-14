@@ -43,7 +43,7 @@ $obj = get_queried_object();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/post/content', get_post_format() );
+				get_template_part( 'template-parts/post/content', 'archive');
 
 			endwhile;
 
@@ -54,18 +54,18 @@ $obj = get_queried_object();
 		endif; ?>
 
 	</div><!-- #primary -->  
-        
-        <?php 
-        
-        the_posts_pagination( array(
-                'prev_text' => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-                'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
-                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-        ) );       
-        ?>
-    </div>
+        <div class="pagenav clearfix right-align">
+          <?php 
+            the_posts_pagination( array(
+                    'prev_text' => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+                    'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
+                    'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+            ) );       
+            ?>          
+        </div>
 
-	<?php // get_sidebar(); ?>
+    </div>
+    <?php get_sidebar('recent'); ?>
 </div><!-- .wrap -->
 
 <?php get_footer();
