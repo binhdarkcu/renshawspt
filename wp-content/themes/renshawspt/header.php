@@ -30,7 +30,7 @@
         <link rel='stylesheet' id='themify-common-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/themify.common.min.css?ver=4.9.8' type='text/css' media='all' />
         <meta name="themify-framework-css" content="themify-framework-css" id="themify-framework-css">
         <meta name="builder-styles-css" content="" id="builder-styles-css">
-        <link rel='stylesheet' id='membermouse-font-awesome-css'  href='http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.9.8' type='text/css' media='all' />
+        <link rel='stylesheet' id='membermouse-font-awesome-css'  href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.9.8' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-media-queries-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/media-queries.min.css?ver=1.9.9' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-skin-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/style2.min.css?ver=3.5.8' type='text/css' media='all' />
         <link rel='stylesheet' id='themify-skin-css2'  href='<?php echo get_site_url();?>/wp-content/themes/themify-ultra/skins/lawyer/style.min.css?ver=3.5.8' type='text/css' media='all' />
